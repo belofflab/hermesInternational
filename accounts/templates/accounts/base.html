@@ -335,7 +335,7 @@
                             </svg>
 
                             <span>Настройки</span>
-                        </a><a class="dropdown-item px-3" rel="nofollow" data-method="delete" href="{% url 'accounts:logout'%}">
+                        </a><a class="dropdown-item px-3" rel="nofollow" href="{% url 'accounts:logout'%}">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 version="1.1" id="mdi-logout" width="24" height="24" viewBox="0 0 24 24">
                                 <path
@@ -598,7 +598,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="nofollow" data-method="delete" href="/ru/users/sign_out">
+                        <a class="nav-link" rel="nofollow" href="{% accounts:logout %}">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 version="1.1" id="mdi-logout" width="24" height="24" viewBox="0 0 24 24">
                                 <path
