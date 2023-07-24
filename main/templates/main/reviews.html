@@ -1,0 +1,2300 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% block title %} Main Page {% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header">
+                    <b>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            id="mdi-flag" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z"></path>
+                        </svg>
+
+                        Язык
+                    </b>
+                </div>
+                <div class="card-body">
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=ar">العربية</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=en">English</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=es">Español</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=fr">Français</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=it">Italiano</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=ja">日本語</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=ka">ქართული</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=ko">한국어</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=pt-BR">Português Brasileiro</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=ro">Română</a></span>
+                    <span class="p-1"><a href="/ru/reviews?q%5Blocale_eq%5D=ru">Русский</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                    <b>Показана проверить <b>1&nbsp;-&nbsp;25</b> из <b>1975</b></b>
+                    <span class="pull-right">
+                        <a class="sort_link " href="/ru/reviews?q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=created_at+asc">Самый
+                            последний</a>
+                        |
+                        <a class="sort_link desc"
+                            href="/ru/reviews?q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+asc">Рекомендуемые&nbsp;▼</a>
+                    </span>
+                </div>
+            </div>
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16708">Только положительные впечатления</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/1e73f3edc9c192c2e25ddaff6fd8b1d9?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Dmitrii K
+                                🇬🇪
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-20
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Пользовался услугами сервиса пока только два раза и остался очень
+                                доволен.
+                                1. Отзывчивая и профессиональная техподдержка. Для меня это всегда на первом месте.
+                                2. Отличная упаковка. Обе посылки приехали абсолютно целыми.
+                                3. Курьерская доставка, которая дешевле, чем напрямую из Амазона.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-fe9f1181-1adc-444d-b3ed-51a7d1224569/medium_mpDvHZzic8Aoc3dQgUKS.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16690">Все супер, быстро пришло</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/68d750735ac2cea8fb768a840419d44a?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                ADEL G
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-18
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Все супер, быстро пришло и без вопросов</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-22dbacec-1731-4e28-b6c7-613db3d9d040/medium_TFcnchaz0tZcwWNpxSsB.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16620">Спасибо</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/97563e858db37a1a7095c9921e4e4091?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Artem S
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-10
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Доехало за дней 12, упаковка на уровне!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-e38dd375-edde-447f-b9b5-c69b9c07e1c7/medium_rdpBxsaNkPApMiBG4ZfJ.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16583">Всё отлично</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/1e73f3edc9c192c2e25ddaff6fd8b1d9?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Dmitrii K
+                                🇬🇪
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-02
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Посылку доставили курьерской службой в целости и сохранности. Саппорт
+                                отзывчивый, стоимость услуг выгодная.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-d7ee50de-aa36-4cbd-820d-ce73f8058c80/medium_CIXoeM6GegjQMJbggvOE.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16577">Отлично упаковано</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/655bbc2773efff1d42cd20adde31ebd2?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Konstantin P
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-02
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Получил первую посылку на Казахстанский адрес, доставка туда немного
+                                дороже, зато отправляется почти в любой день, в отличие от России. Всё доехало целым
+                                благодаря мощной качественной коробке, как всегда, спасибо!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-326f2b16-9568-415f-90c5-0bcfbfb7411a/medium_ux5EnS0U16u0Tws4EFhM.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16576">Высший пилотаж!</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar"
+                                    src="https://storage.googleapis.com/fish-app-files-production/uploads/user/avatar/469659/fishisfast_avatar.jpg?GoogleAccessId=application-files@ambient-polymer-235619.iam.gserviceaccount.com&amp;Signature=nmojqOajdlVCTpw8gRAHN9VLq%2BKkkEPiegAVb8gVb7NYhVV%2Fbrt3xPfmzRul%0AGD4oGVI6BJyyugIcikS21O6XEHgxt%2F0zdvpBgeB55o56%2BDdhY283JQftMjAL%0AK2oqGv6c7SmpMtDLOxeFUPNEcgQIR1YIeMJ7kNEOfxNsu%2BdsDemdJiKxvEC3%0ADXplIOb5vGXpa5XBdldszqE5xq2y6bfRNUdI26%2BXOEb86UXY1psz5lENMjKx%0Amd5CDiA4%2BT9KI15a%2BhbXTPSQaOYJ9R9C0nToDnjC6wNUNSxUUPZmYAbwE7Uh%0ALRnB3EuSbanai%2FA0DMV%2FfF%2Fge%2FnHbrxsqHJvYlcAxA%3D%3D&amp;Expires=1690167687">
+
+                                Viktor M
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-02
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Класс! Печаль лишь вызывает расширение санкционных товаров, как суть
+                                агрессивной политики против РФ.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-fc5b8cdc-7c2b-4378-a0fc-71c337f0997b/medium_P4hmbLqy4phJsmWu2xlv.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16575">Как всегда - работа на высоте!</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar"
+                                    src="https://storage.googleapis.com/fish-app-files-production/uploads/user/avatar/469659/fishisfast_avatar.jpg?GoogleAccessId=application-files@ambient-polymer-235619.iam.gserviceaccount.com&amp;Signature=nmojqOajdlVCTpw8gRAHN9VLq%2BKkkEPiegAVb8gVb7NYhVV%2Fbrt3xPfmzRul%0AGD4oGVI6BJyyugIcikS21O6XEHgxt%2F0zdvpBgeB55o56%2BDdhY283JQftMjAL%0AK2oqGv6c7SmpMtDLOxeFUPNEcgQIR1YIeMJ7kNEOfxNsu%2BdsDemdJiKxvEC3%0ADXplIOb5vGXpa5XBdldszqE5xq2y6bfRNUdI26%2BXOEb86UXY1psz5lENMjKx%0Amd5CDiA4%2BT9KI15a%2BhbXTPSQaOYJ9R9C0nToDnjC6wNUNSxUUPZmYAbwE7Uh%0ALRnB3EuSbanai%2FA0DMV%2FfF%2Fge%2FnHbrxsqHJvYlcAxA%3D%3D&amp;Expires=1690167687">
+
+                                Viktor M
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-07-02
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Отлично! Печаль лишь вызывает расширение санкционных товаров, как суть
+                                агрессивной политики против РФ.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-be443aa6-8f9e-4b5a-90f3-8ebf6cb0d0be/medium_0C8Fep1C16zyyFFIBkGF.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16553">Доставка в Казахстан</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar"
+                                    src="https://storage.googleapis.com/fish-app-files-production/uploads/user/avatar/15299/fishisfast_avatar.jpg?GoogleAccessId=application-files@ambient-polymer-235619.iam.gserviceaccount.com&amp;Signature=HwUpj4IWtpmp0TrFjN3d%2FuKL3ylSgsXhlmfq5jFu%2FX0yoMiv%2FQg9ScGuy7QP%0AL61lju54JtrjJJ8UeHRfiJwPHrA%2BMlajZM6G7%2FJp%2Bqibj14HrxeoALCoU8k9%0AR7%2FA7KiDp4KL8leuTTuNl9bSb1KduD%2BRKDwNgGDfV7TsYNidJvcSc%2Bfqb6Io%0ATAoGvkH3FdFSawrS6LTL%2B6xJRHe60CFB0djKj57q%2Fbadc1aNqD4%2Bur0v%2BUfE%0Aba%2BwI%2B8RfIzvr0XzHt61Y3q0zsTOFTVQybygA6y%2Bg1%2FfYc5naPJcUay71iHT%0AGHCN4G7PkWOD8ZEdv%2BILeQeNrHkn8DEOyoJuVpbtIA%3D%3D&amp;Expires=1690167687">
+
+                                Vadim M
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-06-28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Летом посылки едут быстрей</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-6c3e8697-284a-4d81-bab1-246af387a9be/medium_iBe1pTaodOnPwHGvXr0S.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16543">возврат товаров</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/f9c0fc3422af74218aa8e0207a200ec3?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                emil D
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-06-27
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">возврат прошел качественно и очень быстро, чем очень доволен. </p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-0277e861-2639-4e04-a905-90457af89e10/medium_2mce40NyhcmZ1gPpHNsG.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16473">Все супер.</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/ccf77cce5047f69f1893b9dc2e3b4784?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Dmitry P
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-06-20
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Оперативная работа, быстрая доставка.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-218e0326-002c-4d56-8396-d463bd158335/medium_CFro9FvPmlzBmyNQ3mVV.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16440">Огромная благодарность</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/4abac47402f6e3bf903c6319ccae23db?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Maksim L
+                                🇬🇪
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-06-16
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Очень профессионально сработано, доставлено аккуратно, все
+                                отфотографировано, и еще и переупаковали более компактно, что позволило сэкономить
+                                немного денег. Спасибо огромное!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-a5fbe138-8e9a-4daa-97d3-b2155bb4b87c/medium_VyfAFbXfig7ytu2rWrMF.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16422">Супер </a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/0003987ed77f5b38c35479d8b5477a95?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Stanislav A
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-06-14
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Как всегда все супер , упаковано отлично , все добралось быстро и цело
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-fca69770-30d7-4975-a024-029847c5c993/medium_weq6qopavsRQQbYndGVu.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16395">Заказ # 923548</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/a99177440b7bcb15a9ef1dd56068a6d4?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Ilias L
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-06-10
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Заказ был доставлен быстро и без каких-либо проблем.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-0b205a21-e8b5-4934-b8c2-72bd28ac1a79/medium_36gZ1PUAoxuEU2EaTlZl.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16318">Самый лучший сервис </a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/425496aa4e86ee71bf80b8337821cb85?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Ulyana K
+                                🇲🇪
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Отправила уже несколько посылок, в Россию и Черногорию. В Россию пришло
+                                за 12 дней, в Черногорию 8-10 дней. Прекрасная упаковка, быстрая сборка и отправка.
+                                Быстрая обратная связь. Лучшая компания через которую я отправляла за 16 лет.
+                                Рекомендую!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-c4c7dfb2-de5f-4722-9155-4609bcb1c6c5/medium_2mlZx5MRtpRaQ1Q5fxWm.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16298">Спасибо, отлично</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/d281b9e2f1f9f8ab2a2f54daeac8b91c?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Dmitriy P
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-25
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Быстрота упаковки, поддержка онлайн всегда. После известных событий
+                                временно перешёл к другому на букву Б. Это были нервы, а не заказы. Посылки собираются
+                                неделями и не отправляются и т.д и т.п поддержка отмороженная от слова совсем. По срокам
+                                + месяц, чем сейчас.
+                                Не зазнавайтесь, вы лучшие;)</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-5cd992d2-ae5f-477d-8996-80ee4cd17ff3/medium_gQGSGxt22x9uY2iADp2n.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16291">Благодарность и почтение!</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar"
+                                    src="https://storage.googleapis.com/fish-app-files-production/uploads/user/avatar/469659/fishisfast_avatar.jpg?GoogleAccessId=application-files@ambient-polymer-235619.iam.gserviceaccount.com&amp;Signature=nmojqOajdlVCTpw8gRAHN9VLq%2BKkkEPiegAVb8gVb7NYhVV%2Fbrt3xPfmzRul%0AGD4oGVI6BJyyugIcikS21O6XEHgxt%2F0zdvpBgeB55o56%2BDdhY283JQftMjAL%0AK2oqGv6c7SmpMtDLOxeFUPNEcgQIR1YIeMJ7kNEOfxNsu%2BdsDemdJiKxvEC3%0ADXplIOb5vGXpa5XBdldszqE5xq2y6bfRNUdI26%2BXOEb86UXY1psz5lENMjKx%0Amd5CDiA4%2BT9KI15a%2BhbXTPSQaOYJ9R9C0nToDnjC6wNUNSxUUPZmYAbwE7Uh%0ALRnB3EuSbanai%2FA0DMV%2FfF%2Fge%2FnHbrxsqHJvYlcAxA%3D%3D&amp;Expires=1690167687">
+
+                                Viktor M
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-24
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Отлично! Вот должна была отправиться, ещё одна посылка, но 11-й пакет
+                                санкций уничтожил все планы и омрачил настроение от получения сей посылки. Надеюсь FF
+                                будет на передовой и как-то решит вопросы с доставкой в РФ таких товаров. Это -
+                                пожелание. А так - очередная благодарность и почтение!
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-5b1b662a-6266-4b4b-9cd6-ff9e121954d4/medium_kqfNN3FR0xeeNAUYfeuc.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16238">ВЕЛИКОЛЕПИЕ и ВОСТОРГ!</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar"
+                                    src="https://storage.googleapis.com/fish-app-files-production/uploads/user/avatar/469659/fishisfast_avatar.jpg?GoogleAccessId=application-files@ambient-polymer-235619.iam.gserviceaccount.com&amp;Signature=nmojqOajdlVCTpw8gRAHN9VLq%2BKkkEPiegAVb8gVb7NYhVV%2Fbrt3xPfmzRul%0AGD4oGVI6BJyyugIcikS21O6XEHgxt%2F0zdvpBgeB55o56%2BDdhY283JQftMjAL%0AK2oqGv6c7SmpMtDLOxeFUPNEcgQIR1YIeMJ7kNEOfxNsu%2BdsDemdJiKxvEC3%0ADXplIOb5vGXpa5XBdldszqE5xq2y6bfRNUdI26%2BXOEb86UXY1psz5lENMjKx%0Amd5CDiA4%2BT9KI15a%2BhbXTPSQaOYJ9R9C0nToDnjC6wNUNSxUUPZmYAbwE7Uh%0ALRnB3EuSbanai%2FA0DMV%2FfF%2Fge%2FnHbrxsqHJvYlcAxA%3D%3D&amp;Expires=1690167687">
+
+                                Viktor M
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-15
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Прекрасная работа!
+                                Отдельно хочется поблагодарить упаковщика - настолько грамотно и добротно всё было
+                                сделано, что просто нет слов! Всё добралось в целости и сохранности. Высший пилотаж по
+                                всем фронтам!!!! СПАСИБО!!!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-531ffc6e-d573-474c-9281-9db3abc00919/medium_1BRRtdTMlpbj3kky4IXb.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16193">Посылка #909212</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart-outline" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/92b5a7d7d59cfa4e7a255e177f7f0af9?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                ILIA Z
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-09
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Все получено в отличном виде, спасибо! Только вот заказанный мешок для
+                                упаковки удручил. Упаковщик мог бы догадаться, что мешок нужен для защиты книг и
+                                журналов от возможного попадания воды, и он нужен размером побольше (например, мешок для
+                                выноса мусора). </p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-9769f0d4-adaa-4d55-8afd-490dbbf69b3e/medium_bZzPwbj2VfkQyYDaeL1P.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16150">Посылка доставлена.</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/a09442aca8e4eabca73f04f206f42d2a?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Anatoly S
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-04
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Сервисом данной компании воспользовался впервые, все прошло хорошо.
+                                Спасибо!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-d91d13c9-f6b5-4f6a-91f8-196035edc9e3/medium_VtuxuCSzJRii0YCDaZjg.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16127">Заказ с store.steampowered.com</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/e39e7aa9bf4fb5d7e736dc6ec548da35?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Roman D
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-04
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Быстра обработка заказа и доставка, надёжная упаковка, помощь в
+                                прохождении таможни.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-8abf77bd-f3f9-4dc0-8980-e0c4d266487d/medium_sAmnEVr9oq9c8wRDBRVS.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16120">заголовок</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart-outline" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/62b3cbeca565bfd7fce15b962ed40762?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Aleksandr S
+                                🇬🇪
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-05-03
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">быстро, классно, безопасно</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-7d54eb86-e2e7-47ea-b572-f45a51a8e559/medium_6GWlv8bNFrh4XMesR5Q3.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16080">Отзыв</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar"
+                                    src="https://storage.googleapis.com/fish-app-files-production/uploads/user/avatar/292339/fishisfast_avatar.jpg?GoogleAccessId=application-files@ambient-polymer-235619.iam.gserviceaccount.com&amp;Signature=NkFWH%2FseT2Mn2gTczL1yobXF27dWp5n3RLo3EPTt8YoQFCQtBxKTmfu4oLv%2F%0ASmhZW7v4Lzu%2BZFrimpRq%2B0JCIFWqgoNVM33VGckhs0WUc2aarBV3oNymgT%2FR%0Ancp%2BPXgIEMoiKh8WbmqjPU0ZciTay6zsGwgrZjsjJDql5CVkt1V4EPDSnM3X%0AtrViH2qAmmh5OooYjG%2FjyGT3wYFCS31e5UqKKsKmhxdE%2F9gFk5we%2FzxyzGMC%0A65LWz%2BusEoN64Mr%2BMuTKdwcQq%2B1y%2Bm6fvjA0nF2uoZvlRrGXMnubP3PIJVon%0AGRVTUR8854jnTkAyc0KsLC6R440aW6jWgjjS4bwgJA%3D%3D&amp;Expires=1690167687">
+
+                                Aleksey V
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-04-28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Как всегда, большое спасибо!</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-d8e00316-fca9-4e6f-bbda-914e07e75ebc/medium_xxK83fERSzjWkWy4RnGJ.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16076">очередная посылка :)</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/6bbc1df9ca9a76f09197fcf416a18156?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Sergey I
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-04-28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Спасибо за вашу работу! Получил наверное уже сотню+ посылок. Хоть и
+                                ехала она дольше обычного, из-за усердия немецкой таможни, но всё остальное оказалось,
+                                как и ожидалось.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-88cf012f-c61b-4ef5-89ba-3fe8d3a8e8cb/medium_ckMJZJT8rD4IAXAi5EyU.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16070">Доставка с амазон</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/e39e7aa9bf4fb5d7e736dc6ec548da35?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Roman D
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-04-27
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Быстрая подготовка к отправке, помощь во взаимодействии с таможней.
+                                Спасибо.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-9e6473ba-df84-4c73-92c9-bda5bfece1a1/medium_vNc9BqAVVWwv7QEO3xHp.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-3 text-dark">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <h6 class="text-dark">
+                                <a href="/ru/reviews/16069">Доставка с амазон</a>
+                            </h6>
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-nowrap">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" id="mdi-heart" width="24" height="24" viewBox="0 0 24 24"
+                                    class="text-danger">
+                                    <path
+                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                    </path>
+                                </svg>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <b class="text-dark">
+                                <img class="rounded shadow bg-light avatar" alt=""
+                                    src="//www.gravatar.com/avatar/e39e7aa9bf4fb5d7e736dc6ec548da35?s=100&amp;d=https%3A%2F%2Fwww.fishisfast.com%2Fassets%2Ffallback%2Favatar_fallback-4b2f0b739a29ec0c5c9383fb9a9a81626651673ddfb93a62fa66d4e6cba2ec20.png">
+
+                                Roman D
+                                🇷🇺
+                            </b>
+                        </div>
+                        <div class="col-5 text-right">
+                            <p class="text-dark">
+                                2023-04-27
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="text-dark">Быстрая подготовка к отправке, помощь во взаимодействии с таможней.
+                                Спасибо.</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-rounded"
+                                src="https://storage.googleapis.com/fish-app-files-production/uploads/picture-image-f680b06b-e938-4c24-856e-5dfaf90bba2f/medium_8DBmtKfxhRziqgJDH32C.jpeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="pagination ">
+
+
+                <li class="page active">
+                    <a href="/ru/reviews?q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">1</a>
+                </li>
+
+                <li class="page">
+                    <a rel="next" href="/ru/reviews?page=2&amp;q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">2</a>
+                </li>
+
+                <li class="page">
+                    <a href="/ru/reviews?page=3&amp;q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">3</a>
+                </li>
+
+                <li class="page">
+                    <a href="/ru/reviews?page=4&amp;q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">4</a>
+                </li>
+
+                <li class="page">
+                    <a href="/ru/reviews?page=5&amp;q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">5</a>
+                </li>
+
+                <li class="page gap disabled"><a href="#" onclick="return false;">…</a></li>
+                <li class="next_page">
+                    <a rel="next" href="/ru/reviews?page=2&amp;q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">Следующая
+                        ›</a>
+                </li>
+
+                <li class="last next">
+                    <a href="/ru/reviews?page=79&amp;q%5Blocale_eq%5D=ru&amp;q%5Bs%5D=featured+desc">Последняя »</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal" role="dialog" tabindex="-1"></div>
+</div>
+{% endblock %}

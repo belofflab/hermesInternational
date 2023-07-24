@@ -1,0 +1,713 @@
+{% extends 'main/base.html' %}
+{% load i18n %}
+{% block title %} Main Page {% endblock %}
+
+
+{% block content %}
+<div class="">
+    <div class="bg-transparent py-3">
+        <div class="container py-3">
+            <section id="locker">
+                <div class="text-center">
+                    <h1>Никаких абонементов</h1>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6 d-md-flex flex-md-column justify-content-center py-3">
+                        <picture>
+                            <source
+                                srcset="/assets/welcome/free_locker.png-c320d9660b858cb2edb9384bee2ff75d5ab1a346f1fbdb95cba566ed1a4b3456.webp"
+                                type="image/webp">
+                            <source
+                                srcset="/assets/welcome/free_locker-50dbdf4569b238f383cbdfb6cfc172390066c0c8b68322257a41aadb32f936df.png"
+                                type="image/png">
+                            <img src="/assets/welcome/free_locker-50dbdf4569b238f383cbdfb6cfc172390066c0c8b68322257a41aadb32f936df.png"
+                                alt="Free_locker-50dbdf4569b238f383cbdfb6cfc172390066c0c8b68322257a41aadb32f936df">
+                        </picture>
+                    </div>
+                    <div class="col-md-6 d-md-flex flex-md-column justify-content-center py-3">
+                        <div>
+                            <h4>
+                                Адрес и локер в США
+                                <b class="text-success">бесплатно</b>
+                            </h4>
+                            <p>При регистрации вы получаете бесплатный адрес в США, а также свой личный физический локер
+                                на нашем складе.</p>
+
+                            <p>Вы можете использовать свой локер по мере необходимости.</p>
+
+                            <p>Мы всегда готовы принять, упаковать, и отправить ваши товары.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 170 42" width="170" xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#EEEADD"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 264 42" width="264" xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#EEEADD"></path>
+    </svg>
+
+    <div class="py-3" style="background: #EEEADD; color: #A69453;">
+        <div class="py-3">
+            <section id="combined">
+                <div class="container d-xl-none">
+                    <div class="row my-3 mb-md-0 py-3 mb-md-0">
+                        <div class="col-lg-1 col-xl-2"></div>
+                        <div class="col-md-6 col-lg-5 col-xl-4">
+                            <h4 style="color: #A69453">
+                                Консолидация посылок
+                                <b class="text-success">бесплатно</b>
+                            </h4>
+                            <div style="color: #A69453">
+                                <p>Консолидируйте несколько входящих посылок в одну исходящую посылку в целях экономии
+                                    на стоимости доставки. Мы упакуем все вещи в самую подходящую по размеру коробку.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 col-xl-4">
+                            <h4 style="color: #A69453">
+                                6 месяцев хранения
+                                <b class="text-success">бесплатно</b>
+                            </h4>
+                            <div style="color: #A69453">
+                                <p>Мы предоставляем 6 месяцев бесплатного хранения со дня получения для любой вещи.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0" style="max-width: none;">
+                    <div class="row mx-0">
+                        <div class="col-lg-9 col-xl-6 d-xl-flex flex-xl-column justify-content-center px-0">
+                            <img
+                                src="/assets/welcome/free_combined_shipping-f5cfcce46e72bc61e81c2e0d53203b273cb181205a67e405c7adc4a0e0a7bdb8.png">
+                        </div>
+                        <div class="col-xl-6 d-none d-xl-flex flex-xl-column justify-content-center">
+                            <div class="row mx-3">
+                                <div class="col-xl-6">
+                                    <h4 style="color: #A69453">
+                                        Консолидация посылок
+                                        <b class="text-success">бесплатно</b>
+                                    </h4>
+                                    <div style="color: #A69453">
+                                        <p>Консолидируйте несколько входящих посылок в одну исходящую посылку в целях
+                                            экономии на стоимости доставки. Мы упакуем все вещи в самую подходящую по
+                                            размеру коробку.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <h4 style="color: #A69453">
+                                        6 месяцев хранения
+                                        <b class="text-success">бесплатно</b>
+                                    </h4>
+                                    <div style="color: #A69453">
+                                        <p>Мы предоставляем 6 месяцев бесплатного хранения со дня получения для любой
+                                            вещи.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 170 42" width="170"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#EEEADD"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 264 42" width="264"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#EEEADD"></path>
+    </svg>
+
+    <div class="bg-transparent py-3">
+        <div class="container py-3">
+            <section id="tax">
+                <div class="row my-3">
+                    <div class="col-md-6 py-3">
+                        <h4>
+                            Налогов с продаж в США
+                            <b class="text-success">нет</b>
+                        </h4>
+                        <p>Наш склад расположен в штате Делавэр, который является безналоговым штатом США.</p>
+
+                        <p>Вы можете сэкономить до 7.5% на покупке любого товара, в зависимости от того, где находится
+                            продавец.
+                        </p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <h4>
+                            Скрытых сборов
+                            <b class="text-success">нет</b>
+                        </h4>
+                        <p>Никаких подводных камней и дополнительных сборов - все наши стандартные услуги включены в
+                            стоимость доставки.</p>
+
+                        <p>Вы платите только за то, что вам нужно.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 170 42" width="170" xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#ffffff"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 264 42" width="264" xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#ffffff"></path>
+    </svg>
+
+    <div class="bg-white py-3">
+        <div class="container py-3">
+            <section id="photos">
+                <div class="text-center">
+                    <h1>Обработка входящих посылок</h1>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6 py-3">
+                        <div class="position-relative" style="width: 100%; padding-top: 67%;">
+                            <div class="position-absolute card"
+                                style="margin: 0 !important; top: 0%; left: 0%; width: 40%;">
+                                <picture>
+                                    <source
+                                        srcset="/assets/welcome/photos/box_small.jpg-27364fa31b1238abf771ef8d8c8654ef5aca68dcc09846c52ae2bb0a9e2f68b6.webp"
+                                        type="image/webp">
+                                    <source
+                                        srcset="/assets/welcome/photos/box_small-57ed708c160f736ba6b468bfa4919869c12d5115522118998380ca263ef9a0cc.jpg"
+                                        type="image/jpeg">
+                                    <img src="/assets/welcome/photos/box_small-57ed708c160f736ba6b468bfa4919869c12d5115522118998380ca263ef9a0cc.jpg"
+                                        alt="Box_small-57ed708c160f736ba6b468bfa4919869c12d5115522118998380ca263ef9a0cc">
+                                </picture>
+                            </div>
+                            <div class="position-absolute card"
+                                style="margin: 0 !important; top: 17.5%; left: 17.5%; width: 65%;">
+                                <picture>
+                                    <source
+                                        srcset="/assets/welcome/photos/box_medium.jpg-775faa90ae90882942b7ce98b0433f0e4481665a9a0b8e7c30b9a0908dc99d8c.webp"
+                                        type="image/webp">
+                                    <source
+                                        srcset="/assets/welcome/photos/box_medium-6de87afc065c4774944e43601f598511de9cbde5469a2b1e59d6e0a840ff0f73.jpg"
+                                        type="image/jpeg">
+                                    <img src="/assets/welcome/photos/box_medium-6de87afc065c4774944e43601f598511de9cbde5469a2b1e59d6e0a840ff0f73.jpg"
+                                        alt="Box_medium-6de87afc065c4774944e43601f598511de9cbde5469a2b1e59d6e0a840ff0f73">
+                                </picture>
+                            </div>
+                            <div class="position-absolute card"
+                                style="margin: 0 !important; bottom: 0%; right: 0%; width: 40%;">
+                                <picture>
+                                    <source
+                                        srcset="/assets/welcome/photos/box_large.jpg-62d8cbf0323350850bd62404e9e1fa971d47c56285ce43127fcb07b5dd3d8b8e.webp"
+                                        type="image/webp">
+                                    <source
+                                        srcset="/assets/welcome/photos/box_large-5a2cd23a8d496ed61ac89693d533f6fe71ed230acdbaac59ac3ccaec7544b3fa.jpg"
+                                        type="image/jpeg">
+                                    <img src="/assets/welcome/photos/box_large-5a2cd23a8d496ed61ac89693d533f6fe71ed230acdbaac59ac3ccaec7544b3fa.jpg"
+                                        alt="Box_large-5a2cd23a8d496ed61ac89693d533f6fe71ed230acdbaac59ac3ccaec7544b3fa">
+                                </picture>
+                            </div>
+                        </div>
+                        <br>
+                        <h4>
+                            Фото посылок
+                            <b class="text-success">бесплатно</b>
+                        </h4>
+                        <p>Управляйте своими товарами при помощи нашего удобного сайта.</p>
+
+                        <p>Мы делаем фото коробки и адресной этикетки для каждой входящей посылки бесплатно.
+                        </p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <div class="position-relative" style="width: 100%; padding-top: 67%;">
+                            <div class="position-absolute card"
+                                style="margin: 0 !important; top: 0%; right: 0%; width: 40%;">
+                                <picture>
+                                    <source
+                                        srcset="/assets/welcome/photos/item_small.jpg-9ba38a296390df965038833f9cddc820b123049eeceb13b544fdb68e2e7908e2.webp"
+                                        type="image/webp">
+                                    <source
+                                        srcset="/assets/welcome/photos/item_small-2100add6191a39a1e3a31f0f39d0d7c248f0591f436dac131e1e13828dffad71.jpg"
+                                        type="image/jpeg">
+                                    <img src="/assets/welcome/photos/item_small-2100add6191a39a1e3a31f0f39d0d7c248f0591f436dac131e1e13828dffad71.jpg"
+                                        alt="Item_small-2100add6191a39a1e3a31f0f39d0d7c248f0591f436dac131e1e13828dffad71">
+                                </picture>
+                            </div>
+                            <div class="position-absolute card"
+                                style="margin: 0 !important; top: 17.5%; left: 17.5%; width: 65%;">
+                                <picture>
+                                    <source
+                                        srcset="/assets/welcome/photos/item_medium.jpg-5cc2646ac2b991afa05b08765d9513952a046ad0657b52b9e65b4e3bc3b41d21.webp"
+                                        type="image/webp">
+                                    <source
+                                        srcset="/assets/welcome/photos/item_medium-c0fcd307839afff20de750cf743a1cbbcbc857d1b64bf37da3e46c7582b4585c.jpg"
+                                        type="image/jpeg">
+                                    <img src="/assets/welcome/photos/item_medium-c0fcd307839afff20de750cf743a1cbbcbc857d1b64bf37da3e46c7582b4585c.jpg"
+                                        alt="Item_medium-c0fcd307839afff20de750cf743a1cbbcbc857d1b64bf37da3e46c7582b4585c">
+                                </picture>
+                            </div>
+                            <div class="position-absolute card"
+                                style="margin: 0 !important; bottom: 0%; left: 0%; width: 40%;">
+                                <picture>
+                                    <source
+                                        srcset="/assets/welcome/photos/item_large.jpg-ad2dfac73d1c349202dbe8c94e40b313ca8b172de4ff39edc44baa494c5dbbeb.webp"
+                                        type="image/webp">
+                                    <source
+                                        srcset="/assets/welcome/photos/item_large-db9ccf32c8a3c2990c4182955e00b7db92168342e3ed93fd80c31200888bfd39.jpg"
+                                        type="image/jpeg">
+                                    <img src="/assets/welcome/photos/item_large-db9ccf32c8a3c2990c4182955e00b7db92168342e3ed93fd80c31200888bfd39.jpg"
+                                        alt="Item_large-db9ccf32c8a3c2990c4182955e00b7db92168342e3ed93fd80c31200888bfd39">
+                                </picture>
+                            </div>
+                        </div>
+                        <br>
+                        <h4>
+                            Фото содержимого каждой посылки
+                            <b class="text-warning">$2</b>
+                        </h4>
+                        <p>Мы будем автоматически распаковывать все входящие посылки и делать фото каждой отдельной
+                            вещи.</p>
+                        <h6>
+                            Фото содержимого одной посылки
+                            <b class="text-danger">$5</b>
+                        </h6>
+                        <small>
+                            <p>Мы распакуем посылку и сделаем фото каждой отдельной вещи.</p>
+                        </small>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 170 42" width="170"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#ffffff"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 264 42" width="264"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#ffffff"></path>
+    </svg>
+
+    <div class="bg-transparent py-3">
+        <div class="container py-3">
+            <section id="calculator">
+                <div class="text-center">
+                    <h1>Калькулятор стоимости доставки</h1>
+                    <div class="p-lg">
+                        <p>Мы предлагаем различные методы доставки.
+                            <br>Их наличие и стоимость при расчете стоимости доставки зависит от габаритов посылки и
+                            страны назначения.
+                            <br>Для получения информации по доступным методам доставки и их стоимости, пожалуйста,
+                            воспользуйтесь калькулятором стоимости доставки.
+                        </p>
+                    </div>
+                </div>
+                <div class="row my-3 py-3">
+                    <div class="col-12">
+                        <div id="anchor-pack-calculator">
+                            <div class=" row">
+                                <div class=" col-12 col-sm-6 col-md-5 col-lg-4">
+                                    <div class="card false" style="overflow: initial;">
+                                        <div class="card-header">
+                                            <div
+                                                style="height: 100%; width: 100%; display: flex; justify-content: space-between; flex-direction: row;">
+                                                <b><span class=""><svg viewBox="0 0 21 21" class="
+              svg-icon
+              
+              
+            ">
+                                                            <path
+                                                                d="M7,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H7A2,2 0 0,1 5,20V4A2,2 0 0,1 7,2M7,4V8H17V4H7M7,10V12H9V10H7M11,10V12H13V10H11M15,10V12H17V10H15M7,14V16H9V14H7M11,14V16H13V14H11M15,14V16H17V14H15M7,18V20H9V18H7M11,18V20H13V18H11M15,18V20H17V18H15Z">
+                                                            </path>
+                                                        </svg>&nbsp;</span>Калькулятор стоимости доставки</b></div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <fieldset>
+                                                    <div class="mb-3"><label class=" " for="">Страна *</label>
+                                                        <div class="mb-3 css-2b097c-container"
+                                                            id="react-select-country">
+                                                            <div class=" css-tf59x0-control">
+                                                                <div class=" css-1hwfws3">
+                                                                    <div class=" css-1wa3eu0-placeholder">Выберите
+                                                                        страну</div>
+                                                                    <div class="css-1g6gooi">
+                                                                        <div class="" style="display: inline-block;">
+                                                                            <input autocapitalize="none"
+                                                                                autocomplete="off" autocorrect="off"
+                                                                                id="react-select-country-input"
+                                                                                spellcheck="false" tabindex="0"
+                                                                                type="text" aria-autocomplete="list"
+                                                                                value=""
+                                                                                style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+                                                                            <div
+                                                                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: &quot;Proxima Nova W07&quot;, &quot;Proxima Nova&quot;, &quot;Noto Sans&quot;, Cairo, &quot;Noto Sans JP&quot;, &quot;Nanum Gothic&quot;, &quot;BPG 2017 DejaVu Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" css-1wy0on6"><span
+                                                                        class=" css-1okebmr-indicatorSeparator"></span>
+                                                                    <div aria-hidden="true"
+                                                                        class=" css-tlfecz-indicatorContainer"><svg
+                                                                            height="20" width="20" viewBox="0 0 20 20"
+                                                                            aria-hidden="true" focusable="false"
+                                                                            class="css-19bqh2r">
+                                                                            <path
+                                                                                d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z">
+                                                                            </path>
+                                                                        </svg></div>
+                                                                </div>
+                                                            </div><input name="country" type="hidden" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Город *</label>
+                                                        <div class="input-group "><input class=" form-control" max="70"
+                                                                min="0" name="city" placeholder="Только латинские буквы"
+                                                                type="text" value=""></div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Меры измерения *</label>
+                                                        <div class="mb-3 css-2b097c-container" id="react-select-unit">
+                                                            <div class=" css-tf59x0-control">
+                                                                <div class=" css-1hwfws3">
+                                                                    <div class=" css-1uccc91-singleValue">Имперские
+                                                                        единицы</div>
+                                                                    <div class="css-1g6gooi">
+                                                                        <div class="" style="display: inline-block;">
+                                                                            <input autocapitalize="none"
+                                                                                autocomplete="off" autocorrect="off"
+                                                                                id="react-select-unit-input"
+                                                                                spellcheck="false" tabindex="0"
+                                                                                type="text" aria-autocomplete="list"
+                                                                                value=""
+                                                                                style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+                                                                            <div
+                                                                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: &quot;Proxima Nova W07&quot;, &quot;Proxima Nova&quot;, &quot;Noto Sans&quot;, Cairo, &quot;Noto Sans JP&quot;, &quot;Nanum Gothic&quot;, &quot;BPG 2017 DejaVu Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" css-1wy0on6"><span
+                                                                        class=" css-1okebmr-indicatorSeparator"></span>
+                                                                    <div aria-hidden="true"
+                                                                        class=" css-tlfecz-indicatorContainer"><svg
+                                                                            height="20" width="20" viewBox="0 0 20 20"
+                                                                            aria-hidden="true" focusable="false"
+                                                                            class="css-19bqh2r">
+                                                                            <path
+                                                                                d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z">
+                                                                            </path>
+                                                                        </svg></div>
+                                                                </div>
+                                                            </div><input name="unit" type="hidden" value="us">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Вес *</label>
+                                                        <div class="input-group "><input class=" form-control" max="70"
+                                                                min="0" name="weight" placeholder="" type="text"
+                                                                value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">lbs</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Длина </label>
+                                                        <div class="input-group "><input class=" form-control" max="70"
+                                                                min="0" name="width" placeholder="" type="text"
+                                                                value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">in</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Ширина </label>
+                                                        <div class="input-group "><input class=" form-control" max="70"
+                                                                min="0" name="depth" placeholder="" type="text"
+                                                                value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">in</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Высота </label>
+                                                        <div class="input-group "><input class=" form-control" max="70"
+                                                                min="0" name="height" placeholder="" type="text"
+                                                                value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">in</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"><label class=" " for="">Отправка из *</label>
+                                                        <div class="mb-3 css-2b097c-container"
+                                                            id="react-select-facilityCode">
+                                                            <div class=" css-tf59x0-control">
+                                                                <div class=" css-1hwfws3">
+                                                                    <div class=" css-1uccc91-singleValue">Склад в США
+                                                                    </div>
+                                                                    <div class="css-1g6gooi">
+                                                                        <div class="" style="display: inline-block;">
+                                                                            <input autocapitalize="none"
+                                                                                autocomplete="off" autocorrect="off"
+                                                                                id="react-select-facilityCode-input"
+                                                                                spellcheck="false" tabindex="0"
+                                                                                type="text" aria-autocomplete="list"
+                                                                                value=""
+                                                                                style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;">
+                                                                            <div
+                                                                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 16px; font-family: &quot;Proxima Nova W07&quot;, &quot;Proxima Nova&quot;, &quot;Noto Sans&quot;, Cairo, &quot;Noto Sans JP&quot;, &quot;Nanum Gothic&quot;, &quot;BPG 2017 DejaVu Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" css-1wy0on6"><span
+                                                                        class=" css-1okebmr-indicatorSeparator"></span>
+                                                                    <div aria-hidden="true"
+                                                                        class=" css-tlfecz-indicatorContainer"><svg
+                                                                            height="20" width="20" viewBox="0 0 20 20"
+                                                                            aria-hidden="true" focusable="false"
+                                                                            class="css-19bqh2r">
+                                                                            <path
+                                                                                d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z">
+                                                                            </path>
+                                                                        </svg></div>
+                                                                </div>
+                                                            </div><input name="facilityCode" type="hidden" value="1">
+                                                        </div>
+                                                    </div>
+                                                    <hr><input class=" btn btn-success btn-block" type="submit"
+                                                        value="Рассчитать">
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-12 col-sm-6 col-md-7 col-lg-8"><br></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 170 42" width="170" xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#ffffff"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 264 42" width="264" xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#ffffff"></path>
+    </svg>
+
+    <div class="bg-white py-3">
+        <div class="container py-3">
+            <section id="extras">
+                <div class="text-center">
+                    <h1>Дополнительные услуги</h1>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6 py-3">
+                        <h4>
+                            Удаление накладных
+                            <b class="text-success">бесплатно</b>
+                        </h4>
+                        <p>Мы удалим накладные, приложенные продавцом, по вашему запросу.</p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <h4>
+                            Страховка
+                            <b class="text-warning">$3 за $100</b>
+                        </h4>
+                        <p>На те случаи, когда вам необходима страховка на полную задекларированную стоимость товаров в
+                            посылке.</p>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6 py-3">
+                        <h4>
+                            Ускоренная обработка FastLane
+                            <b class="text-warning"></b>
+                            $10
+                        </h4>
+                        <p>Несмотря на то что среднее время нашей упаковки составляет 4 часа, все процессы на складе
+                            могут замедлиться в связи с ажиотажем в сезон предпраздничных распродаж.</p>
+
+                        <p>Ускоренная обработка FastLane наделяет ваши посылки приоритетной упаковкой и отправкой с
+                            нашего склада.
+                        </p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <h4>
+                            Удаление почтовой упаковки и обувных коробок
+                            <b class="text-success">бесплатно</b>
+                        </h4>
+                        <p>Многие товары поступают на склад в большой, ненужной упаковке. Мы убираем почтовую упаковку
+                            бесплатно, чтобы вы смогли сэкономить на стоимости доставки.</p>
+
+                        <p>Мы убираем только ту товарную упаковку, удаление которой не представляет риска для
+                            безопасности самого товара - например, обувные коробки. Мы не удаляем товарную упаковку для
+                            электроники или хрупких предметов, так как это может повысить риск повреждения товара во
+                            время его транспортировки.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 170 42" width="170"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#ffffff"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 264 42" width="264"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#ffffff"></path>
+    </svg>
+
+    <div class="bg-transparent py-3">
+        <div class="container py-3">
+            <section id="issues">
+                <div class="text-center">
+                    <h1>Товарные вопросы</h1>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-4 py-3">
+                        <h5>
+                            Возврат товара
+                            <b class="text-warning">$3</b>
+                        </h5>
+                        <p>Если продавец предоставит вам предоплаченную почтовую этикетку для возврата товара, то вы
+                            платите только $3 за обработку возврата.</p>
+
+                        <p>Если продавец не предоставит таковую, то вы просто оплачиваете стоимость отправки возврата в
+                            обычном порядке.
+                        </p>
+                    </div>
+                    <div class="col-md-4 py-3">
+                        <h5>
+                            Проверка на включение
+                            <b class="text-warning">$5</b>
+                        </h5>
+                        <p>Мы проверяем электронику на предмет включения. Это может сэкономить вам время и деньги, если
+                            прибор дефектный и его необходимо вернуть в магазин.</p>
+
+                        <p>Мы откроем товарную упаковку, подсоединим прибор к розетке, зарядим, если необходимо, и
+                            проверим его на включение. Видео проверки будет доступно по факту ее завершения. Мы не
+                            проводим детальных диагностических тестов.
+                        </p>
+                    </div>
+                    <div class="col-md-4 py-3">
+                        <h5>
+                            Услуга медиации
+                            <b class="text-warning">$5</b>
+                        </h5>
+                        <p>Мы свяжемся с магазином от вашего лица для решения проблемы с вашим заказом.</p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 170 42" width="170" xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#ffffff"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none" style=" margin-bottom: -1px;"
+        viewBox="0 0 264 42" width="264" xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#ffffff"></path>
+    </svg>
+
+    <div class="bg-white py-3">
+        <div class="container py-3">
+            <section id="boxes">
+                <div class="text-center">
+                    <h1>Дополнительная защита</h1>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6 py-3">
+                        <h5>
+                            Коробка с двойными стенками
+                            <b class="text-warning">$5</b>
+                        </h5>
+                        <p>Мы упакуем ваши вещи в почтовую коробку с двойными усиленными стенками.</p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <h5>
+                            Оставить почтовую упаковку
+                            <b class="text-success">бесплатно</b>
+                        </h5>
+                        <p>Оставить товар в почтовой коробке продавца, которая будет упакована внутрь нашей почтовой
+                            коробки.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 py-3">
+                        <h5>
+                            Обернуть одну вещь пузырчатой пленкой
+                            <b class="text-warning">$1</b>
+                        </h5>
+                        <p>Мы можем обернуть вещь пузырчатой пленкой. При отправке электронных и прочих хрупких товаров
+                            данная опция настоятельно рекомендуется для дополнительной защиты.
+                        </p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <h5>
+                            Обернуть все вещи пузырчатой пленкой
+                            <b class="text-warning">$5</b>
+                        </h5>
+                        <p>Мы можем обернуть пузырчатой пленкой все вещи в составе одной входящей посылки. При отправке
+                            электронных и прочих хрупких товаров данная опция настоятельно рекомендуется для
+                            дополнительной защиты.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 py-3">
+                        <h5>
+                            Упаковка вещей в пакет
+                            <b class="text-warning">$3</b>
+                        </h5>
+                        <p>Мы упакуем все вещи в пластиковый пакет внутри почтовой коробки для дополнительной защиты от
+                            влаги.</p>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <h5>
+                            Обернуть коробку стретч-пленкой
+                            <b class="text-warning">$5</b>
+                        </h5>
+                        <p>Мы обернем всю почтовую коробку снаружи стретч-пленкой для дополнительной защиты.</p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <svg class="d-block d-md-none w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 170 42" width="170"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M170 42H0V0c60 4 100 42 170 42v1z" fill="#ffffff"></path>
+    </svg>
+    <svg class="d-none d-md-block w-100 h-auto" height="42" preserveAspectRatio="none"
+        style="transform: scale(-1); margin-bottom: -1px;" viewBox="0 0 264 42" width="264"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M264 25 c-23 8 -47 15 -79 15 C106 42 72 0 0 0 v42 h264 V25 z" fill="#ffffff"></path>
+    </svg>
+
+
+    <div class="modal fade" id="modal" role="dialog" tabindex="-1"></div>
+</div>
+{% endblock %}

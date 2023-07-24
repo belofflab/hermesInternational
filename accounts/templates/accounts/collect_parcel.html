@@ -1,0 +1,73 @@
+{% extends 'accounts/base.html ' %}
+
+{% load static %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-light bg-white px-3 px-md-2">
+    <div class="navbar-brand d-md-none">
+        Собрать посылку
+    </div>
+    <button class="navbar-toggler p-0" data-target="#toolbar-collapse" data-toggle="collapse" type="button">
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-menu"
+            width="24" height="24" viewBox="0 0 24 24" class="large">
+            <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+        </svg>
+
+    </button>
+    <div class="collapse navbar-collapse" id="toolbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <div class="nav-link">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-cash-usd" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M20,18H4V6H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M11,17H13V16H14A1,1 0 0,0 15,15V12A1,1 0 0,0 14,11H11V10H15V8H13V7H11V8H10A1,1 0 0,0 9,9V12A1,1 0 0,0 10,13H13V14H9V16H11V17Z">
+                        </path>
+                    </svg>
+
+                    Таможенная стоимость
+                    <span class="js-total-cart-value">
+                        $0.00
+                    </span>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-weight" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12,3A4,4 0 0,1 16,7C16,7.73 15.81,8.41 15.46,9H18C18.95,9 19.75,9.67 19.95,10.56C21.96,18.57 22,18.78 22,19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19C2,18.78 2.04,18.57 4.05,10.56C4.25,9.67 5.05,9 6,9H8.54C8.19,8.41 8,7.73 8,7A4,4 0 0,1 12,3M12,5A2,2 0 0,0 10,7A2,2 0 0,0 12,9A2,2 0 0,0 14,7A2,2 0 0,0 12,5Z">
+                        </path>
+                    </svg>
+
+                    Вес
+                    <span class="js-total-weight">
+                        0 ф. (0.0кг)
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="my-3 py-3">
+        <div class="my-3 py-3 text-center">
+            <h2>Пока ничего не добавлено в запрос на упаковку</h2>
+            <a class="btn btn-success" href="/ru/items">Перейти к полученным вещам</a>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal" role="dialog" tabindex="-1"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'accounts/base.html ' %}
+
+{% load static %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-light bg-white px-3 px-md-2">
+    <div class="navbar-brand d-md-none">
+        Исходящие
+    </div>
+    <ul class="navbar-nav ml-auto d-md-none">
+        <li class="nav-item">
+            <a class="nav-link text-primary" data-target="#toolbar-collapse" data-toggle="collapse">
+
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    id="mdi-filter" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z">
+                    </path>
+                </svg>
+
+                Поиск
+            </a>
+        </li>
+    </ul>
+    <div class="collapse navbar-collapse" id="toolbar-collapse">
+        <form action="/ru/home/outbox" accept-charset="UTF-8" method="get">
+            <div class="d-md-flex">
+                <div class="px-1 my-3 my-md-0">
+                    <select name="archived" id="archived" class="custom-select w-100 w-md-auto">
+                        <option value="hide">Скрыть архивированные</option>
+                        <option value="show">Показать архивированные</option>
+                    </select>
+                </div>
+                <div class="px-1 my-3 my-md-0">
+                    <select name="states" id="states" class="custom-select w-100 w-md-auto">
+                        <option value="">Все посылки</option>
+                        <option value="pack_request">Запрос на упаковку</option>
+                        <option value="packing">Упаковка</option>
+                        <option value="ready_for_payment">Готово к оплате</option>
+                        <option value="shipping_soon">Оплаченные</option>
+                        <option value="shipped">Отправленные</option>
+                    </select>
+                </div>
+                <div class="px-1 my-3 my-md-0">
+                    <select name="facility_code" id="facility_code" class="custom-select w-100 w-md-auto">
+                        <option value="">Все склады</option>
+                        <option value="1">Склад в США</option>
+                        <option value="3">Склад в Англии</option>
+                    </select>
+                </div>
+                <div class="px-1 my-3 my-md-0">
+                    <a class="btn btn-secondary w-100 w-md-auto text-nowrap" href="/ru/home/outbox">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            id="mdi-filter-remove" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M14.76,20.83L17.6,18L14.76,15.17L16.17,13.76L19,16.57L21.83,13.76L23.24,15.17L20.43,18L23.24,20.83L21.83,22.24L19,19.4L16.17,22.24L14.76,20.83M12,12V19.88C12.04,20.18 11.94,20.5 11.71,20.71C11.32,21.1 10.69,21.1 10.3,20.71L8.29,18.7C8.06,18.47 7.96,18.16 8,17.87V12H7.97L2.21,4.62C1.87,4.19 1.95,3.56 2.38,3.22C2.57,3.08 2.78,3 3,3V3H17V3C17.22,3 17.43,3.08 17.62,3.22C18.05,3.56 18.13,4.19 17.79,4.62L12.03,12H12Z">
+                            </path>
+                        </svg>
+
+                        Очистить
+                    </a>
+                </div>
+                <div class="px-1 my-3 my-md-0">
+                    <button name="button" type="submit" class="btn btn-primary w-100 w-md-auto text-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            id="mdi-filter" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z">
+                            </path>
+                        </svg>
+
+                        Поиск
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+
+
+    <div class="text-center p-3 m-3">
+        <h5>Нет оплаченных посылок, ожидающих отправки</h5>
+        <a class="btn btn-success" href="/ru/items">Перейти к полученным вещам</a>
+    </div>
+
+    <div class="modal fade" id="modal" role="dialog" tabindex="-1"></div>
+</div>
+{% endblock %}
