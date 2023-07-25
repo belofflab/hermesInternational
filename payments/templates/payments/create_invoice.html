@@ -1,0 +1,13 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {{error}}
+    <input type="text" name="amount">
+    <input type="submit" value="Оплатить">
+</form>
+
+{% endblock %}

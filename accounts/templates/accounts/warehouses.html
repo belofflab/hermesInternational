@@ -1,0 +1,43 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container-fluid py-6">
+  <div class="row">
+    <div class="col-xl-8 s-12">
+      <div class="card mb-4">
+        <div class="container">
+          <br>
+          <h1>Мой адрес в США</h1>
+          <h7>Это адреса складов в Америке, которые вам нужно указывать при оформлении покупок в американских интернет
+            магазинах.</h7>
+          <div id="locker-slider" class="owl-carousel">
+            {% for warehouse in warehouses %}
+            <div class="item">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Склад - {{forloop.counter}}</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">{{warehouse.city}}</h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Address:</b> {{warehouse.address}}</li>
+                    <li class="list-group-item"><b>State: </b>{{warehouse.state}}</li>
+                    <li class="list-group-item"><b>Postal Code: </b>{{warehouse.zip}}</li>
+                    <li class="list-group-item"><b>Phone number: </b>{{warehouse.phone}}</li>
+                  </ul>
+                  <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

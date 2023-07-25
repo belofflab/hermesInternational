@@ -2,3 +2,4 @@ Django
 Pillow
 python-dotenv
 psycopg2-binary
+pyTelegramBotAPI

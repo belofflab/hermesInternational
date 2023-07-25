@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 def now_plus_month(): return datetime.datetime.now() + datetime.timedelta(days=28)
 

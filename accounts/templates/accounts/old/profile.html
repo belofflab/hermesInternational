@@ -1,0 +1,243 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-light bg-white px-3 px-md-2">
+    <div class="navbar-brand d-md-none">
+        <img class="mr-2" src="/assets/us_flag-540def01739b46d13046c5070370ce8342143d4740b9552491935a92346c2a86.svg">
+        Локер в США
+    </div>
+    <button class="navbar-toggler p-0" data-target="#toolbar-collapse" data-toggle="collapse" type="button">
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-menu"
+            width="24" height="24" viewBox="0 0 24 24" class="large">
+            <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+        </svg>
+
+    </button>
+    <div class="collapse navbar-collapse" id="toolbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/ru/shipments?facility_code=1">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-package" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M5.12,5H18.87L17.93,4H5.93L5.12,5M20.54,5.23C20.83,5.57 21,6 21,6.5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V6.5C3,6 3.17,5.57 3.46,5.23L4.84,3.55C5.12,3.21 5.53,3 6,3H18C18.47,3 18.88,3.21 19.15,3.55L20.54,5.23M6,18H12V15H6V18Z">
+                        </path>
+                    </svg>
+
+                    Входящие Посылки
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/ru/home/user?facility_code=1">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-fish" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12,20L12.76,17C9.5,16.79 6.59,15.4 5.75,13.58C5.66,14.06 5.53,14.5 5.33,14.83C4.67,16 3.33,16 2,16C3.1,16 3.5,14.43 3.5,12.5C3.5,10.57 3.1,9 2,9C3.33,9 4.67,9 5.33,10.17C5.53,10.5 5.66,10.94 5.75,11.42C6.4,10 8.32,8.85 10.66,8.32L9,5C11,5 13,5 14.33,5.67C15.46,6.23 16.11,7.27 16.69,8.38C19.61,9.08 22,10.66 22,12.5C22,14.38 19.5,16 16.5,16.66C15.67,17.76 14.86,18.78 14.17,19.33C13.33,20 12.67,20 12,20M17,11A1,1 0 0,0 16,12A1,1 0 0,0 17,13A1,1 0 0,0 18,12A1,1 0 0,0 17,11Z">
+                        </path>
+                    </svg>
+
+                    Вещи
+                </a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+            <div class="card">
+                <div class="card-header">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-mailbox-outline" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M17,4H7A5,5 0 0,0 2,9V20H20A2,2 0 0,0 22,18V9A5,5 0 0,0 17,4M10,18H4V9A3,3 0 0,1 7,6A3,3 0 0,1 10,9V18M20,18H12V9C12,7.92 11.65,6.86 11,6H17A3,3 0 0,1 20,9V18M13,11V13H17V15H19V11H13M9,11H5V9H9V11Z">
+                        </path>
+                    </svg>
+
+                    <b>У вас нет предметов в шкафчике.</b>
+                </div>
+                <div class="card-body">
+                    <p>Ожидаете сегодня заказ? Он появится у вас в аккаунте в течение 1 рабочего дня после прибытия на
+                        склад. Мы сообщим когда обработаем вашу посылку. Заказ не нужно регистрировать как ожидаемый,
+                        если на нём указан номер вашего локера (FF#), то мы самостоятельно определим его в ваш аккаунт.
+                    </p>
+                    <div class="p-3">
+                        <!-- <picture>
+                            <source
+                                srcset="/assets/welcome/free_locker.png-c320d9660b858cb2edb9384bee2ff75d5ab1a346f1fbdb95cba566ed1a4b3456.webp"
+                                type="image/webp">
+                            <source
+                                srcset="/assets/welcome/free_locker-50dbdf4569b238f383cbdfb6cfc172390066c0c8b68322257a41aadb32f936df.png"
+                                type="image/png">
+                            <img src="/assets/welcome/free_locker-50dbdf4569b238f383cbdfb6cfc172390066c0c8b68322257a41aadb32f936df.png"
+                                alt="Free_locker-50dbdf4569b238f383cbdfb6cfc172390066c0c8b68322257a41aadb32f936df">
+                        </picture> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-9">
+            <div class="card bg-warning text-warning">
+                <div class="card-header">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-shopping" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12,13A5,5 0 0,1 7,8H9A3,3 0 0,0 12,11A3,3 0 0,0 15,8H17A5,5 0 0,1 12,13M12,3A3,3 0 0,1 15,6H9A3,3 0 0,1 12,3M19,6H17A5,5 0 0,0 12,1A5,5 0 0,0 7,6H5C3.89,6 3,6.89 3,8V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V8C21,6.89 20.1,6 19,6Z">
+                        </path>
+                    </svg>
+
+                    <b>Как заказывать в США</b>
+                </div>
+                <div class="card-body">
+                    <p>Вы можете начать шопинг в американских онлайн-магазинах уже сейчас. Просто используйте ваш адрес
+                        в Fishisfast как адрес доставки из магазина (shipping address). Вам не придётся регистрировать
+                        ожидаемый заказ. Мы пришлём вам email-уведомление, когда получим и обработаем входящую посылку.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="locker-slider" class="owl-carousel">
+                        {% for warehouse in warehouses %}
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card bg-warning text-warning">
+                                        <div class="card-header">
+                                            <h3>
+                                                Локер в США - {{forloop.counter}}
+                                            </h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="direction-ltr">
+                                                <small class="font-weight-bold">Name</small>
+                                                <div class="text-monospace">{{request.user.first_name}}
+                                                    {{request.user.last_name}}</div>
+                                                <small class="font-weight-bold">Address</small>
+                                                <div class="text-monospace">{{warehouse.address}}</div>
+                                                <small class="font-weight-bold">City</small>
+                                                <div class="text-monospace">{{warehouse.city}}</div>
+                                                <small class="font-weight-bold">State</small>
+                                                <div class="text-monospace">{{warehouse.state}}</div>
+                                                <small class="font-weight-bold">ZIP</small>
+                                                <div class="text-monospace">{{warehouse.zip}}</div>
+                                                <small class="font-weight-bold">Phone</small>
+                                                <div class="text-monospace">{{warehouse.phone}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+            <div class="card">
+                <div class="card-header">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-mailbox-outline" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M17,4H7A5,5 0 0,0 2,9V20H20A2,2 0 0,0 22,18V9A5,5 0 0,0 17,4M10,18H4V9A3,3 0 0,1 7,6A3,3 0 0,1 10,9V18M20,18H12V9C12,7.92 11.65,6.86 11,6H17A3,3 0 0,1 20,9V18M13,11V13H17V15H19V11H13M9,11H5V9H9V11Z">
+                        </path>
+                    </svg>
+
+                    <b>У вас нет предметов в шкафчике.</b>
+                </div>
+                <div class="card-body">
+                    <p>Ожидаете сегодня заказ? Он появится у вас в аккаунте в течение 1 рабочего дня после прибытия на
+                        склад. Мы сообщим когда обработаем вашу посылку. Заказ не нужно регистрировать как ожидаемый,
+                        если на нём указан номер вашего локера (FF#), то мы самостоятельно определим его в ваш аккаунт.
+                    </p>
+                    <div class="p-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-9">
+            <div class="card bg-warning text-warning">
+                <div class="card-header">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="mdi-shopping" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12,13A5,5 0 0,1 7,8H9A3,3 0 0,0 12,11A3,3 0 0,0 15,8H17A5,5 0 0,1 12,13M12,3A3,3 0 0,1 15,6H9A3,3 0 0,1 12,3M19,6H17A5,5 0 0,0 12,1A5,5 0 0,0 7,6H5C3.89,6 3,6.89 3,8V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V8C21,6.89 20.1,6 19,6Z">
+                        </path>
+                    </svg>
+
+                    <b>Как заказывать в США</b>
+                </div>
+                <div class="card-body">
+                    <p>Вы можете начать шопинг в американских онлайн-магазинах уже сейчас. Просто используйте ваш адрес
+                        в Fishisfast как адрес доставки из магазина (shipping address). Вам не придётся регистрировать
+                        ожидаемый заказ. Мы пришлём вам email-уведомление, когда получим и обработаем входящую посылку.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-carousel owl-theme">
+                    {% for warehouse in warehouses %}
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card bg-warning text-warning">
+                                    <div class="card-header">
+                                        <h3>
+                                            Локер в США
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="direction-ltr">
+                                            <small class="font-weight-bold">Name</small>
+                                            <div class="text-monospace">{{request.user.first_name}}
+                                                {{request.user.last_name}}</div>
+                                            <small class="font-weight-bold">Address</small>
+                                            <div class="text-monospace">{{warehouse.address}}</div>
+                                            <small class="font-weight-bold">City</small>
+                                            <div class="text-monospace">{{warehouse.city}}</div>
+                                            <small class="font-weight-bold">State</small>
+                                            <div class="text-monospace">{{warehouse.state}}</div>
+                                            <small class="font-weight-bold">ZIP</small>
+                                            <div class="text-monospace">{{warehouse.zip}}</div>
+                                            <small class="font-weight-bold">Phone</small>
+                                            <div class="text-monospace">{{warehouse.phone}}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal" role="dialog" tabindex="-1"></div>
+    </div> -->
+    {% endblock %}

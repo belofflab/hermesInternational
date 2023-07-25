@@ -12,7 +12,9 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = ["https://belofflab.com"]
 
-
+BOT_TOKEN = "6633383353:AAH3DuoZ178vNzaIxNlchJVEJjrDRA5Qbyw"
+CRYPTO_BOT_TOKEN = "110981:AA3FManAQxim0xd6CNZF8zf1uzUIziDbe5d"
+CHAT_ID = -1001760018820
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,6 +26,8 @@ INSTALLED_APPS = [
 
     'accounts',
     'main',
+
+    'payments',
 ]
 
 MIDDLEWARE = [

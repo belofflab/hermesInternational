@@ -3,11 +3,12 @@ import datetime
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
-from django.db.models import Q
 
 from django.views import View
 
 from . import forms, models
+
+from .services import message
 
 from main.models import Warehouse
 
@@ -25,14 +26,19 @@ class ProfileView(LoginRequiredMixin, View):
     login_url = "/accounts/login/"
 
     def get(self, request):
-        context = {
-            'warehouses': Warehouse.objects.all()
-        }
+        context = {"warehouses": Warehouse.objects.all()}
         return render(request, "accounts/profile.html", context)
 
     def post(self, request):
         return render(request, "accounts/profile.html", {})
 
+
+class ProfileWarehouseView(LoginRequiredMixin, View):
+    login_url = "/accounts/login/"
+
+    def get(self, request):
+        context = {"warehouses": Warehouse.objects.all()}
+        return render(request, "accounts/warehouses.html", context)
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
@@ -88,10 +94,10 @@ class RegistrationView(View):
             )
             login(request=request, user=user)
             models.Visits.objects.update_or_create(
-                    account=user,
-                    last_login=datetime.datetime.now(),
-                    ip=get_client_ip(request),
-                )
+                account=user,
+                last_login=datetime.datetime.now(),
+                ip=get_client_ip(request),
+            )
             return redirect("/accounts/profile/")
 
         context = {"form": form, "title": "Sign Up"}
@@ -99,16 +105,49 @@ class RegistrationView(View):
         return render(request, "accounts/signup.html", context)
 
 
-
 class CollectParcelView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
+        return render(request, "accounts/collect_parcel.html")
 
-        return render(request, "accounts/collect_parcel.html", {})
-    
+
+class InboxView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        account = models.Account.objects.get(email=request.user)
+        purchase_form = forms.PurchaseForm(request.POST or None)
+        return render(
+            request,
+            "accounts/inbox.html",
+            {"purchases": account.purchases.all(), "purchase_form": purchase_form},
+        )
+
+    def post(self, request):
+        purchase_form = forms.PurchaseForm(request.POST)
+        account = models.Account.objects.get(email=request.user)
+
+        new_purchase = purchase_form.save()
+        account.purchases.add(new_purchase)
+
+        message.send(
+            f"""
+Пользователь <b>{account}</b> добавил новую покупку:
+Наименование: {new_purchase.name}
+Ссылка на товар:  <a href="{new_purchase.link}">click me</a>
+Количество: {new_purchase.quantity} шт
+Цена: ${new_purchase.price}
+Трек номер: {new_purchase.tracking_number}"""
+        )
+
+        return render(
+            request,
+            "accounts/inbox.html",
+            {"purchases": account.purchases.all(), "purchase_form": purchase_form},
+        )
+
+
 class ProfileOutboxView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-
         return render(request, "accounts/outbox.html", {})
+
 
 class ResetPasswordView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):

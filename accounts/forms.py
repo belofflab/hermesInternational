@@ -1,8 +1,15 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
+from .models import Purchase
 
 User = get_user_model()
+
+
+class PurchaseForm(forms.ModelForm):
+    class Meta:
+        model = Purchase
+        fields = ["name", "link", "quantity", "price", "tracking_number"]
 
 
 class LoginForm(forms.ModelForm):
