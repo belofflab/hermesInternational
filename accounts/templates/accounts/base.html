@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static '/img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static '/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'accounts/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'accounts/img/favicon.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    Hermes International | Dashboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -34,7 +34,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" target="_blank">
-        <img src="{% static 'accounts/img/logo-ct-dark.png' %}" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="{% static 'accounts/img/logo.png' %}" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Hermes Dashboard</span>
       </a>
     </div>
@@ -181,16 +181,10 @@
     </div>
   </aside>
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+    {% include 'accounts/signin_form.html' %}
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
-          </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
-        </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <!-- <div class="input-group">
@@ -199,16 +193,16 @@
             </div> -->
           </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
+            <!-- <li class="nav-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#signupModal">
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"
                 href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Sign Up</a>
             </li>
-            <li class="nav-item d-flex align-items-center">
+            <li class="nav-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#signinModal">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1" aria-hidden="true"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -341,5 +335,5 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{% static 'accounts/js/soft-ui-dashboard.min.js' %}"></script>
 </body>
-
+<script src="//code.jivo.ru/widget/tSpeR5D375" async></script>
 </html>

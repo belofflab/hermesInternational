@@ -42,32 +42,30 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
         return render(request, "accounts/warehouses.html", context)
 
 class LoginView(View):
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect("/accounts/profile/")
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated:
+    #         return redirect("/accounts/profile/")
 
-        form = forms.LoginForm(request.POST or None)
+    #     form = forms.LoginForm(request.POST or None)
 
-        context = {"form": form, "title": "Sign In"}
-        return render(request, "accounts/login.html", context)
+    #     context = {"form": form, "title": "Sign In"}
+    #     return render(request, "accounts/login.html", context)
 
     def post(self, request, *args, **kwargs):
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password"]
-            user = authenticate(email=email, password=password)
-            if user:
-                login(request=request, user=user)
-                models.Visits.objects.update_or_create(
-                    account=user,
-                    last_login=datetime.datetime.now(),
-                    ip=get_client_ip(request),
-                )
-                return redirect("/accounts/profile/")
-
-        context = {"form": form, "title": "Sign Up"}
-        return render(request, "accounts/login.html", context)
+        request_data = request.POST
+        email = request_data.get("email")
+        password = request_data.get("password")
+        print(email, password)
+        user = authenticate(email=email, password=password)
+        if user:
+            login(request=request, user=user)
+            models.Visits.objects.update_or_create(
+                account=user,
+                last_login=datetime.datetime.now(),
+                ip=get_client_ip(request),
+            )
+            return redirect("/accounts/profile/")
+        return redirect('/')
 
 
 class RegistrationView(View):

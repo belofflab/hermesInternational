@@ -7,6 +7,28 @@ User = get_user_model()
 
 
 class PurchaseForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["name"].widget.attrs = {
+            "class": "form-control",
+            "placeholder": "Наушники Razer",
+        }
+        self.fields["link"].widget.attrs = {
+            "class": "form-control",
+            "placeholder": "https://amazon.com",
+        }
+        self.fields["quantity"].widget.attrs = {
+            "class": "form-control",
+            "placeholder": "1",
+        }
+        self.fields["price"].widget.attrs = {
+            "class": "form-control",
+            "placeholder": "1",
+        }
+        self.fields["tracking_number"].widget.attrs = {
+            "class": "form-control",
+            "placeholder": "...",
+        }
     class Meta:
         model = Purchase
         fields = ["name", "link", "quantity", "price", "tracking_number"]
