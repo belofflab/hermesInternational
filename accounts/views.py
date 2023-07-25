@@ -26,7 +26,8 @@ class ProfileView(LoginRequiredMixin, View):
     login_url = "/accounts/login/"
 
     def get(self, request):
-        context = {"warehouses": Warehouse.objects.all()}
+        account = models.Account.objects.get(email=request.user)
+        context = {"purchases":account.purchases.all()[:5]}
         return render(request, "accounts/profile.html", context)
 
     def post(self, request):
