@@ -28,12 +28,8 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         account = models.Account.objects.get(email=request.user)
-        last_visits = (
-            models.Visits.objects.filter(account=account)
-            .order_by("-last_login")
-            .all()[:1]
-        )
-        context = {"purchases": account.purchases.all()[:5], "last_visits": last_visits}
+        last_visit = models.Visits.objects.filter(account=account).latest('last_login')
+        context = {"purchases": account.purchases.all()[:5], "last_visit": last_visit}
         return render(request, "accounts/profile.html", context)
 
     def post(self, request):
