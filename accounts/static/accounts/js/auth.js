@@ -75,3 +75,15 @@ $("form[name='signin']").submit((e) => {
     })
 
 })
+
+
+
+$("#or_signin").on('click', (e) => {
+    $('#signupModal').modal('hide');
+    $('#signinModal').modal('show');
+})
+
+$("#or_signup").on('click', (e) => {
+    $('#signinModal').modal('hide');
+    $('#signupModal').modal('show');
+})
