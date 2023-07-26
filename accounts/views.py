@@ -82,6 +82,7 @@ class RegistrationView(View):
         new_user.email = request_data.get("email")
         new_user.first_name = request_data.get("first_name")
         new_user.last_name = request_data.get("last_name")
+        new_user.country = request_data.get("country")
         new_user.save()
         new_user.set_password(request_data.get("password"))
         new_user.save()

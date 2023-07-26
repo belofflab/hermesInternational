@@ -200,11 +200,11 @@
           <ul class="list-group">
             <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp;
               {{request.user.first_name}} {{request.user.last_name}}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; +7 (913)
-              112 90 76 </li>
+            <!-- <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; +7 (913)
+              112 90 76 </li> -->
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
               {{request.user}}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{request.user.country}}
             </li>
           </ul>
         </div>

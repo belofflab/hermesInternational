@@ -1,22 +1,25 @@
-from typing import Any
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.utils import timezone
 
+
 class Purchase(models.Model):
     """Модель покупки"""
-    
+
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
-    price = models.DecimalField(verbose_name="Цена товара", max_digits=12, decimal_places=2)
-    tracking_number = models.CharField(verbose_name="Трек номер", max_length=255, null=True)
+    price = models.DecimalField(
+        verbose_name="Цена товара", max_digits=12, decimal_places=2
+    )
+    tracking_number = models.CharField(
+        verbose_name="Трек номер", max_length=255, null=True
+    )
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name="Покупка"
+        verbose_name = "Покупка"
         verbose_name_plural = "Покупки"
-
 
     def __str__(self) -> str:
         return f"{self.name}_{self.quantity}_${self.price}"
@@ -42,7 +45,7 @@ class AccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
+
 
 class AccountData(models.Model):
     """Информация о пользователе для доставок"""
@@ -54,13 +57,11 @@ class AccountData(models.Model):
     country = models.CharField(verbose_name="Страна", max_length=255)
 
     class Meta:
-        verbose_name="Доставочный адрес"
-        verbose_name_plural="Доставочные адреса"
+        verbose_name = "Доставочный адрес"
+        verbose_name_plural = "Доставочные адреса"
 
     def __str__(self) -> str:
         return f"{self.country} -> {self.city} -> {self.street}"
-
-
 
 
 class Account(AbstractBaseUser):
@@ -68,11 +69,15 @@ class Account(AbstractBaseUser):
 
     email = models.EmailField(verbose_name="Email", max_length=60, unique=True)
     first_name = models.CharField(verbose_name="Имя", max_length=255)
-    balance = models.DecimalField(verbose_name="Баланс", max_digits=12, decimal_places=2, default=0)
+    balance = models.DecimalField(
+        verbose_name="Баланс", max_digits=12, decimal_places=2, default=0
+    )
     last_name = models.CharField(verbose_name="Фамилия", max_length=255)
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase)
-    country = models.CharField(verbose_name="Страна", max_length=255,null=True)
-    addresses = models.ManyToManyField(to=AccountData, verbose_name="Адреса пользователя")
+    country = models.CharField(verbose_name="Страна", max_length=255, null=True)
+    addresses = models.ManyToManyField(
+        to=AccountData, verbose_name="Адреса пользователя"
+    )
     date_joined = models.DateTimeField(
         verbose_name="Дата создания аккаунта", auto_now_add=True
     )

@@ -5,16 +5,19 @@ $("form[name='signup']").submit((e) => {
     var last_name = $('#signup_last_name').val();
     var email =  $('#signup_email').val();
     var password =  $('#signup_password').val();
+    var country =  $('#country_selector').val();
     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
     if (!mediumRegex.test(password)) {
         return;
     }
+    $("#signup_but").attr('disabled', 'disabled');
     $.ajax({
         data: {
             first_name: first_name,
             last_name: last_name,
             email: email,
             password: password,
+            country:country,
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',
@@ -24,6 +27,7 @@ $("form[name='signup']").submit((e) => {
             window.location.href = 'accounts/profile/'
         } else {
             error_box.text(response.message);
+            $("#signup_but").removeAttr('disabled');
         }
     })
 
@@ -51,6 +55,8 @@ $("form[name='signin']").submit((e) => {
     var email =  $('#signin_email').val();
     var password =  $('#signin_password').val();
 
+    $("#signin_but").attr('disabled', 'disabled');
+
     $.ajax({
         data: {
             email: email,
@@ -64,6 +70,7 @@ $("form[name='signin']").submit((e) => {
             window.location.href = 'accounts/profile/';
         } else {
             errorbox.text(response.message);
+            $("#signin_but").removeAttr('disabled');
         }
     })
 
