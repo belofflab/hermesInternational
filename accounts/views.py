@@ -42,6 +42,20 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
     def get(self, request):
         context = {"warehouses": Warehouse.objects.all()}
         return render(request, "accounts/warehouses.html", context)
+    
+
+class ProfilePaymentView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        return render(request, "accounts/payment.html")
+    
+
+class ProfilePackagesView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        return render(request, "accounts/packages.html")
 
 
 class LoginView(View):
