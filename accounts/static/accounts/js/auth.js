@@ -24,7 +24,7 @@ $("form[name='signup']").submit((e) => {
         url: '/en/accounts/signup/'
     }).then((response) => {
         if (response.status) {
-            window.location.href = 'accounts/profile/'
+            window.location.href = '/en/accounts/profile/'
         } else {
             error_box.text(response.message);
             $("#signup_but").removeAttr('disabled');
@@ -67,7 +67,7 @@ $("form[name='signin']").submit((e) => {
         url: '/en/accounts/login/'
     }).then((response) => {
         if (response.status) {
-            window.location.href = 'accounts/profile/';
+            window.location.href = '/en/accounts/profile/';
         } else {
             errorbox.text(response.message);
             $("#signin_but").removeAttr('disabled');
