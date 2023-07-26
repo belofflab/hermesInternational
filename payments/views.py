@@ -19,13 +19,11 @@ class InvoiceView(View):
         if payload["status"] == "expired":
             invoice.status = "expired"
             invoice.save()
-        
-
 
 
 class InvoiceCreateView(View):
     def get(self, request):
-        return render(request, "payments/create_invoice.html",context={})
+        return render(request, "payments/create_invoice.html", context={})
 
     def post(self, request):
         created_invoice = crypto.createInvoice(
@@ -42,5 +40,15 @@ class InvoiceCreateView(View):
                 status=result["status"],
                 created_at=result["created_at"],
             )
-            return render(request, "payments/create_invoice.html",context={"new_invoice": new_invoice})
-        return render(request, "payments/create_invoice.html",context={"error": "Ошибка создания ссылки на оплату... Обратитесь в поддержку"})
+            return render(
+                request,
+                "payments/create_invoice.html",
+                context={"new_invoice": new_invoice},
+            )
+        return render(
+            request,
+            "payments/create_invoice.html",
+            context={
+                "error": "Ошибка создания ссылки на оплату... Обратитесь в поддержку"
+            },
+        )

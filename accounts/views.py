@@ -3,6 +3,7 @@ import datetime
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.http.response import JsonResponse
 
 from django.views import View
 
@@ -23,11 +24,16 @@ def get_client_ip(request):
 
 
 class ProfileView(LoginRequiredMixin, View):
-    login_url = "/accounts/login/"
+    login_url = "/"
 
     def get(self, request):
         account = models.Account.objects.get(email=request.user)
-        context = {"purchases":account.purchases.all()[:5]}
+        last_visits = (
+            models.Visits.objects.filter(account=account)
+            .order_by("-last_login")
+            .all()[:1]
+        )
+        context = {"purchases": account.purchases.all()[:5], "last_visits": last_visits}
         return render(request, "accounts/profile.html", context)
 
     def post(self, request):
@@ -35,27 +41,18 @@ class ProfileView(LoginRequiredMixin, View):
 
 
 class ProfileWarehouseView(LoginRequiredMixin, View):
-    login_url = "/accounts/login/"
+    login_url = "/"
 
     def get(self, request):
         context = {"warehouses": Warehouse.objects.all()}
         return render(request, "accounts/warehouses.html", context)
 
+
 class LoginView(View):
-    # def get(self, request, *args, **kwargs):
-    #     if request.user.is_authenticated:
-    #         return redirect("/accounts/profile/")
-
-    #     form = forms.LoginForm(request.POST or None)
-
-    #     context = {"form": form, "title": "Sign In"}
-    #     return render(request, "accounts/login.html", context)
-
     def post(self, request, *args, **kwargs):
         request_data = request.POST
         email = request_data.get("email")
         password = request_data.get("password")
-        print(email, password)
         user = authenticate(email=email, password=password)
         if user:
             login(request=request, user=user)
@@ -64,52 +61,55 @@ class LoginView(View):
                 last_login=datetime.datetime.now(),
                 ip=get_client_ip(request),
             )
-            return redirect("/accounts/profile/")
-        return redirect('/')
+            return JsonResponse({"status": True, "message": ""})
+        return JsonResponse({"status": False, "message": "Invalid email or password"})
+
+
+def proceed_signup(request_data: dict):
+    if not all([v for v in request_data.values()]):
+        return False
+    return True
 
 
 class RegistrationView(View):
-    def get(self, request):
-        if request.user.is_authenticated:
-            return redirect("/accounts/profile/")
-        form = forms.RegistrationForm(request.POST or None)
-        context = {"form": form, "title": "Sign Up"}
-
-        return render(request, "accounts/signup.html", context)
-
     def post(self, request):
-        form = forms.RegistrationForm(request.POST or None)
-        if form.is_valid():
-            new_user = form.save(commit=False)
-            new_user.email = form.cleaned_data["email"]
-            new_user.first_name = form.cleaned_data["first_name"]
-            new_user.last_name = form.cleaned_data["last_name"]
-            new_user.save()
-            new_user.set_password(form.cleaned_data["password"])
-            new_user.save()
-            user = authenticate(
-                email=form.cleaned_data["email"],
-                password=form.cleaned_data["password"],
-            )
+        request_data = request.POST
+        if not proceed_signup(request_data):
+            return JsonResponse({"status": False, "message": "Invalid Credentials"})
+        if models.Account.objects.filter(email=request_data.get("email")).exists():
+            return JsonResponse({"status": False, "message": "User already exists"})
+        new_user = models.Account()
+        new_user.email = request_data.get("email")
+        new_user.first_name = request_data.get("first_name")
+        new_user.last_name = request_data.get("last_name")
+        new_user.save()
+        new_user.set_password(request_data.get("password"))
+        new_user.save()
+        user = authenticate(
+            email=request_data.get("email"),
+            password=request_data.get("password"),
+        )
+        if user:
             login(request=request, user=user)
             models.Visits.objects.update_or_create(
                 account=user,
                 last_login=datetime.datetime.now(),
                 ip=get_client_ip(request),
             )
-            return redirect("/accounts/profile/")
-
-        context = {"form": form, "title": "Sign Up"}
-
-        return render(request, "accounts/signup.html", context)
+            return JsonResponse({"status": True, "message": ""})
+        return JsonResponse({"status": False, "message": "Invalid Credentials"})
 
 
 class CollectParcelView(LoginRequiredMixin, View):
+    login_url = "/"
+
     def get(self, request, *args, **kwargs):
         return render(request, "accounts/collect_parcel.html")
 
 
 class InboxView(LoginRequiredMixin, View):
+    login_url = "/"
+
     def get(self, request, *args, **kwargs):
         account = models.Account.objects.get(email=request.user)
         purchase_form = forms.PurchaseForm(request.POST or None)
@@ -144,6 +144,8 @@ class InboxView(LoginRequiredMixin, View):
 
 
 class ProfileOutboxView(LoginRequiredMixin, View):
+    login_url = "/"
+
     def get(self, request, *args, **kwargs):
         return render(request, "accounts/outbox.html", {})
 

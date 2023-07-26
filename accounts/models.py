@@ -1,3 +1,4 @@
+from typing import Any
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.utils import timezone
@@ -41,6 +42,25 @@ class AccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
+
+class AccountData(models.Model):
+    """Информация о пользователе для доставок"""
+
+    city = models.CharField(verbose_name="Город", max_length=255)
+    street = models.CharField(verbose_name="Улица", max_length=255)
+    state = models.CharField(verbose_name="Штат", max_length=255)
+    postal_code = models.CharField(verbose_name="Почтовый индекс", max_length=255)
+    country = models.CharField(verbose_name="Страна", max_length=255)
+
+    class Meta:
+        verbose_name="Доставочный адрес"
+        verbose_name_plural="Доставочные адреса"
+
+    def __str__(self) -> str:
+        return f"{self.country} -> {self.city} -> {self.street}"
+
+
 
 
 class Account(AbstractBaseUser):
@@ -48,8 +68,11 @@ class Account(AbstractBaseUser):
 
     email = models.EmailField(verbose_name="Email", max_length=60, unique=True)
     first_name = models.CharField(verbose_name="Имя", max_length=255)
+    balance = models.DecimalField(verbose_name="Баланс", max_digits=12, decimal_places=2, default=0)
     last_name = models.CharField(verbose_name="Фамилия", max_length=255)
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase)
+    country = models.CharField(verbose_name="Страна", max_length=255,null=True)
+    addresses = models.ManyToManyField(to=AccountData, verbose_name="Адреса пользователя")
     date_joined = models.DateTimeField(
         verbose_name="Дата создания аккаунта", auto_now_add=True
     )

@@ -20,6 +20,7 @@
   <link href="{% static 'accounts/css/nucleo-svg.css' %}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{% static 'accounts/css/soft-ui-dashboard.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'accounts/css/countrySelect.min.css' %}">
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
@@ -181,7 +182,8 @@
     </div>
   </aside>
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
-    {% include 'accounts/signin_form.html' %}
+    {% include 'accounts/forms/signin_form.html' %}
+    {% include 'accounts/forms/signup_form.html' %}
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
@@ -301,6 +303,7 @@
         </div>
       </div>
     </nav>
+
     {% block content %}{% endblock %}
   </div>
   <!--   Core JS Files   -->
@@ -309,7 +312,18 @@
   <script src="{% static 'accounts/js/plugins/perfect-scrollbar.min.js' %}"></script>
   <script src="{% static 'accounts/js/plugins/smooth-scrollbar.min.js' %}"></script>
   <script src="{% static 'accounts/js/jquery.js' %}"></script>
+  <script>
+    var csrf_token = '{{csrf_token}}';
+  </script>
+  <script src="{% static 'accounts/js/auth.js' %}"></script>
+  <script src="{% static 'accounts/js/countrySelect.min.js' %}"></script>
   <script src="{% static 'accounts/js/owl.carousel.min.js' %}"></script>
+  <script>
+    $("#country_selector").countrySelect({
+      excludeCountries: ['ru']
+    });
+
+  </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -332,8 +346,10 @@
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{% static 'accounts/js/soft-ui-dashboard.min.js' %}"></script>
+
+
 </body>
 <script src="//code.jivo.ru/widget/tSpeR5D375" async></script>
+
 </html>

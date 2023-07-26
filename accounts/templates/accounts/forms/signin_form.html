@@ -2,29 +2,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Заполните декларацию</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card card-plain">
-                            <div class="card-header pb-0 text-left bg-transparent">
-                                <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
-                                <p class="mb-0">Enter your email and password to sign in</p>
+                            <div class="card-header text-center">
+                                <p id="signin_errorbox" style="color: red;" class="mb-0"></p>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="{% url 'accounts:login' %}" role="form">
+                                <form method="post" name="signin" role="form">
                                     {% csrf_token %}
                                     <label>Email</label>
                                     <div class="mb-3">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email"
-                                            aria-describedby="email-addon">
+                                        <input type="email" name="email" id="signin_email" class="form-control" placeholder="Email" aria-label="Email"
+                                            aria-describedby="email-addon" required>
+                                            
                                     </div>
                                     <label>Password</label>
                                     <div class="mb-3">
-                                        <input class="form-control" placeholder="Password" name="password"
-                                            aria-label="Password" aria-describedby="password-addon">
+                                        <input class="form-control" id="signin_password" placeholder="Password" name="password"
+                                            aria-label="Password" aria-describedby="password-addon" required>
                                     </div>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="rememberMe" checked="">

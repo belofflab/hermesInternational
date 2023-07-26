@@ -20,6 +20,8 @@ class Invoice(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        verbose_name="Чек"
+        verbose_name_plural="Чеки"
 
     def __str__(self) -> str:
         return f"{self.account.email} -> ${self.amount}"
