@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
+from django.db.models import Q
 
 from django.views import View
 
@@ -55,7 +56,8 @@ class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        return render(request, "accounts/packages.html")
+        purchases = models.Purchase.objects.filter(Q(account=request.user) & Q(status="ACCEPTANCE") | Q(status="FORWARDING"))
+        return render(request, "accounts/packages.html", context={"purchases":purchases})
 
 
 class LoginView(View):

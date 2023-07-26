@@ -3,6 +3,13 @@ from django.db import models
 from django.utils import timezone
 
 
+PURCHASE_STATUS_CHOICES = (
+    ("BUYOUT", "buyout"),
+    ("FORWARDING", "forwarding"),
+    ("ACCEPTANCE", "acceptance"),
+)
+
+
 class Purchase(models.Model):
     """Модель покупки"""
 
@@ -14,6 +21,12 @@ class Purchase(models.Model):
     )
     tracking_number = models.CharField(
         verbose_name="Трек номер", max_length=255, null=True
+    )
+    status = models.CharField(
+        verbose_name="Текущий статус:",
+        max_length=255,
+        choices=PURCHASE_STATUS_CHOICES,
+        default="ACCEPTANCE",
     )
     created = models.DateTimeField(auto_now_add=True)
 
