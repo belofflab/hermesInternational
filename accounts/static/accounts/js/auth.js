@@ -21,7 +21,7 @@ $("form[name='signup']").submit((e) => {
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',
-        url: 'accounts/signup/'
+        url: '/en/accounts/signup/'
     }).then((response) => {
         if (response.status) {
             window.location.href = 'accounts/profile/'
@@ -64,7 +64,7 @@ $("form[name='signin']").submit((e) => {
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',
-        url: 'accounts/login/'
+        url: '/en/accounts/login/'
     }).then((response) => {
         if (response.status) {
             window.location.href = 'accounts/profile/';
