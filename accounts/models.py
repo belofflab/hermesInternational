@@ -10,12 +10,32 @@ PURCHASE_STATUS_CHOICES = (
 )
 
 
+class PurchaseDeliveryOption(models.Model):
+    """Добавочные функции отправки посылки"""
+
+    name = models.CharField(verbose_name="Наименование", max_length=255)
+    price = models.DecimalField(
+        verbose_name="Стоимость", max_digits=12, decimal_places=2
+    )
+    is_visible = models.BooleanField(verbose_name="Доступна", default=True)
+
+    class Meta:
+        verbose_name = "Доставочная опция"
+        verbose_name_plural = "Доставочные опции"
+
+    def __str__(self) -> str:
+        return f"({'Включена' if self.is_visible else 'Отключена'}) {self.name} ${self.price}"
+
+
 class Purchase(models.Model):
     """Модель покупки"""
 
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
+    options = models.ManyToManyField(
+        to=PurchaseDeliveryOption, verbose_name="Доступные опции доставки", blank=True
+    )
     price = models.DecimalField(
         verbose_name="Цена товара", max_digits=12, decimal_places=2
     )
@@ -63,6 +83,7 @@ class AccountManager(BaseUserManager):
 class AccountData(models.Model):
     """Информация о пользователе для доставок"""
 
+    phone = models.CharField(verbose_name="Номер телефона", max_length=255, null=True)
     city = models.CharField(verbose_name="Город", max_length=255)
     street = models.CharField(verbose_name="Улица", max_length=255)
     state = models.CharField(verbose_name="Штат", max_length=255)
@@ -82,10 +103,11 @@ class Account(AbstractBaseUser):
 
     email = models.EmailField(verbose_name="Email", max_length=60, unique=True)
     first_name = models.CharField(verbose_name="Имя", max_length=255)
+    last_name = models.CharField(verbose_name="Фамилия", max_length=255)
+    sur_name = models.CharField(verbose_name="Отчество", max_length=255, null=True)
     balance = models.DecimalField(
         verbose_name="Баланс", max_digits=12, decimal_places=2, default=0
     )
-    last_name = models.CharField(verbose_name="Фамилия", max_length=255)
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase)
     country = models.CharField(verbose_name="Страна", max_length=255, null=True)
     addresses = models.ManyToManyField(

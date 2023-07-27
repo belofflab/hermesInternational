@@ -7,73 +7,51 @@
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-9">
-              <h1>Packages</h1>
-              <br>
-            </div>
-            <div class="col-1">
-              <button type="button" class="btn btn-info">
-                Buyout
-              </button>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-secondary">
-                  Forwarding
-                </button>
-              </div>
-          </div>
-        </div>
-        <div class="card-body px-0 pt-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-              <thead>
-                <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Url</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                  <th class="text-secondary opacity-7"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for purchase in purchases %}
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{purchase.id}}</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{purchase.name}}</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="text-secondary text-xs font-weight-bold"><a href="{{purchase.link}}">{{purchase.link | minimalize}}...</a></span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">${{purchase.price}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{purchase.quantity}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{purchase.status}}</span>
-                      </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+      <div class="card-header">
+        <div class="row">
+          <div class="col-9">
+            <h1>Packages</h1>
+            <br>
           </div>
         </div>
       </div>
+
+      <div class="row">
+        {% for purchase in purchases %}
+        <div class="col-xl-5">
+          <div class="card mb-4">
+            <div
+              style="border-radius: 50px; height: 220px;  background-image: url({% static 'accounts/img/logo.png' %}); background-repeat: no-repeat; background-size: contain; background-position: right 35%"
+              class="card-header">
+              <h3>{{purchase.name}}</h3>
+              <span class="badge bg-primary">{{purchase.status}}</span>
+              <span class="card-detail">
+                ${{purchase.price}}
+              </span>
+              <div class="col-5 mt-5">
+                <div class="input-group mb-2">
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="button" class="btn btn-primary" {% if purchase.status == 'FORWARDING' %} disabled {% endif %}>
+                        Buyout
+                      </button>
+                    </div>
+                    <div class="col-6">
+                      <button type="button" class="btn btn-secondary" {% if purchase.status == 'FORWARDING' %} disabled {% endif %}>
+                        Forwarding
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
+</div>
 
 </div>
 </main>
