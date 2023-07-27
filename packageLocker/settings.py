@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'main',
 
     'payments',
+
+    'ajax',
 ]
 
 MIDDLEWARE = [

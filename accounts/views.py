@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
 from django.db.models import Q
+from django.urls import reverse
 
 from django.views import View
 
@@ -29,7 +30,7 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         account = models.Account.objects.get(email=request.user)
-        last_visit = models.Visits.objects.filter(account=account).latest('last_login')
+        last_visit = models.Visits.objects.filter(account=account).latest("last_login")
         context = {"purchases": account.purchases.all()[:5], "last_visit": last_visit}
         return render(request, "accounts/profile.html", context)
 
@@ -43,21 +44,25 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
     def get(self, request):
         context = {"warehouses": Warehouse.objects.all()}
         return render(request, "accounts/warehouses.html", context)
-    
+
 
 class ProfilePaymentView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
         return render(request, "accounts/payment.html")
-    
+
 
 class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        purchases = models.Purchase.objects.filter(Q(account=request.user) & Q(status="ACCEPTANCE") | Q(status="FORWARDING"))
-        return render(request, "accounts/packages.html", context={"purchases":purchases})
+        purchases = models.Purchase.objects.filter(
+            Q(account=request.user) & Q(status="ACCEPTANCE") | Q(status="FORWARDING")
+        )
+        return render(
+            request, "accounts/packages.html", context={"purchases": purchases}
+        )
 
 
 class LoginView(View):
@@ -118,6 +123,17 @@ class CollectParcelView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         return render(request, "accounts/collect_parcel.html")
+
+
+class PurchaseDetailView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        try:
+            purchase = models.Purchase.objects.get(id=pk)
+        except models.Purchase.DoesNotExist:
+            return redirect(reverse('accounts:inbox'))
+        return render(
+            request, "accounts/inbox-detail.html", context={"purchase": purchase}
+        )
 
 
 class InboxView(LoginRequiredMixin, View):

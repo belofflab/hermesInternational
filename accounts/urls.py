@@ -14,5 +14,6 @@ urlpatterns = [
   path('profile/packages/', views.ProfilePackagesView.as_view(), name='packages'),
   path('profile/outbox/', views.ProfileOutboxView.as_view(), name='outbox'),
   path('profile/inbox/', views.InboxView.as_view(), name="inbox"),
+  path('profile/inbox/<int:pk>/', views.PurchaseDetailView.as_view(), name="inbox_detail"),
   path('profile/reset-password/', views.ResetPasswordView.as_view(), name='reset_password')
 ]
