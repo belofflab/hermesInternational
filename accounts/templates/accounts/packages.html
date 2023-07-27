@@ -1,8 +1,8 @@
 {% extends "accounts/base.html" %}
 {% load static %}
+{% load format_text %}
 
 {% block content %}
-{% include 'accounts/forms/buy_form.html' %}
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
@@ -15,34 +15,33 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row g-4">
         {% for purchase in purchases %}
-        <div class="col-xl-5">
-          <div class="card mb-4">
-            <div
-              style="border-radius: 50px; height: 220px;  background-image: url({% static 'accounts/img/logo.png' %}); background-repeat: no-repeat; background-size: contain; background-position: right 35%"
-              class="card-header">
-              <h3>{{purchase.name}}</h3>
-              <span class="badge bg-primary">{{purchase.status}}</span>
-              <span class="card-detail">
-                ${{purchase.price}}
-              </span>
-              <div class="col-5 mt-5">
-                <div class="input-group mb-2">
-                  <div class="row">
-                    <div class="col-6">
-                      <button type="button" class="btn btn-primary" {% if purchase.status == 'FORWARDING' %} disabled {% endif %}>
-                        Buyout
-                      </button>
-                    </div>
-                    <div class="col-6">
-                      <button type="button" class="btn btn-secondary" {% if purchase.status == 'FORWARDING' %} disabled {% endif %}>
-                        Forwarding
-                      </button>
-                    </div>
-                  </div>
-                </div>
+        <div class="col-md-auto">
+          <div class="card" style="width: 15rem;">
+            <div class="container">
+            {% if purchase.status == 'FORWARDING' %}
+              <img src="{% static 'accounts/img/free-sticker-paper-plane.png' %}" class="card-img-top"/>
+            {% endif %}
+            {% if purchase.status == 'ACCEPTANCE' %}
+              <img src="{% static 'accounts/img/delivery-box.png' %}" class="card-img-top"/>
+            {% endif %}
             </div>
+            <ul class="list-group list-group-light list-group-small">
+              <li class="list-group-item px-4"><b>Id:</b> {{ purchase.id }}</li>
+              <li class="list-group-item px-4"><b>Name:</b> {{ purchase.name }}</li>
+              <li class="list-group-item px-4"><b>URL: </b><a href="{{purchase.link}}">{{purchase.link | minimalize}}...</a></li>
+              <li class="list-group-item px-4"><b>Price: </b>${{purchase.price}}</li>
+              <li class="list-group-item px-4"><b>Quantity: </b>{{purchase.quantity}}</li>
+            </ul>
+            <div class="card-body">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <button class="btn btn-primary" type="button">Выкуп</button>
+                <button class="btn btn-success" type="button">Пересыл</button>
+              </div>
+              <div class="d-grid mx-auto content-md-center">
+                <button class="btn btn-outline-danger" type="button">Расформировать</button>
+              </div>
             </div>
           </div>
         </div>
