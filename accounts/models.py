@@ -162,4 +162,4 @@ class AccountNotifySettings(models.Model):
     is_telegram_news = models.BooleanField(default=True)
     is_email_news = models.BooleanField(default=True)
 
-    account = models.OneToOneField(Account, on_delete=models.CASCADE, default=1)
+    account = models.OneToOneField(Account, on_delete=models.CASCADE, null=True)
