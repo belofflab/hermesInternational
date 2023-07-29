@@ -1,6 +1,6 @@
 import datetime
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
@@ -97,6 +97,11 @@ def proceed_signup(request_data: dict):
     if not all([v for v in request_data.values()]):
         return False
     return True
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse("main:index"))
 
 
 class RegistrationView(View):

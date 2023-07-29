@@ -21,10 +21,10 @@ $("form[name='signup']").submit((e) => {
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',
-        url: '/en/accounts/signup/'
+        url: '/ajax/accounts/signup'
     }).then((response) => {
         if (response.status) {
-            window.location.href = window.location.origin + '/accounts/profile/'
+            window.location.href = '/accounts/profile/'
         } else {
             error_box.text(response.message);
             $("#signup_but").removeAttr('disabled');
@@ -64,10 +64,10 @@ $("form[name='signin']").submit((e) => {
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',
-        url: '/en/accounts/login/'
+        url: '/ajax/accounts/login'
     }).then((response) => {
         if (response.status) {
-            window.location.href = window.location.origin + '/accounts/profile/';
+            window.location.href = '/accounts/profile/';
         } else {
             errorbox.text(response.message);
             $("#signin_but").removeAttr('disabled');
@@ -90,6 +90,7 @@ $("#or_signup").on('click', (e) => {
 
 $("form[name='buy_out']").submit((e) => {
     e.preventDefault();
+    var error_box = $('#buy_form_errorbox');
     var name = $('#buy_form_name').val();
     var url = $('#buy_form_url').val();
     var track_number = $('#buy_form_track_number').val();
@@ -114,7 +115,7 @@ $("form[name='buy_out']").submit((e) => {
             if (response.status) {
                 window.location.href = window.location.origin + '/accounts/profile/inbox/';
             } else {
-                console.log(response)
+                error_box.text(response.message);
             }
         })
         return;
@@ -138,7 +139,8 @@ $("form[name='buy_out']").submit((e) => {
                 localStorage.setItem("purchaseToAddingAccountData", response.data)
                 $('#addressAddModal').modal('show');
             } else {
-                console.log(response)
+                error_box.text(response.message);
+                $("#buyout_but").removeAttr('disabled');
             }
         })
 
@@ -160,6 +162,16 @@ $("form[name='address_inf']").submit((e) => {
     var postal_code = $('#address_form_postal_code').val();
     var country = $('#country_selector_2').val();
 
+    var options = $(".address_form_option");
+
+    var sortedOptions = [];
+
+    options.each((option) => {
+        if($(options[option]).prop('checked')) {
+            sortedOptions.push(options[option].dataset.option)
+        }
+    })
+
     $("#address_inf_but").attr('disabled', 'disabled');
 
     $.ajax({
@@ -171,6 +183,7 @@ $("form[name='address_inf']").submit((e) => {
             state: state,
             postal_code: postal_code,
             country: country,
+            options: sortedOptions,
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',

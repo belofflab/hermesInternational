@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html dir='ltr' lang='en'>
 
 <head>
@@ -461,7 +462,7 @@
       </div>
       <div class='text-center mb-3 pb-3'>
         Already a customer?
-        <a href="{% url 'accounts:login' %}">
+        <a href="#">
           <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
             id="mdi-login" width="24" height="24" viewBox="0 0 24 24">
@@ -558,32 +559,31 @@
             Report Fraud
           </a>
         </li>
-        <li class='nav-item dropdown'>
-          <a class='nav-link dropdown-toggle text-secondary' data-toggle='dropdown' href='#'>
-            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-              id="mdi-earth" width="24" height="24" viewBox="0 0 24 24">
-              <path
-                d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
-              </path>
-            </svg>
-
-            English
-          </a>
-          <div class='dropdown-menu dropdown-menu-right'>
-            <a class="dropdown-item" href="/ar">العربية</a>
-            <a class="dropdown-item" href="/en">English</a>
-            <a class="dropdown-item" href="/es">Español</a>
-            <a class="dropdown-item" href="/fr">Français</a>
-            <a class="dropdown-item" href="/it">Italiano</a>
-            <a class="dropdown-item" href="/ja">日本語</a>
-            <a class="dropdown-item" href="/ka">ქართული</a>
-            <a class="dropdown-item" href="/ko">한국어</a>
-            <a class="dropdown-item" href="/pt-BR">Português Brasileiro</a>
-            <a class="dropdown-item" href="/ro">Română</a>
-            <a class="dropdown-item" href="/ru">Русский</a>
-          </div>
-        </li>
+        <form action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="/" />
+  
+          <select class="selectpicker" name="language" style="width: auto;" onchange="this.form.submit()">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+  
+                <option
+                  value="{{ language.code }}"
+                  {% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}
+                  data-content='<img src="/static/images/flags/{{ language.code }}.gif"></span>
+                  <span style="display:inline-block; width:100px; padding-left: 10px; text-shadow:none">
+                    {{ language.name_local }}
+                    <!-- span style="color:#999;">&nbsp;[{{ language.code }}]</span -->
+                  </span>'>
+                  {{ language.code }}
+                </option>
+  
+            {% endfor %}
+          </select>
+      </form>
+  
       </ul>
     </div>
   </footer>

@@ -27,12 +27,14 @@ class PurchaseDeliveryOption(models.Model):
         return f"({'Включена' if self.is_visible else 'Отключена'}) {self.name} ${self.price}"
 
 
+
 class Purchase(models.Model):
     """Модель покупки"""
 
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
+    address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True)
     options = models.ManyToManyField(
         to=PurchaseDeliveryOption, verbose_name="Доступные опции доставки", blank=True
     )
@@ -56,6 +58,7 @@ class Purchase(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}_{self.quantity}_${self.price}"
+
 
 
 class AccountManager(BaseUserManager):

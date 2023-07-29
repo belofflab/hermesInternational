@@ -15,7 +15,7 @@
 
                   <!-- Text input -->
                   <div class="form-outline mb-4">
-                    <input type="text" id="address_form_street" name="street" class="form-control">
+                    <input type="text" id="address_form_street" name="street" class="form-control" required>
                     <label class="form-label" for="form6Example3">Улица</label>
                   </div>
 
@@ -23,39 +23,46 @@
                   <div class="row mb-4">
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="address_form_city" name="city" class="form-control">
+                        <input type="text" id="address_form_city" name="city" class="form-control" required>
                         <label class="form-label" for="form6Example1">Город</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="address_form_state" name="state" class="form-control">
+                        <input type="text" id="address_form_state" name="state" class="form-control" required>
                         <label class="form-label" for="form6Example2">Штат</label>
                       </div>
                     </div>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input class="form-control" name="country" id="country_selector_2" type="text">
+                    <input class="form-control" name="country" id="country_selector_2" type="text" required>
                     <label class="form-label" for="form6Example1">Страна</label>
                   </div>
 
                   <div class="row mb-4">
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="address_form_phone" name="phone" class="form-control">
+                        <input type="text" id="address_form_phone" name="phone" class="form-control" required>
                         <label class="form-label" for="form6Example1">Номер телефона</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="address_form_postal_code" name="postal_code" class="form-control">
+                        <input type="text" id="address_form_postal_code" name="postal_code" class="form-control" required>
                         <label class="form-label" for="form6Example2">Почтовый код</label>
                       </div>
                     </div>
                   </div>
-
-                  <!-- Submit button -->
+                  {% for option in delivery_options %}
+                    <div class="form-check">
+                      <input class="form-check-input address_form_option" type="checkbox" data-option="{{option.id}}">
+                      <label class="form-check-label" for="flexCheckChecked">
+                        {{option.name}}
+                      </label>
+                    </div>
+                  {% endfor %}
+                  <br>
                   <button type="submit" class="btn btn-primary btn-block mb-4">Разместить</button>
                 </form>
               </div>
