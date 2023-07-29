@@ -33,7 +33,10 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         account = models.Account.objects.get(email=request.user)
-        settings = models.AccountNotifySettings.objects.get(account=request.user)
+        try:
+            settings = models.AccountNotifySettings.objects.get(account=request.user)
+        except models.AccountNotifySettings.DoesNotExist:
+            settings = {}
         last_visit = models.Visits.objects.filter(account=account).latest("last_login")
         context = {"purchases": account.purchases.all()[:5], "last_visit": last_visit, 'settings': settings}
         return render(request, "accounts/profile.html", context)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 13:23+0300\n"
+"POT-Creation-Date: 2023-07-29 19:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,11 +95,13 @@ msgid "Трек номер"
 msgstr "Track number"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:39
+#: .\accounts\templates\accounts\inbox.html:44
 #: .\accounts\templates\accounts\packages.html:35
 msgid "Количество"
 msgstr "Quantity"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:46
+#: .\accounts\templates\accounts\inbox.html:43
 #: .\accounts\templates\accounts\packages.html:34
 msgid "Цена"
 msgstr "Price"
@@ -133,13 +135,14 @@ msgstr "Purchase"
 msgid "Изменение декларации"
 msgstr "Changing the declaration"
 
-#: .\accounts\templates\accounts\inbox.html:48
-msgid "Выкуп"
-msgstr "Buyout"
-
+#: .\accounts\templates\accounts\inbox.html:41
 #: .\accounts\templates\accounts\packages.html:32
 msgid "Название"
 msgstr "Name"
+
+#: .\accounts\templates\accounts\inbox.html:48
+msgid "Выкуп"
+msgstr "Buyout"
 
 #: .\accounts\templates\accounts\packages.html:43
 msgid "Расформировать"
@@ -173,19 +176,37 @@ msgstr "Balance"
 msgid "Последний IP адрес"
 msgstr "Last IP address"
 
-#: .\accounts\templates\accounts\profile.html:189
+#: .\accounts\templates\accounts\profile.html:133
+msgid "Telegram"
+msgstr "Telegram"
+
+#: .\accounts\templates\accounts\profile.html:140
+#: .\accounts\templates\accounts\profile.html:163
+msgid "Уведомлять о новых акциях и новостях"
+msgstr "Notify about new promotions and news"
+
+#: .\accounts\templates\accounts\profile.html:147
+#: .\accounts\templates\accounts\profile.html:156
+msgid "Уведомлять об измении статуса заказа"
+msgstr "Notify of order status changes"
+
+#: .\accounts\templates\accounts\profile.html:150
+msgid "Почта"
+msgstr "Email"
+
+#: .\accounts\templates\accounts\profile.html:177
 msgid "Информация"
 msgstr "Info"
 
-#: .\accounts\templates\accounts\profile.html:201
+#: .\accounts\templates\accounts\profile.html:189
 msgid "Полное имя"
 msgstr "Full name"
 
-#: .\accounts\templates\accounts\profile.html:207
+#: .\accounts\templates\accounts\profile.html:195
 msgid "Геолокация"
 msgstr "Location"
 
-#: .\accounts\templates\accounts\profile.html:216
+#: .\accounts\templates\accounts\profile.html:204
 msgid "Последние покупки"
 msgstr "Recent purchases"
 

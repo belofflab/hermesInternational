@@ -152,8 +152,10 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
 class AccountNotifySettingsView(LoginRequiredMixin, View):
     def post(self, request):
-        settings = AccountNotifySettings.objects.get(account=request.user)
-        
+        try:
+            settings = AccountNotifySettings.objects.get(account=request.user)
+        except AccountNotifySettings.DoesNotExist:
+            return JsonResponse({"status": False, "message":"Account Settings does not exists"})
         settings.is_telegram_status = True if request.POST.get('telegram_status') == 'on' else False
         settings.is_email_status = True if request.POST.get('email_status') == 'on' else False
         settings.is_telegram_news = True if request.POST.get('telegram_news') == 'on' else False
