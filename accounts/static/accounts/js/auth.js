@@ -33,6 +33,13 @@ $("form[name='signup']").submit((e) => {
 
 })
 
+$(document).ready(function() {
+    $('#notify').on('change', ':checkbox', function() {
+      $.post('/ajax/accounts/profile', $('#notify').serialize(), function(data) {
+      });
+    });
+}); 
+
 $('#signup_password').on('input', (e) => {
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Account, Visits, Purchase, AccountData, PurchaseDeliveryOption
+from .models import (Account, AccountData, Purchase,
+                     PurchaseDeliveryOption, AccountNotifySettings, Visits)
 
 
 class AccountAdmin(UserAdmin):
@@ -21,3 +22,4 @@ admin.site.register(Visits)
 
 admin.site.register(Purchase)
 admin.site.register(PurchaseDeliveryOption)
+admin.site.register(AccountNotifySettings)

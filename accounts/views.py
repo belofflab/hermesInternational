@@ -33,8 +33,9 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         account = models.Account.objects.get(email=request.user)
+        settings = models.AccountNotifySettings.objects.get(account=request.user)
         last_visit = models.Visits.objects.filter(account=account).latest("last_login")
-        context = {"purchases": account.purchases.all()[:5], "last_visit": last_visit}
+        context = {"purchases": account.purchases.all()[:5], "last_visit": last_visit, 'settings': settings}
         return render(request, "accounts/profile.html", context)
 
     def post(self, request):
@@ -66,7 +67,7 @@ class ProfilePaymentView(LoginRequiredMixin, View):
 
 class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
-
+    
     def get(self, request):
         purchases = models.Purchase.objects.filter(
             Q(account=request.user) & Q(status="ACCEPTANCE") | Q(status="FORWARDING")

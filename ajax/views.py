@@ -7,7 +7,7 @@ from django.http.response import JsonResponse
 from django.views import View
 from decimal import Decimal, InvalidOperation
 
-from accounts.models import Account, AccountData, Purchase, Visits
+from accounts.models import Account, AccountData, Purchase, Visits, AccountNotifySettings
 
 
 def get_client_ip(request):
@@ -146,5 +146,18 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 """)
 
 
+
+        return JsonResponse({"status": True, "message": ""})
+
+
+class AccountNotifySettingsView(LoginRequiredMixin, View):
+    def post(self, request):
+        settings = AccountNotifySettings.objects.get(account=request.user)
+        
+        settings.is_telegram_status = True if request.POST.get('telegram_status') == 'on' else False
+        settings.is_email_status = True if request.POST.get('email_status') == 'on' else False
+        settings.is_telegram_news = True if request.POST.get('telegram_news') == 'on' else False
+        settings.is_email_news = True if request.POST.get('email_news') == 'on' else False
+        settings.save()
 
         return JsonResponse({"status": True, "message": ""})
