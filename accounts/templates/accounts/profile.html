@@ -1,4 +1,5 @@
 {% extends "accounts/base.html" %}
+{% load i18n %}
 {% load static %}
 
 {% block content %}
@@ -110,10 +111,10 @@
         <div class="profile-info">
           <div class="h-100">
             <p class="mb-0 font-weight-bold text-sm">
-              Balance: ${{request.user.balance}}
+              {% translate 'Баланс' %}: ${{request.user.balance}}
             </p>
             <p class="mb-0 font-weight-bold text-sm">
-              Last IP address: {{last_visit.ip}}
+              {% translate 'Последний IP адрес' %}: {{last_visit.ip}}
             </p>
           </div>
         </div>
@@ -185,7 +186,7 @@
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-8 d-flex align-items-center">
-              <h6 class="mb-0">Profile Information</h6>
+              <h6 class="mb-0">{% translate 'Информация' %}</h6>
             </div>
             <div class="col-md-4 text-end">
               <a href="javascript:;">
@@ -197,13 +198,13 @@
         </div>
         <div class="card-body p-3">
           <ul class="list-group">
-            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp;
+            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">{% translate 'Полное имя' %}</strong> &nbsp;
               {{request.user.first_name}} {{request.user.last_name}}</li>
             <!-- <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; +7 (913)
               112 90 76 </li> -->
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
               {{request.user}}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; {{request.user.country}}
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">{% translate 'Геолокация' %}:</strong> &nbsp; {{request.user.country}}
             </li>
           </ul>
         </div>
@@ -212,7 +213,7 @@
     <div class="col-12 col-xl-4">
       <div class="card h-100">
         <div class="card-header pb-0 p-3">
-          <h6 class="mb-0">Recent purchases</h6>
+          <h6 class="mb-0">{% translate 'Последние покупки' %}</h6>
         </div>
         <div class="card-body p-3">
           <ul class="list-group">

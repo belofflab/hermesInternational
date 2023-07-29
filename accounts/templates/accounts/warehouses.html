@@ -1,6 +1,6 @@
 {% extends "accounts/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block content %}
 <div class="container-fluid py-6">
@@ -9,21 +9,19 @@
       <div class="card mb-4">
         <div class="container">
           <br>
-          <h1>Мой адрес в США</h1>
-          <h7>Это адреса складов в Америке, которые вам нужно указывать при оформлении покупок в американских интернет
-            магазинах.</h7>
+          <h1>{% translate 'Адрес в США' %}</h1>
           <div id="locker-slider" class="owl-carousel">
             {% for warehouse in warehouses %}
             <div class="item" data-dot="<button role='button' class='owl-dot'><span>{{forloop.counter}}</span></button>">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Склад - {{forloop.counter}}</h5>
+                  <h5 class="card-title">{% translate 'Склад' %} - {{forloop.counter}}</h5>
                   <h6 class="card-subtitle mb-2 text-body-secondary">{{warehouse.city}}</h6>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Address:</b> {{warehouse.address}}</li>
-                    <li class="list-group-item"><b>State: </b>{{warehouse.state}}</li>
-                    <li class="list-group-item"><b>Postal Code: </b>{{warehouse.zip}}</li>
-                    <li class="list-group-item"><b>Phone number: </b>{{warehouse.phone}}</li>
+                    <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
+                    <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
+                    <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{warehouse.zip}}</li>
+                    <li class="list-group-item"><b>{% translate 'Номер  телефона' %}: </b>{{warehouse.phone}}</li>
                   </ul>
                   <div class="card-body">
                     <a href="#" class="card-link">Card link</a>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load i18n %}
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -324,8 +324,8 @@
             <div class="wrapper">
                   <div class="c-crypto-form">
                         <div class="c-crypto-form__heading">
-                              Для оплаты отсканируйте QR код через свой мобильный кошелек и выполните один перевод на
-                              наш адрес.
+                              {% translate 'Для оплаты отсканируйте QR код через свой мобильный кошелек и выполните один перевод на
+                              наш адрес.' %}
                         </div>
                         <div class="c-crypto-form__box">
                               <div class="c-crypto-form__row">
@@ -335,17 +335,17 @@
                                     </div>
                                     <div class="c-crypto-form__col-right">
                                           <div class="c-crypto-form__field">
-                                                <div class="c-crypto-form__label">Валюта</div>
+                                                <div class="c-crypto-form__label">{% translate 'Валюта' %}</div>
                                                 <div class="c-crypto-form__value">USDT</div>
                                           </div>
                                           <hr>
                                           <div class="c-crypto-form__field">
-                                                <div class="c-crypto-form__label">Сеть</div>
+                                                <div class="c-crypto-form__label">{% translate 'Сеть' %}</div>
                                                 <div class="c-crypto-form__value">TRC20</div>
                                           </div>
                                           <hr>
                                           <div class="c-crypto-form__field">
-                                                <div class="c-crypto-form__label">Сумма</div>
+                                                <div class="c-crypto-form__label">{% translate 'Сумма' %}</div>
                                                 <div class="c-crypto-form__value">{{amount}}</div>
                                           </div>
                                           <hr>
@@ -358,12 +358,12 @@
 
                               <div class="c-crypto-form__warning-block">
                                     <div class="c-crypto-form__warning">
-                                          <p>По этим реквизитам перевод доступен в течение <b><span
+                                          <p>{% translate 'По этим реквизитам перевод доступен в течение' %} <b><span
                                                             id="timer">01:59:59</span></b>.</p>
                                           <hr>
                                           <p class="__sm">
-                                                Завершим операцию после получения всей суммы одним платежом и двух
-                                                подтверждений.
+                                                {% translate 'Завершим операцию после получения всей суммы одним платежом и двух
+                                                подтверждений.' %}
                                           </p>
                                     </div>
                               </div>

@@ -1,8 +1,10 @@
+{% load i18n %}
+
 <div class="modal fade" id="purchaseAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Заполните декларацию</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{% translate 'Заполните декларацию' %}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -11,57 +13,53 @@
           <div class="col-xl-12">
             <div class="card mb-4">
               <div class="container">
-                <h7>Тип товара укажите на русском, а бренд на английском. Укажите каждый товар отдельно. Как заполнять
-                  декларацию?</h7>
-                <br>
-                <h7>Например: Футболка Carters, красная, хлопок, размер 3М.</h7>
                 <form name="buy_out" method="post">
                   {% csrf_token %}
                   <div class="card-header text-center">
                     <p id="buy_form_errorbox" style="color: red;" class="mb-0"></p>
                 </div>
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Наименование продукта и бренд</label>
-                    <input class="form-control" type="text" value="" placeholder="Наушники Razer" id="buy_form_name" required>
+                    <label for="example-text-input" class="form-control-label">{% translate 'Наименование товара и брэнд' %}</label>
+                    <input class="form-control" type="text" value="" id="buy_form_name" required>
                     <!-- {{purchase_form.name}} -->
                   </div>
                   <div class="form-group">
-                    <label for="example-url-input" class="form-control-label">Ссылка на магазин</label>
+                    <label for="example-url-input" class="form-control-label">{% translate 'Ссылка на магазин' %}</label>
                     <input class="form-control" type="url" value="" placeholder="https://amazon.com" id="buy_form_url" required>
                     <!-- {{purchase_form.link}} -->
                   </div>
                   <div class="form-group">
-                    <label for="example-url-input" class="form-control-label">Трек номер</label>
+                    <label for="example-url-input" class="form-control-label">{% translate 'Трек номер' %}</label>
                     <input class="form-control" type="text" value="" placeholder="..." id="buy_form_track_number" required>
                     <!-- {{purchase_form.tracking_number}} -->
                   </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="example-number-input" class="form-control-label">Количество</label>
+                        <label for="example-number-input" class="form-control-label">{% translate 'Количество' %}</label>
                         <input class="form-control" type="number" min="1" value="" placeholder="1" id="buy_form_quantity" required>
                         <!-- {{purchase_form.quantity}} -->
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="example-number-input" class="form-control-label">Цена</label>
+                        <label for="example-number-input" class="form-control-label">{% translate 'Цена' %}</label>
                         <input class="form-control" type="text" value="" placeholder="1" id="buy_form_price" required>
                         <!-- {{purchase_form.price}} -->
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="buy_option_select" class="form-control-label">Что делаем с заказом?</label>
+                      <label for="buy_option_select" class="form-control-label">{% translate 'Что делаем с заказом?' %}</label>
                       <select id="buy_option_select" class="form-select" aria-label="Option select example">
-                        <option value="FORWARDING" selected>Пересыл</option>
-                        <option value="BUYOUT">Отправить в скуп-лист</option>
+                        <option value="FORWARDING" selected>{% translate 'Пересыл' %}</option>
+                        <option value="BUYOUT">{% translate 'Отправить в скуп-лист' %}</option>
                       </select>
                     </div>
                   </div>
                   <br>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button id="buyout_but" type="submit" class="btn btn-primary">Далее</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate 'Отмена' %}</button>
+                    <button id="buyout_but" type="submit" class="btn btn-primary">{% translate 'Далее' %}</button>
                   </div>
 
                 </form>

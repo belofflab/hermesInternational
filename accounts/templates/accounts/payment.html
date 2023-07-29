@@ -1,5 +1,5 @@
 {% extends "accounts/base.html" %}
-
+{% load i18n %}
 {% load static %}
 
 {% block content %}
@@ -12,7 +12,7 @@
                 <form method="post">
                     {% csrf_token %}
                     <div style="border-radius: 50px;"  class="card-header">
-                        <h1>Payment</h1>
+                        <h1>{% translate 'Пополнить баланс' %}</h1>
                         <br>
                         <div class="col-5">
                             <div class="input-group mb-2">
@@ -29,7 +29,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="zzzz" disabled>
                             <label class="form-check-label" for="flexRadioDefault2">
                                 PayPal +3.8%
                             </label>
@@ -41,7 +41,7 @@
                             </label>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary">Continue</button>
+                        <button type="submit" class="btn btn-primary">{% translate 'Продолжить' %}</button>
                     </div>
                 </form>
               </div>

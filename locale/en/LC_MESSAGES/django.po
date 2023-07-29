@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 09:00+0300\n"
+"POT-Creation-Date: 2023-07-29 13:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,195 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\accounts\templates\accounts\base.html:69
+#: .\accounts\templates\accounts\inbox.html:14
 msgid "Покупки"
 msgstr "Purchases"
+
+#: .\accounts\templates\accounts\base.html:95
+#: .\accounts\templates\accounts\packages.html:12
+msgid "Посылки"
+msgstr "Packages"
+
+#: .\accounts\templates\accounts\base.html:121
+msgid "Склады"
+msgstr "Warehouses"
+
+#: .\accounts\templates\accounts\base.html:147
+#: .\accounts\templates\accounts\payment.html:15
+msgid "Пополнить баланс"
+msgstr "Payment"
+
+#: .\accounts\templates\accounts\base.html:179
+msgid "Профиль"
+msgstr "Profile"
+
+#: .\accounts\templates\accounts\base.html:205
+msgid "Выход"
+msgstr "Logout"
+
+#: .\accounts\templates\accounts\forms\address_form.html:7
+msgid "Информация о получателе"
+msgstr "Info"
+
+#: .\accounts\templates\accounts\forms\address_form.html:21
+msgid "Улица"
+msgstr "Street"
+
+#: .\accounts\templates\accounts\forms\address_form.html:29
+msgid "Город"
+msgstr "City"
+
+#: .\accounts\templates\accounts\forms\address_form.html:35
+#: .\accounts\templates\accounts\warehouses.html:22
+msgid "Штат"
+msgstr "State"
+
+#: .\accounts\templates\accounts\forms\address_form.html:42
+msgid "Страна"
+msgstr "Country"
+
+#: .\accounts\templates\accounts\forms\address_form.html:49
+msgid "Номер телефона"
+msgstr "Phone number"
+
+#: .\accounts\templates\accounts\forms\address_form.html:55
+msgid "Почтовый код"
+msgstr "Postal code"
+
+#: .\accounts\templates\accounts\forms\address_form.html:68
+msgid "Разместить"
+msgstr "Post"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:7
+msgid "Заполните декларацию"
+msgstr "Changing the declaration"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:22
+msgid "Наименование товара и брэнд"
+msgstr "Product name and brand"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:27
+msgid "Ссылка на магазин"
+msgstr "Shop URL"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:32
+msgid "Трек номер"
+msgstr "Track number"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:39
+#: .\accounts\templates\accounts\packages.html:35
+msgid "Количество"
+msgstr "Quantity"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:46
+#: .\accounts\templates\accounts\packages.html:34
+msgid "Цена"
+msgstr "Price"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:52
+msgid "Что делаем с заказом?"
+msgstr "What do we do with the order?"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:54
+#: .\accounts\templates\accounts\inbox.html:49
+msgid "Пересыл"
+msgstr "Forwarding"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:55
+msgid "Отправить в скуп-лист"
+msgstr "Buyout"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:61
+msgid "Отмена"
+msgstr "Cancel"
+
+#: .\accounts\templates\accounts\forms\buy_form.html:62
+msgid "Далее"
+msgstr "Continue"
+
+#: .\accounts\templates\accounts\inbox-detail.html:12
+msgid "Покупка"
+msgstr "Purchase"
+
+#: .\accounts\templates\accounts\inbox-detail.html:19
+msgid "Изменение декларации"
+msgstr "Changing the declaration"
+
+#: .\accounts\templates\accounts\inbox.html:48
+msgid "Выкуп"
+msgstr "Buyout"
+
+#: .\accounts\templates\accounts\packages.html:32
+msgid "Название"
+msgstr "Name"
+
+#: .\accounts\templates\accounts\packages.html:43
+msgid "Расформировать"
+msgstr "Disband"
+
+#: .\accounts\templates\accounts\pay.html:338
+msgid "Валюта"
+msgstr "Currency"
+
+#: .\accounts\templates\accounts\pay.html:343
+msgid "Сеть"
+msgstr "Network"
+
+#: .\accounts\templates\accounts\pay.html:348
+msgid "Сумма"
+msgstr "Amount"
+
+#: .\accounts\templates\accounts\pay.html:361
+msgid "По этим реквизитам перевод доступен в течение"
+msgstr "According to these details, the transfer is available during"
+
+#: .\accounts\templates\accounts\payment.html:44
+msgid "Продолжить"
+msgstr "Continue"
+
+#: .\accounts\templates\accounts\profile.html:114
+msgid "Баланс"
+msgstr "Balance"
+
+#: .\accounts\templates\accounts\profile.html:117
+msgid "Последний IP адрес"
+msgstr "Last IP address"
+
+#: .\accounts\templates\accounts\profile.html:189
+msgid "Информация"
+msgstr "Info"
+
+#: .\accounts\templates\accounts\profile.html:201
+msgid "Полное имя"
+msgstr "Full name"
+
+#: .\accounts\templates\accounts\profile.html:207
+msgid "Геолокация"
+msgstr "Location"
+
+#: .\accounts\templates\accounts\profile.html:216
+msgid "Последние покупки"
+msgstr "Recent purchases"
+
+#: .\accounts\templates\accounts\warehouses.html:12
+msgid "Адрес в США"
+msgstr "USA address"
+
+#: .\accounts\templates\accounts\warehouses.html:18
+msgid "Склад"
+msgstr "Warehouse"
+
+#: .\accounts\templates\accounts\warehouses.html:21
+msgid "Адрес"
+msgstr "Adress"
+
+#: .\accounts\templates\accounts\warehouses.html:23
+msgid "Почтовый индекс"
+msgstr "Postal code"
+
+#: .\accounts\templates\accounts\warehouses.html:24
+msgid "Номер  телефона"
+msgstr "Phone number"
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220
@@ -38,9 +225,9 @@ msgstr ""
 #, python-format
 msgid ""
 "You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:229

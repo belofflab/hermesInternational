@@ -2,7 +2,7 @@
 {% load format_text %}
 {% load static %}
 {% block content %}
-
+{% load i18n %}
 {% include 'accounts/forms/buy_form.html' %}
 {% include 'accounts/forms/address_form.html' %}
 <div class="container-fluid py-4">
@@ -11,7 +11,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col-10">
-              <h1>Покупки</h1>
+              <h1>{% translate 'Покупки' %}</h1>
               <br>
             </div>
             <div class="col-1">
@@ -38,15 +38,15 @@
               </div>
               <ul class="list-group list-group-light list-group-small">
                 <li class="list-group-item px-4"><b>Id:</b> {{ purchase.id }}</li>
-                <li class="list-group-item px-4"><b>Name:</b> {{ purchase.name }}</li>
+                <li class="list-group-item px-4"><b>{% translate 'Название' %}:</b> {{ purchase.name }}</li>
                 <li class="list-group-item px-4"><b>URL: </b><a href="{{purchase.link}}">{{purchase.link | minimalize}}...</a></li>
-                <li class="list-group-item px-4"><b>Price: </b>${{purchase.price}}</li>
-                <li class="list-group-item px-4"><b>Quantity: </b>{{purchase.quantity}}</li>
+                <li class="list-group-item px-4"><b>{% translate 'Цена' %}: </b>${{purchase.price}}</li>
+                <li class="list-group-item px-4"><b>{% translate 'Количество' %}: </b>{{purchase.quantity}}</li>
               </ul>
               <div class="card-body">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                  <button class="btn btn-primary" type="button">Выкуп</button>
-                  <button class="btn btn-success" type="button">Пересыл</button>
+                  <button class="btn btn-primary" type="button">{% translate 'Выкуп' %}</button>
+                  <button class="btn btn-success" type="button">{% translate 'Пересыл' %}</button>
                 </div>
               </div>
             </div>
