@@ -24,7 +24,7 @@ $("form[name='signup']").submit((e) => {
         url: '/en/accounts/signup/'
     }).then((response) => {
         if (response.status) {
-            window.location.href = '/en/accounts/profile/'
+            window.location.href = window.location.origin + '/accounts/profile/'
         } else {
             error_box.text(response.message);
             $("#signup_but").removeAttr('disabled');
@@ -67,7 +67,7 @@ $("form[name='signin']").submit((e) => {
         url: '/en/accounts/login/'
     }).then((response) => {
         if (response.status) {
-            window.location.href = '/en/accounts/profile/';
+            window.location.href = window.location.origin + '/accounts/profile/';
         } else {
             errorbox.text(response.message);
             $("#signin_but").removeAttr('disabled');
@@ -112,7 +112,7 @@ $("form[name='buy_out']").submit((e) => {
             url: '/ajax/inbox/create'
         }).then((response) => {
             if (response.status) {
-                window.location = '/en/accounts/profile/inbox/';
+                window.location.href = window.location.origin + '/accounts/profile/inbox/';
             } else {
                 console.log(response)
             }
@@ -149,9 +149,41 @@ $("form[name='buy_out']").submit((e) => {
 
 $("form[name='address_inf']").submit((e) => {
     e.preventDefault();
-    var purchase = localStorage.getItem("purchaseToAddingAccountData")
+    var purchase = localStorage.getItem("purchaseToAddingAccountData");
+    // var first_name = $('#address_form_first_name').val();
+    // var last_name = $('#address_form_last_name').val();
+    // var sur_name = $('#address_form_sur_name').val();
+    var phone = $('#address_form_phone').val();
+    var city = $('#address_form_city').val();
+    var street = $('#address_form_street').val();
+    var state = $('#address_form_state').val();
+    var postal_code = $('#address_form_postal_code').val();
+    var country = $('#country_selector_2').val();
 
-    
+    $("#address_inf_but").attr('disabled', 'disabled');
+
+    $.ajax({
+        data: {
+            purchase: purchase,
+            phone: phone,
+            city: city,
+            street: street,
+            state: state,
+            postal_code: postal_code,
+            country: country,
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/account/data/create'
+    }).then((response) => {
+        if (response.status) {
+            $('#addressAddModal').modal('hide');
+            localStorage.setItem("purchaseToAddingAccountData", "")
+            window.location.reload()
+        } else {
+            console.log(response)
+        }
+    })
 
 
 })

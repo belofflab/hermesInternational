@@ -1,75 +1,68 @@
 <div class="modal fade" id="addressAddModal" tabindex="-1" aria-labelledby="addressee_info" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addressee_info">Информация о получателе</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="card mb-4">
-                <div class="container">
-                      <form name="address_inf" method="post">
-                        <input type="hidden" name="purchase" value="">
-                      <!-- 2 column grid layout with text inputs for the first and last names -->
-                            <div class="row mb-4">
-                            <div class="col">
-                            <div class="form-outline">
-                                  <input type="text" id="first_name" class="form-control">
-                                  <label class="form-label" for="form6Example1">Имя</label>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="form-outline">
-                                  <input type="text" id="last_name" class="form-control">
-                                  <label class="form-label" for="form6Example2">Фамилия</label>
-                            </div>
-                            </div>
-                            </div>
-                      
-                            <!-- Text input -->
-                            <div class="form-outline mb-4">
-                                  <input type="text" id="surname" class="form-control">
-                                  <label class="form-label" for="form6Example3">Отчество</label>
-                            </div>
-                      
-                            <!-- Text input -->
-                            <div class="form-outline mb-4">
-                                  <input type="text" id="address" class="form-control">
-                                  <label class="form-label" for="form6Example4">Адрес</label>
-                            </div>
-                      
-                            
-                            <div class="row mb-4">
-                              <div class="col">
-                              <div class="form-outline">
-                                    <input type="text" id="phone number" class="form-control">
-                                    <label class="form-label" for="form6Example1">Номер телефона</label>
-                              </div>
-                              </div>
-                              <div class="col">
-                              <div class="form-outline">
-                                    <input type="text" id="zip_code" class="form-control">
-                                    <label class="form-label" for="form6Example2">Почтовый код</label>
-                              </div>
-                              </div>
-                              </div>
-                      
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-center mb-4">
-                                  <input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" checked="">
-                                  <label class="form-check-label" for="form6Example8"> Create an account? </label>
-                            </div>
-                      
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
-                      </form>
-                </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addressee_info">Информация о получателе</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card mb-4">
+              <div class="container">
+                <form name="address_inf" method="post">
+                  <input type="hidden" name="purchase" value="">
+
+                  <!-- Text input -->
+                  <div class="form-outline mb-4">
+                    <input type="text" id="address_form_street" name="street" class="form-control">
+                    <label class="form-label" for="form6Example3">Улица</label>
+                  </div>
+
+                  <!-- Text input -->
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_city" name="city" class="form-control">
+                        <label class="form-label" for="form6Example1">Город</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_state" name="state" class="form-control">
+                        <label class="form-label" for="form6Example2">Штат</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input class="form-control" name="country" id="country_selector_2" type="text">
+                    <label class="form-label" for="form6Example1">Страна</label>
+                  </div>
+
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_phone" name="phone" class="form-control">
+                        <label class="form-label" for="form6Example1">Номер телефона</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_postal_code" name="postal_code" class="form-control">
+                        <label class="form-label" for="form6Example2">Почтовый код</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-primary btn-block mb-4">Разместить</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

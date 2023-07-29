@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
 from django.db.models import Q
 from django.urls import reverse
+from payments.services.crypto import Crypto
 
 from django.views import View
 
@@ -14,6 +15,8 @@ from . import forms, models
 from .services import message
 
 from main.models import Warehouse
+
+crypto = Crypto(token="110981:AA3FManAQxim0xd6CNZF8zf1uzUIziDbe5d")
 
 
 def get_client_ip(request):
@@ -51,6 +54,14 @@ class ProfilePaymentView(LoginRequiredMixin, View):
 
     def get(self, request):
         return render(request, "accounts/payment.html")
+    
+    def post(self, request):
+        request_data = request.POST
+        amount = request_data.get("amount")
+        receipt = crypto.createInvoice("USDT", amount=amount)
+        if receipt.get("ok"):
+            return render(request, "accounts/pay.html", context={"pay_url": receipt["result"].get("pay_url"), "amount": amount})
+        return redirect(reverse("accounts:payment"))
 
 
 class ProfilePackagesView(LoginRequiredMixin, View):
