@@ -101,6 +101,14 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         current_user.purchases.add(new_purchase)
 
         return JsonResponse({"status": True, "data": new_purchase.id})
+    
+class PurchaseChangeStatusView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        purchase = Purchase.objects.get(id=request_data.get("purchase"))
+        purchase.status = request_data.get("status")
+        purchase.save()
+        return JsonResponse({"status": True, "message": ""})
 
 
 class AccountDataCreateView(LoginRequiredMixin, View):
@@ -126,6 +134,7 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         )
 
         purchase.address = new_account
+        purchase.status = "FORWARDING"
 
         for option in options:
             purchase.options.add(option)

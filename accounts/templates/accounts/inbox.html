@@ -45,8 +45,8 @@
           </ul>
           <div class="card-body">
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary" type="button">{% translate 'Выкуп' %}</button>
-              <button class="btn btn-success" type="button">{% translate 'Пересыл' %}</button>
+              <button class="btn btn-primary" onclick="toBuyout('{{purchase.id}}')" type="button" {% if purchase.status == "BUYOUT" %} disabled {% endif %} >{% translate 'Выкуп' %}</button>
+              <button class="btn btn-success" onclick="toForwarding('{{purchase.id}}')" type="button">{% translate 'Пересыл' %}</button>
             </div>
           </div>
         </div>

@@ -14,8 +14,8 @@
             <div class="item" data-dot="<button role='button' class='owl-dot'><span>{{forloop.counter}}</span></button>">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">{% translate 'Склад' %} - {{forloop.counter}}</h5>
-                  <h6 class="card-subtitle mb-2 text-body-secondary">{{warehouse.city}}</h6>
+                  <h5 class="card-title">#{{forloop.counter}} {% translate 'Склад' %} - {{warehouse.city}}</h5>
+                  <!-- <h6 class="card-subtitle mb-2 text-body-secondary">{{warehouse.city}}</h6> -->
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
                     <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
@@ -23,8 +23,10 @@
                     <li class="list-group-item"><b>{% translate 'Номер  телефона' %}: </b>{{warehouse.phone}}</li>
                   </ul>
                   <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                    <!-- <ol>
+                      <li> sd</li>
+                      <li>sd</li>
+                    </ol> -->
                   </div>
                 </div>
               </div>

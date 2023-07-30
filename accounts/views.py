@@ -38,7 +38,11 @@ class ProfileView(LoginRequiredMixin, View):
         except models.AccountNotifySettings.DoesNotExist:
             settings = {}
         last_visit = models.Visits.objects.filter(account=account).latest("last_login")
-        context = {"purchases": account.purchases.all()[:5], "last_visit": last_visit, 'settings': settings}
+        context = {
+            "purchases": account.purchases.all()[:5],
+            "last_visit": last_visit,
+            "settings": settings,
+        }
         return render(request, "accounts/profile.html", context)
 
     def post(self, request):
@@ -58,22 +62,26 @@ class ProfilePaymentView(LoginRequiredMixin, View):
 
     def get(self, request):
         return render(request, "accounts/payment.html")
-    
+
     def post(self, request):
         request_data = request.POST
         amount = request_data.get("amount")
         receipt = crypto.createInvoice("USDT", amount=amount)
         if receipt.get("ok"):
-            return render(request, "accounts/pay.html", context={"pay_url": receipt["result"].get("pay_url"), "amount": amount})
+            return render(
+                request,
+                "accounts/pay.html",
+                context={"pay_url": receipt["result"].get("pay_url"), "amount": amount},
+            )
         return redirect(reverse("accounts:payment"))
 
 
 class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
-    
+
     def get(self, request):
         purchases = models.Purchase.objects.filter(
-            Q(account=request.user) & Q(status="ACCEPTANCE") | Q(status="FORWARDING")
+            Q(account=request.user) & Q(status="FORWARDING")
         )
         return render(
             request, "accounts/packages.html", context={"purchases": purchases}
@@ -101,6 +109,7 @@ def proceed_signup(request_data: dict):
     if not all([v for v in request_data.values()]):
         return False
     return True
+
 
 class LogoutView(View):
     def get(self, request):
@@ -150,7 +159,7 @@ class PurchaseDetailView(LoginRequiredMixin, View):
         try:
             purchase = models.Purchase.objects.get(id=pk)
         except models.Purchase.DoesNotExist:
-            return redirect(reverse('accounts:inbox'))
+            return redirect(reverse("accounts:inbox"))
         return render(
             request, "accounts/inbox-detail.html", context={"purchase": purchase}
         )
@@ -165,30 +174,12 @@ class InboxView(LoginRequiredMixin, View):
         return render(
             request,
             "accounts/inbox.html",
-            {"purchases": account.purchases.all(), "purchase_form": purchase_form},
-        )
-
-    def post(self, request):
-        purchase_form = forms.PurchaseForm(request.POST)
-        account = models.Account.objects.get(email=request.user)
-
-        new_purchase = purchase_form.save()
-        account.purchases.add(new_purchase)
-
-        message.send(
-            f"""
-Пользователь <b>{account}</b> добавил новую покупку:
-Наименование: {new_purchase.name}
-Ссылка на товар:  <a href="{new_purchase.link}">click me</a>
-Количество: {new_purchase.quantity} шт
-Цена: ${new_purchase.price}
-Трек номер: {new_purchase.tracking_number}"""
-        )
-
-        return render(
-            request,
-            "accounts/inbox.html",
-            {"purchases": account.purchases.all(), "purchase_form": purchase_form},
+            {
+                "purchases": account.purchases.filter(
+                    Q(status="BUYOUT") | Q(status="ACCEPTANCE")
+                ).all(),
+                "purchase_form": purchase_form,
+            },
         )
 
 
@@ -217,3 +208,7 @@ class ResetPasswordView(LoginRequiredMixin, View):
 
         context = {"form": form, "title": "Sign Up"}
         return render(request, "accounts/reset-password.html", context)
+
+
+def buyout(request):
+    return render(request, "accounts/buyout.html", context={})

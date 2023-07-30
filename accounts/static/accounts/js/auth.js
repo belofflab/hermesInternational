@@ -155,66 +155,6 @@ $("form[name='buy_out']").submit((e) => {
 })
 
 
-$("form[name='buy_out']").submit((e) => {
-    e.preventDefault();
-    var error_box = $('#buy_form_errorbox');
-    var name = $('#buy_form_name').val();
-    var url = $('#buy_form_url').val();
-    var track_number = $('#buy_form_track_number').val();
-    var quantity = $('#buy_form_quantity').val();
-    var price = $('#buy_form_price').val();
-    var status = $("#buy_option_select option:selected").val();
-    if (status === "BUYOUT") {
-        $("#buyout_but").attr('disabled', 'disabled');
-        $.ajax({
-            data: {
-                name: name,
-                url: url,
-                track_number: track_number,
-                quantity: quantity,
-                price: price,
-                status: status,
-                csrfmiddlewaretoken: csrf_token
-            },
-            method: 'POST',
-            url: '/ajax/inbox/create'
-        }).then((response) => {
-            if (response.status) {
-                window.location.href = window.location.origin + '/accounts/profile/inbox/';
-            } else {
-                error_box.text(response.message);
-            }
-        })
-        return;
-    }
-    $("#buyout_but").attr('disabled', 'disabled');
-        $.ajax({
-            data: {
-                name: name,
-                url: url,
-                track_number: track_number,
-                quantity: quantity,
-                price: price,
-                status: status,
-                csrfmiddlewaretoken: csrf_token
-            },
-            method: 'POST',
-            url: '/ajax/inbox/create'
-        }).then((response) => {
-            if (response.status) {
-                $('#purchaseAddModal').modal('hide');
-                localStorage.setItem("purchaseToAddingAccountData", response.data)
-                $('#addressAddModal').modal('show');
-            } else {
-                error_box.text(response.message);
-                $("#buyout_but").removeAttr('disabled');
-            }
-        })
-
-
-})
-
-
 $("form[name='address_inf']").submit((e) => {
     e.preventDefault();
     var purchase = localStorage.getItem("purchaseToAddingAccountData");
@@ -302,3 +242,49 @@ $("form[name='edit_profile']").submit((e) => {
 
 
 })
+
+
+
+
+function toForwarding(purchaseId) {
+    console.log(purchaseId)
+    localStorage.setItem("purchaseToAddingAccountData", purchaseId);
+    $('#addressAddModal').modal('show');
+}
+
+function toBuyout(purchaseId) {
+    $.ajax({
+        data: {
+            purchase: parseInt(purchaseId),
+            status: "BUYOUT",
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/purchase/status/update'
+    }).then((response) => {
+        if (response.status) {
+            window.location.reload()
+        } else {
+            console.log(response)
+        }
+    })
+}
+
+function toAcceptance(purchaseId) {
+    $.ajax({
+        data: {
+            purchase: parseInt(purchaseId),
+            status: "ACCEPTANCE",
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/purchase/status/update'
+    }).then((response) => {
+        if (response.status) {
+            // window.location.href = 'accounts/profile/inbox'
+            window.location.reload()
+        } else {
+            console.log(response)
+        }
+    })
+}
