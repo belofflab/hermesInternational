@@ -5,4 +5,8 @@ def delivery_options(request):
 
 
 def account_information(request):
-    return {"account_information": Account.objects.get(email=request.user)}
+    try:
+        account = Account.objects.get(email=request.user)
+    except:
+        account = {}
+    return {"account_information": account}
