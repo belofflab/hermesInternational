@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'modeltranslation',
+
     'accounts',
     'main',
 
@@ -57,7 +59,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'accounts.context_processors.delivery_options'
+                'accounts.context_processors.delivery_options',
+                'accounts.context_processors.account_information'
             ],
         },
     },

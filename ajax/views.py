@@ -75,7 +75,6 @@ class RegistrationView(View):
 
 class PurchaseCreateView(LoginRequiredMixin, View):
     def post(self, request):
-        print(request.user)
         request_data = request.POST
         name = request_data.get("name")
         url = request_data.get("url")
@@ -163,3 +162,22 @@ class AccountNotifySettingsView(LoginRequiredMixin, View):
         settings.save()
 
         return JsonResponse({"status": True, "message": ""})
+    
+
+class AccountDataUpdateView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        account = Account.objects.get(email=request.user)
+        first_name = request_data.get("first_name")
+        last_name = request_data.get("last_name")
+        sur_name = request_data.get("sur_name")
+        country = request_data.get("country")
+
+        account.first_name = first_name
+        account.last_name = last_name
+        account.sur_name = sur_name
+        account.country = country
+
+        account.save()
+
+        return JsonResponse({"status": True, "message":""})

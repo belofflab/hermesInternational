@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.utils import timezone
-
+from django.utils.translation import gettext_lazy as _
 
 PURCHASE_STATUS_CHOICES = (
     ("BUYOUT", "buyout"),
@@ -25,7 +25,6 @@ class PurchaseDeliveryOption(models.Model):
 
     def __str__(self) -> str:
         return f"({'Включена' if self.is_visible else 'Отключена'}) {self.name} ${self.price}"
-
 
 
 class Purchase(models.Model):
@@ -58,7 +57,6 @@ class Purchase(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}_{self.quantity}_${self.price}"
-
 
 
 class AccountManager(BaseUserManager):
@@ -153,7 +151,7 @@ class Visits(models.Model):
 
     def __str__(self):
         return self.account.email
-    
+
 
 class AccountNotifySettings(models.Model):
     is_telegram_status = models.BooleanField(default=True)
@@ -163,3 +161,10 @@ class AccountNotifySettings(models.Model):
     is_email_news = models.BooleanField(default=True)
 
     account = models.OneToOneField(Account, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Настройки"
+        verbose_name_plural = "Настройки пользовательских уведомлений"
+
+    def __str__(self) -> str:
+        return self.account.email

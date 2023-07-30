@@ -155,6 +155,65 @@ $("form[name='buy_out']").submit((e) => {
 })
 
 
+$("form[name='buy_out']").submit((e) => {
+    e.preventDefault();
+    var error_box = $('#buy_form_errorbox');
+    var name = $('#buy_form_name').val();
+    var url = $('#buy_form_url').val();
+    var track_number = $('#buy_form_track_number').val();
+    var quantity = $('#buy_form_quantity').val();
+    var price = $('#buy_form_price').val();
+    var status = $("#buy_option_select option:selected").val();
+    if (status === "BUYOUT") {
+        $("#buyout_but").attr('disabled', 'disabled');
+        $.ajax({
+            data: {
+                name: name,
+                url: url,
+                track_number: track_number,
+                quantity: quantity,
+                price: price,
+                status: status,
+                csrfmiddlewaretoken: csrf_token
+            },
+            method: 'POST',
+            url: '/ajax/inbox/create'
+        }).then((response) => {
+            if (response.status) {
+                window.location.href = window.location.origin + '/accounts/profile/inbox/';
+            } else {
+                error_box.text(response.message);
+            }
+        })
+        return;
+    }
+    $("#buyout_but").attr('disabled', 'disabled');
+        $.ajax({
+            data: {
+                name: name,
+                url: url,
+                track_number: track_number,
+                quantity: quantity,
+                price: price,
+                status: status,
+                csrfmiddlewaretoken: csrf_token
+            },
+            method: 'POST',
+            url: '/ajax/inbox/create'
+        }).then((response) => {
+            if (response.status) {
+                $('#purchaseAddModal').modal('hide');
+                localStorage.setItem("purchaseToAddingAccountData", response.data)
+                $('#addressAddModal').modal('show');
+            } else {
+                error_box.text(response.message);
+                $("#buyout_but").removeAttr('disabled');
+            }
+        })
+
+
+})
+
 
 $("form[name='address_inf']").submit((e) => {
     e.preventDefault();
@@ -199,6 +258,42 @@ $("form[name='address_inf']").submit((e) => {
         if (response.status) {
             $('#addressAddModal').modal('hide');
             localStorage.setItem("purchaseToAddingAccountData", "")
+            window.location.reload()
+        } else {
+            console.log(response)
+        }
+    })
+
+
+})
+
+
+
+
+$("form[name='edit_profile']").submit((e) => {
+    e.preventDefault();
+    var first_name = $('#edit_profile_form_firstname').val();
+    var last_name = $('#edit_profile_form_lastname').val();
+    var sur_name = $('#edit_profile_form_surname').val();
+    var country = $('#country_selector_2').val();
+
+    console.log(first_name, last_name, sur_name, country)
+
+    $("#edit_profie_but").attr('disabled', 'disabled');
+
+    $.ajax({
+        data: {
+            first_name: first_name,
+            last_name: last_name,
+            sur_name: sur_name,
+            country: country,
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/account/data/update'
+    }).then((response) => {
+        if (response.status) {
+            $('#editProfileAddModal').modal('hide');
             window.location.reload()
         } else {
             console.log(response)

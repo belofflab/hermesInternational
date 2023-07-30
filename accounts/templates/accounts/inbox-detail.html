@@ -3,26 +3,22 @@
 {% load i18n %}
 {% block content %}
 {% include 'accounts/forms/buy_form.html' %}
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-10">
-                        <h1>{% translate 'Покупка' %} {{purchase.name}}</h1>
-                        <br>
-                    </div>
+<div class="row">
+    <div class="col-12">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-10">
+                    <h1>{% translate 'Покупка' %} {{purchase.name}}</h1>
+                    <br>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <a href="">{% translate 'Изменение декларации' %}</a>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <a href="">{% translate 'Изменение декларации' %}</a>
             </div>
         </div>
     </div>
 </div>
-
 </div>
-</main>
 {% endblock %}
