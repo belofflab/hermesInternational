@@ -20296,6 +20296,7 @@ fieldset:disabled .btn {
 
 .avatar img {
   width: 100%;
+  background-color: inherit;
 }
 
 .avatar+.avatar-content {
