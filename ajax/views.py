@@ -5,6 +5,7 @@ from accounts.services import message
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import JsonResponse
 from django.views import View
+from django.utils.translation import gettext as _
 from decimal import Decimal, InvalidOperation
 
 from accounts.models import Account, AccountData, Purchase, Visits, AccountNotifySettings
@@ -33,7 +34,7 @@ class LoginView(View):
                 ip=get_client_ip(request),
             )
             return JsonResponse({"status": True, "message": ""})
-        return JsonResponse({"status": False, "message": "Invalid email or password"})
+        return JsonResponse({"status": False, "message": _("Некорректный Email или пароль")})
 
 
 def proceed_signup(request_data: dict):
@@ -46,9 +47,9 @@ class RegistrationView(View):
     def post(self, request):
         request_data = request.POST
         if not proceed_signup(request_data):
-            return JsonResponse({"status": False, "message": "Invalid Credentials"})
+            return JsonResponse({"status": False, "message": _("Некорректные данные")})
         if Account.objects.filter(email=request_data.get("email")).exists():
-            return JsonResponse({"status": False, "message": "User already exists"})
+            return JsonResponse({"status": False, "message": _("Пользователь уже существует")})
         new_user = Account()
         new_user.email = request_data.get("email")
         new_user.first_name = request_data.get("first_name")
@@ -70,7 +71,7 @@ class RegistrationView(View):
             )
             return JsonResponse({"status": True, "message": ""})
 
-        return JsonResponse({"status": False, "message": "Invalid Credentials"})
+        return JsonResponse({"status": False, "message": _("Некорректные данные")})
 
 
 class PurchaseCreateView(LoginRequiredMixin, View):
@@ -83,7 +84,7 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         try:
             price = Decimal(request_data.get("price"))
         except InvalidOperation:
-            return JsonResponse({"status": False, "message": "Неверная цена"})
+            return JsonResponse({"status": False, "message": _("Некорректно задана цена")})
 
         status = request_data.get("status")
 

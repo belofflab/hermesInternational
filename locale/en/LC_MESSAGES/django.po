@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 19:38+0300\n"
+"POT-Creation-Date: 2023-07-31 09:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,35 +19,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\accounts\templates\accounts\base.html:69
-#: .\accounts\templates\accounts\inbox.html:14
+#: .\accounts\templates\accounts\inbox.html:13
 msgid "Покупки"
 msgstr "Purchases"
 
-#: .\accounts\templates\accounts\base.html:95
-#: .\accounts\templates\accounts\packages.html:12
+#: .\accounts\templates\accounts\base.html:91
+#: .\accounts\templates\accounts\packages.html:11
 msgid "Посылки"
 msgstr "Packages"
 
-#: .\accounts\templates\accounts\base.html:121
-msgid "Склады"
-msgstr "Warehouses"
+#: .\accounts\templates\accounts\base.html:112
+msgid "Скуп-лист"
+msgstr "Scoop-list"
 
-#: .\accounts\templates\accounts\base.html:147
-#: .\accounts\templates\accounts\payment.html:15
+#: .\accounts\templates\accounts\base.html:135
+#, fuzzy
+#| msgid "Последний IP адрес"
+msgid "Мои адреса"
+msgstr "Last IP address"
+
+#: .\accounts\templates\accounts\base.html:161
+#: .\accounts\templates\accounts\payment.html:14
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:179
+#: .\accounts\templates\accounts\base.html:193
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:205
+#: .\accounts\templates\accounts\base.html:214
 msgid "Выход"
 msgstr "Logout"
 
+#: .\accounts\templates\accounts\buyout.html:6
+msgid "Поиск по категории"
+msgstr "Search by category"
+
+#: .\accounts\templates\accounts\buyout.html:27
+#, fuzzy
+#| msgid "Название"
+msgid "Наименование"
+msgstr "Name"
+
+#: .\accounts\templates\accounts\buyout.html:30
+msgid "Процент"
+msgstr "Percent"
+
 #: .\accounts\templates\accounts\forms\address_form.html:7
 msgid "Информация о получателе"
-msgstr "Info"
+msgstr "Recipient information"
 
 #: .\accounts\templates\accounts\forms\address_form.html:21
 msgid "Улица"
@@ -58,25 +78,26 @@ msgid "Город"
 msgstr "City"
 
 #: .\accounts\templates\accounts\forms\address_form.html:35
-#: .\accounts\templates\accounts\warehouses.html:22
+#: .\accounts\templates\accounts\warehouses.html:31
 msgid "Штат"
 msgstr "State"
 
 #: .\accounts\templates\accounts\forms\address_form.html:42
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:39
 msgid "Страна"
 msgstr "Country"
 
-#: .\accounts\templates\accounts\forms\address_form.html:49
+#: .\accounts\templates\accounts\forms\address_form.html:57
 msgid "Номер телефона"
 msgstr "Phone number"
 
-#: .\accounts\templates\accounts\forms\address_form.html:55
+#: .\accounts\templates\accounts\forms\address_form.html:63
 msgid "Почтовый код"
 msgstr "Postal code"
 
-#: .\accounts\templates\accounts\forms\address_form.html:68
+#: .\accounts\templates\accounts\forms\address_form.html:76
 msgid "Разместить"
-msgstr "Post"
+msgstr "Place"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:7
 msgid "Заполните декларацию"
@@ -95,14 +116,14 @@ msgid "Трек номер"
 msgstr "Track number"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:39
-#: .\accounts\templates\accounts\inbox.html:44
-#: .\accounts\templates\accounts\packages.html:35
+#: .\accounts\templates\accounts\inbox.html:49
+#: .\accounts\templates\accounts\packages.html:41
 msgid "Количество"
 msgstr "Quantity"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:46
-#: .\accounts\templates\accounts\inbox.html:43
-#: .\accounts\templates\accounts\packages.html:34
+#: .\accounts\templates\accounts\inbox.html:48
+#: .\accounts\templates\accounts\packages.html:40
 msgid "Цена"
 msgstr "Price"
 
@@ -111,7 +132,7 @@ msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:54
-#: .\accounts\templates\accounts\inbox.html:49
+#: .\accounts\templates\accounts\inbox.html:54
 msgid "Пересыл"
 msgstr "Forwarding"
 
@@ -120,157 +141,153 @@ msgid "Отправить в скуп-лист"
 msgstr "Buyout"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:61
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:45
 msgid "Отмена"
 msgstr "Cancel"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:62
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:46
 msgid "Далее"
 msgstr "Continue"
 
-#: .\accounts\templates\accounts\inbox-detail.html:12
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:7
+#, fuzzy
+#| msgid "Изменение декларации"
+msgid "Изменение профиля"
+msgstr "Changing the declaration"
+
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:22
+msgid "Имя"
+msgstr "First name"
+
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:28
+msgid "Фамилия"
+msgstr "Last name"
+
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:34
+#, fuzzy
+#| msgid "Количество"
+msgid "Отчество"
+msgstr "Quantity"
+
+#: .\accounts\templates\accounts\inbox-detail.html:11
 msgid "Покупка"
 msgstr "Purchase"
 
-#: .\accounts\templates\accounts\inbox-detail.html:19
+#: .\accounts\templates\accounts\inbox-detail.html:18
 msgid "Изменение декларации"
 msgstr "Changing the declaration"
 
-#: .\accounts\templates\accounts\inbox.html:41
-#: .\accounts\templates\accounts\packages.html:32
+#: .\accounts\templates\accounts\inbox.html:46
+#: .\accounts\templates\accounts\packages.html:38
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:48
+#: .\accounts\templates\accounts\inbox.html:53
 msgid "Выкуп"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\packages.html:43
+#: .\accounts\templates\accounts\packages.html:45
 msgid "Расформировать"
 msgstr "Disband"
 
-#: .\accounts\templates\accounts\pay.html:338
+#: .\accounts\templates\accounts\pay.html:336
 msgid "Валюта"
 msgstr "Currency"
 
-#: .\accounts\templates\accounts\pay.html:343
+#: .\accounts\templates\accounts\pay.html:341
 msgid "Сеть"
 msgstr "Network"
 
-#: .\accounts\templates\accounts\pay.html:348
+#: .\accounts\templates\accounts\pay.html:346
 msgid "Сумма"
 msgstr "Amount"
 
-#: .\accounts\templates\accounts\pay.html:361
+#: .\accounts\templates\accounts\pay.html:359
 msgid "По этим реквизитам перевод доступен в течение"
 msgstr "According to these details, the transfer is available during"
 
-#: .\accounts\templates\accounts\payment.html:44
+#: .\accounts\templates\accounts\payment.html:46
 msgid "Продолжить"
 msgstr "Continue"
 
-#: .\accounts\templates\accounts\profile.html:114
+#: .\accounts\templates\accounts\profile.html:33
 msgid "Баланс"
 msgstr "Balance"
 
-#: .\accounts\templates\accounts\profile.html:117
+#: .\accounts\templates\accounts\profile.html:36
 msgid "Последний IP адрес"
 msgstr "Last IP address"
 
-#: .\accounts\templates\accounts\profile.html:133
+#: .\accounts\templates\accounts\profile.html:52
 msgid "Telegram"
 msgstr "Telegram"
 
-#: .\accounts\templates\accounts\profile.html:140
-#: .\accounts\templates\accounts\profile.html:163
+#: .\accounts\templates\accounts\profile.html:59
+#: .\accounts\templates\accounts\profile.html:82
 msgid "Уведомлять о новых акциях и новостях"
 msgstr "Notify about new promotions and news"
 
-#: .\accounts\templates\accounts\profile.html:147
-#: .\accounts\templates\accounts\profile.html:156
+#: .\accounts\templates\accounts\profile.html:66
+#: .\accounts\templates\accounts\profile.html:75
 msgid "Уведомлять об измении статуса заказа"
 msgstr "Notify of order status changes"
 
-#: .\accounts\templates\accounts\profile.html:150
+#: .\accounts\templates\accounts\profile.html:69
 msgid "Почта"
 msgstr "Email"
 
-#: .\accounts\templates\accounts\profile.html:177
+#: .\accounts\templates\accounts\profile.html:96
 msgid "Информация"
 msgstr "Info"
 
-#: .\accounts\templates\accounts\profile.html:189
+#: .\accounts\templates\accounts\profile.html:108
 msgid "Полное имя"
 msgstr "Full name"
 
-#: .\accounts\templates\accounts\profile.html:195
+#: .\accounts\templates\accounts\profile.html:114
 msgid "Геолокация"
 msgstr "Location"
 
-#: .\accounts\templates\accounts\profile.html:204
+#: .\accounts\templates\accounts\profile.html:123
 msgid "Последние покупки"
 msgstr "Recent purchases"
 
-#: .\accounts\templates\accounts\warehouses.html:12
+#: .\accounts\templates\accounts\warehouses.html:13
 msgid "Адрес в США"
 msgstr "USA address"
 
-#: .\accounts\templates\accounts\warehouses.html:18
+#: .\accounts\templates\accounts\warehouses.html:27
 msgid "Склад"
 msgstr "Warehouse"
 
-#: .\accounts\templates\accounts\warehouses.html:21
+#: .\accounts\templates\accounts\warehouses.html:30
 msgid "Адрес"
 msgstr "Adress"
 
-#: .\accounts\templates\accounts\warehouses.html:23
+#: .\accounts\templates\accounts\warehouses.html:32
 msgid "Почтовый индекс"
 msgstr "Postal code"
 
-#: .\accounts\templates\accounts\warehouses.html:24
+#: .\accounts\templates\accounts\warehouses.html:33
 msgid "Номер  телефона"
 msgstr "Phone number"
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
+#: .\ajax\views.py:37
+msgid "Некорректный Email или пароль"
+msgstr "Incorrect Email or password"
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
+#: .\ajax\views.py:50 .\ajax\views.py:74
+msgid "Некорректные данные"
+msgstr "Incorrect data"
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
+#: .\ajax\views.py:52
+msgid "Пользователь уже существует"
+msgstr "User already exists"
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:229
-msgid "Django Documentation"
-msgstr ""
+#: .\ajax\views.py:87
+msgid "Некорректно задана цена"
+msgstr "Incorrect price set"
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:238
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
-msgid "Get started with Django"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:247
-msgid "Django Community"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
-msgid "Connect, get help, or contribute"
-msgstr ""
+#~ msgid "Склады"
+#~ msgstr "Warehouses"
