@@ -34,6 +34,7 @@ class Purchase(models.Model):
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
     address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True)
+    delivery_method = models.CharField(verbose_name="Метод доставки", max_length=255, null=True)
     options = models.ManyToManyField(
         to=PurchaseDeliveryOption, verbose_name="Доступные опции доставки", blank=True
     )
@@ -168,3 +169,31 @@ class AccountNotifySettings(models.Model):
 
     def __str__(self) -> str:
         return self.account.email
+
+
+
+class BuyoutCategory(models.Model):
+    name = models.CharField(max_length=255)
+    is_visible = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name="Категория"
+        verbose_name_plural="Категории скуп-листа"
+    
+    def __str__(self) -> str:
+        return f"({'Включена' if self.is_visible else 'Отключена'}) {self.name}"
+    
+
+class Buyout(models.Model): 
+
+    category = models.ForeignKey(BuyoutCategory, on_delete=models.CASCADE)
+    name = models.CharField(verbose_name="Товар|Товары", max_length=1024)
+    percent = models.DecimalField(verbose_name="Процент", max_digits=12, decimal_places=2)
+
+    class Meta:
+        verbose_name="Товар"
+        verbose_name_plural="Скуп-лист"
+
+    def __str__(self) -> str:
+        return f"{self.category.name} -> {self.name} {self.percent}%"
+    

@@ -121,6 +121,7 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         postal_code = request_data.get("postal_code")
         country = request_data.get("country")
         options = request_data.getlist("options[]")
+        deliveryMethod = request_data.get("deliveryMethod")
 
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
 
@@ -135,6 +136,7 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.address = new_account
         purchase.status = "FORWARDING"
+        purchase.delivery_method = deliveryMethod
 
         for option in options:
             purchase.options.add(option)

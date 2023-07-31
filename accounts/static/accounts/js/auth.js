@@ -167,6 +167,7 @@ $("form[name='address_inf']").submit((e) => {
     var state = $('#address_form_state').val();
     var postal_code = $('#address_form_postal_code').val();
     var country = $('#country_selector_2').val();
+    var deliveryMethod = $("#address_form_delivey_method").val();
 
     var options = $(".address_form_option");
 
@@ -189,6 +190,7 @@ $("form[name='address_inf']").submit((e) => {
             state: state,
             postal_code: postal_code,
             country: country,
+            deliveryMethod: deliveryMethod,
             options: sortedOptions,
             csrfmiddlewaretoken: csrf_token
         },

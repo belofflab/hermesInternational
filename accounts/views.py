@@ -7,7 +7,7 @@ from django.http.response import JsonResponse
 from django.db.models import Q
 from django.urls import reverse
 from payments.services.crypto import Crypto
-
+from collections import defaultdict
 from django.views import View
 
 from . import forms, models
@@ -210,5 +210,35 @@ class ResetPasswordView(LoginRequiredMixin, View):
         return render(request, "accounts/reset-password.html", context)
 
 
-def buyout(request):
-    return render(request, "accounts/buyout.html", context={})
+def get_buyout_items_by_category():
+    # First, retrieve all the Buyout objects, prefetching the related category
+    buyouts = models.Buyout.objects.select_related("category").filter(
+        category__is_visible=True
+    )
+
+    # Organize the items by category in a dictionary
+    category_items_dict = defaultdict(list)
+
+    for buyout in buyouts:
+        category_name = buyout.category.name
+        item_info = {
+            "name": buyout.name,
+            "percent": buyout.percent,
+        }
+        category_items_dict[category_name].append(item_info)
+
+    # Sort categories alphabetically and return the result
+    sorted_category_items_dict = dict(
+        sorted(category_items_dict.items(), key=lambda x: x[0].lower())
+    )
+
+    return sorted_category_items_dict
+
+
+class BuyOutView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(
+            request,
+            "accounts/buyout.html",
+            context={"buyout": get_buyout_items_by_category()},
+        )
