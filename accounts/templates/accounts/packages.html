@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    {% if not purchases.length %}
+    {% if not purchases|length %}
     <div class="row g-4">
       <p class="mb-0">На данный момент вы не оформляли посылки...</p>
       <p class="mt-0">Для того, чтобы добавить посылку перейдите в <a href="{% url 'accounts:inbox' %}">покупки</a></p>
