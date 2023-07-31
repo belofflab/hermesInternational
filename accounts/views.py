@@ -42,6 +42,7 @@ class ProfileView(LoginRequiredMixin, View):
             "purchases": account.purchases.all()[:5],
             "last_visit": last_visit,
             "settings": settings,
+            "page": "profile"
         }
         return render(request, "accounts/profile.html", context)
 
@@ -53,7 +54,7 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        context = {"warehouses": Warehouse.objects.all()}
+        context = {"warehouses": Warehouse.objects.all(), "page": "warehouses"}
         return render(request, "accounts/warehouses.html", context)
 
 
@@ -61,7 +62,7 @@ class ProfilePaymentView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        return render(request, "accounts/payment.html")
+        return render(request, "accounts/payment.html", context={"page": "payment"})
 
     def post(self, request):
         request_data = request.POST
@@ -84,7 +85,7 @@ class ProfilePackagesView(LoginRequiredMixin, View):
             Q(account=request.user) & Q(status="FORWARDING")
         )
         return render(
-            request, "accounts/packages.html", context={"purchases": purchases}
+            request, "accounts/packages.html", context={"purchases": purchases, "page":"packages"}
         )
 
 
@@ -146,14 +147,6 @@ class RegistrationView(View):
             return JsonResponse({"status": True, "message": ""})
         return JsonResponse({"status": False, "message": "Invalid Credentials"})
 
-
-class CollectParcelView(LoginRequiredMixin, View):
-    login_url = "/"
-
-    def get(self, request, *args, **kwargs):
-        return render(request, "accounts/collect_parcel.html")
-
-
 class PurchaseDetailView(LoginRequiredMixin, View):
     def get(self, request, pk):
         try:
@@ -179,15 +172,9 @@ class InboxView(LoginRequiredMixin, View):
                     Q(status="BUYOUT") | Q(status="ACCEPTANCE")
                 ).all(),
                 "purchase_form": purchase_form,
+                "page": "inbox"
             },
         )
-
-
-class ProfileOutboxView(LoginRequiredMixin, View):
-    login_url = "/"
-
-    def get(self, request, *args, **kwargs):
-        return render(request, "accounts/outbox.html", {})
 
 
 class ResetPasswordView(LoginRequiredMixin, View):
@@ -240,5 +227,5 @@ class BuyOutView(LoginRequiredMixin, View):
         return render(
             request,
             "accounts/buyout.html",
-            context={"buyout": get_buyout_items_by_category()},
+            context={"buyout": get_buyout_items_by_category(), "page":"buyout"},
         )

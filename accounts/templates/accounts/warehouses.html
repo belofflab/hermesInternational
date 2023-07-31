@@ -8,7 +8,17 @@
       <div class="card mb-4">
         <div class="container">
           <br>
-          <h1>{% translate 'Адрес в США' %}</h1>
+          <div class="row align-items-center">
+            <div class="col-10">
+              <h1>{% translate 'Адрес в США' %}</h1>
+            </div>
+            <div class="col-2">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal" disabled>
+                <img src="{% static 'accounts/img/plus-circle-svgrepo-com.svg' %}" height="21" width="21">
+              </button>
+            </div>
+          </div>
+          <br>
           <div id="locker-slider" class="owl-carousel">
             {% for warehouse in warehouses %}
             <div class="item" data-dot="<button role='button' class='owl-dot'><span>{{forloop.counter}}</span></button>">

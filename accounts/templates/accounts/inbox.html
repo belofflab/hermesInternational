@@ -20,6 +20,11 @@
         </div>
       </div>
     </div>
+    {% if not purchases.length %}
+    <div class="row g-4">
+      <p class="mb-0">На данный момент вы не добавляли покупки...</p>
+    </div>
+    {% endif %}
     <div class="row g-4">
       {% for purchase in purchases %}
       <div class="col-md-auto">
