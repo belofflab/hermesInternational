@@ -35,6 +35,7 @@ class Purchase(models.Model):
     quantity = models.IntegerField(verbose_name="Количество товара")
     address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True)
     delivery_method = models.CharField(verbose_name="Метод доставки", max_length=255, null=True)
+    is_deliveried = models.BooleanField(verbose_name="Доставлена", default=False)
     options = models.ManyToManyField(
         to=PurchaseDeliveryOption, verbose_name="Доступные опции доставки", blank=True
     )
