@@ -2,6 +2,8 @@ import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from uuid import uuid4
+
 User = get_user_model()
 
 
@@ -31,7 +33,8 @@ class Warehouse(models.Model):
         return f"{self.opened} -> {self.state} -> {self.city} -> {self.address}"
 
 
-class AccountWarehouse(Warehouse):
+class AccountWarehouse(models.Model):
+    warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
     account = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
@@ -39,4 +42,4 @@ class AccountWarehouse(Warehouse):
         verbose_name_plural = "Склады пользователей"
 
     def __str__(self) -> str:
-        return f"{self.account} -> {self.state} -> {self.city} -> {self.address}"
+        return f"{self.account} -> {self.warehouse.state} -> {self.warehouse.city} -> {self.warehouse.address}"

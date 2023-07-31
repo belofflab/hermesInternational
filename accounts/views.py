@@ -9,7 +9,7 @@ from django.views import View
 
 from . import forms, models
 
-from main.models import Warehouse
+from main.models import Warehouse, AccountWarehouse
 
 crypto = Crypto(token="110981:AA3FManAQxim0xd6CNZF8zf1uzUIziDbe5d")
 
@@ -37,7 +37,7 @@ class ProfileView(LoginRequiredMixin, View):
             "purchases": account.purchases.all()[:5],
             "last_visit": last_visit,
             "settings": settings,
-            "page": "profile"
+            "page": "profile",
         }
         return render(request, "accounts/profile.html", context)
 
@@ -49,6 +49,8 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
+        account_warehouses = AccountWarehouse.objects.filter(Q(account=request.user)).all()
+        print(account_warehouses)
         context = {"warehouses": Warehouse.objects.all(), "page": "warehouses"}
         return render(request, "accounts/warehouses.html", context)
 
@@ -80,7 +82,9 @@ class ProfilePackagesView(LoginRequiredMixin, View):
             Q(account=request.user) & Q(status="FORWARDING")
         )
         return render(
-            request, "accounts/packages.html", context={"purchases": purchases, "page":"packages"}
+            request,
+            "accounts/packages.html",
+            context={"purchases": purchases, "page": "packages"},
         )
 
 
@@ -94,7 +98,8 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect(reverse("main:index"))
-    
+
+
 class PurchaseDetailView(LoginRequiredMixin, View):
     def get(self, request, pk):
         try:
@@ -120,7 +125,7 @@ class InboxView(LoginRequiredMixin, View):
                     Q(status="BUYOUT") | Q(status="ACCEPTANCE")
                 ).all(),
                 "purchase_form": purchase_form,
-                "page": "inbox"
+                "page": "inbox",
             },
         )
 
@@ -175,5 +180,5 @@ class BuyOutView(LoginRequiredMixin, View):
         return render(
             request,
             "accounts/buyout.html",
-            context={"buyout": get_buyout_items_by_category(), "page":"buyout"},
+            context={"buyout": get_buyout_items_by_category(), "page": "buyout"},
         )
