@@ -1,3 +1,25 @@
+$(document).ready(function() {
+    $("#user_warehouse").submit(function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      var formData = $(this).serialize();
+
+      $.ajax({
+        url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
+        type: "POST",
+        data: formData,
+        success: function(response) {
+            $('#warehouseAddModal').modal('hide');
+            location.reload(); 
+        },
+        error: function(xhr, errmsg, err) {
+          console.log(xhr.status + ": " + xhr.responseText);
+        }
+      });
+    });
+  });
+
+
 $("form[name='signup']").submit((e) => {
     e.preventDefault();
     var error_box = $('#signup_errorbox');

@@ -7,7 +7,7 @@ from django.http.response import JsonResponse
 from django.views import View
 from django.utils.translation import gettext as _
 from decimal import Decimal, InvalidOperation
-
+from main.models import AccountWarehouse, Warehouse
 from accounts.models import Account, AccountData, Purchase, Visits, AccountNotifySettings
 
 
@@ -191,5 +191,18 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
         account.country = country
 
         account.save()
+
+        return JsonResponse({"status": True, "message":""})
+    
+
+class AccountWarehouseCreateView(LoginRequiredMixin, View):
+    def post(self, request):
+        
+        account=request.user,
+        address=request.POST.get('street'),
+        city=request.POST.get('city'),
+        state=request.POST.get('state'),
+        zip=request.POST.get('postal_code'),
+        phone=request.POST.get('phone')
 
         return JsonResponse({"status": True, "message":""})

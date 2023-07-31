@@ -2,7 +2,8 @@
 {% load static %}
 {% load i18n %}
 <html lang="en">
-
+  {% include 'accounts/forms/buy_form.html' %}
+  {% include 'accounts/forms/address_form.html' %}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,6 +44,13 @@
     <hr class="horizontal dark mt-0">
     <div class="  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
+        <div class="container">
+          <div class="container">
+            <div class="row">
+              <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#purchaseAddModal">{% translate 'Простая покупка' %}</button>
+            </div>
+          </div>
+        </div>
         <li class="nav-item">
           <a class="nav-link {% if page == 'inbox' %}active{% endif %} " href="{% url 'accounts:inbox' %}">
             <div

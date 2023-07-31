@@ -3,6 +3,7 @@
 {% load i18n %}
 
 {% block content %}
+{% include 'accounts/forms/warehouse_form.html' %}
   <div class="row">
     <div class="col-xl-12 s-12">
       <div class="card mb-4">
@@ -13,7 +14,7 @@
               <h1>{% translate 'Адрес в США' %}</h1>
             </div>
             <div class="col-2">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal" disabled>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
                 <img src="{% static 'accounts/img/plus-circle-svgrepo-com.svg' %}" height="21" width="21">
               </button>
             </div>
