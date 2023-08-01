@@ -8,7 +8,9 @@
     <div class="card-header">
       <div class="row">
         <div class="col-9">
-          <h1>{% translate 'Посылки' %}</h1>
+          <h1>{% translate 'Прием посылок' %}</h1>
+          <br>
+          <p class="mt-0">{% translate 'Мы принимаем посылки на ' %}<b><a href="{% url 'accounts:warehouses' %}"> {% translate 'адреса' %}</a></b></p>
           <br>
         </div>
       </div>
@@ -16,8 +18,8 @@
 
     {% if not purchases|length %}
     <div class="row g-4">
-      <p class="mb-0">На данный момент вы не оформляли посылки...</p>
-      <p class="mt-0">Для того, чтобы добавить посылку перейдите в <a href="{% url 'accounts:inbox' %}">покупки</a></p>
+      <p class="mb-0">{% translate 'На данный момент вы не оформляли посылки...' %}</p>
+      <p class="mt-0">{% translate 'Для того, чтобы добавить посылку перейдите в' %}<a href="{% url 'accounts:inbox' %}">{% translate 'покупки' %}</a></p>
     </div>
     {% endif %}
 

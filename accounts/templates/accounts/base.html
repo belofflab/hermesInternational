@@ -44,13 +44,6 @@
     <hr class="horizontal dark mt-0">
     <div class="  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <div class="container">
-          <div class="container">
-            <div class="row">
-              <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#purchaseAddModal">{% translate 'Простая покупка' %}</button>
-            </div>
-          </div>
-        </div>
         <li class="nav-item">
           <a class="nav-link {% if page == 'simple_purchase' %}active{% endif %} " href="{% url 'accounts:simple_purchase' %}">
             <div
@@ -74,7 +67,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">{% translate 'Простая покупка' %}</span>
+            <span class="nav-link-text ms-1">{% translate 'Покупка за вас' %}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -122,7 +115,7 @@
                 </g>
                 </svg>
             </div>
-            <span class="nav-link-text ms-1">{% translate 'Посылки' %}</span>
+            <span class="nav-link-text ms-1">{% translate 'Прием посылок' %}</span>
           </a>
         </li>
         <li class="nav-item">
