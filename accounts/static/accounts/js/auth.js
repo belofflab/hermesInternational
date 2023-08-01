@@ -1,23 +1,36 @@
-$(document).ready(function() {
-    $("#user_warehouse").submit(function(event) {
-      event.preventDefault(); // Prevent form submission
+$(document).ready(function () {
+    $("#user_warehouse").submit(function (event) {
+        event.preventDefault(); // Prevent form submission
 
-      var formData = $(this).serialize();
+        var phone = $('#warehouse_form_phone').val();
+        var city = $('#warehouse_form_city').val();
+        var street = $('#warehouse_form_street').val();
+        var state = $('#warehouse_form_state').val();
+        var postal_code = $('#warehouse_form_postal_code').val();
 
-      $.ajax({
-        url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
-        type: "POST",
-        data: formData,
-        success: function(response) {
-            $('#warehouseAddModal').modal('hide');
-            location.reload(); 
-        },
-        error: function(xhr, errmsg, err) {
-          console.log(xhr.status + ": " + xhr.responseText);
-        }
-      });
+        $('#warehouse_but').attr('disabled', 'disabled');
+
+        $.ajax({
+            url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
+            type: "POST",
+            data: {
+                phone:phone,
+                city:city,
+                street:street,
+                state:state,
+                postal_code:postal_code,
+                csrfmiddlewaretoken: csrf_token
+            },
+            success: function (response) {
+                $('#warehouseAddModal').modal('hide');
+                window.location.reload();
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
     });
-  });
+});
 
 
 $("form[name='signup']").submit((e) => {
@@ -55,12 +68,12 @@ $("form[name='signup']").submit((e) => {
 
 })
 
-$(document).ready(function() {
-    $('#notify').on('change', ':checkbox', function() {
-      $.post('/ajax/accounts/profile', $('#notify').serialize(), function(data) {
-      });
+$(document).ready(function () {
+    $('#notify').on('change', ':checkbox', function () {
+        $.post('/ajax/accounts/profile', $('#notify').serialize(), function (data) {
+        });
     });
-}); 
+});
 
 $('#signup_password').on('input', (e) => {
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -150,28 +163,28 @@ $("form[name='buy_out']").submit((e) => {
         return;
     }
     $("#buyout_but").attr('disabled', 'disabled');
-        $.ajax({
-            data: {
-                name: name,
-                url: url,
-                track_number: track_number,
-                quantity: quantity,
-                price: price,
-                status: status,
-                csrfmiddlewaretoken: csrf_token
-            },
-            method: 'POST',
-            url: '/ajax/inbox/create'
-        }).then((response) => {
-            if (response.status) {
-                $('#purchaseAddModal').modal('hide');
-                localStorage.setItem("purchaseToAddingAccountData", response.data)
-                $('#addressAddModal').modal('show');
-            } else {
-                error_box.text(response.message);
-                $("#buyout_but").removeAttr('disabled');
-            }
-        })
+    $.ajax({
+        data: {
+            name: name,
+            url: url,
+            track_number: track_number,
+            quantity: quantity,
+            price: price,
+            status: status,
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/inbox/create'
+    }).then((response) => {
+        if (response.status) {
+            $('#purchaseAddModal').modal('hide');
+            localStorage.setItem("purchaseToAddingAccountData", response.data)
+            $('#addressAddModal').modal('show');
+        } else {
+            error_box.text(response.message);
+            $("#buyout_but").removeAttr('disabled');
+        }
+    })
 
 
 })
@@ -196,7 +209,7 @@ $("form[name='address_inf']").submit((e) => {
     var sortedOptions = [];
 
     options.each((option) => {
-        if($(options[option]).prop('checked')) {
+        if ($(options[option]).prop('checked')) {
             sortedOptions.push(options[option].dataset.option)
         }
     })
@@ -306,6 +319,25 @@ function toAcceptance(purchaseId) {
     }).then((response) => {
         if (response.status) {
             // window.location.href = 'accounts/profile/inbox'
+            window.location.reload()
+        } else {
+            console.log(response)
+        }
+    })
+}
+
+
+
+function deleteUserWarehouse(warehouseId) {
+    $.ajax({
+        data: {
+            warehouse: parseInt(warehouseId),
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/accounts/profile/warehouses/delete',
+    }).then((response) => {
+        if (response.status) {
             window.location.reload()
         } else {
             console.log(response)

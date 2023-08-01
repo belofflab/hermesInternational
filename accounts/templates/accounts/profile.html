@@ -98,7 +98,7 @@
             <div class="col-md-4 text-end">
               <a data-bs-toggle="modal" data-bs-target="#editProfileAddModal">
                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-                  title="Edit Profile"></i>
+                  title="{% translate 'Изменить аккаунт' %}"></i>
               </a>
             </div>
           </div>
@@ -111,7 +111,7 @@
               112 90 76 </li> -->
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
               {{request.user}}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">{% translate 'Геолокация' %}:</strong> &nbsp; {{request.user.country}}
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">{% translate 'Страна' %}:</strong> &nbsp; {{request.user.country}}
             </li>
           </ul>
         </div>

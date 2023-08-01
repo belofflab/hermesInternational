@@ -49,9 +49,13 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        account_warehouses = AccountWarehouse.objects.filter(Q(account=request.user)).all()
-        print(account_warehouses)
-        context = {"warehouses": Warehouse.objects.all(), "page": "warehouses"}
+        account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
+        warehouses = Warehouse.objects.all()
+        context = {
+            "warehouses": warehouses,
+            "account_warehouses": account_warehouses,
+            "page": "warehouses",
+        }
         return render(request, "accounts/warehouses.html", context)
 
 

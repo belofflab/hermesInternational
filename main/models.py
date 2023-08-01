@@ -34,7 +34,11 @@ class Warehouse(models.Model):
 
 
 class AccountWarehouse(models.Model):
-    warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
+    address = models.CharField(verbose_name="Улица", max_length=255)
+    city = models.CharField(verbose_name="Город", max_length=255)
+    state = models.CharField(verbose_name="Штат", max_length=255)
+    zip = models.CharField(verbose_name="Почтовый индекс", max_length=255)
+    phone = models.CharField(verbose_name="Номер телефона", max_length=255)
     account = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
@@ -42,4 +46,4 @@ class AccountWarehouse(models.Model):
         verbose_name_plural = "Склады пользователей"
 
     def __str__(self) -> str:
-        return f"{self.account} -> {self.warehouse.state} -> {self.warehouse.city} -> {self.warehouse.address}"
+        return f"{self.account} -> {self.state} -> {self.city} -> {self.address}"

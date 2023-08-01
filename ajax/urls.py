@@ -9,6 +9,7 @@ urlpatterns = [
   path('account/data/update', views.AccountDataUpdateView.as_view(), name="account_data_update"),
   
   path('accounts/profile/warehouses/create', views.AccountWarehouseCreateView.as_view(), name='warehouse_create'),
+  path('accounts/profile/warehouses/delete', views.AccountWarehouseDeleteView.as_view(), name='warehouse_delete'),
 
 
   path('accounts/login', views.LoginView.as_view(), name="login"),

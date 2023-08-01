@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-31 09:59+0300\n"
+"POT-Creation-Date: 2023-08-01 08:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,36 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\templates\accounts\base.html:69
+#: .\accounts\templates\accounts\base.html:50
+#, fuzzy
+#| msgid "Последние покупки"
+msgid "Простая покупка"
+msgstr "Recent purchases"
+
+#: .\accounts\templates\accounts\base.html:77
 #: .\accounts\templates\accounts\inbox.html:13
 msgid "Покупки"
 msgstr "Purchases"
 
-#: .\accounts\templates\accounts\base.html:91
+#: .\accounts\templates\accounts\base.html:99
 #: .\accounts\templates\accounts\packages.html:11
 msgid "Посылки"
 msgstr "Packages"
 
-#: .\accounts\templates\accounts\base.html:112
+#: .\accounts\templates\accounts\base.html:120
 msgid "Скуп-лист"
 msgstr "Scoop-list"
 
-#: .\accounts\templates\accounts\base.html:135
+#: .\accounts\templates\accounts\base.html:143
 #, fuzzy
 #| msgid "Последний IP адрес"
 msgid "Мои адреса"
 msgstr "Last IP address"
 
-#: .\accounts\templates\accounts\base.html:161
+#: .\accounts\templates\accounts\base.html:169
 #: .\accounts\templates\accounts\payment.html:14
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:193
+#: .\accounts\templates\accounts\base.html:201
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:214
+#: .\accounts\templates\accounts\base.html:222
 msgid "Выход"
 msgstr "Logout"
 
@@ -70,32 +76,40 @@ msgid "Информация о получателе"
 msgstr "Recipient information"
 
 #: .\accounts\templates\accounts\forms\address_form.html:21
+#: .\accounts\templates\accounts\forms\warehouse_form.html:20
 msgid "Улица"
 msgstr "Street"
 
 #: .\accounts\templates\accounts\forms\address_form.html:29
+#: .\accounts\templates\accounts\forms\warehouse_form.html:28
 msgid "Город"
 msgstr "City"
 
 #: .\accounts\templates\accounts\forms\address_form.html:35
-#: .\accounts\templates\accounts\warehouses.html:31
+#: .\accounts\templates\accounts\forms\warehouse_form.html:34
+#: .\accounts\templates\accounts\warehouses.html:32
+#: .\accounts\templates\accounts\warehouses.html:61
 msgid "Штат"
 msgstr "State"
 
 #: .\accounts\templates\accounts\forms\address_form.html:42
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:39
+#: .\accounts\templates\accounts\profile.html:114
 msgid "Страна"
 msgstr "Country"
 
 #: .\accounts\templates\accounts\forms\address_form.html:57
+#: .\accounts\templates\accounts\forms\warehouse_form.html:43
 msgid "Номер телефона"
 msgstr "Phone number"
 
 #: .\accounts\templates\accounts\forms\address_form.html:63
+#: .\accounts\templates\accounts\forms\warehouse_form.html:49
 msgid "Почтовый код"
 msgstr "Postal code"
 
 #: .\accounts\templates\accounts\forms\address_form.html:76
+#: .\accounts\templates\accounts\forms\warehouse_form.html:54
 msgid "Разместить"
 msgstr "Place"
 
@@ -132,7 +146,7 @@ msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:54
-#: .\accounts\templates\accounts\inbox.html:54
+#: .\accounts\templates\accounts\inbox.html:55
 msgid "Пересыл"
 msgstr "Forwarding"
 
@@ -170,6 +184,10 @@ msgstr "Last name"
 msgid "Отчество"
 msgstr "Quantity"
 
+#: .\accounts\templates\accounts\forms\warehouse_form.html:7
+msgid "Добавление"
+msgstr "Add"
+
 #: .\accounts\templates\accounts\inbox-detail.html:11
 msgid "Покупка"
 msgstr "Purchase"
@@ -183,11 +201,11 @@ msgstr "Changing the declaration"
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:53
+#: .\accounts\templates\accounts\inbox.html:54
 msgid "Выкуп"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\packages.html:45
+#: .\accounts\templates\accounts\packages.html:46
 msgid "Расформировать"
 msgstr "Disband"
 
@@ -241,37 +259,49 @@ msgstr "Email"
 msgid "Информация"
 msgstr "Info"
 
+#: .\accounts\templates\accounts\profile.html:101
+#, fuzzy
+#| msgid "Пополнить баланс"
+msgid "Изменить аккаунт"
+msgstr "Edit profile"
+
 #: .\accounts\templates\accounts\profile.html:108
 msgid "Полное имя"
 msgstr "Full name"
-
-#: .\accounts\templates\accounts\profile.html:114
-msgid "Геолокация"
-msgstr "Location"
 
 #: .\accounts\templates\accounts\profile.html:123
 msgid "Последние покупки"
 msgstr "Recent purchases"
 
-#: .\accounts\templates\accounts\warehouses.html:13
+#: .\accounts\templates\accounts\warehouses.html:14
 msgid "Адрес в США"
 msgstr "USA address"
 
-#: .\accounts\templates\accounts\warehouses.html:27
+#: .\accounts\templates\accounts\warehouses.html:28
+#: .\accounts\templates\accounts\warehouses.html:52
 msgid "Склад"
 msgstr "Warehouse"
 
-#: .\accounts\templates\accounts\warehouses.html:30
+#: .\accounts\templates\accounts\warehouses.html:31
+#: .\accounts\templates\accounts\warehouses.html:60
 msgid "Адрес"
 msgstr "Adress"
 
-#: .\accounts\templates\accounts\warehouses.html:32
+#: .\accounts\templates\accounts\warehouses.html:33
+#: .\accounts\templates\accounts\warehouses.html:62
 msgid "Почтовый индекс"
 msgstr "Postal code"
 
-#: .\accounts\templates\accounts\warehouses.html:33
+#: .\accounts\templates\accounts\warehouses.html:34
+#: .\accounts\templates\accounts\warehouses.html:63
 msgid "Номер  телефона"
 msgstr "Phone number"
+
+#: .\accounts\templates\accounts\warehouses.html:55
+#, fuzzy
+#| msgid "Пополнить баланс"
+msgid "Удалить склад"
+msgstr "Remove warehouse"
 
 #: .\ajax\views.py:37
 msgid "Некорректный Email или пароль"
@@ -288,6 +318,9 @@ msgstr "User already exists"
 #: .\ajax\views.py:87
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
+
+#~ msgid "Геолокация"
+#~ msgstr "Location"
 
 #~ msgid "Склады"
 #~ msgstr "Warehouses"
