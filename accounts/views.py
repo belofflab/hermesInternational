@@ -195,3 +195,12 @@ class BuyOutView(LoginRequiredMixin, View):
             "accounts/buyout.html",
             context={"buyout": get_buyout_items_by_category(), "page": "buyout"},
         )
+
+
+class ProfileSimplePurchaseView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(
+            request,
+            "accounts/simple_purchase.html",
+            context={"page": "simple_purchase"},
+        )
