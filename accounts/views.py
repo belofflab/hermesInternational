@@ -6,6 +6,8 @@ from django.urls import reverse
 from payments.services.crypto import Crypto
 from collections import defaultdict
 from django.views import View
+from itertools import chain
+from payments.models import Invoice
 
 from . import forms, models
 
@@ -51,9 +53,9 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
     def get(self, request):
         account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
         warehouses = Warehouse.objects.all()
+
         context = {
-            "warehouses": warehouses,
-            "account_warehouses": account_warehouses,
+            "warehouses": list(chain(account_warehouses, warehouses)),
             "page": "warehouses",
         }
         return render(request, "accounts/warehouses.html", context)
@@ -70,12 +72,19 @@ class ProfilePaymentView(LoginRequiredMixin, View):
         amount = request_data.get("amount")
         receipt = crypto.createInvoice("USDT", amount=amount)
         if receipt.get("ok"):
-            return render(
-                request,
-                "accounts/pay.html",
-                context={"pay_url": receipt["result"].get("pay_url"), "amount": amount},
+            result = receipt.get("result")
+            new_invoice = Invoice.objects.create(
+                account=request.user,
+                invoice_id=result.get("invoice_id"),
+                asset=result.get("asset"),
+                amount=result.get("amount"),
+                pay_url=result.get("pay_url"),
+                status=result.get("status"),
+                created_at=result.get("created_at")
             )
-        return redirect(reverse("accounts:payment"))
+            invoice_detail_url = reverse('payments:invoice_detail', kwargs={'invoice_slug': new_invoice.slug})
+            return redirect(invoice_detail_url)
+        return render(request, "accounts/payment.html", context={"page": "payment"})
 
 
 class ProfilePackagesView(LoginRequiredMixin, View):

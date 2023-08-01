@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 
 from .models import Invoice
@@ -19,36 +20,11 @@ class InvoiceView(View):
         if payload["status"] == "expired":
             invoice.status = "expired"
             invoice.save()
-
-
-class InvoiceCreateView(View):
-    def get(self, request):
-        return render(request, "payments/create_invoice.html", context={})
-
-    def post(self, request):
-        created_invoice = crypto.createInvoice(
-            "USDT", amount=request.POST.get("amount")
-        )
-        if created_invoice.get("ok"):
-            result = created_invoice.get("result")
-            new_invoice = Invoice.objects.create(
-                account=request.user,
-                invoice_id=result["invoice_id"],
-                asset=result["asset"],
-                amount=result["amount"],
-                pay_url=result["pay_url"],
-                status=result["status"],
-                created_at=result["created_at"],
-            )
-            return render(
-                request,
-                "payments/create_invoice.html",
-                context={"new_invoice": new_invoice},
-            )
-        return render(
-            request,
-            "payments/create_invoice.html",
-            context={
-                "error": "Ошибка создания ссылки на оплату... Обратитесь в поддержку"
-            },
-        )
+    
+class InvoiceDetailView(LoginRequiredMixin, View):
+    def get(self, request, invoice_slug: str):
+        try:
+            invoice = Invoice.objects.get(slug=invoice_slug)
+        except Invoice.DoesNotExist:
+            return redirect("accounts:profile")
+        return render(request, "payments/pay.html", context={"invoice": invoice})

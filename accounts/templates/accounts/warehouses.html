@@ -4,74 +4,63 @@
 
 {% block content %}
 {% include 'accounts/forms/warehouse_form.html' %}
-  <div class="row">
-    <div class="col-xl-12 s-12">
-      <div class="card mb-4">
-        <div class="container">
-          <br>
-          <div class="row align-items-center">
-            <div class="col-10">
-              <h1>{% translate 'Адрес в США' %}</h1>
-            </div>
-            <div class="col-2">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
-                <img src="{% static 'accounts/img/plus-circle-svgrepo-com.svg' %}" height="21" width="21">
-              </button>
-            </div>
+<div class="row">
+  <div class="col-xl-12 s-12">
+    <div class="card mb-4">
+      <div class="container">
+        <br>
+        <div class="row align-items-center">
+          <div class="col-10">
+            <h1>{% translate 'Адрес в США' %}</h1>
           </div>
-          <br>
-          <div id="locker-slider" class="owl-carousel">
-            {% for warehouse in warehouses %}
-            <div class="item" data-dot="<button role='button' class='owl-dot'><span>{{forloop.counter}}</span></button>">
-              <div class="card">
+          <div class="col-2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
+              <img src="{% static 'accounts/img/plus-circle-svgrepo-com.svg' %}" height="21" width="21">
+            </button>
+          </div>
+        </div>
+        <br>
+        <div id="locker-slider" class="owl-carousel">
+          {% for warehouse in warehouses %}
+          <div class="item"
+            data-dot="<button role='button' {% if warehouse.account %} style='background-color: gold!important' {% endif %} class='owl-dot'><span>{{forloop.counter}}</span></button>">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-9">
+                    <h5 class="card-title">#{{forloop.counter}} {% translate 'Склад' %} - {{warehouse.city}}</h5>
+                  </div>
+                  <div class="col-3">
+                    {% if warehouse.account %}
+                    <svg onclick="deleteUserWarehouse('{{warehouse.id}}')" style="cursor: pointer;"
+                      data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Удалить склад' %}"
+                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="25px" height="25px">
+                      <path
+                        d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
+                    </svg>
+                    {% endif %}
+                  </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
+                  <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
+                  <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{warehouse.zip}}</li>
+                  <li class="list-group-item"><b>{% translate 'Номер телефона' %}: </b>{{warehouse.phone}}</li>
+                </ul>
                 <div class="card-body">
-                  <h5 class="card-title">#{{forloop.counter}} {% translate 'Склад' %} - {{warehouse.city}}</h5>
-                  <!-- <h6 class="card-subtitle mb-2 text-body-secondary">{{warehouse.city}}</h6> -->
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
-                    <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
-                    <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{warehouse.zip}}</li>
-                    <li class="list-group-item"><b>{% translate 'Номер  телефона' %}: </b>{{warehouse.phone}}</li>
-                  </ul>
-                  <div class="card-body">
-                    <!-- <ol>
+                  <!-- <ol>
                       <li> sd</li>
                       <li>sd</li>
                     </ol> -->
-                  </div>
                 </div>
               </div>
             </div>
-            {% endfor %}
-            {% for account_warehouse in account_warehouses %}
-            <div class="item" data-dot="<button role='button' style='background-color: gold!important' class='owl-dot'><span>{{forloop.counter}}</span></button>">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-9">
-                      <h5 class="card-title">#{{forloop.counter}} {% translate 'Склад' %} - {{account_warehouse.city}}</h5>
-                    </div>
-                    <div class="col-3">
-                      <svg onclick="deleteUserWarehouse('{{account_warehouse.id}}')" style="cursor: pointer;"  data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Удалить склад' %}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="25px" height="25px"><path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"/></svg>
-                    </div>
-                  </div>
-                  <!-- <h6 class="card-subtitle mb-2 text-body-secondary">{{warehouse.city}}</h6> -->
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{account_warehouse.address}}</li>
-                    <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{account_warehouse.state}}</li>
-                    <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{account_warehouse.zip}}</li>
-                    <li class="list-group-item"><b>{% translate 'Номер  телефона' %}: </b>{{account_warehouse.phone}}</li>
-                  </ul>
-                  <div class="card-body">
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}

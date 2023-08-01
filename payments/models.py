@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import Account
 
-
+from uuid import uuid4
 INVOICE_CHOICES = (
     ("ACTIVE", "active"),
     ("PAID", "paid"),
@@ -12,6 +12,7 @@ INVOICE_CHOICES = (
 class Invoice(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     invoice_id = models.BigIntegerField(verbose_name="Идентификатор транзакции")
+    slug = models.CharField(verbose_name="SLUG", max_length=1024, default=uuid4)
     asset = models.CharField(max_length=10)
     amount = models.DecimalField(verbose_name="Сумма", max_digits=12, decimal_places=2)
     pay_url = models.CharField(verbose_name="Ссылка на оплату", max_length=1024)
