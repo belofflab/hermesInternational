@@ -1,6 +1,6 @@
 Django
 Pillow
-uvicorn
+gunicorn
 python-dotenv
 psycopg2-binary
 pyTelegramBotAPI
