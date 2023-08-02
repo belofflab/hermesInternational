@@ -131,11 +131,14 @@ class PurchaseGetView(LoginRequiredMixin, View):
         request_data = request.POST
         purchaseId = request_data.get("purchaseId")
         addressId = request_data.get("addressId")
-
+        print(addressId)
         purchase = Purchase.objects.get(id=purchaseId)
 
         if addressId is not None:
-            address = AccountData.objects.get(id=addressId)
+            try:
+                address = AccountData.objects.get(id=addressId)
+            except AccountData.DoesNotExist:
+                address = None
         else:
             address = None
 

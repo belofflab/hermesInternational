@@ -376,14 +376,14 @@ function updatePurchaseData(purchaseId, addressId) {
     console.log(addressId);
   
     var requestData = {
-        purchaseId: parseInt(purchaseId),
-        csrfmiddlewaretoken: csrf_token
-      };
-    
-      if (!isNaN(Number(addressId))) {
-        requestData.addressId = Number(addressId);
-      }
-
+      purchaseId: parseInt(purchaseId),
+      csrfmiddlewaretoken: csrf_token
+    };
+  
+    if (!isNaN(addressId)) {
+      requestData.addressId = parseInt(addressId);
+    }
+  
     $.ajax({
       data: requestData,
       method: 'POST',
@@ -391,7 +391,7 @@ function updatePurchaseData(purchaseId, addressId) {
     }).then((response) => {
       if (response.status) {
         purchaseToForm(response.purchase);
-        if (!isNaN(Number(addressId))) {
+        if (!isNaN(addressId)) {
             addressToForm(response.address);
           }
         $('#purchaseAddModal').modal('show');
