@@ -140,6 +140,14 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+    
+    def update_balance(self, amount):
+        """
+        Update the balance of the account by adding the given amount.
+        To subtract, pass a negative value for the `amount`.
+        """
+        self.balance += amount
+        self.save()
 
 
 class Visits(models.Model):
