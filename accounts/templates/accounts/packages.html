@@ -3,6 +3,8 @@
 {% load format_text %}
 {% load i18n %}
 {% block content %}
+{% include 'accounts/forms/edit_buy_form.html' %}
+{% include 'accounts/forms/edit_address_form.html' %}
 <div class="row">
   <div class="col-12">
     <div class="card-header">
@@ -46,6 +48,10 @@
           <div class="card-body">
             <div class="d-grid mx-auto content-md-center">
               <button class="btn btn-outline-danger" onclick="toAcceptance('{{purchase.id}}')" type="button">{% translate 'Расформировать' %}</button>
+              <form method="post" id="send_data_to_form">
+                <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#purchaseAddModal" data-purchase="{{ purchase }}">{% translate 'Редактировать' %}</button>
+                <input type="hidden" name="id" value="{{ purchase.id }}">
+              </form>
             </div>
           </div>
           {% endif %}

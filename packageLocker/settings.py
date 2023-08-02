@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True if os.getenv("DEBUG") in ["1", 1, "True", True] else False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split()
-
+1
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS").split()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")

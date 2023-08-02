@@ -1,0 +1,85 @@
+{% load i18n %}
+
+<div class="modal fade" id="addressAddModal" tabindex="-1" aria-labelledby="addressee_info" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addressee_info">{% translate 'Информация о получателе' %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card mb-4">
+              <div class="container">
+                <form name="address_inf" method="post">
+                  <input type="hidden" name="purchase" value="">
+
+                  <!-- Text input -->
+                  <div class="form-outline mb-4">
+                    <input type="text" id="address_form_street" name="street" class="form-control" required>
+                    <label class="form-label" for="form6Example3">{% translate 'Улица' %}</label>
+                  </div>
+
+                  <!-- Text input -->
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_city" name="city" class="form-control" required>
+                        <label class="form-label" for="form6Example1">{% translate 'Город' %}</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_state" name="state" class="form-control" required>
+                        <label class="form-label" for="form6Example2">{% translate 'Штат' %}</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input class="form-control" name="country" id="country_selector_2" type="text" required>
+                    <label class="form-label" for="form6Example1">{% translate 'Страна' %}</label>
+                  </div>
+
+                  <select class="form-select mb-4" id="address_form_delivey_method" aria-label="Default select example">
+                    <option selected>Выберите метод доставки</option>
+                    <option value="ups">Ups</option>
+                    <option value="usps">Usps</option>
+                    <option value="fedex">Fedex</option>
+                    <option value="dhl">DHL</option>
+                  </select>
+
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_phone" name="phone" class="form-control" required>
+                        <label class="form-label" for="form6Example1">{% translate 'Номер телефона' %}</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="address_form_postal_code" name="postal_code" class="form-control" required>
+                        <label class="form-label" for="form6Example2">{% translate 'Почтовый код' %}</label>
+                      </div>
+                    </div>
+                  </div>
+                  {% for option in delivery_options %}
+                    <div class="form-check">
+                      <input class="form-check-input address_form_option" type="checkbox" data-option="{{option.id}}">
+                      <label class="form-check-label" for="flexCheckChecked">
+                        {{option.name}}
+                      </label>
+                    </div>
+                  {% endfor %}
+                  <br>
+                  <button type="submit" class="btn btn-primary btn-block mb-4">{% translate 'Разместить' %}</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

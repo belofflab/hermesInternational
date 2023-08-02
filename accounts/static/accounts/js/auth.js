@@ -130,6 +130,33 @@ $("#or_signup").on('click', (e) => {
     $('#signupModal').modal('show');
 })
 
+$(document).ready(function() {
+    // Event listener for button click
+    $('#send_data_to_form button').click(function() {
+      // Extract data from button or surrounding elements
+      var purchaseId = $(this).data('purchase');
+      var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+      // Send AJAX request
+      $.ajax({
+        url: '/your_django_view_url/',
+        type: 'POST',
+        data: {
+          'id': purchaseId,
+          'csrfmiddlewaretoken': csrfToken
+        },
+        success: function(response) {
+          // Handle success response
+          console.log(response);
+        },
+        error: function(xhr, status, error) {
+          // Handle error response
+          console.error(xhr.responseText);
+        }
+      });
+    });
+  });
+
 $("form[name='buy_out']").submit((e) => {
     e.preventDefault();
     var error_box = $('#buy_form_errorbox');
@@ -185,7 +212,6 @@ $("form[name='buy_out']").submit((e) => {
             $("#buyout_but").removeAttr('disabled');
         }
     })
-
 
 })
 
