@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes Logistics
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/hermesLogistics
+ExecStart=/home/hermesLogistics/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/hermesLogistics/packageLocker.sock packageLocker.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
