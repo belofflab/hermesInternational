@@ -94,23 +94,30 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         url = request_data.get("url")
         track_number = request_data.get("track_number")
         quantity = request_data.get("quantity")
+        id = request_data.get("id") 
+
         try:
             price = Decimal(request_data.get("price"))
         except InvalidOperation:
             return JsonResponse(
                 {"status": False, "message": _("Некорректно задана цена")}
             )
-
+        
         status = request_data.get("status")
-
-        new_purchase = Purchase.objects.create(
-            name=name,
-            link=url,
-            quantity=quantity,
-            price=price,
-            tracking_number=track_number,
-            status=status,
+        new_purchase, created = Purchase.objects.update_or_create(
+            id=id if id is not "" else len(Purchase.objects.all()) + 1,
+            defaults={
+                "name": name,
+                "link": url,
+                "tracking_number": track_number,
+                "quantity": quantity,
+                "price": price,
+                "status": status
+            }
         )
+        if not created:
+            new_purchase.status = "FORWARDING"
+            new_purchase.save()
 
         current_user = Account.objects.get(email=request.user)
 
@@ -123,10 +130,24 @@ class PurchaseGetView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
         purchaseId = request_data.get("purchaseId")
+        addressId = request_data.get("addressId")
 
         purchase = Purchase.objects.get(id=purchaseId)
 
-        return JsonResponse({"status": True, "purchase": model_to_dict(purchase)})
+        if addressId is not None:
+            address = AccountData.objects.get(id=addressId)
+        else:
+            address = None
+
+        response_data = {
+            "status": True,
+            "purchase": model_to_dict(purchase),
+        }
+
+        if address is not None:
+            response_data["address"] = model_to_dict(address)
+
+        return JsonResponse(response_data)
 
 
 class PurchaseChangeStatusView(LoginRequiredMixin, View):
@@ -135,12 +156,13 @@ class PurchaseChangeStatusView(LoginRequiredMixin, View):
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
         purchase.status = request_data.get("status")
         purchase.save()
-        return JsonResponse({"status": True, "message": json.loads})
+        return JsonResponse({"status": True})
 
 
 class AccountDataCreateView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
+        id = request_data.get('id')
         phone = request_data.get("phone")
         city = request_data.get("city")
         street = request_data.get("street")
@@ -149,16 +171,19 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         country = request_data.get("country")
         options = request_data.getlist("options[]")
         deliveryMethod = request_data.get("deliveryMethod")
-
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
 
-        new_account = AccountData.objects.create(
-            phone=phone,
-            city=city,
-            street=street,
-            state=state,
-            postal_code=postal_code,
-            country=country,
+        new_account, created = AccountData.objects.update_or_create(
+            id=id if id is not "" else len(AccountData.objects.all()) + 1,
+            defaults=
+            {
+                'phone': phone,
+                'city': city,
+                'street': street,
+                'state': state,
+                'postal_code': postal_code,
+                'country': country,
+            }
         )
 
         purchase.address = new_account

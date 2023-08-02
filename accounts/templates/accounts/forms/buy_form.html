@@ -15,6 +15,7 @@
               <div class="container">
                 <form name="buy_out" method="post">
                   {% csrf_token %}
+                  <input type="hidden" id="buy_form_id" value="">
                   <div class="card-header text-center">
                     <p id="buy_form_errorbox" style="color: red;" class="mb-0"></p>
                 </div>

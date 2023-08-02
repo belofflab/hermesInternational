@@ -134,6 +134,7 @@ $("#or_signup").on('click', (e) => {
 $("form[name='buy_out']").submit((e) => {
     e.preventDefault();
     var error_box = $('#buy_form_errorbox');
+    var id = $('#buy_form_id').val();
     var name = $('#buy_form_name').val();
     var url = $('#buy_form_url').val();
     var track_number = $('#buy_form_track_number').val();
@@ -155,6 +156,7 @@ $("form[name='buy_out']").submit((e) => {
             method: 'POST',
             url: '/ajax/inbox/create'
         }).then((response) => {
+            
             if (response.status) {
                 window.location.href = window.location.origin + '/accounts/profile/inbox/';
             } else {
@@ -166,6 +168,7 @@ $("form[name='buy_out']").submit((e) => {
     $("#buyout_but").attr('disabled', 'disabled');
     $.ajax({
         data: {
+            id: id,
             name: name,
             url: url,
             track_number: track_number,
@@ -193,6 +196,7 @@ $("form[name='buy_out']").submit((e) => {
 $("form[name='address_inf']").submit((e) => {
     e.preventDefault();
     var purchase = localStorage.getItem("purchaseToAddingAccountData");
+    var id = $('#address_form_id').val();
     // var first_name = $('#address_form_first_name').val();
     // var last_name = $('#address_form_last_name').val();
     // var sur_name = $('#address_form_sur_name').val();
@@ -218,6 +222,7 @@ $("form[name='address_inf']").submit((e) => {
 
     $.ajax({
         data: {
+            id: id,
             purchase: purchase,
             phone: phone,
             city: city,
@@ -347,29 +352,49 @@ function deleteUserWarehouse(warehouseId) {
 
 
 function purchaseToForm(purchase) {
+    $('#buy_form_id').val(purchase.id);
     $('#buy_form_name').val(purchase.name);
     $('#buy_form_url').val(purchase.link);
-    $('#buy_form_track_number').val(purchase.track_number);
+    $('#buy_form_track_number').val(purchase.tracking_number);
     $('#buy_form_quantity').val(purchase.quantity);
     $('#buy_form_price').val(purchase.price);
     $('#buy_form_price').val(purchase.price);
 }
 
-function updatePurchaseData(purchaseId) {
-    console.log(purchaseId)
-
-
-    $.ajax({
-        data: {
-            purchaseId: parseInt(purchaseId),
-            csrfmiddlewaretoken: csrf_token
-        },
-        method: 'POST',
-        url: '/ajax/accounts/profile/purchases/get',
-    }).then((response) => {
-        if (response.status) {
-            purchaseToForm(response.purchase)
-            $('#purchaseAddModal').modal('show');
-        }
-    })
+function addressToForm(address) {
+    $('#address_form_id').val(address.id);
+    $('#address_form_street').val(address.street);
+    $('#address_form_city').val(address.city);
+    $('#address_form_state').val(address.state);
+    $('#address_form_delivey_method').val(address.delivey_method);
+    $('#address_form_phone').val(address.phone);
+    $('#address_form_postal_code').val(address.postal_code);
 }
+
+function updatePurchaseData(purchaseId, addressId) {
+    console.log(purchaseId);
+    console.log(addressId);
+  
+    var requestData = {
+      purchaseId: parseInt(purchaseId),
+      csrfmiddlewaretoken: csrf_token
+    };
+  
+    if (!isNaN(addressId)) {
+      requestData.addressId = parseInt(addressId);
+    }
+  
+    $.ajax({
+      data: requestData,
+      method: 'POST',
+      url: '/ajax/accounts/profile/purchases/get',
+    }).then((response) => {
+      if (response.status) {
+        purchaseToForm(response.purchase);
+        if (!isNaN(addressId)) {
+            addressToForm(response.address);
+          }
+        $('#purchaseAddModal').modal('show');
+      }
+    });
+  }
