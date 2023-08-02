@@ -24,6 +24,22 @@
    */
 
 
+
+.shop-info {
+  display: flex;
+  align-items: center;
+
+}
+.shop-info img {
+  width: 25px !important;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.shop-info span {
+  font-weight: bold;
+  margin-left: 5px;
+}
 .package {
   background-color: #dccece;
   width: 130px;
