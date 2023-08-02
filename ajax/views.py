@@ -1,14 +1,23 @@
 import datetime
+import json
+from django.forms.models import model_to_dict
+from decimal import Decimal, InvalidOperation
 
 from django.contrib.auth import authenticate, login
-from accounts.services import message
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import JsonResponse
-from django.views import View
 from django.utils.translation import gettext as _
-from decimal import Decimal, InvalidOperation
+from django.views import View
+
+from accounts.models import (
+    Account,
+    AccountData,
+    AccountNotifySettings,
+    Purchase,
+    Visits,
+)
+from accounts.services import message
 from main.models import AccountWarehouse
-from accounts.models import Account, AccountData, Purchase, Visits, AccountNotifySettings
 
 
 def get_client_ip(request):
@@ -34,7 +43,9 @@ class LoginView(View):
                 ip=get_client_ip(request),
             )
             return JsonResponse({"status": True, "message": ""})
-        return JsonResponse({"status": False, "message": _("Некорректный Email или пароль")})
+        return JsonResponse(
+            {"status": False, "message": _("Некорректный Email или пароль")}
+        )
 
 
 def proceed_signup(request_data: dict):
@@ -49,7 +60,9 @@ class RegistrationView(View):
         if not proceed_signup(request_data):
             return JsonResponse({"status": False, "message": _("Некорректные данные")})
         if Account.objects.filter(email=request_data.get("email")).exists():
-            return JsonResponse({"status": False, "message": _("Пользователь уже существует")})
+            return JsonResponse(
+                {"status": False, "message": _("Пользователь уже существует")}
+            )
         new_user = Account()
         new_user.email = request_data.get("email")
         new_user.first_name = request_data.get("first_name")
@@ -84,7 +97,9 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         try:
             price = Decimal(request_data.get("price"))
         except InvalidOperation:
-            return JsonResponse({"status": False, "message": _("Некорректно задана цена")})
+            return JsonResponse(
+                {"status": False, "message": _("Некорректно задана цена")}
+            )
 
         status = request_data.get("status")
 
@@ -102,14 +117,25 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         current_user.purchases.add(new_purchase)
 
         return JsonResponse({"status": True, "data": new_purchase.id})
-    
+
+
+class PurchaseGetView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        purchaseId = request_data.get("purchaseId")
+
+        purchase = Purchase.objects.get(id=purchaseId)
+
+        return JsonResponse({"status": True, "purchase": model_to_dict(purchase)})
+
+
 class PurchaseChangeStatusView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
         purchase.status = request_data.get("status")
         purchase.save()
-        return JsonResponse({"status": True, "message": ""})
+        return JsonResponse({"status": True, "message": json.loads})
 
 
 class AccountDataCreateView(LoginRequiredMixin, View):
@@ -144,8 +170,8 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.save()
 
-
-        message.send(f"""
+        message.send(
+            f"""
 Пользователь: <b>{request.user}</b> оформил покупку
 
 Наименование: {purchase.name}
@@ -154,9 +180,8 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 Цена: ${purchase.price}
 Трек номер: {purchase.tracking_number}       
 
-""")
-
-
+"""
+        )
 
         return JsonResponse({"status": True, "message": ""})
 
@@ -166,15 +191,25 @@ class AccountNotifySettingsView(LoginRequiredMixin, View):
         try:
             settings = AccountNotifySettings.objects.get(account=request.user)
         except AccountNotifySettings.DoesNotExist:
-            return JsonResponse({"status": False, "message":"Account Settings does not exists"})
-        settings.is_telegram_status = True if request.POST.get('telegram_status') == 'on' else False
-        settings.is_email_status = True if request.POST.get('email_status') == 'on' else False
-        settings.is_telegram_news = True if request.POST.get('telegram_news') == 'on' else False
-        settings.is_email_news = True if request.POST.get('email_news') == 'on' else False
+            return JsonResponse(
+                {"status": False, "message": "Account Settings does not exists"}
+            )
+        settings.is_telegram_status = (
+            True if request.POST.get("telegram_status") == "on" else False
+        )
+        settings.is_email_status = (
+            True if request.POST.get("email_status") == "on" else False
+        )
+        settings.is_telegram_news = (
+            True if request.POST.get("telegram_news") == "on" else False
+        )
+        settings.is_email_news = (
+            True if request.POST.get("email_news") == "on" else False
+        )
         settings.save()
 
         return JsonResponse({"status": True, "message": ""})
-    
+
 
 class AccountDataUpdateView(LoginRequiredMixin, View):
     def post(self, request):
@@ -192,18 +227,17 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
 
         account.save()
 
-        return JsonResponse({"status": True, "message":""})
-    
+        return JsonResponse({"status": True, "message": ""})
+
 
 class AccountWarehouseCreateView(LoginRequiredMixin, View):
     def post(self, request):
-        
         request_data = request.POST
-        address=request_data.get('street')
-        city=request_data.get('city')
-        state=request_data.get('state')
-        zip=request_data.get('postal_code')
-        phone=request_data.get('phone')
+        address = request_data.get("street")
+        city = request_data.get("city")
+        state = request_data.get("state")
+        zip = request_data.get("postal_code")
+        phone = request_data.get("phone")
 
         AccountWarehouse.objects.create(
             account=Account.objects.get(email=request.user),
@@ -211,18 +245,17 @@ class AccountWarehouseCreateView(LoginRequiredMixin, View):
             city=city,
             state=state,
             zip=zip,
-            phone=phone
+            phone=phone,
         )
 
-        return JsonResponse({"status": True, "message":""})
-    
+        return JsonResponse({"status": True, "message": ""})
+
 
 class AccountWarehouseDeleteView(LoginRequiredMixin, View):
     def post(self, request):
-        
         request_data = request.POST
-        warehouse=request_data.get('warehouse')
+        warehouse = request_data.get("warehouse")
 
         AccountWarehouse.objects.filter(id=warehouse).delete()
 
-        return JsonResponse({"status": True, "message":""})
+        return JsonResponse({"status": True, "message": ""})

@@ -130,32 +130,6 @@ $("#or_signup").on('click', (e) => {
     $('#signupModal').modal('show');
 })
 
-$(document).ready(function() {
-    // Event listener for button click
-    $('#send_data_to_form button').click(function() {
-      // Extract data from button or surrounding elements
-      var purchaseId = $(this).data('purchase');
-      var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-
-      // Send AJAX request
-      $.ajax({
-        url: '/your_django_view_url/',
-        type: 'POST',
-        data: {
-          'id': purchaseId,
-          'csrfmiddlewaretoken': csrfToken
-        },
-        success: function(response) {
-          // Handle success response
-          console.log(response);
-        },
-        error: function(xhr, status, error) {
-          // Handle error response
-          console.error(xhr.responseText);
-        }
-      });
-    });
-  });
 
 $("form[name='buy_out']").submit((e) => {
     e.preventDefault();
@@ -367,6 +341,35 @@ function deleteUserWarehouse(warehouseId) {
             window.location.reload()
         } else {
             console.log(response)
+        }
+    })
+}
+
+
+function purchaseToForm(purchase) {
+    $('#buy_form_name').val(purchase.name);
+    $('#buy_form_url').val(purchase.link);
+    $('#buy_form_track_number').val(purchase.track_number);
+    $('#buy_form_quantity').val(purchase.quantity);
+    $('#buy_form_price').val(purchase.price);
+    $('#buy_form_price').val(purchase.price);
+}
+
+function updatePurchaseData(purchaseId) {
+    console.log(purchaseId)
+
+
+    $.ajax({
+        data: {
+            purchaseId: parseInt(purchaseId),
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchases/get',
+    }).then((response) => {
+        if (response.status) {
+            purchaseToForm(response.purchase)
+            $('#purchaseAddModal').modal('show');
         }
     })
 }

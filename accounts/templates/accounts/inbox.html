@@ -30,6 +30,7 @@
       <div class="col-md-auto">
         <div class="card" style="width: 15rem;">
           <div class="container">
+            <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Изменить аккаунт' %}"></i>
             {% if purchase.status == 'BUYOUT' %}
             <img src="{% static 'accounts/img/fast-time.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
             {% endif %}
@@ -39,6 +40,7 @@
             {% endif %}
             {% if purchase.status == 'ACCEPTANCE' %}
             <img src="{% static 'accounts/img/delivery-box.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
+            
             {% endif %}
           </div>
           <ul class="list-group list-group-light list-group-small">
@@ -53,6 +55,7 @@
               {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried %}
               <button class="btn btn-primary" onclick="toBuyout('{{purchase.id}}')" type="button" {% if purchase.status == "BUYOUT" %} disabled {% endif %} >{% translate 'Выкуп' %}</button>
               <button class="btn btn-success" onclick="toForwarding('{{purchase.id}}')" type="button">{% translate 'Пересыл' %}</button>
+              <button class="btn btn-outline-info btn-sm" type="button" onclick="updatePurchaseData('{{ purchase.id }}')">{% translate 'Редактировать' %}</button>
               {% endif %}
             </div>
           </div>

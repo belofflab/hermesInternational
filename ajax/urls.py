@@ -11,6 +11,8 @@ urlpatterns = [
   path('accounts/profile/warehouses/create', views.AccountWarehouseCreateView.as_view(), name='warehouse_create'),
   path('accounts/profile/warehouses/delete', views.AccountWarehouseDeleteView.as_view(), name='warehouse_delete'),
 
+  path('accounts/profile/purchases/get', views.PurchaseGetView.as_view(), name='purchase_get'),
+
 
   path('accounts/login', views.LoginView.as_view(), name="login"),
   path('accounts/signup', views.RegistrationView.as_view(), name="signup"),
