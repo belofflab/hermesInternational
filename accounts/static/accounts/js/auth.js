@@ -396,5 +396,5 @@ function updatePurchaseData(purchaseId, addressId) {
           }
         $('#purchaseAddModal').modal('show');
       }
-    });
+    }).catch((response) => console.log(response));
   }

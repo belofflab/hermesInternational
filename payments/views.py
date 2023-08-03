@@ -15,6 +15,8 @@ crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
 class InvoiceView(View):
     def post(self, request):
         payload = request.POST.get("payload")
+        print(request.POST)
+        print(payload)
         invoice = Invoice.objects.get(invoice_id=payload["invoice_id"])
         invoice.status = payload["status"]
 
