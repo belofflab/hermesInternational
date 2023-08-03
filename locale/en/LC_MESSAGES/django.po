@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 06:37+0300\n"
+"POT-Creation-Date: 2023-08-03 09:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\templates\accounts\base.html:70
+#: .\accounts\templates\accounts\base.html:57
 #: .\accounts\templates\accounts\simple_purchase.html:16
 msgid "Покупка за вас"
 msgstr "Purchase for you"
 
-#: .\accounts\templates\accounts\base.html:96
+#: .\accounts\templates\accounts\base.html:83
 #: .\accounts\templates\accounts\inbox.html:13
 msgid "Покупки"
 msgstr "Purchases"
 
-#: .\accounts\templates\accounts\base.html:118
-#: .\accounts\templates\accounts\packages.html:11
+#: .\accounts\templates\accounts\base.html:112
+#: .\accounts\templates\accounts\packages.html:13
 msgid "Прием посылок"
 msgstr "Packages"
 
-#: .\accounts\templates\accounts\base.html:139
+#: .\accounts\templates\accounts\base.html:138
 msgid "Скуп-лист"
 msgstr "Scoop-list"
 
-#: .\accounts\templates\accounts\base.html:162
+#: .\accounts\templates\accounts\base.html:170
 msgid "Мои адреса"
 msgstr "My addresses"
 
-#: .\accounts\templates\accounts\base.html:188
+#: .\accounts\templates\accounts\base.html:196
 #: .\accounts\templates\accounts\payment.html:14
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:220
+#: .\accounts\templates\accounts\base.html:228
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:241
+#: .\accounts\templates\accounts\base.html:254
 msgid "Выход"
 msgstr "Logout"
 
@@ -88,7 +88,7 @@ msgstr "State"
 
 #: .\accounts\templates\accounts\forms\address_form.html:42
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:39
-#: .\accounts\templates\accounts\profile.html:114
+#: .\accounts\templates\accounts\profile.html:113
 msgid "Страна"
 msgstr "Country"
 
@@ -112,49 +112,49 @@ msgstr "Place"
 msgid "Заполните декларацию"
 msgstr "Changing the declaration"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:22
+#: .\accounts\templates\accounts\forms\buy_form.html:23
 msgid "Наименование товара и брэнд"
 msgstr "Product name and brand"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:27
+#: .\accounts\templates\accounts\forms\buy_form.html:28
 msgid "Ссылка на магазин"
 msgstr "Shop URL"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:32
+#: .\accounts\templates\accounts\forms\buy_form.html:33
 msgid "Трек номер"
 msgstr "Track number"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:39
-#: .\accounts\templates\accounts\inbox.html:49
-#: .\accounts\templates\accounts\packages.html:43
+#: .\accounts\templates\accounts\forms\buy_form.html:40
+#: .\accounts\templates\accounts\inbox.html:53
+#: .\accounts\templates\accounts\packages.html:48
 msgid "Количество"
 msgstr "Quantity"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:46
-#: .\accounts\templates\accounts\inbox.html:48
-#: .\accounts\templates\accounts\packages.html:42
+#: .\accounts\templates\accounts\forms\buy_form.html:47
+#: .\accounts\templates\accounts\inbox.html:52
+#: .\accounts\templates\accounts\packages.html:47
 msgid "Цена"
 msgstr "Price"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:52
+#: .\accounts\templates\accounts\forms\buy_form.html:53
 msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:54
-#: .\accounts\templates\accounts\inbox.html:55
+#: .\accounts\templates\accounts\forms\buy_form.html:55
+#: .\accounts\templates\accounts\inbox.html:59
 msgid "Пересыл"
 msgstr "Forwarding"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:55
+#: .\accounts\templates\accounts\forms\buy_form.html:56
 msgid "Отправить в скуп-лист"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:61
+#: .\accounts\templates\accounts\forms\buy_form.html:62
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:45
 msgid "Отмена"
 msgstr "Cancel"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:62
+#: .\accounts\templates\accounts\forms\buy_form.html:63
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:46
 msgid "Далее"
 msgstr "Continue"
@@ -191,36 +191,47 @@ msgstr "Changing the declaration"
 msgid "На данный момент вы не добавляли покупки..."
 msgstr "You have not added any purchases at this time...."
 
-#: .\accounts\templates\accounts\inbox.html:46
-#: .\accounts\templates\accounts\packages.html:40
+#: .\accounts\templates\accounts\inbox.html:34
+#, fuzzy
+#| msgid "Изменить аккаунт"
+msgid "Изменить данные"
+msgstr "Edit profile"
+
+#: .\accounts\templates\accounts\inbox.html:50
+#: .\accounts\templates\accounts\packages.html:45
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:54
+#: .\accounts\templates\accounts\inbox.html:58
 msgid "Выкуп"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\packages.html:13
+#: .\accounts\templates\accounts\packages.html:15
 msgid "Мы принимаем посылки на "
 msgstr "We accept packages for"
 
-#: .\accounts\templates\accounts\packages.html:13
+#: .\accounts\templates\accounts\packages.html:15
 msgid "данные адреса"
 msgstr "address data"
 
-#: .\accounts\templates\accounts\packages.html:21
+#: .\accounts\templates\accounts\packages.html:23
 msgid "На данный момент вы не оформляли посылки..."
 msgstr "At this point you have not processed the packages....."
 
-#: .\accounts\templates\accounts\packages.html:22
+#: .\accounts\templates\accounts\packages.html:24
 msgid "Для того, чтобы добавить посылку перейдите в"
 msgstr "To add a parcel go to"
 
-#: .\accounts\templates\accounts\packages.html:22
+#: .\accounts\templates\accounts\packages.html:24
 msgid "покупки"
 msgstr "purchases"
 
-#: .\accounts\templates\accounts\packages.html:48
+#: .\accounts\templates\accounts\packages.html:34
+#: .\accounts\templates\accounts\profile.html:100
+msgid "Изменить аккаунт"
+msgstr "Edit profile"
+
+#: .\accounts\templates\accounts\packages.html:53
 msgid "Расформировать"
 msgstr "Disband"
 
@@ -258,15 +269,11 @@ msgstr "Email"
 msgid "Информация"
 msgstr "Info"
 
-#: .\accounts\templates\accounts\profile.html:101
-msgid "Изменить аккаунт"
-msgstr "Edit profile"
-
-#: .\accounts\templates\accounts\profile.html:108
+#: .\accounts\templates\accounts\profile.html:107
 msgid "Полное имя"
 msgstr "Full name"
 
-#: .\accounts\templates\accounts\profile.html:123
+#: .\accounts\templates\accounts\profile.html:122
 msgid "Последние покупки"
 msgstr "Recent purchases"
 
@@ -298,19 +305,19 @@ msgstr "Adress"
 msgid "Почтовый индекс"
 msgstr "Postal code"
 
-#: .\ajax\views.py:37
+#: .\ajax\views.py:47
 msgid "Некорректный Email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:50 .\ajax\views.py:74
+#: .\ajax\views.py:61 .\ajax\views.py:87
 msgid "Некорректные данные"
 msgstr "Incorrect data"
 
-#: .\ajax\views.py:52
+#: .\ajax\views.py:64
 msgid "Пользователь уже существует"
 msgstr "User already exists"
 
-#: .\ajax\views.py:87
+#: .\ajax\views.py:103
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
@@ -322,23 +329,23 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
-#: .\payments\templates\payments\pay.html:312
+#: .\payments\templates\payments\pay.html:313
 msgid "Валюта"
 msgstr "Currency"
 
-#: .\payments\templates\payments\pay.html:317
+#: .\payments\templates\payments\pay.html:318
 msgid "Сеть"
 msgstr "Network"
 
-#: .\payments\templates\payments\pay.html:322
+#: .\payments\templates\payments\pay.html:323
 msgid "Сумма"
 msgstr "Amount"
 
-#: .\payments\templates\payments\pay.html:335
+#: .\payments\templates\payments\pay.html:337
 msgid "По этим реквизитам перевод доступен в течение"
 msgstr "According to these details, the transfer is available during"
 
-#: .\payments\templates\payments\pay.html:337
+#: .\payments\templates\payments\pay.html:339
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
 
