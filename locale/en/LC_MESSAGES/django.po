@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-04 08:56+0300\n"
+"POT-Creation-Date: 2023-08-04 15:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,16 +165,69 @@ msgid "Изменение профиля"
 msgstr "Changing the profile"
 
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:22
+#: .\accounts\templates\accounts\forms\signup_form.html:32
 msgid "Имя"
 msgstr "First name"
 
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:28
+#: .\accounts\templates\accounts\forms\signup_form.html:37
 msgid "Фамилия"
 msgstr "Last name"
 
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:34
 msgid "Отчество"
 msgstr "Surname"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:15
+msgid "Авторизация"
+msgstr "Sign in"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:28
+#: .\accounts\templates\accounts\forms\signin_form.html:30
+#: .\accounts\templates\accounts\forms\signup_form.html:43
+msgid "Электронная почта"
+msgstr "Email"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:34
+#: .\accounts\templates\accounts\forms\signin_form.html:36
+#: .\accounts\templates\accounts\forms\signup_form.html:48
+msgid "Пароль"
+msgstr "Password"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:41
+msgid "Запомнить меня"
+msgstr "Remember me"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:44
+#: .\accounts\templates\accounts\forms\signup_form.html:68
+#: .\main\templates\main\index.html:28 .\main\templates\main\index.html:92
+msgid "Авторизоваться"
+msgstr "Sign in"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:50
+msgid "Ещё не зарегистрированы?"
+msgstr "Not registered yet?"
+
+#: .\accounts\templates\accounts\forms\signin_form.html:51
+#: .\accounts\templates\accounts\forms\signup_form.html:14
+msgid "Регистрация"
+msgstr "Sign up"
+
+#: .\accounts\templates\accounts\forms\signup_form.html:59
+msgid "Я согласен с "
+msgstr "I agree with "
+
+#: .\accounts\templates\accounts\forms\signup_form.html:60
+msgid "Условиями использования"
+msgstr "Terms and Conditions"
+
+#: .\accounts\templates\accounts\forms\signup_form.html:64
+msgid "Зарегистрироваться"
+msgstr "Sign up"
+
+#: .\accounts\templates\accounts\forms\signup_form.html:66
+msgid "Уже есть аккаунт?"
+msgstr "Already have an account?"
 
 #: .\accounts\templates\accounts\forms\warehouse_form.html:7
 msgid "Добавление"
@@ -193,10 +246,8 @@ msgid "На данный момент вы не добавляли покупк�
 msgstr "You have not added any purchases at this time...."
 
 #: .\accounts\templates\accounts\inbox.html:34
-#, fuzzy
-#| msgid "Изменить аккаунт"
 msgid "Изменить данные"
-msgstr "Edit profile"
+msgstr "Edit data"
 
 #: .\accounts\templates\accounts\inbox.html:50
 #: .\accounts\templates\accounts\packages.html:45
@@ -322,12 +373,6 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\main\templates\main\index.html:28 .\main\templates\main\index.html:92
-#, fuzzy
-#| msgid "Расформировать"
-msgid "Авторизоваться"
-msgstr "Disband"
-
 #: .\main\templates\main\index.html:45 .\main\templates\main\index.html:725
 msgid "Отзывы"
 msgstr "Reviews"
@@ -417,8 +462,8 @@ msgid ""
 "\"Достаточно хорошая панель, поддержка быстро ответила на все вопросы, "
 "рекомендую.\""
 msgstr ""
-"\"Good enough panel, support responded quickly to all questions, "
-"I recommend.\""
+"\"Good enough panel, support responded quickly to all questions, I recommend."
+"\""
 
 #: .\main\templates\main\index.html:535
 msgid "1 неделю назад"
@@ -428,7 +473,8 @@ msgstr "1 week ago"
 msgid ""
 "\"Сервис \"Покупка за вас\" стал моим фаворитом среди других проектов!!!\""
 msgstr ""
-"\"Service \"Purchase for you\" has become my favorite among other projects!!!\""
+"\"Service \"Purchase for you\" has become my favorite among other projects!!!"
+"\""
 
 #: .\main\templates\main\index.html:558
 msgid "3 недели назад"
@@ -436,8 +482,9 @@ msgstr "3 weeks ago"
 
 #: .\main\templates\main\index.html:562
 msgid "\"Хороший сервис. Быстро помог решить проблему с покупкой в США\""
-msgstr 
-"\"Good service. Quickly helped to solve the problem with the purchase in the US\""
+msgstr ""
+"\"Good service. Quickly helped to solve the problem with the purchase in the "
+"US\""
 
 #: .\main\templates\main\index.html:602
 msgid "Часто задаваемые вопросы"
@@ -476,8 +523,8 @@ msgid ""
 "Когда вы покупаете товар в США просто указываете адрес одного из адресов в "
 "панели. Заполняете декларацию и адрес доставки"
 msgstr ""
-"When you buy a product in the US, simply enter the address of one of the addresses in the "
-"panels. Fill in the declaration and delivery address"
+"When you buy a product in the US, simply enter the address of one of the "
+"addresses in the panels. Fill in the declaration and delivery address"
 
 #: .\main\templates\main\index.html:673
 msgid "Какие есть дополнения?"
@@ -487,9 +534,7 @@ msgstr "What are the add-ons?"
 msgid ""
 "Мы можем упаковать заказ в пакет, убрать обувную коробку или добавить "
 "обрешётку."
-msgstr ""
-"We can pack the order in a bag, remove the shoe box or add "
-"crate."
+msgstr "We can pack the order in a bag, remove the shoe box or add crate."
 
 #: .\main\templates\main\index.html:706
 msgid "Доставляйте быстро в любую точку мира"
@@ -518,6 +563,14 @@ msgstr "All rights reserved. Copyright"
 #: .\main\templates\main\index.html:765
 msgid "Разработано"
 msgstr "Developed by"
+
+#: .\packageLocker\settings.py:125
+msgid "English"
+msgstr ""
+
+#: .\packageLocker\settings.py:126
+msgid "Russian"
+msgstr ""
 
 #: .\payments\templates\payments\pay.html:313
 msgid "Валюта"

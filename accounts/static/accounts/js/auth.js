@@ -1,3 +1,5 @@
+const recaptchaSiteKey = '6LfOQH4nAAAAABxGt4chFCdBD8dJrQBHADpXr4yO';
+
 $(document).ready(function () {
     $("#user_warehouse").submit(function (event) {
         event.preventDefault(); // Prevent form submission
@@ -14,11 +16,11 @@ $(document).ready(function () {
             url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
             type: "POST",
             data: {
-                phone:phone,
-                city:city,
-                street:street,
-                state:state,
-                postal_code:postal_code,
+                phone: phone,
+                city: city,
+                street: street,
+                state: state,
+                postal_code: postal_code,
                 csrfmiddlewaretoken: csrf_token
             },
             success: function (response) {
@@ -62,27 +64,37 @@ $("form[name='signup']").submit((e) => {
     if (!mediumRegex.test(password)) {
         return;
     }
-    $("#signup_but").attr('disabled', 'disabled');
-    $.ajax({
-        data: {
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            password: password,
-            country: country,
-            csrfmiddlewaretoken: csrf_token
-        },
-        method: 'POST',
-        url: '/ajax/accounts/signup'
-    }).then((response) => {
-        if (response.status) {
-            window.location.href = '/accounts/profile/'
-        } else {
-            error_box.text(response.message);
-            $("#signup_but").removeAttr('disabled');
-        }
-    })
 
+    grecaptcha.enterprise.ready(function () {
+        grecaptcha.enterprise.execute(recaptchaSiteKey, { action: 'signup' }).then(function (token) {
+            // Append the reCAPTCHA token to your form data
+            const form = document.querySelector('form[name="signup"]');
+            const formData = new FormData(form);
+            formData.append('recaptcha_token', token);
+
+
+            $("#signup_but").attr('disabled', 'disabled');
+            $.ajax({
+                data: {
+                    first_name: first_name,
+                    last_name: last_name,
+                    email: email,
+                    password: password,
+                    country: country,
+                    csrfmiddlewaretoken: csrf_token
+                },
+                method: 'POST',
+                url: '/ajax/accounts/signup'
+            }).then((response) => {
+                if (response.status) {
+                    window.location.href = '/accounts/profile/'
+                } else {
+                    error_box.text(response.message);
+                    $("#signup_but").removeAttr('disabled');
+                }
+            })
+        })
+    })
 })
 
 $(document).ready(function () {
@@ -98,11 +110,11 @@ $('#signup_password').on('input', (e) => {
     var password = $('#signup_password')
 
     if (strongRegex.test(password.val())) {
-        password.css('color', 'green')
+        password.css('color', 'green');
     } else if (mediumRegex.test(password.val())) {
-        password.css('color', 'orange')
+        password.css('color', 'orange');
     } else {
-        password.css('color', 'red')
+        password.css('color', 'red');
     }
 
 })
@@ -114,25 +126,32 @@ $("form[name='signin']").submit((e) => {
     var email = $('#signin_email').val();
     var password = $('#signin_password').val();
 
-    $("#signin_but").attr('disabled', 'disabled');
+    grecaptcha.enterprise.ready(function () {
+        grecaptcha.enterprise.execute(recaptchaSiteKey, { action: 'signup' }).then(function (token) {
+            // Append the reCAPTCHA token to your form data
+            const form = document.querySelector('form[name="signup"]');
+            const formData = new FormData(form);
+            formData.append('recaptcha_token', token);
+            $("#signin_but").attr('disabled', 'disabled');
 
-    $.ajax({
-        data: {
-            email: email,
-            password: password,
-            csrfmiddlewaretoken: csrf_token
-        },
-        method: 'POST',
-        url: '/ajax/accounts/login'
-    }).then((response) => {
-        if (response.status) {
-            window.location.href = '/accounts/profile/';
-        } else {
-            errorbox.text(response.message);
-            $("#signin_but").removeAttr('disabled');
-        }
+            $.ajax({
+                data: {
+                    email: email,
+                    password: password,
+                    csrfmiddlewaretoken: csrf_token
+                },
+                method: 'POST',
+                url: '/ajax/accounts/login'
+            }).then((response) => {
+                if (response.status) {
+                    window.location.href = '/accounts/profile/';
+                } else {
+                    errorbox.text(response.message);
+                    $("#signin_but").removeAttr('disabled');
+                }
+            })
+        })
     })
-
 })
 
 
@@ -158,12 +177,12 @@ $("form[name='buy_out']").submit((e) => {
     var quantity = $('#buy_form_quantity').val();
     var price = $('#buy_form_price').val();
     var status = $("#buy_option_select option:selected").val();
-    if (!id.length > 0) {id=null}
+    if (!id.length > 0) { id = null }
     if (status === "BUYOUT") {
         $("#buyout_but").attr('disabled', 'disabled');
         $.ajax({
             data: {
-                id:parseInt(id),
+                id: parseInt(id),
                 name: name,
                 url: url,
                 track_number: track_number,
@@ -175,7 +194,7 @@ $("form[name='buy_out']").submit((e) => {
             method: 'POST',
             url: '/ajax/inbox/create'
         }).then((response) => {
-            
+
             if (response.status) {
                 window.location.href = '/accounts/profile/inbox/';
             } else {
@@ -395,24 +414,24 @@ function updatePurchaseData(purchaseId, addressId) {
     var requestData = {
         purchaseId: parseInt(purchaseId),
         csrfmiddlewaretoken: csrf_token
-      };
-    
-      if (addressId.length > 0) {
+    };
+
+    if (addressId.length > 0) {
         requestData.addressId = Number(addressId);
-      }
+    }
 
     $.ajax({
-      data: requestData,
-      method: 'POST',
-      url: '/ajax/accounts/profile/purchases/get',
+        data: requestData,
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchases/get',
     }).then((response) => {
-      if (response.status) {
-        console.log(response)
-        purchaseToForm(response.purchase);
-        if (addressId.length > 0) {
-            addressToForm(response.address);
-          }
-        $('#purchaseAddModal').modal('show');
-      }
+        if (response.status) {
+            console.log(response)
+            purchaseToForm(response.purchase);
+            if (addressId.length > 0) {
+                addressToForm(response.address);
+            }
+            $('#purchaseAddModal').modal('show');
+        }
     }).catch((response) => console.log(response));
-  }
+}
