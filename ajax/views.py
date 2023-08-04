@@ -173,7 +173,7 @@ class PurchaseGetView(LoginRequiredMixin, View):
             "status": purchase.status,
             "created": purchase.created.isoformat(),  # Convert DateTimeField to ISO 8601 format.
         }
-
+        
         if addressId is not None:
             try:
                 address = AccountData.objects.get(id=addressId)
@@ -216,11 +216,12 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         deliveryMethod = request_data.get("deliveryMethod")
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
 
-        kwargs = {
+        kwargs = {  
             "defaults": {
                 'phone': phone,
                 'city': city,
                 'street': street,
+                'delivery_method': deliveryMethod,
                 'state': state,
                 'postal_code': postal_code,
                 'country': country,

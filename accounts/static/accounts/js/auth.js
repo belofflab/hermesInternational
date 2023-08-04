@@ -244,7 +244,7 @@ $("form[name='address_inf']").submit((e) => {
     var state = $('#address_form_state').val();
     var postal_code = $('#address_form_postal_code').val();
     var country = $('#country_selector_2').val();
-    var deliveryMethod = $("#address_form_delivey_method").val();
+    var deliveryMethod = $("#address_form_delivery_method").val();
 
     var options = $(".address_form_option");
 
@@ -411,6 +411,7 @@ function addressToForm(address) {
     $('#address_form_state').val(address.state);
     $('#address_form_phone').val(address.phone);
     $('#address_form_postal_code').val(address.postal_code);
+    
 }
 
 function updatePurchaseData(purchaseId, addressId) {
@@ -433,8 +434,7 @@ function updatePurchaseData(purchaseId, addressId) {
             purchaseToForm(response.purchase);
             if (addressId.length > 0) {
                 var address = response.address
-                address.delivery_method = 
-response.purchase.delivery_method
+                address.delivery_method = response.purchase.delivery_method
                 address.options = response.purchase.options
                 addressToForm(response.address);
             }
