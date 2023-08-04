@@ -158,10 +158,12 @@ $("form[name='buy_out']").submit((e) => {
     var quantity = $('#buy_form_quantity').val();
     var price = $('#buy_form_price').val();
     var status = $("#buy_option_select option:selected").val();
+    if (!id.length > 0) {id=null}
     if (status === "BUYOUT") {
         $("#buyout_but").attr('disabled', 'disabled');
         $.ajax({
             data: {
+                id:parseInt(id),
                 name: name,
                 url: url,
                 track_number: track_number,
@@ -175,7 +177,7 @@ $("form[name='buy_out']").submit((e) => {
         }).then((response) => {
             
             if (response.status) {
-                window.location.href = window.location.origin + '/accounts/profile/inbox/';
+                window.location.href = '/accounts/profile/inbox/';
             } else {
                 error_box.text(response.message);
             }
@@ -185,7 +187,7 @@ $("form[name='buy_out']").submit((e) => {
     $("#buyout_but").attr('disabled', 'disabled');
     $.ajax({
         data: {
-            id: id,
+            id: parseInt(id),
             name: name,
             url: url,
             track_number: track_number,
@@ -375,29 +377,27 @@ function purchaseToForm(purchase) {
     $('#buy_form_track_number').val(purchase.tracking_number);
     $('#buy_form_quantity').val(purchase.quantity);
     $('#buy_form_price').val(purchase.price);
-    $('#buy_form_price').val(purchase.price);
+    $('#buy_option_select').val(purchase.status);
 }
 
 function addressToForm(address) {
+    console.log(address)
     $('#address_form_id').val(address.id);
     $('#address_form_street').val(address.street);
     $('#address_form_city').val(address.city);
     $('#address_form_state').val(address.state);
-    $('#address_form_delivey_method').val(address.delivey_method);
+    $('#address_form_delivey_method').val(address.delivery_method);
     $('#address_form_phone').val(address.phone);
     $('#address_form_postal_code').val(address.postal_code);
 }
 
 function updatePurchaseData(purchaseId, addressId) {
-    console.log(purchaseId);
-    console.log(addressId);
-  
     var requestData = {
         purchaseId: parseInt(purchaseId),
         csrfmiddlewaretoken: csrf_token
       };
     
-      if (!isNaN(Number(addressId))) {
+      if (addressId.length > 0) {
         requestData.addressId = Number(addressId);
       }
 
@@ -407,8 +407,9 @@ function updatePurchaseData(purchaseId, addressId) {
       url: '/ajax/accounts/profile/purchases/get',
     }).then((response) => {
       if (response.status) {
+        console.log(response)
         purchaseToForm(response.purchase);
-        if (!isNaN(Number(addressId))) {
+        if (addressId.length > 0) {
             addressToForm(response.address);
           }
         $('#purchaseAddModal').modal('show');

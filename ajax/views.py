@@ -104,9 +104,9 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             )
         
         status = request_data.get("status")
-        new_purchase, created = Purchase.objects.update_or_create(
-            id=id if id is not "" else len(Purchase.objects.all()) + 1,
-            defaults={
+        
+        kwargs = {
+            "defaults": {
                 "name": name,
                 "link": url,
                 "tracking_number": track_number,
@@ -114,9 +114,22 @@ class PurchaseCreateView(LoginRequiredMixin, View):
                 "price": price,
                 "status": status
             }
-        )
-        if not created:
-            new_purchase.status = "FORWARDING"
+        }
+        try:
+            id = int(id)
+        except ValueError:
+            id = None
+        if id is not None:
+            if isinstance(id, str):
+                kwargs["id"] = None
+            else:
+                kwargs["id"] = id
+        else:
+            kwargs["id"] = None 
+
+        new_purchase, created = Purchase.objects.update_or_create(**kwargs)
+        if created:
+            new_purchase.status = "ACCEPTANCE"
             new_purchase.save()
 
         current_user = Account.objects.get(email=request.user)
@@ -126,12 +139,40 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         return JsonResponse({"status": True, "data": new_purchase.id})
 
 
+def serialize_address(address, delivery_method):
+    if address is None: return None
+    return {
+                'id': address.id,
+                'phone': address.phone,
+                'city': address.city,
+                'street': address.street,
+                'delivery_method':delivery_method,
+                'state': address.state,
+                'postal_code': address.postal_code,
+                'country': address.country,
+            }
+    
+
 class PurchaseGetView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
         purchaseId = request_data.get("purchaseId")
         addressId = request_data.get("addressId")
         purchase = Purchase.objects.get(id=purchaseId)
+        purchase_data = {
+            "id": purchase.id,
+            "name": purchase.name,
+            "link": purchase.link,
+            "quantity": purchase.quantity,
+            "address": serialize_address(purchase.address, purchase.delivery_method),  # Assuming you want to serialize the address_id.
+            "delivery_method": purchase.delivery_method,
+            "is_deliveried": purchase.is_deliveried,
+            "options": [option.name for option in purchase.options.all()],  # Assuming you want to serialize the option names.
+            "price": str(purchase.price),  # Convert DecimalField to string.
+            "tracking_number": purchase.tracking_number,
+            "status": purchase.status,
+            "created": purchase.created.isoformat(),  # Convert DateTimeField to ISO 8601 format.
+        }
 
         if addressId is not None:
             try:
@@ -143,7 +184,7 @@ class PurchaseGetView(LoginRequiredMixin, View):
 
         response_data = {
             "status": True,
-            "purchase": model_to_dict(purchase),
+            "purchase": purchase_data,
         }
 
         if address is not None:
@@ -175,10 +216,8 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         deliveryMethod = request_data.get("deliveryMethod")
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
 
-        new_account, created = AccountData.objects.update_or_create(
-            id=id if id is not "" else len(AccountData.objects.all()) + 1,
-            defaults=
-            {
+        kwargs = {
+            "defaults": {
                 'phone': phone,
                 'city': city,
                 'street': street,
@@ -186,7 +225,21 @@ class AccountDataCreateView(LoginRequiredMixin, View):
                 'postal_code': postal_code,
                 'country': country,
             }
-        )
+        }
+        try:
+            id = int(id)
+        except ValueError:
+            id = None
+        if id is not None:
+            if isinstance(id, str):
+                kwargs["id"] = None
+            else:
+                kwargs["id"] = id
+        else:
+            kwargs["id"] = None 
+        
+
+        new_account, created = AccountData.objects.update_or_create(**kwargs)
 
         purchase.address = new_account
         purchase.status = "FORWARDING"
