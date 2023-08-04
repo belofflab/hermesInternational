@@ -33,6 +33,23 @@ $(document).ready(function () {
 });
 
 
+$('#signinModal').on('show.bs.modal', function (event) {
+    if (user !== 'AnonymousUser') {
+        window.location.href = '/accounts/profile/';
+        return;
+    }
+    return;
+});
+
+$('#signupModal').on('show.bs.modal', function (event) {
+    if (user !== 'AnonymousUser') {
+        window.location.href = '/accounts/profile/';
+        return;
+    }
+    return;
+});
+
+
 $("form[name='signup']").submit((e) => {
     e.preventDefault();
     var error_box = $('#signup_errorbox');

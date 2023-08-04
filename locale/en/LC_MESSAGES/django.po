@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 09:08+0300\n"
+"POT-Creation-Date: 2023-08-04 08:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\templates\accounts\base.html:57
+#: .\accounts\templates\accounts\base.html:54
 #: .\accounts\templates\accounts\simple_purchase.html:16
 msgid "Покупка за вас"
 msgstr "Purchase for you"
 
-#: .\accounts\templates\accounts\base.html:83
+#: .\accounts\templates\accounts\base.html:80
 #: .\accounts\templates\accounts\inbox.html:13
 msgid "Покупки"
 msgstr "Purchases"
 
-#: .\accounts\templates\accounts\base.html:112
+#: .\accounts\templates\accounts\base.html:109
 #: .\accounts\templates\accounts\packages.html:13
 msgid "Прием посылок"
 msgstr "Packages"
 
-#: .\accounts\templates\accounts\base.html:138
+#: .\accounts\templates\accounts\base.html:135
 msgid "Скуп-лист"
 msgstr "Scoop-list"
 
-#: .\accounts\templates\accounts\base.html:170
+#: .\accounts\templates\accounts\base.html:167
 msgid "Мои адреса"
 msgstr "My addresses"
 
-#: .\accounts\templates\accounts\base.html:196
+#: .\accounts\templates\accounts\base.html:193
 #: .\accounts\templates\accounts\payment.html:14
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:228
+#: .\accounts\templates\accounts\base.html:225
+#: .\main\templates\main\index.html:24 .\main\templates\main\index.html:85
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:254
+#: .\accounts\templates\accounts\base.html:251
 msgid "Выход"
 msgstr "Logout"
 
@@ -321,13 +322,202 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\packageLocker\settings.py:125
-msgid "English"
-msgstr ""
+#: .\main\templates\main\index.html:28 .\main\templates\main\index.html:92
+#, fuzzy
+#| msgid "Расформировать"
+msgid "Авторизоваться"
+msgstr "Disband"
 
-#: .\packageLocker\settings.py:126
-msgid "Russian"
+#: .\main\templates\main\index.html:45 .\main\templates\main\index.html:725
+msgid "Отзывы"
+msgstr "Reviews"
+
+#: .\main\templates\main\index.html:51 .\main\templates\main\index.html:715
+msgid "О нас"
+msgstr "About us"
+
+#: .\main\templates\main\index.html:137 .\main\templates\main\index.html:483
+msgid "Попробовать"
+msgstr "Try for free"
+
+#: .\main\templates\main\index.html:292
+msgid "Новые заказы"
+msgstr "New orders"
+
+#: .\main\templates\main\index.html:293
+msgid "Ежедневно добавляются"
+msgstr "Added daily"
+
+#: .\main\templates\main\index.html:304
+msgid "Доставки"
+msgstr "Delivery"
+
+#: .\main\templates\main\index.html:305
+msgid "Успешно доставленные заказы"
+msgstr "Successfully delivered orders"
+
+#: .\main\templates\main\index.html:316 .\main\templates\main\index.html:498
+msgid "Наши клиенты"
+msgstr "Our clients"
+
+#: .\main\templates\main\index.html:317
+msgid "Среднее количество пользователей в сутки"
+msgstr "Average number of users per day"
+
+#: .\main\templates\main\index.html:435
+msgid "Панель"
+msgstr "Dashboard"
+
+#: .\main\templates\main\index.html:437
+msgid "Приятный дизайн"
+msgstr "Nice design"
+
+#: .\main\templates\main\index.html:439
+msgid "Удобство пользования"
+msgstr "Ease of use"
+
+#: .\main\templates\main\index.html:442
+msgid "Мы можем добавить покупку за вас"
+msgstr "We can add a purchase for you"
+
+#: .\main\templates\main\index.html:444
+msgid "Более простого способа заказа вы ещё нее видели"
+msgstr "An easier way to order you have seen it"
+
+#: .\main\templates\main\index.html:452
+msgid "Действительные данные о заказах на ваши адреса"
+msgstr "Valid order data to your addresses"
+
+#: .\main\templates\main\index.html:461
+msgid "Добавления покупки в один клик"
+msgstr "Adding a purchase in one click"
+
+#: .\main\templates\main\index.html:470
+msgid "Быстрый отклик панели"
+msgstr "Fast panel response"
+
+#: .\main\templates\main\index.html:479
+msgid "Поддержка 24/7"
+msgstr "Support 24/7"
+
+#: .\main\templates\main\index.html:499
+msgid "Что о нас говорят"
+msgstr "What they say about us"
+
+#: .\main\templates\main\index.html:500
+msgid "Не уверены в нас? Просто взгляните на отзывы!"
+msgstr "Not sure about us? Just take a look at the reviews!"
+
+#: .\main\templates\main\index.html:512
+msgid "1 день назад"
+msgstr "1 day ago"
+
+#: .\main\templates\main\index.html:516
+msgid ""
+"\"Достаточно хорошая панель, поддержка быстро ответила на все вопросы, "
+"рекомендую.\""
 msgstr ""
+"\"Good enough panel, support responded quickly to all questions, "
+"I recommend.\""
+
+#: .\main\templates\main\index.html:535
+msgid "1 неделю назад"
+msgstr "1 week ago"
+
+#: .\main\templates\main\index.html:539
+msgid ""
+"\"Сервис \"Покупка за вас\" стал моим фаворитом среди других проектов!!!\""
+msgstr ""
+"\"Service \"Purchase for you\" has become my favorite among other projects!!!\""
+
+#: .\main\templates\main\index.html:558
+msgid "3 недели назад"
+msgstr "3 weeks ago"
+
+#: .\main\templates\main\index.html:562
+msgid "\"Хороший сервис. Быстро помог решить проблему с покупкой в США\""
+msgstr 
+"\"Good service. Quickly helped to solve the problem with the purchase in the US\""
+
+#: .\main\templates\main\index.html:602
+msgid "Часто задаваемые вопросы"
+msgstr "Frequently asked questions"
+
+#: .\main\templates\main\index.html:603
+msgid "Ниже смотрите, что спрашивали другие пользователи."
+msgstr "See what other users have asked below."
+
+#: .\main\templates\main\index.html:615
+msgid " Как работает \"покупка за вас\"?"
+msgstr "How does 'buy for you' work?"
+
+#: .\main\templates\main\index.html:624
+msgid "Вы просто заполняете декларацию о товаре и платите за него."
+msgstr "You simply fill out a declaration about the product and pay for it."
+
+#: .\main\templates\main\index.html:625
+msgid "Мы приобретаем его в США и отправляем."
+msgstr "We purchase it in the USA and ship it."
+
+#: .\main\templates\main\index.html:635
+msgid "Безопасно ли отправлять посылку?"
+msgstr "Is it safe to send a parcel?"
+
+#: .\main\templates\main\index.html:644
+msgid "Да. Все риски несёт за собой наша платформа."
+msgstr "Yes. All risks are borne by our platform."
+
+#: .\main\templates\main\index.html:654
+msgid "Как совершить первую покупку?"
+msgstr "How to make the first purchase?"
+
+#: .\main\templates\main\index.html:663
+msgid ""
+"Когда вы покупаете товар в США просто указываете адрес одного из адресов в "
+"панели. Заполняете декларацию и адрес доставки"
+msgstr ""
+"When you buy a product in the US, simply enter the address of one of the addresses in the "
+"panels. Fill in the declaration and delivery address"
+
+#: .\main\templates\main\index.html:673
+msgid "Какие есть дополнения?"
+msgstr "What are the add-ons?"
+
+#: .\main\templates\main\index.html:682
+msgid ""
+"Мы можем упаковать заказ в пакет, убрать обувную коробку или добавить "
+"обрешётку."
+msgstr ""
+"We can pack the order in a bag, remove the shoe box or add "
+"crate."
+
+#: .\main\templates\main\index.html:706
+msgid "Доставляйте быстро в любую точку мира"
+msgstr "Deliver fast to anywhere in the world"
+
+#: .\main\templates\main\index.html:711
+msgid "Компания"
+msgstr "Company"
+
+#: .\main\templates\main\index.html:720
+msgid "Контакты"
+msgstr "Contacts"
+
+#: .\main\templates\main\index.html:738
+msgid "Лицензии"
+msgstr "Licenses"
+
+#: .\main\templates\main\index.html:742
+msgid "Оферта"
+msgstr "Offer"
+
+#: .\main\templates\main\index.html:761
+msgid "Все права защищены. Copyright"
+msgstr "All rights reserved. Copyright"
+
+#: .\main\templates\main\index.html:765
+msgid "Разработано"
+msgstr "Developed by"
 
 #: .\payments\templates\payments\pay.html:313
 msgid "Валюта"
