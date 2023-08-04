@@ -167,7 +167,7 @@ class PurchaseGetView(LoginRequiredMixin, View):
             "address": serialize_address(purchase.address, purchase.delivery_method),  # Assuming you want to serialize the address_id.
             "delivery_method": purchase.delivery_method,
             "is_deliveried": purchase.is_deliveried,
-            "options": [option.name for option in purchase.options.all()],  # Assuming you want to serialize the option names.
+            "options": [option.id for option in purchase.options.all()],  # Assuming you want to serialize the option names.
             "price": str(purchase.price),  # Convert DecimalField to string.
             "tracking_number": purchase.tracking_number,
             "status": purchase.status,
@@ -250,18 +250,18 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.save()
 
-        message.send(
-            f"""
-Пользователь: <b>{request.user}</b> оформил покупку
+#         message.send(
+#             f"""
+# Пользователь: <b>{request.user}</b> оформил покупку
 
-Наименование: {purchase.name}
-Ссылка на товар: <a href="{purchase.link}">{purchase.name}</a>
-Количество: {purchase.quantity}
-Цена: ${purchase.price}
-Трек номер: {purchase.tracking_number}       
+# Наименование: {purchase.name}
+# Ссылка на товар: <a href="{purchase.link}">{purchase.name}</a>
+# Количество: {purchase.quantity}
+# Цена: ${purchase.price}
+# Трек номер: {purchase.tracking_number}       
 
-"""
-        )
+# """
+#         )
 
         return JsonResponse({"status": True, "message": ""})
 

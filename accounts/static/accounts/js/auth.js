@@ -401,11 +401,14 @@ function purchaseToForm(purchase) {
 
 function addressToForm(address) {
     console.log(address)
+    address.options.forEach(option => {
+        $("#" + option).prop("checked", 1);
+    });
+    $('#address_form_delivery_method').val(address.delivery_method)
     $('#address_form_id').val(address.id);
     $('#address_form_street').val(address.street);
     $('#address_form_city').val(address.city);
     $('#address_form_state').val(address.state);
-    $('#address_form_delivey_method').val(address.delivery_method);
     $('#address_form_phone').val(address.phone);
     $('#address_form_postal_code').val(address.postal_code);
 }
@@ -429,6 +432,10 @@ function updatePurchaseData(purchaseId, addressId) {
             console.log(response)
             purchaseToForm(response.purchase);
             if (addressId.length > 0) {
+                var address = response.address
+                address.delivery_method = 
+response.purchase.delivery_method
+                address.options = response.purchase.options
                 addressToForm(response.address);
             }
             $('#purchaseAddModal').modal('show');

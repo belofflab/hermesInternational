@@ -42,8 +42,8 @@
                     <label class="form-label" for="form6Example1">{% translate 'Страна' %}</label>
                   </div>
 
-                  <select class="form-select mb-4" id="address_form_delivey_method" aria-label="Default select example">
-                    <option selected>Выберите метод доставки</option>
+                  <select class="form-select mb-4" id="address_form_delivery_method" aria-label="Default select example">
+                    <option>Выберите метод доставки</option>
                     <option value="ups">Ups</option>
                     <option value="usps">Usps</option>
                     <option value="fedex">Fedex</option>
@@ -66,7 +66,7 @@
                   </div>
                   {% for option in delivery_options %}
                     <div class="form-check">
-                      <input class="form-check-input address_form_option" type="checkbox" data-option="{{option.id}}">
+                      <input class="form-check-input address_form_option" type="checkbox" data-option="{{option.id}}" id="{{option.id}}">
                       <label class="form-check-label" for="flexCheckChecked">
                         {{option.name}}
                       </label>
