@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-05 16:21+0300\n"
+"POT-Creation-Date: 2023-08-05 16:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -381,11 +381,11 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\main\templates\main\index.html:46 .\main\templates\main\index.html:721
+#: .\main\templates\main\index.html:46 .\main\templates\main\index.html:720
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\main\templates\main\index.html:52 .\main\templates\main\index.html:716
+#: .\main\templates\main\index.html:52 .\main\templates\main\index.html:715
 msgid "О нас"
 msgstr "About us"
 
@@ -406,7 +406,7 @@ msgstr ""
 "opportunity to open personal addresses in America, which allows you to make "
 "the receipt of goods even more convenient and safe."
 
-#: .\main\templates\main\index.html:135
+#: .\main\templates\main\index.html:135 .\main\templates\main\index.html:481
 msgid "Попробовать"
 msgstr "Try for free"
 
@@ -426,7 +426,7 @@ msgstr "Delivery"
 msgid "Успешно доставленные заказы"
 msgstr "Successfully delivered orders"
 
-#: .\main\templates\main\index.html:314 .\main\templates\main\index.html:497
+#: .\main\templates\main\index.html:314 .\main\templates\main\index.html:496
 msgid "Наши клиенты"
 msgstr "Our clients"
 
@@ -470,19 +470,19 @@ msgstr "Fast panel response"
 msgid "Поддержка 24/7"
 msgstr "Support 24/7"
 
-#: .\main\templates\main\index.html:498
+#: .\main\templates\main\index.html:497
 msgid "Что о нас говорят"
 msgstr "What they say about us"
 
-#: .\main\templates\main\index.html:499
+#: .\main\templates\main\index.html:498
 msgid "Не уверены в нас? Просто взгляните на отзывы!"
 msgstr "Not sure about us? Just take a look at the reviews!"
 
-#: .\main\templates\main\index.html:511
+#: .\main\templates\main\index.html:510
 msgid "1 день назад"
 msgstr "1 day ago"
 
-#: .\main\templates\main\index.html:515
+#: .\main\templates\main\index.html:514
 msgid ""
 "\"Достаточно хорошая панель, поддержка быстро ответила на все вопросы, "
 "рекомендую.\""
@@ -490,84 +490,84 @@ msgstr ""
 "\"Good enough panel, support responded quickly to all questions, I recommend."
 "\""
 
-#: .\main\templates\main\index.html:534
+#: .\main\templates\main\index.html:533
 msgid "1 неделю назад"
 msgstr "1 week ago"
 
-#: .\main\templates\main\index.html:538
+#: .\main\templates\main\index.html:537
 msgid ""
 "\"Сервис \"Покупка за вас\" стал моим фаворитом среди других проектов!!!\""
 msgstr ""
 "\"Service \"Purchase for you\" has become my favorite among other projects!!!"
 "\""
 
-#: .\main\templates\main\index.html:557
+#: .\main\templates\main\index.html:556
 msgid "3 недели назад"
 msgstr "3 weeks ago"
 
-#: .\main\templates\main\index.html:561
+#: .\main\templates\main\index.html:560
 msgid "\"Хороший сервис. Быстро помог решить проблему с покупкой в США\""
 msgstr ""
 "\"Good service. Quickly helped to solve the problem with the purchase in the "
 "US\""
 
-#: .\main\templates\main\index.html:601
+#: .\main\templates\main\index.html:600
 msgid "Часто задаваемые вопросы"
 msgstr "Frequently asked questions"
 
-#: .\main\templates\main\index.html:602
+#: .\main\templates\main\index.html:601
 msgid "Ниже смотрите, что спрашивали другие пользователи."
 msgstr "See what other users have asked below."
 
-#: .\main\templates\main\index.html:614
+#: .\main\templates\main\index.html:613
 msgid " Как работает \"покупка за вас\"?"
 msgstr "How does 'buy for you' work?"
 
-#: .\main\templates\main\index.html:623
+#: .\main\templates\main\index.html:622
 msgid "Вы просто заполняете декларацию о товаре и платите за него."
 msgstr "You simply fill out a declaration about the product and pay for it."
 
-#: .\main\templates\main\index.html:624
+#: .\main\templates\main\index.html:623
 msgid "Мы приобретаем его в США и отправляем."
 msgstr "We purchase it in the USA and ship it."
 
-#: .\main\templates\main\index.html:634
+#: .\main\templates\main\index.html:633
 msgid "Безопасно ли отправлять посылку?"
 msgstr "Is it safe to send a parcel?"
 
-#: .\main\templates\main\index.html:643
+#: .\main\templates\main\index.html:642
 msgid "Да. Все риски несёт за собой наша платформа."
 msgstr "Yes. All risks are borne by our platform."
 
-#: .\main\templates\main\index.html:653
+#: .\main\templates\main\index.html:652
 msgid "Как совершить первую покупку?"
 msgstr "How to make the first purchase?"
 
-#: .\main\templates\main\index.html:673
+#: .\main\templates\main\index.html:672
 msgid "Какие есть дополнения?"
 msgstr "What are the add-ons?"
 
-#: .\main\templates\main\index.html:707
+#: .\main\templates\main\index.html:706
 msgid "Доставляйте быстро в любую точку мира"
 msgstr "Deliver fast to anywhere in the world"
 
-#: .\main\templates\main\index.html:712
+#: .\main\templates\main\index.html:711
 msgid "Компания"
 msgstr "Company"
 
-#: .\main\templates\main\index.html:734
+#: .\main\templates\main\index.html:733
 msgid "Лицензии"
 msgstr "Licenses"
 
-#: .\main\templates\main\index.html:738
+#: .\main\templates\main\index.html:737
 msgid "Оферта"
 msgstr "Offer"
 
-#: .\main\templates\main\index.html:757
+#: .\main\templates\main\index.html:756
 msgid "Все права защищены. Copyright"
 msgstr "All rights reserved. Copyright"
 
-#: .\main\templates\main\index.html:761
+#: .\main\templates\main\index.html:760
 msgid "Разработано"
 msgstr "Developed by"
 
