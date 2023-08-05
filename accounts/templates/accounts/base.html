@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 {% load static %}
 {% load i18n %}
-<html lang="en">
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{LANGUAGE_CODE}}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'accounts/img/apple-icon.png' %}">
   <link rel="icon" type="image/png" href="{% static 'accounts/img/logo.png' %}">
   <title>
     Hermes International | Dashboard
   </title>
+
+
+  <link rel="canonical" href="https://hermesinternational.ru/accounts/profile/" />
+
+  <meta name="keywords" content="hermes, Hermes, Hermes International, Перевозка товаров из США">
+  <meta name="description" content="Hermes International - лучший выбор для всех, кто хочет получить доступ к товарам из Соединенных Штатов и получить их прямо в свою страну. Наша компания специализируется на международной пересылке товаров, позволяя вам покупать на американских площадках онлайн и получать заказы с минимальными затратами и максимальным комфортом. У нас есть возможность открывать личные адреса в Америке, что позволяет сделать получение товаров еще более удобным и безопасным.">
+
+  <meta name="twitter:card" content="product">
+  <meta name="twitter:site" content="@belofflab">
+  <meta name="twitter:title" content="Hermes International">
+  <meta name="twitter:description" content="Hermes International - лучший выбор для всех, кто хочет получить доступ к товарам из Соединенных Штатов и получить их прямо в свою страну. Наша компания специализируется на международной пересылке товаров, позволяя вам покупать на американских площадках онлайн и получать заказы с минимальными затратами и максимальным комфортом. У нас есть возможность открывать личные адреса в Америке, что позволяет сделать получение товаров еще более удобным и безопасным.">
+  <meta name="twitter:creator" content="@belofflab">
+  <meta name="twitter:image" content="https://hermesinternational.ru/favicon.png">
+
+  <meta property="fb:app_id" content="1">
+  <meta property="og:title" content="Hermes International" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hermesinternational.ru" />
+  <meta property="og:image" content="https://hermesinternational.ru/favicon.png" />
+  <meta property="og:description" content="Hermes International - лучший выбор для всех, кто хочет получить доступ к товарам из Соединенных Штатов и получить их прямо в свою страну. Наша компания специализируется на международной пересылке товаров, позволяя вам покупать на американских площадках онлайн и получать заказы с минимальными затратами и максимальным комфортом. У нас есть возможность открывать личные адреса в Америке, что позволяет сделать получение товаров еще более удобным и безопасным." />
+  <meta property="og:site_name" content="Hermes International" />
+
   <!--     Fonts and icons     -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,12 +44,12 @@
   <link href="{% static 'accounts/css/nucleo-svg.css' %}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{% static 'accounts/css/soft-ui-dashboard.css' %}" rel="stylesheet" />
+
   <link rel="stylesheet" href="{% static 'accounts/css/countrySelect.min.css' %}">
-  <!-- Nepcha Analytics (nepcha.com) -->
-  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-  <!-- <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script> -->
+
   <link rel="stylesheet" href="{% static 'accounts/css/owl.carousel.min.css' %}">
   <link rel="stylesheet" href="{% static 'accounts/css/owl.theme.default.min.css' %}">
+  
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfOQH4nAAAAABxGt4chFCdBD8dJrQBHADpXr4yO"></script>
 </head>
 
