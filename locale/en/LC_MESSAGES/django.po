@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-04 16:13+0300\n"
+"POT-Creation-Date: 2023-08-05 08:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,14 +126,14 @@ msgid "Трек номер"
 msgstr "Track number"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:40
-#: .\accounts\templates\accounts\inbox.html:53
-#: .\accounts\templates\accounts\packages.html:48
+#: .\accounts\templates\accounts\inbox.html:64
+#: .\accounts\templates\accounts\packages.html:64
 msgid "Количество"
 msgstr "Quantity"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:47
-#: .\accounts\templates\accounts\inbox.html:52
-#: .\accounts\templates\accounts\packages.html:47
+#: .\accounts\templates\accounts\inbox.html:63
+#: .\accounts\templates\accounts\packages.html:63
 msgid "Цена"
 msgstr "Price"
 
@@ -142,7 +142,7 @@ msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:55
-#: .\accounts\templates\accounts\inbox.html:59
+#: .\accounts\templates\accounts\inbox.html:70
 msgid "Пересыл"
 msgstr "Forwarding"
 
@@ -245,16 +245,22 @@ msgstr "Changing the declaration"
 msgid "На данный момент вы не добавляли покупки..."
 msgstr "You have not added any purchases at this time...."
 
-#: .\accounts\templates\accounts\inbox.html:34
+#: .\accounts\templates\accounts\inbox.html:36
+#: .\accounts\templates\accounts\packages.html:41
+msgid "Посылка доставлена"
+msgstr "Package delivered"
+
+#: .\accounts\templates\accounts\inbox.html:43
+#: .\accounts\templates\accounts\packages.html:48
 msgid "Изменить данные"
 msgstr "Edit data"
 
-#: .\accounts\templates\accounts\inbox.html:50
-#: .\accounts\templates\accounts\packages.html:45
+#: .\accounts\templates\accounts\inbox.html:61
+#: .\accounts\templates\accounts\packages.html:61
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:58
+#: .\accounts\templates\accounts\inbox.html:69
 msgid "Выкуп"
 msgstr "Buyout"
 
@@ -278,12 +284,11 @@ msgstr "To add a parcel go to"
 msgid "покупки"
 msgstr "purchases"
 
-#: .\accounts\templates\accounts\packages.html:34
-#: .\accounts\templates\accounts\profile.html:100
-msgid "Изменить аккаунт"
-msgstr "Edit profile"
+#: .\accounts\templates\accounts\packages.html:36
+msgid "Заполните данные получателя"
+msgstr "Fill in the recipient's details"
 
-#: .\accounts\templates\accounts\packages.html:53
+#: .\accounts\templates\accounts\packages.html:69
 msgid "Расформировать"
 msgstr "Disband"
 
@@ -320,6 +325,10 @@ msgstr "Email"
 #: .\accounts\templates\accounts\profile.html:96
 msgid "Информация"
 msgstr "Info"
+
+#: .\accounts\templates\accounts\profile.html:100
+msgid "Изменить аккаунт"
+msgstr "Edit profile"
 
 #: .\accounts\templates\accounts\profile.html:107
 msgid "Полное имя"
@@ -389,11 +398,10 @@ msgid ""
 "на американских площадках онлайн и получать заказы с минимальными затратами "
 "и максимальным комфортом."
 msgstr ""
-"We are the best choice for anyone who wants to access goods from"
-" connected and received them directly to their country. Our company "
-"specializes in the international shipment of goods, meets you to buy"
-"on the American sites online and receive orders with cost"
-"and maximum comfort."
+"We are the best choice for anyone who wants to access goods from connected "
+"and received them directly to their country. Our company specializes in the "
+"international shipment of goods, meets you to buyon the American sites "
+"online and receive orders with costand maximum comfort."
 
 #: .\main\templates\main\index.html:134 .\main\templates\main\index.html:480
 msgid "Попробовать"
