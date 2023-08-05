@@ -2,7 +2,10 @@ import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from uuid import uuid4
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
+
 
 User = get_user_model()
 
@@ -31,6 +34,24 @@ class Warehouse(models.Model):
 
     def __str__(self) -> str:
         return f"{self.opened} -> {self.state} -> {self.city} -> {self.address}"
+
+
+class WarehouseShop(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    warehouse = GenericForeignKey("content_type", "object_id")
+    name = models.CharField(verbose_name="Имя магазина", max_length=255)
+    quantity = models.BigIntegerField(
+        verbose_name="Количество заказов на адрес", default=0
+    )
+    image = models.ImageField(verbose_name="Путь до фото", max_length=2048)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+    class Meta:
+        verbose_name = "Магазин склада"
+        verbose_name_plural = "Магазины склада"
 
 
 class AccountWarehouse(models.Model):

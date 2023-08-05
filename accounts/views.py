@@ -11,7 +11,7 @@ from payments.models import Invoice
 
 from . import forms, models
 
-from main.models import Warehouse, AccountWarehouse
+from main.models import Warehouse, AccountWarehouse, WarehouseShop
 
 crypto = Crypto(token="110981:AA3FManAQxim0xd6CNZF8zf1uzUIziDbe5d")
 
@@ -54,8 +54,23 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
         account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
         warehouses = Warehouse.objects.all()
 
+        # Fetch related WarehouseShop objects for both types of warehouses
+        warehouse_shops = WarehouseShop.objects.filter(
+            content_type__model__in=["warehouse", "accountwarehouse"]
+        )
+
+        # Manually associate the warehouse shops with the warehouses
+        all_warehouses = list(chain(account_warehouses, warehouses))
+
+        for warehouse in all_warehouses:
+            warehouse.warehouse_shops = [
+                shop
+                for shop in warehouse_shops
+                if shop.object_id == warehouse.id
+                and shop.content_type.model == warehouse.__class__.__name__.lower()
+            ]
         context = {
-            "warehouses": list(chain(account_warehouses, warehouses)),
+            "warehouses": all_warehouses,
             "page": "warehouses",
         }
         return render(request, "accounts/warehouses.html", context)
@@ -80,9 +95,11 @@ class ProfilePaymentView(LoginRequiredMixin, View):
                 amount=result.get("amount"),
                 pay_url=result.get("pay_url"),
                 status=result.get("status"),
-                created_at=result.get("created_at")
+                created_at=result.get("created_at"),
             )
-            invoice_detail_url = reverse('payments:invoice_detail', kwargs={'invoice_slug': new_invoice.slug})
+            invoice_detail_url = reverse(
+                "payments:invoice_detail", kwargs={"invoice_slug": new_invoice.slug}
+            )
             return redirect(invoice_detail_url)
         return render(request, "accounts/payment.html", context={"page": "payment"})
 
