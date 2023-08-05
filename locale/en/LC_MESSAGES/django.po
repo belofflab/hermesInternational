@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-05 16:23+0300\n"
+"POT-Creation-Date: 2023-08-05 16:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -381,11 +381,11 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\main\templates\main\index.html:46 .\main\templates\main\index.html:720
+#: .\main\templates\main\index.html:46 .\main\templates\main\index.html:718
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\main\templates\main\index.html:52 .\main\templates\main\index.html:715
+#: .\main\templates\main\index.html:52 .\main\templates\main\index.html:713
 msgid "О нас"
 msgstr "About us"
 
@@ -543,31 +543,45 @@ msgstr "Yes. All risks are borne by our platform."
 msgid "Как совершить первую покупку?"
 msgstr "How to make the first purchase?"
 
-#: .\main\templates\main\index.html:672
+#: .\main\templates\main\index.html:661
+msgid ""
+"Когда вы покупаете товар в США просто указываете адрес одного из адресов в "
+"панели. Заполняете декларацию и адрес доставки"
+msgstr ""
+"When you buy a product in the US, simply enter the address of one of the "
+"addresses in the panels. Fill in the declaration and delivery address"
+
+#: .\main\templates\main\index.html:671
 msgid "Какие есть дополнения?"
 msgstr "What are the add-ons?"
 
-#: .\main\templates\main\index.html:706
+#: .\main\templates\main\index.html:680
+msgid ""
+"Мы можем упаковать заказ в пакет, убрать обувную коробку или добавить "
+"обрешётку."
+msgstr "We can pack the order in a bag, remove the shoe box or add crate."
+
+#: .\main\templates\main\index.html:704
 msgid "Доставляйте быстро в любую точку мира"
 msgstr "Deliver fast to anywhere in the world"
 
-#: .\main\templates\main\index.html:711
+#: .\main\templates\main\index.html:709
 msgid "Компания"
 msgstr "Company"
 
-#: .\main\templates\main\index.html:733
+#: .\main\templates\main\index.html:731
 msgid "Лицензии"
 msgstr "Licenses"
 
-#: .\main\templates\main\index.html:737
+#: .\main\templates\main\index.html:735
 msgid "Оферта"
 msgstr "Offer"
 
-#: .\main\templates\main\index.html:756
+#: .\main\templates\main\index.html:754
 msgid "Все права защищены. Copyright"
 msgstr "All rights reserved. Copyright"
 
-#: .\main\templates\main\index.html:760
+#: .\main\templates\main\index.html:758
 msgid "Разработано"
 msgstr "Developed by"
 
@@ -598,18 +612,6 @@ msgstr "According to these details, the transfer is available during"
 #: .\payments\templates\payments\pay.html:339
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
-
-#~ msgid ""
-#~ "Когда вы покупаете товар в США просто указываете адрес одного из адресов "
-#~ "в панели. Заполняете декларацию и адрес доставки"
-#~ msgstr ""
-#~ "When you buy a product in the US, simply enter the address of one of the "
-#~ "addresses in the panels. Fill in the declaration and delivery address"
-
-#~ msgid ""
-#~ "Мы можем упаковать заказ в пакет, убрать обувную коробку или добавить "
-#~ "обрешётку."
-#~ msgstr "We can pack the order in a bag, remove the shoe box or add crate."
 
 #~ msgid "Контакты"
 #~ msgstr "Contacts"
