@@ -29,6 +29,7 @@ $(document).ready(function () {
             },
             error: function (xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText);
+                $("#warehouse_but").removeAttr('disabled');
             }
         });
     });
@@ -199,6 +200,7 @@ $("form[name='buy_out']").submit((e) => {
                 window.location.href = '/accounts/profile/inbox/';
             } else {
                 error_box.text(response.message);
+                $("#buyout_but").removeAttr('disabled');
             }
         })
         return;
@@ -222,9 +224,11 @@ $("form[name='buy_out']").submit((e) => {
             $('#purchaseAddModal').modal('hide');
             localStorage.setItem("purchaseToAddingAccountData", response.data)
             $('#addressAddModal').modal('show');
+            $("#buyout_but").removeAttr('disabled');
         } else {
             error_box.text(response.message);
             $("#buyout_but").removeAttr('disabled');
+            $("form[name='buy_out']").reset()
         }
     })
 
@@ -281,6 +285,8 @@ $("form[name='address_inf']").submit((e) => {
             window.location.reload()
         } else {
             console.log(response)
+            $("#address_inf_but").removeAttr('disabled');
+            $("form[name='address_inf']").reset()
         }
     })
 
@@ -317,6 +323,7 @@ $("form[name='edit_profile']").submit((e) => {
             window.location.reload()
         } else {
             console.log(response)
+            $("#edit_profie_but").removeAttr('disabled');
         }
     })
 
@@ -408,6 +415,7 @@ function addressToForm(address) {
     $('#address_form_id').val(address.id);
     $('#address_form_street').val(address.street);
     $('#address_form_city').val(address.city);
+    $('#country_selector_2').val(address.country);
     $('#address_form_state').val(address.state);
     $('#address_form_phone').val(address.phone);
     $('#address_form_postal_code').val(address.postal_code);
@@ -440,5 +448,7 @@ function updatePurchaseData(purchaseId, addressId) {
             }
             $('#purchaseAddModal').modal('show');
         }
-    }).catch((response) => console.log(response));
+    }).catch((response) => {
+        console.log(response)
+    });
 }

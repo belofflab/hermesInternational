@@ -103,7 +103,7 @@ class PurchaseCreateView(LoginRequiredMixin, View):
                 {"status": False, "message": _("Некорректно задана цена")}
             )
         
-        status = request_data.get("status")
+        status = request_data.get("status") 
         
         kwargs = {
             "defaults": {
@@ -128,9 +128,6 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             kwargs["id"] = None 
 
         new_purchase, created = Purchase.objects.update_or_create(**kwargs)
-        if created:
-            new_purchase.status = "ACCEPTANCE"
-            new_purchase.save()
 
         current_user = Account.objects.get(email=request.user)
 
@@ -221,7 +218,7 @@ class AccountDataCreateView(LoginRequiredMixin, View):
                 'phone': phone,
                 'city': city,
                 'street': street,
-                'delivery_method': deliveryMethod,
+                # 'delivery_method': deliveryMethod,
                 'state': state,
                 'postal_code': postal_code,
                 'country': country,
@@ -245,6 +242,8 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         purchase.address = new_account
         purchase.status = "FORWARDING"
         purchase.delivery_method = deliveryMethod
+
+        purchase.options.clear()
 
         for option in options:
             purchase.options.add(option)
