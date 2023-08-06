@@ -1,4 +1,4 @@
-const recaptchaSiteKey = '6LfOQH4nAAAAABxGt4chFCdBD8dJrQBHADpXr4yO';
+const recaptchaSiteKey = '6LdXc4UnAAAAAC502uQLhemVYvKP9drcBQOMIMgC';
 
 $(document).ready(function () {
     $("#user_warehouse").submit(function (event) {
