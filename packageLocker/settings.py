@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True if os.getenv("DEBUG") in ["1", 1, "True", True] else False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split()
-1
+
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS").split()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -110,6 +110,15 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.AllowAllUsersModelBackend",
     "accounts.backends.EmailBackend",
 )
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = True if os.getenv("EMAIL_USE_TLS") in ["1", 1, "True", True] else False
+EMAIL_USE_SSL = True if os.getenv("EMAIL_USE_SSL") in ["1", 1, "True", True] else False
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 LANGUAGE_CODE = "ru"
 

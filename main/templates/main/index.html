@@ -101,8 +101,75 @@
 </div>
 <header class="header-2">
     <div
-        class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-8 pb-7 bg-gradient-dark-radial">
+        class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-6 pb-7 bg-gradient-dark-radial">
         <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
+                            <a href="#" class="text-white  text-sm d-flex align-items-center">
+
+                                {% translate 'Приём' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
+
+                                {% translate 'Пересыл' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
+                                {% translate 'Скуп' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
+
+                                {% translate 'Доставка' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
+                            <a href="#" class="text-white text-sm ms-2 d-flex align-items-center">
+
+                                {% translate 'Покупка за вас' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
+
+                                {% translate 'Открытие личных адресов' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-5 col-sm-7 mx-lg-0 mx-auto">
                     <div class="border-radius-xl p-1 mb-3 position-relative">
@@ -479,9 +546,15 @@
                     class="btn bg-gradient-primary text-capitalize border-radius-sm mt-4">{% translate 'Попробовать' %}</a>
             </div>
             <div class="col-md-7 col-12 my-auto ms-auto">
-                <a>
-                    <img class="w-100 border-radius-lg" src="{% static 'main/img/dashboard-2.png' %}"
+                {% get_current_language as LANGUAGE_CODE %}
+                <a href="{% url 'accounts:profile' %}">
+                    {% if LANGUAGE_CODE == 'ru' %}
+                    <img class="w-100 border-radius-lg" src="{% static 'main/img/dashboard-2-ru.png' %}"
                         alt="Dashboard Example">
+                    {% else %}
+                    <img class="w-100 border-radius-lg" src="{% static 'main/img/dashboard-2-en.png' %}"
+                        alt="Dashboard Example">
+                    {% endif %}
                 </a>
             </div>
         </div>
@@ -570,7 +643,7 @@
         <hr class="horizontal dark my-5">
         <div class="row align-items-center">
             <div class="col-lg-2 col-md-4 col-6 ms-auto">
-                <!-- <img width="100" height="110" src="{% static 'main/img/apple.svg' %}" alt="Logo"> -->
+                <img width="100" height="110" src="{% static 'main/img/apple.svg' %}" alt="Logo">
             </div>
             <div class="col-lg-2 col-md-4 col-6">
                 <img width="100" src="{% static 'main/img/amazon.svg' %}" alt="Logo">
@@ -588,6 +661,29 @@
                 <img width="100" height="120" src="{% static 'main/img/new_egg.svg' %}" alt="Logo">
             </div>
         </div>
+        <div class="row align-items-center">
+            <div class="col-lg-2 col-md-4 col-6">
+                <img width="100" src="{% static 'main/img/ebay.svg' %}" alt="Logo">
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <img width="100" src="{% static 'main/img/hm.svg' %}" alt="Logo">
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <img width="100" height="120" src="{% static 'main/img/asos.svg' %}" alt="Logo">
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 ms-lg-0 ms-md-auto">
+                <img width="100" height="120" src="{% static 'main/img/zara.svg' %}" alt="Logo">
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 me-md-auto mx-md-0 mx-auto">
+                <img width="100" height="110" src="{% static 'main/img/gap.svg' %}" alt="Logo">
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 ms-auto">
+                <a href="{% url 'main:shops' %}">
+                    {% translate 'Смотреть все' %}
+                </a>
+           </div>
+        </div> 
+        <hr class="horizontal dark my-5">
     </div>
 </section>
 <section class="py-4" id="faq">
@@ -637,7 +733,7 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#accordionRental">
                             <div class="accordion-body">
-                                {% translate 'Да. Все риски несёт за собой наша платформа.' %}
+                                {% translate 'Мы - официально зарегистрированная компания <b> Hermes International LLC</b>. Все риски, связанные с деформацией и потерей посылки, несёт за собой наша организация.' %}
                             </div>
                         </div>
                     </div>
@@ -657,6 +753,25 @@
                             data-bs-parent="#accordionRental">
                             <div class="accordion-body">
                                 {% translate 'Когда вы покупаете товар в США просто указываете адрес одного из адресов в панели. Заполняете декларацию и адрес доставки' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h5 class="accordion-header" id="headingSix">
+                            <button class="accordion-button border-bottom font-weight-bold" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false"
+                                aria-controls="collapseFifth">
+
+                                {% translate 'Имеетcя ли возможность открыть личный адрес в США?' %}
+                                <i
+                                    class="collapse-close fa fa-chevron-down text-xs pt-1 position-absolute end-0 me-3"></i>
+                                <i class="collapse-open fa fa-chevron-up text-xs pt-1 position-absolute end-0 me-3"></i>
+                            </button>
+                        </h5>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingFifth"
+                            data-bs-parent="#accordionRental">
+                            <div class="accordion-body">
+                                {% translate 'Определённо. Вы можете добавить свой адрес в меню в личном кабинете во вкладке "Мои адреса".' %}
                             </div>
                         </div>
                     </div>
