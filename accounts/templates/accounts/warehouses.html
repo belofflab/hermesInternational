@@ -4,9 +4,83 @@
 
 {% block content %}
 {% include 'accounts/forms/warehouse_form.html' %}
+
+<style>
+  .testimonials{
+	background-color: #f33f02;
+	position: relative;
+	padding-top: 80px;
+	&:after{
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 30%;
+		background-color: #ddd;
+	}
+}
+#locker-slider {
+	.item-details{
+		background-color: #333333;
+		color: #fff;
+		padding: 5px 5px;
+		text-align: left;
+		h5{
+			margin: 0 0 15px;
+			font-size: 18px;
+			line-height: 18px;
+			span{
+				color: red;
+				float:right;
+				padding-right: 20px;
+			}
+		}
+		p{
+			font-size: 14px;
+		}
+	}
+	.item {
+    padding: 40px;
+			margin-bottom:10px;
+	}
+}
+.owl-carousel .owl-nav [class*='owl-'] {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.owl-carousel .owl-nav [class*='owl-'].disabled:hover {
+  background-color: #D6D6D6;
+}
+.owl-carousel {
+  position: relative;
+}
+.owl-carousel .owl-next,
+.owl-carousel .owl-prev {
+  width: 50px;
+  height: 50px;
+	line-height: 50px;
+	border-radius: 50%;
+  position: absolute;
+  top: 30%;
+	font-size: 20px;
+  color: #000000;
+	border: 20px solid #000000;
+	text-align: center;
+}
+.owl-carousel .owl-prev {
+  left: -70px;
+}
+.owl-carousel .owl-next {
+  right: -70px;
+}
+
+
+</style>
+
 <div class="row">
   <div class="col-xl-12 s-12">
-    <div class="card mb-4">
       <div class="container">
         <br>
         <div class="row align-items-center">
@@ -15,7 +89,7 @@
           </div>
           <div class="col-2">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
-              <img src="{% static 'accounts/img/plus-circle-svgrepo-com.svg' %}" height="21" width="21">
+              {% translate 'Добавить адрес' %}
             </button>
           </div>
         </div>
@@ -49,14 +123,17 @@
                 </ul>
                 <div class="card-body">
 
-                  <div class="row">
+                  <div class="row row-cols-1 row-cols-md-3 g-4">
                     {% for shop in warehouse.warehouse_shops %}
-                    <div class="col-sm-3 col-md-3 col-lg-1">
-                      <div class="shop-info">
-                        <img src="{{shop.image.url}}" alt="{{shop.name}}"> -
-                        <span class="shop-info_quantity">{{shop.quantity}}</span>
+                    <div class="row">
+                      <div class="col-sm-3 col-md-3 col-lg-1">
+                        <div class="shop-info">
+                          <img src="{{shop.image.url}}" alt="{{shop.name}}"> -
+                          <span class="shop-info_quantity">{{shop.quantity}}</span>
+                        </div>
                       </div>
                     </div>
+        
                     {% endfor %}
                   </div>
                 </div>

@@ -429,32 +429,18 @@
     });
   </script>
   <script>
-    $('#locker-slider').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      items: 1,
-      dotData: true,
-      dotsData: true,
-      center: true,
-    })
-  </script>
-  <script>
-    $(document).ready(function () {
-      $("#category-search").on("keyup", function () {
-        var searchText = $(this).val().toLowerCase();
-
-        $(".card").each(function () {
-          var category = $(this).find(".card-header h6").text().toLowerCase();
-
-          if (category.indexOf(searchText) > -1) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      });
-    });
+    jQuery(document).ready(function($) {
+"use strict";
+$('#locker-slider').owlCarousel( {
+  loop: true,
+    nav: true,
+    items: 3,
+    dotData: true,
+    dotsData: true,
+    center: true,
+		
+	});
+});
   </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="{% static 'accounts/js/soft-ui-dashboard.js' %}"></script>
@@ -462,6 +448,5 @@
 
 </body>
 <script src="//code.jivo.ru/widget/q4XzdOW2qv" async></script>
-
 
 </html>

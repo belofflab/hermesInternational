@@ -11,8 +11,9 @@
                 <div class="container-fluid px-0">
                     <div class="navbar-brand font-weight-bolder ms-sm-3">
                         <div class="d-inline position-relative pe-1">
-                            <a href="#" class="w-45">
-                                Hermes
+                            <a href="#" target="_blank" class="w-45">
+                                <img src="{% static 'main/img/logo.png' %}" class="w-sm-15 w-25">
+                                <span class="text-darker ms-2">Hermes</span>
                             </a>
                             <hr class="vertical dark my-0" />
                         </div>
@@ -105,66 +106,67 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                    <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white  text-sm d-flex align-items-center">
+                            <a href="#" class="text-white  text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Приём посылок">
 
-                                {% translate 'Приём' %}
+                                <b>{% translate 'Приём' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                    <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
-
-                                {% translate 'Пересыл' %}
+                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Пересыл посылок">
+                                    
+                                <b>{% translate 'Пересыл' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                    <div class="border-radius-xl p-2 mb-3 position-relative">
+                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative" >
+                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Скупка товаров">
+                                <b>{% translate 'Скуп' %}</b>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                    <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
-                                {% translate 'Скуп' %}
+                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Доставка товаров">
+
+                                <b>{% translate 'Доставка' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                    <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
+                            <a href="#" class="text-white text-sm ms-2 d-flex align-items-center" data-bs-toggle="tooltip" title="Покупка товаров за вас">
 
-                                {% translate 'Доставка' %}
+                                <b>{% translate 'Покупка за вас' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                    <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm ms-2 d-flex align-items-center">
+                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Открытие личных адресов">
 
-                                {% translate 'Покупка за вас' %}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
-                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
-
-                                {% translate 'Открытие личных адресов' %}
+                                <b>{% translate 'Открытие адресов' %}</b>
                             </a>
                         </div>
                     </div>
@@ -877,5 +879,11 @@
         </div>
     </div>
 </footer>
-
+<script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 {% endblock %}

@@ -250,18 +250,18 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.save()
 
-#         message.send(
-#             f"""
-# Пользователь: <b>{request.user}</b> оформил покупку
+        message.send(
+            f"""
+Пользователь: <b>{request.user}</b> оформил покупку
 
-# Наименование: {purchase.name}
-# Ссылка на товар: <a href="{purchase.link}">{purchase.name}</a>
-# Количество: {purchase.quantity}
-# Цена: ${purchase.price}
-# Трек номер: {purchase.tracking_number}       
+Наименование: {purchase.name}
+Ссылка на товар: <a href="{purchase.link}">{purchase.name}</a>
+Количество: {purchase.quantity}
+Цена: ${purchase.price}
+Трек номер: {purchase.tracking_number}       
 
-# """
-#         )
+"""
+        )
 
         return JsonResponse({"status": True, "message": ""})
 
