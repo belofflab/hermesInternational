@@ -492,7 +492,7 @@ msgstr ""
 
 #: .\main\templates\main\index.html:178
 msgid "Открытие адресов"
-msgstr "Opening personal addresses"
+msgstr "Opening addresses"
 
 #: .\main\templates\main\index.html:207
 msgid ""
