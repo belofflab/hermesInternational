@@ -151,7 +151,7 @@ def serialize_address(address, delivery_method):
     
 
 class PurchaseGetView(LoginRequiredMixin, View):
-    def post(self, request):
+    def post(self, request):    
         request_data = request.POST
         purchaseId = request_data.get("purchaseId")
         addressId = request_data.get("addressId")

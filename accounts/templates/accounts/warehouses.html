@@ -96,9 +96,9 @@
         <br>
         <div id="locker-slider" class="owl-carousel">
           {% for warehouse in warehouses %}
-          <div class="item"
+          <div style="display: flex; justify-content: center;" class="item"
             data-dot="<button role='button' {% if warehouse.account %} style='background-color: gold!important' {% endif %} class='owl-dot'><span>{{forloop.counter}}</span></button>">
-            <div class="card">
+            <div class="card" >
               <div class="card-body">
                 <div class="row">
                   <div class="col-9">

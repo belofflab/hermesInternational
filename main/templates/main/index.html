@@ -4,6 +4,15 @@
 {% block content %}
 {% include 'accounts/forms/signin_form.html' %}
 {% include 'accounts/forms/signup_form.html' %}
+
+<style>
+    .tooltip-inner {
+    max-width: none;
+    width: 400px;
+    white-space: normal;
+}
+
+</style>
 <div class="container-md container-fluid">
     <div class="row">
         <div class="col-12">
@@ -52,12 +61,12 @@
                                     {% translate 'О нас' %}
                                 </a>
                             </li>
-                            <!-- <li class="nav-item mx-2">
-                                <a href="#pricing"
+                            <li class="nav-item mx-2">
+                                <a href="#contact_us"
                                     class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center">
-                                    Стоимость
+                                    {% translate 'Контакты' %}
                                 </a>
-                            </li> -->
+                            </li>
                             <li class="nav-item mx-2">
                                 <a href="#faq"
                                     class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center">
@@ -105,66 +114,66 @@
         class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-6 pb-7 bg-gradient-dark-radial">
         <div class="container">
             <div class="row">
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white  text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Приём посылок">
+                            <a href="#" class="text-white  text-sm d-flex align-items-center">
 
                                 <b>{% translate 'Приём' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Пересыл посылок">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
                                     
                                 <b>{% translate 'Пересыл' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Наша компания предлагает надежный и удобный сервис приёма товаров из США. Независимо от того, покупаете ли вы на американских сайтах или с аукционов, мы готовы принять ваши заказы на нашем адресе, обеспечивая безопасное хранение до момента отправки.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative" >
-                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Скупка товаров">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
                                 <b>{% translate 'Скуп' %}</b>
                             </a>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Глобальная связь стала ближе. Мы гарантируем надежную и оперативную доставку ваших товаров из США в любую страну мира. Наша сеть партнёров по доставке обеспечивает удобные варианты, чтобы ваши покупки добрались до вас быстро и безопасно.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Доставка товаров">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
 
                                 <b>{% translate 'Доставка' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm ms-2 d-flex align-items-center" data-bs-toggle="tooltip" title="Покупка товаров за вас">
+                            <a href="#" class="text-white text-sm ms-2 d-flex align-items-center">
 
                                 <b>{% translate 'Покупка за вас' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto">
+                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center" data-bs-toggle="tooltip" title="Открытие личных адресов">
+                            <a href="#" class="text-white text-sm d-flex align-items-center">
 
                                 <b>{% translate 'Открытие адресов' %}</b>
                             </a>
@@ -387,112 +396,6 @@
         </div>
     </div>
 </section>
-<!-- <section class="py-6">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mx-auto text-center pb-4">
-                <h5 class="text-gradient text-primary font-weight-bolder">Drag & Drop Website Builders</h5>
-                <h2>Cut development time in half</h2>
-                <p class="text-lg">Pick the blocks, customize to fit your style and professional needs, then
-                    download the code. As simple as that!</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="p-3 text-center">
-                    <div
-                        class="icon icon-shape bg-gradient-dark shadow mx-auto d-flex aling-items-center justify-content-center">
-                        <svg width="20px" height="20px" viewBox="0 0 40 40" class="m-auto" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>spaceship</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1720.000000, -592.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(4.000000, 301.000000)">
-                                            <path class="color-background"
-                                                d="M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z">
-                                            </path>
-                                            <path class="color-background"
-                                                d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z">
-                                            </path>
-                                            <path class="color-background"
-                                                d="M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z"
-                                                opacity="0.598539807"></path>
-                                            <path class="color-background"
-                                                d="M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z"
-                                                opacity="0.598539807"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <h5 class="mt-4 text-lg font-weight-bolder">Choose the design</h5>
-                    <p>Build web projects from hundreds of components grouped into the most frequently-used
-                        categories, including navigations, headers, and more.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 text-center">
-                    <div
-                        class="icon icon-shape bg-gradient-dark shadow mx-auto d-flex aling-items-center justify-content-center">
-                        <svg width="20px" height="20px" viewBox="0 0 40 40" class="m-auto" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>settings</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(304.000000, 151.000000)">
-                                            <polygon class="color-background" opacity="0.596981957"
-                                                points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
-                                            </polygon>
-                                            <path class="color-background"
-                                                d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
-                                                opacity="0.596981957"></path>
-                                            <path class="color-background"
-                                                d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <h5 class="mt-4 text-lg font-weight-bolder">Edit code and texts</h5>
-                    <p>Change text using double click and use our in-page code editor to adjust your elements.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 text-center">
-                    <div
-                        class="icon icon-shape bg-gradient-dark shadow mx-auto d-flex aling-items-center justify-content-center">
-                        <svg width="20px" height="20px" viewBox="0 0 40 44" class="m-auto" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>document</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(154.000000, 300.000000)">
-                                            <path class="color-background"
-                                                d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z"
-                                                opacity="0.603585379"></path>
-                                            <path class="color-background"
-                                                d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <h5 class="mt-4 text-lg font-weight-bolder">Download Source Code</h5>
-                    <p>Our builder is great for developers and also no-coders. You can download all the source files
-                        and then simply upload them on your website's server.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 <section class="mt-5 mb-8 pt-3" id="about_us">
     <div class="container">
         <div class="row">
@@ -645,7 +548,8 @@
         <hr class="horizontal dark my-5">
         <div class="row align-items-center">
             <div class="col-lg-2 col-md-4 col-6 ms-auto">
-                <img width="100" height="110" src="{% static 'main/img/apple.svg' %}" alt="Logo">
+                <!-- <img width="100" height="110" src="{% static 'main/img/apple.svg' %}" alt="Logo"> -->
+                <img width="100" src="{% static 'main/img/ebay.svg' %}" alt="Logo">
             </div>
             <div class="col-lg-2 col-md-4 col-6">
                 <img width="100" src="{% static 'main/img/amazon.svg' %}" alt="Logo">
@@ -665,7 +569,7 @@
         </div>
         <div class="row align-items-center">
             <div class="col-lg-2 col-md-4 col-6">
-                <img width="100" src="{% static 'main/img/ebay.svg' %}" alt="Logo">
+                <!-- <img width="100" src="{% static 'main/img/ebay.svg' %}" alt="Logo"> -->
             </div>
             <div class="col-lg-2 col-md-4 col-6">
                 <img width="100" src="{% static 'main/img/hm.svg' %}" alt="Logo">
@@ -679,11 +583,14 @@
             <div class="col-lg-2 col-md-4 col-6 me-md-auto mx-md-0 mx-auto">
                 <img width="100" height="110" src="{% static 'main/img/gap.svg' %}" alt="Logo">
             </div>
-            <div class="col-lg-2 col-md-4 col-6 ms-auto">
+            <!-- <div class="col-lg-2 col-md-4 col-6 ms-auto">
                 <a href="{% url 'main:shops' %}">
                     {% translate 'Смотреть все' %}
                 </a>
-           </div>
+           </div> -->
+        </div> 
+        <div class="d-flex justify-content-center mt-4">
+            <h5>{% translate 'И это ещё не всё... Мы принимаем более 1.000 различных магазинов в США!' %} </h5>
         </div> 
         <hr class="horizontal dark my-5">
     </div>
@@ -801,6 +708,18 @@
         </div>
     </div>
 </section>
+<section class="py-6" id="contact_us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center pb-4">
+                <h5 class="text-gradient text-primary font-weight-bolder">Связаться с нами</h5>
+                <h2>Есть вопросы или нужна помощь?</h2>
+                <p class="text-lg">Не стесняйтесь обращаться к нам в Telegram!</p>
+                <a target="_blank" href="https://t.me/HermesSupp" class="btn btn-primary btn-lg mt-3">Написать в Telegram</a>
+            </div>
+        </div>
+    </div>
+</section>
 <footer class="footer">
     <hr class="horizontal dark mb-5">
     <div class="container">
@@ -831,6 +750,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#reviews">
                                 {% translate 'Отзывы' %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact_us">
+                                {% translate 'Контакты' %}
                             </a>
                         </li>
                         <li class="nav-item">
