@@ -55,8 +55,11 @@
   <link rel="stylesheet" href="{% static 'accounts/css/owl.theme.default.min.css' %}">
 
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdIh4UnAAAAAI3ta-SSP_smWqV2fJeHJ0wkQ9py"></script>
+  {% if LANGUAGE_CODE == 'ru' %}
   <script src="//code.jivo.ru/widget/q4XzdOW2qv" async></script>
+  {% else %}
   <script src="//code.jivo.ru/widget/8QPqVdED36" async></script>
+  {% endif %}
 
 </head>
 
