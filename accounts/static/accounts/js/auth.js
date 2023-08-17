@@ -10,28 +10,29 @@ $(document).ready(function () {
         var state = $('#warehouse_form_state').val();
         var postal_code = $('#warehouse_form_postal_code').val();
 
-        $('#warehouse_but').attr('disabled', 'disabled');
+        // $('#warehouse_but').attr('disabled', 'disabled');
 
-        $.ajax({
-            url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
-            type: "POST",
-            data: {
-                phone: phone,
-                city: city,
-                street: street,
-                state: state,
-                postal_code: postal_code,
-                csrfmiddlewaretoken: csrf_token
-            },
-            success: function (response) {
-                $('#warehouseAddModal').modal('hide');
-                window.location.reload();
-            },
-            error: function (xhr, errmsg, err) {
-                console.log(xhr.status + ": " + xhr.responseText);
-                $("#warehouse_but").removeAttr('disabled');
-            }
-        });
+        // $.ajax({
+        //     url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
+        //     type: "POST",
+        //     data: {
+        //         phone: phone,
+        //         city: city,
+        //         street: street,
+        //         state: state,
+        //         postal_code: postal_code,
+        //         csrfmiddlewaretoken: csrf_token
+        //     },
+        //     success: function (response) {
+        //         $('#warehouseAddModal').modal('hide');
+        //         window.location.reload();
+        //     },
+        //     error: function (xhr, errmsg, err) {
+        //         console.log(xhr.status + ": " + xhr.responseText);
+        //         $("#warehouse_but").removeAttr('disabled');
+        //     }
+        // });
+        $('#warehouseAddModal').modal('hide');
     });
 });
 
@@ -39,6 +40,7 @@ $(document).ready(function () {
 $('#signinModal').on('show.bs.modal', function (event) {
     if (user !== 'AnonymousUser') {
         window.location.href = '/accounts/profile/';
+        $('#signinModal').modal('hide');
         return;
     }
     return;
@@ -47,10 +49,17 @@ $('#signinModal').on('show.bs.modal', function (event) {
 $('#signupModal').on('show.bs.modal', function (event) {
     if (user !== 'AnonymousUser') {
         window.location.href = '/accounts/profile/';
+        $('#signupModal').modal('hide');
         return;
     }
     return;
 });
+
+function toRegister() {
+
+    $('#signupModal').modal('show');
+
+}
 
 
 $("form[name='signup']").submit((e) => {
@@ -119,6 +128,55 @@ $('#signup_password').on('input', (e) => {
     }
 
 })
+
+
+$('#signup_first_name').on('keyup', function() {
+    var inputValue = $(this).val();
+    var filteredValue = inputValue.replace(/[^a-zA-Z]/g, ''); // Remove non-letter characters
+    $(this).val(filteredValue);
+  });
+
+$('#signup_last_name').on('keyup', function() {
+    var inputValue = $(this).val();
+    var filteredValue = inputValue.replace(/[^a-zA-Z]/g, ''); // Remove non-letter characters
+    $(this).val(filteredValue);
+  });
+
+  function validateOnlyNumberInput(inputElement) {
+    // Get the current input value
+    let inputValue = inputElement.value;
+  
+    // Remove any non-numeric characters except for periods (for floats)
+    inputValue = inputValue.replace(/[^0-9.]/g, '');
+  
+    // Remove leading zeros
+    inputValue = inputValue.replace(/^0+/g, '');
+  
+    // If there is more than one period, keep only the first one
+    const periods = inputValue.split('.');
+    if (periods.length > 2) {
+        inputValue = periods[0] + '.' + periods.slice(1).join('');
+    }
+  
+    // Update the input value with the sanitized content
+    inputElement.value = inputValue;
+}
+
+function validateNumberInput(inputElement) {
+    // Get the current input value
+    let inputValue = inputElement.value;
+  
+    // Remove any non-numeric characters except for periods (for floats)
+    inputValue = inputValue.replace(/[^0-9.]/g, '');
+  
+    // If there is more than one period, keep only the first one
+    if (inputValue.indexOf('.') !== inputValue.lastIndexOf('.')) {
+      inputValue = inputValue.replace(/(.*\..*)\./g, '$1');
+    }
+  
+    // Update the input value with the sanitized content
+    inputElement.value = inputValue;
+}
 
 
 $("form[name='signin']").submit((e) => {
@@ -282,7 +340,7 @@ $("form[name='address_inf']").submit((e) => {
         if (response.status) {
             $('#addressAddModal').modal('hide');
             localStorage.setItem("purchaseToAddingAccountData", "")
-            window.location.reload()
+            window.location.href = '/accounts/profile/packages/'
         } else {
             console.log(response)
             $("#address_inf_but").removeAttr('disabled');

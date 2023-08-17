@@ -4,7 +4,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="warehouse_info">{% translate 'Добавление' %}</h5>
+        <h5 class="modal-title" id="warehouse_info">{% translate 'Открытие собственного адреса в США' %}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -16,42 +16,25 @@
                     {% csrf_token %}
                     <!-- Text input -->
                   <div class="form-outline mb-4">
-                    <input type="text" id="warehouse_form_street" name="street" class="form-control" required>
-                    <label class="form-label" for="form6Example3">{% translate 'Улица' %}</label>
+                    <p>Добро пожаловать в нашу уникальную услугу – открытие личного адреса в США! Теперь у вас есть возможность иметь свой собственный адрес в одной из самых динамичных стран мира. Независимо от того, нужен ли вам адрес для покупок, бизнеса или личных целей, наша услуга предоставит вам удобство и гибкость. Мы гарантируем конфиденциальность и безопасность вашей почты, а также предлагаем разнообразные тарифы, от быстрых однодневных до более продолжительных 10-дневных вариантов. Откройте для себя новые горизонты с вашим собственным адресом в США уже сегодня!</p>
                   </div>
 
-                  <!-- Text input -->
+                  <!-- Tariffs and Time Information -->
                   <div class="row mb-4">
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="warehouse_form_city" name="city" class="form-control" required>
-                        <label class="form-label" for="form6Example1">{% translate 'Город' %}</label>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-outline">
-                        <input type="text" id="warehouse_form_state" name="state" class="form-control" required>
-                        <label class="form-label" for="form6Example2">{% translate 'Штат' %}</label>
+                        <label class="form-label">{% translate 'Тарифы и время' %}</label>
+                        <ul class="list-unstyled">
+                          <li><strong>$1:</strong> {% translate '1 день' %}</li>
+                          <li><strong>$5:</strong> {% translate '5 дней' %}</li>
+                          <li><strong>$10:</strong> {% translate '10 дней' %}</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
 
-                  <div class="row mb-4">
-                    <div class="col">
-                      <div class="form-outline">
-                        <input type="text" id="warehouse_form_phone" name="phone" class="form-control" required>
-                        <label class="form-label" for="form6Example1">{% translate 'Номер телефона' %}</label>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-outline">
-                        <input type="text" id="warehouse_form_postal_code" name="postal_code" class="form-control" required>
-                        <label class="form-label" for="form6Example2">{% translate 'Почтовый код' %}</label>
-                      </div>
-                    </div>
-                  </div>
                   <br>
-                  <button id="warehouse_but" type="submit" class="btn btn-primary btn-block mb-4">{% translate 'Разместить' %}</button>
+                  <button id="warehouse_but" type="submit" class="btn btn-primary w-100 btn-block mb-4">{% translate 'Подать заявку' %}</button>
                 </form>
               </div>
             </div>

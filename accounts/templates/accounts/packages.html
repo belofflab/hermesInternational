@@ -66,7 +66,10 @@
           {% if not purchase.is_deliveried %}
           <div class="card-body">
             <div class="d-grid mx-auto content-md-center">
-              <button class="btn btn-outline-danger" onclick="toAcceptance('{{purchase.id}}')" type="button">{% translate 'Расформировать' %}</button>
+              <div class="row">
+                  <button class="btn btn-outline-danger" onclick="toAcceptance('{{purchase.id}}')" type="button">{% translate 'Расформировать' %}</button>
+                  <button class="btn btn-outline-primary" onclick="updatePurchaseData('{{ purchase.id }}', '{{purchase.address.id}}')" type="button">{% translate 'Редактировать' %}</button>
+              </div>
             </div>
           </div>
           {% endif %}

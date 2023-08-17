@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
+{% include 'main/forms/terms.html' %}
 {% include 'accounts/forms/signin_form.html' %}
 {% include 'accounts/forms/signup_form.html' %}
 
@@ -20,7 +21,7 @@
                 <div class="container-fluid px-0">
                     <div class="navbar-brand font-weight-bolder ms-sm-3">
                         <div class="d-inline position-relative pe-1">
-                            <a href="#" target="_blank" class="w-45">
+                            <a href="/" class="w-45">
                                 <img src="{% static 'main/img/logo.png' %}" class="w-sm-15 w-25">
                                 <span class="text-darker ms-2">Hermes</span>
                             </a>
@@ -98,7 +99,9 @@
                             {% else %}
                             <li class="nav-item">
                                 <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Авторизоваться' %}</a>
+                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
+                                    <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
+                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
                             </li>
                             {% endif %}
                         </ul>
@@ -114,9 +117,9 @@
         class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-6 pb-7 bg-gradient-dark-radial">
         <div class="container">
             <div class="row">
-                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
                             <a href="#" class="text-white  text-sm d-flex align-items-center">
 
@@ -125,9 +128,9 @@
                         </div>
                     </div>
                 </div>
-                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
                             <a href="#" class="text-white text-sm d-flex align-items-center">
                                     
@@ -136,31 +139,20 @@
                         </div>
                     </div>
                 </div>
-                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Наша компания предлагает надежный и удобный сервис приёма товаров из США. Независимо от того, покупаете ли вы на американских сайтах или с аукционов, мы готовы принять ваши заказы на нашем адресе, обеспечивая безопасное хранение до момента отправки.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative" >
                             <a href="#" class="text-white text-sm d-flex align-items-center">
-                                <b>{% translate 'Скуп' %}</b>
+                                <b>{% translate 'Выкуп товара' %}</b>
                             </a>
 
                         </div>
                     </div>
                 </div>
-                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Глобальная связь стала ближе. Мы гарантируем надежную и оперативную доставку ваших товаров из США в любую страну мира. Наша сеть партнёров по доставке обеспечивает удобные варианты, чтобы ваши покупки добрались до вас быстро и безопасно.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
-                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
-
-                                <b>{% translate 'Доставка' %}</b>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
-                    <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
                             <a href="#" class="text-white text-sm ms-2 d-flex align-items-center">
 
@@ -169,9 +161,9 @@
                         </div>
                     </div>
                 </div>
-                <div style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
+                        <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
                             <a href="#" class="text-white text-sm d-flex align-items-center">
 
@@ -474,20 +466,20 @@
                 <p class="text-lg">{% translate 'Не уверены в нас? Просто взгляните на отзывы!' %}</p>
             </div>
         </div>
-        <div class="row mt-4">
+        <!-- <div class="row mt-4">
             <div class="col-lg-4 col-md-8">
-                <div class="card card-plain">
+                <div class="card bg-gradient-primary">
                     <div class="card-body">
                         <div class="author">
                             <div class="name">
-                                <h6 class="mb-0 font-weight-bolder">Nick Willever</h6>
-                                <div class="stats">
+                                <h6 class="text-white mb-0 font-weight-bolder">Nick Willever</h6>
+                                <div class="stats text-white">
                                     <i class="far fa-clock"></i>
                                     {% translate '1 день назад' %}
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-4">{% translate '"Достаточно хорошая панель, поддержка быстро ответила на все вопросы, рекомендую."' %}</p>
+                        <p class="mt-4 text-white">{% translate '"Достаточно хорошая панель, поддержка быстро ответила на все вопросы."' %}</p>
                         <div class="rating mt-3">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -522,18 +514,18 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-8">
-                <div class="card card-plain">
+                <div class="card bg-gradient-primary">
                     <div class="card-body">
                         <div class="author">
                             <div class="name">
-                                <h6 class="mb-0 font-weight-bolder">Samuel Kamuli</h6>
-                                <div class="stats">
+                                <h6 class="text-white mb-0 font-weight-bolder">Samuel Kamuli</h6>
+                                <div class="stats text-white">
                                     <i class="far fa-clock"></i>
                                     {% translate '3 недели назад' %}
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-4">{% translate '"Хороший сервис. Быстро помог решить проблему с покупкой в США"' %}</p>
+                        <p class="mt-4 text-white">{% translate '"Хороший сервис. Быстро помог решить проблему с покупкой в США"' %}</p>
                         <div class="rating mt-3">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -544,7 +536,85 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <div id="testimonial-slider" class="owl-carousel">
+            <div class="item">
+              
+                <div class="card bg-gradient-primary">
+                  <div class="card-body">
+                    <div class="author">
+                      <div class="name">
+                        <h6 class="text-white mb-0 font-weight-bolder">Nick Willever</h6>
+                        <div class="stats text-white">
+                          <i class="far fa-clock"></i>
+                          {% translate '1 день назад' %}
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mt-4 text-white">{% translate '"Достаточно хорошая панель, поддержка быстро ответила на все вопросы."' %}</p>
+                    <div class="rating mt-3">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+            <div class="item">
+                
+                    <div class="card bg-gradient-primary">
+                        <div class="card-body">
+                            <div class="author align-items-center">
+                                <div class="name">
+                                    <h6 class="text-white mb-0 font-weight-bolder">Shailesh Kushwaha</h6>
+                                    <div class="stats text-white">
+                                        <i class="far fa-clock"></i>
+                                        {% translate '1 неделю назад' %}
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-white">{% translate '"Сервис "Покупка за вас" стал моим фаворитом среди других проектов!!!"' %}</p>
+                            <div class="rating mt-3">
+                                <i class="fas fa-star text-white"></i>
+                                <i class="fas fa-star text-white"></i>
+                                <i class="fas fa-star text-white"></i>
+                                <i class="fas fa-star text-white"></i>
+                                <i class="fas fa-star text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="item">
+                
+                    <div class="card bg-gradient-primary">
+                        <div class="card-body">
+                            <div class="author">
+                                <div class="name">
+                                    <h6 class="text-white mb-0 font-weight-bolder">Samuel Kamuli</h6>
+                                    <div class="stats text-white">
+                                        <i class="far fa-clock"></i>
+                                        {% translate '3 недели назад' %}
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-white">{% translate '"Хороший сервис. Быстро помог решить проблему с покупкой в США"' %}</p>
+                            <div class="rating mt-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+          </div>
+        
         <hr class="horizontal dark my-5">
         <div class="row align-items-center">
             <div class="col-lg-2 col-md-4 col-6 ms-auto">
@@ -727,7 +797,7 @@
             <div class="col-md-3 mb-4 ms-auto">
                 <div class="d-flex align-items-center">
                     <div class="d-inline position-relative pe-1 w-30">
-                        <a href="#" class="w-45">
+                        <a href="/" class="w-45">
                             Hermes
                         </a>
                         <hr class="vertical dark my-0" />
@@ -770,7 +840,7 @@
                     <h6 class="text-gradient text-primary text-sm">{% translate 'Лицензии' %}</h6>
                     <ul class="flex-column ms-n3 nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="" target="_blank">
+                            <a style="cursor: pointer;" class="nav-link" data-bs-toggle="modal" data-bs-target="#termsModal">
                                 {% translate 'Оферта' %}
                             </a>
                         </li>

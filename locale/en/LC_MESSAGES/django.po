@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-11 07:57+0300\n"
+"POT-Creation-Date: 2023-08-17 14:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\templates\accounts\base.html:85
+#: .\accounts\templates\accounts\base.html:91
 #: .\accounts\templates\accounts\simple_purchase.html:16
-#: .\main\templates\main\index.html:167
+#: .\main\templates\main\index.html:159
 msgid "Покупка за вас"
 msgstr "Purchase for you"
 
-#: .\accounts\templates\accounts\base.html:111
+#: .\accounts\templates\accounts\base.html:117
 #: .\accounts\templates\accounts\inbox.html:13
 msgid "Покупки"
 msgstr "Purchases"
 
-#: .\accounts\templates\accounts\base.html:140
+#: .\accounts\templates\accounts\base.html:146
 #: .\accounts\templates\accounts\packages.html:13
 msgid "Прием посылок"
 msgstr "Packages"
 
-#: .\accounts\templates\accounts\base.html:166
+#: .\accounts\templates\accounts\base.html:172
 msgid "Скуп-лист"
 msgstr "Scoop-list"
 
-#: .\accounts\templates\accounts\base.html:198
+#: .\accounts\templates\accounts\base.html:204
 msgid "Мои адреса"
 msgstr "My addresses"
 
-#: .\accounts\templates\accounts\base.html:224
+#: .\accounts\templates\accounts\base.html:230
 #: .\accounts\templates\accounts\payment.html:14
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:256
-#: .\main\templates\main\index.html:34 .\main\templates\main\index.html:95
-#: .\main\templates\main\shops.html:22 .\main\templates\main\shops.html:83
+#: .\accounts\templates\accounts\base.html:262
+#: .\main\templates\main\index.html:35 .\main\templates\main\index.html:96
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:282
+#: .\accounts\templates\accounts\base.html:288
 msgid "Выход"
 msgstr "Logout"
 
@@ -74,17 +73,14 @@ msgid "Информация о получателе"
 msgstr "Recipient information"
 
 #: .\accounts\templates\accounts\forms\address_form.html:21
-#: .\accounts\templates\accounts\forms\warehouse_form.html:20
 msgid "Улица"
 msgstr "Street"
 
 #: .\accounts\templates\accounts\forms\address_form.html:29
-#: .\accounts\templates\accounts\forms\warehouse_form.html:28
 msgid "Город"
 msgstr "City"
 
 #: .\accounts\templates\accounts\forms\address_form.html:35
-#: .\accounts\templates\accounts\forms\warehouse_form.html:34
 #: .\accounts\templates\accounts\warehouses.html:120
 msgid "Штат"
 msgstr "State"
@@ -96,18 +92,15 @@ msgid "Страна"
 msgstr "Country"
 
 #: .\accounts\templates\accounts\forms\address_form.html:57
-#: .\accounts\templates\accounts\forms\warehouse_form.html:43
 #: .\accounts\templates\accounts\warehouses.html:122
 msgid "Номер телефона"
 msgstr "Phone number"
 
 #: .\accounts\templates\accounts\forms\address_form.html:63
-#: .\accounts\templates\accounts\forms\warehouse_form.html:49
 msgid "Почтовый код"
 msgstr "Postal code"
 
 #: .\accounts\templates\accounts\forms\address_form.html:76
-#: .\accounts\templates\accounts\forms\warehouse_form.html:54
 msgid "Разместить"
 msgstr "Place"
 
@@ -116,7 +109,7 @@ msgid "Заполните декларацию"
 msgstr "Changing the declaration"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:23
-msgid "Наименование товара и брэнд"
+msgid "Наименование товара и бренд"
 msgstr "Product name and brand"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:28
@@ -145,7 +138,7 @@ msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:55
 #: .\accounts\templates\accounts\inbox.html:70
-#: .\main\templates\main\index.html:134
+#: .\main\templates\main\index.html:137
 msgid "Пересыл"
 msgstr "Forwarding"
 
@@ -203,8 +196,7 @@ msgstr "Remember me"
 
 #: .\accounts\templates\accounts\forms\signin_form.html:44
 #: .\accounts\templates\accounts\forms\signup_form.html:68
-#: .\main\templates\main\index.html:38 .\main\templates\main\index.html:101
-#: .\main\templates\main\shops.html:26 .\main\templates\main\shops.html:89
+#: .\main\templates\main\index.html:39
 msgid "Авторизоваться"
 msgstr "Sign in"
 
@@ -214,6 +206,7 @@ msgstr "Not registered yet?"
 
 #: .\accounts\templates\accounts\forms\signin_form.html:51
 #: .\accounts\templates\accounts\forms\signup_form.html:14
+#: .\main\templates\main\index.html:104
 msgid "Регистрация"
 msgstr "Sign up"
 
@@ -234,8 +227,28 @@ msgid "Уже есть аккаунт?"
 msgstr "Already have an account?"
 
 #: .\accounts\templates\accounts\forms\warehouse_form.html:7
-msgid "Добавление"
-msgstr "Add"
+msgid "Открытие собственного адреса в США"
+msgstr "Opening your own address in the USA"
+
+#: .\accounts\templates\accounts\forms\warehouse_form.html:26
+msgid "Тарифы и время"
+msgstr ""
+
+#: .\accounts\templates\accounts\forms\warehouse_form.html:28
+msgid "1 день"
+msgstr "1 day ago"
+
+#: .\accounts\templates\accounts\forms\warehouse_form.html:29
+msgid "5 дней"
+msgstr ""
+
+#: .\accounts\templates\accounts\forms\warehouse_form.html:30
+msgid "10 дней"
+msgstr ""
+
+#: .\accounts\templates\accounts\forms\warehouse_form.html:37
+msgid "Подать заявку"
+msgstr ""
 
 #: .\accounts\templates\accounts\inbox-detail.html:11
 msgid "Покупка"
@@ -292,9 +305,13 @@ msgstr "purchases"
 msgid "Заполните данные получателя"
 msgstr "Fill in the recipient's details"
 
-#: .\accounts\templates\accounts\packages.html:69
+#: .\accounts\templates\accounts\packages.html:70
 msgid "Расформировать"
 msgstr "Disband"
+
+#: .\accounts\templates\accounts\packages.html:71
+msgid "Редактировать"
+msgstr "Edit"
 
 #: .\accounts\templates\accounts\payment.html:46
 msgid "Продолжить"
@@ -314,8 +331,8 @@ msgstr "Telegram"
 
 #: .\accounts\templates\accounts\profile.html:58
 #: .\accounts\templates\accounts\profile.html:81
-msgid "Уведомлять о новых акциях и новостях"
-msgstr "Notify about new promotions and news"
+msgid "Уведомлять о новых акциях"
+msgstr "Notify about new promotions"
 
 #: .\accounts\templates\accounts\profile.html:65
 #: .\accounts\templates\accounts\profile.html:74
@@ -355,8 +372,8 @@ msgid "Адрес в США"
 msgstr "USA address"
 
 #: .\accounts\templates\accounts\warehouses.html:92
-msgid "Добавить адрес"
-msgstr "Add address"
+msgid "Открыть собственный адрес"
+msgstr "Open your own address"
 
 #: .\accounts\templates\accounts\warehouses.html:105
 msgid "Склад"
@@ -390,21 +407,714 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\main\templates\main\index.html:55 .\main\templates\main\index.html:752
-#: .\main\templates\main\shops.html:43 .\main\templates\main\shops.html:189
+#: .\main\templates\main\forms\terms.html:5
+msgid "Условия предоставления услуг"
+msgstr "Terms of Service"
+
+#: .\main\templates\main\forms\terms.html:11
+#, python-format
+msgid ""
+"\n"
+"            Пользуясь интернет-сайтами hermesinternational.ru, вы "
+"соглашаетесь на следующие условия (\"Условия обслуживания\"). <br>\n"
+"            Hermes International LLC (“Мы”) оставляет за собой право, время "
+"от времени, изменять условия предоставления услуг без предварительного "
+"уведомления. Любые новые функции, расширяющие или улучшающие уровень "
+"текущего обслуживания, включая выпуск новых инструментов и ресурсов, "
+"являются частью “Условий обслуживания”. Продолжение пользования нашими "
+"услугами после любых таких изменений означает ваше согласие с этими "
+"изменениями. <br>\n"
+"            Нарушение любого из следующих условий приведет к закрытию вашего "
+"аккаунта. <br>\n"
+"            <br>\n"
+"            Условия пользования<br>\n"
+"             1. Вам разрешается пользоваться нашими услугами только по "
+"достижении 18 лет.<br>\n"
+"             2. Вы обязаны быть живым человеком. Аккаунты, "
+"зарегистрированные автоматизированными компьютерными программами или другими "
+"не предусмотренными методами, будут удалены.<br>\n"
+"             3. Мы включаем до $100 бесплатной страховки для посылок в "
+"некоторые страны. Дополнительная страховка доступна за $3 на каждые $100 "
+"стоимости.<br>\n"
+"             4. Вы несете ответственность за соблюдение безопасности вашего "
+"аккаунта и пароля. Hermes International LLC не несет ответственность за "
+"ущерб связанный с кражей доступа к вашему аккаунту.<br>\n"
+"             5. Одно физическое или юридическое лицо не может иметь более "
+"одного аккаунта.<br>\n"
+"             6. Вы не имеете права пользоваться нашими услугами в любых "
+"незаконных или запрещенных целях. Вы не имеете права нарушать любые законы в "
+"вашей юрисдикции (включая, но не ограничиваясь законами об авторском праве)."
+"<br>\n"
+"             7. Мы предоставляем перевод нашего сервиса на русский язык для "
+"вашего удобства; однако, в случае разногласий в содержании на разных языках, "
+"английская версия будет преобладать.<br>\n"
+"            Регистрация<br>\n"
+"             8. При регистрации вы обязаны указать свое настоящее имя, "
+"почтовый адрес, адрес электронной почты и номер телефона.<br>\n"
+"             9. Ваша личная информация будет использована нами только для "
+"предоставления форвардинговых и почтовых услуг.<br>\n"
+"             10. Если у нас есть основания полагать, что любая "
+"предоставленная информация является недостоверной или неполной, мы оставляем "
+"за собой право закрыть Ваш аккаунт или ограничить Ваш доступ к аккаунту до "
+"тех пор, пока данное несоответствие будет исправлено.<br>\n"
+"             11. Мы можем рассылать информационные письма о нашей службе. Вы "
+"можете отказаться от получения этих писем через настройки вашего аккаунта."
+"<br>\n"
+"            Платежи / цены<br>\n"
+"             12. Мы принимаем платежи только в долларах США.<br>\n"
+"             13. Вы должны совершать платежи, используя только методы оплаты "
+"принадлежащие Вам. Вы не можете совершать платежи с использованием счетов "
+"принадлежащих другим лицам (за редкими исключениями которые заранее "
+"обговариваются со службой безопасности Hermes International). Мы оставляем "
+"за собой право закрыть Ваш аккаунт или ограничить Ваш доступ к аккаунту до "
+"тех пор, пока данное несоответствие не будет исправлено.<br>\n"
+"             14. Вы можете пополнить свой счет в любое время. При получении, "
+"ваш платеж будет автоматически добавлен к вашему балансу. При использовании "
+"банковского перевода, мы добавляем на ваш баланс бонусные 3%% от суммы "
+"перевода.<br>\n"
+"             15. Стоимость сервисных услуг взимается с вашего баланса в "
+"момент их выполнения. Однако вам не требуется предварительно пополнять счет "
+"для получения посылок на нашем складе. Ваша посылка будет отправлена только "
+"после оплаты всех предварительно заказанных сервисов и стоимости доставки."
+"<br>\n"
+"             16. Оплата за сервисы, предоставленные в оговоренном порядке "
+"возврату не подлежит. Исключения возможны только по нашему усмотрению.<br>\n"
+"             17. Мы оставляем за собой право изменять цены на любые услуги, "
+"предоставляемые нами, без предварительного уведомления.<br>\n"
+"             18. Вы имеете право на возврат неиспользованных денежных "
+"средств на исходный счет, с которого производилась оплата, при условии, что "
+"сумма возврата составляет не менее $10 и ваш аккаунт пустой. Если сумма "
+"остаточных средств на балансе составляет менее $10 и/или у вас в аккаунте "
+"остались посылки, то возврат денежных средств на исходный счет не является "
+"возможным, но они могут быть использованы для оплаты услуг Hermes "
+"International в будущем и не имеют срока годности. Поощрительные бонусы, "
+"кредиты, и купоны не имеют денежной ценности и не могут быть возвращены. "
+"Банковские переводы будут возвращены на исходный расчетный счет с вычетом "
+"сборов в размере $20.<br>\n"
+"            Наш склад<br>\n"
+"             19. После завершения регистрации Вам будет присвоен адрес "
+"доставки<br>\n"
+"             20.  Вы должны использовать полный адрес, включая все цифры , "
+"при заказе любого товара для доставки на наш склад.<br>\n"
+"             21. Наши услуги и обязательства вступают в силу только после "
+"получения ваших посылок от служб доставки на нашем складе. Мы не несем "
+"ответственность за товары, не доставленные на наш склад.<br>\n"
+"            \n"
+"            \n"
+"            22. Наши услуги ограничиваются хранением, обработкой и отправкой "
+"ваших товаров. Все товары являются исключительно Вашей собственностью, и "
+"состояние этих товаров находится исключительно под Вашей ответственностью. "
+"Любые вопросы по состоянию Ваших товаров на момент доставки на наш склад "
+"должны решаться исключительно Вами и продавцом товаров.<br>\n"
+"             23. Вы несете ответственность за обеспечение того, чтобы "
+"товары, доставляемые на наш склад, не превышали максимальный вес и размеры, "
+"в соответствии с ограничениями доступных методов доставки.<br>\n"
+"             24. По Вашему желанию, мы можем вернуть товар продавцу в "
+"пределах Соединенных Штатов. Вы несете ответственность за все расходы, "
+"связанные с возвратом товара, включая почтовые расходы.<br>\n"
+"             • Вы можете отправить нам всю необходимую документацию, включая "
+"RMA и предоплаченный почтовый ярлык для использования при возврате посылки. "
+"С вашего аккаунта будет списано $3 за каждую посылку возвращенную "
+"отправителю. При оплате почтовых сборов для возврата, дополнительно $3 "
+"платить не понадобится.<br>\n"
+"             • Товары, отправленные продавцу по предоплаченному адресный от "
+"продавца не покрываются нашей страховкой после того как они покинули склад."
+"<br>\n"
+"             • Мы не отправляем товары на другие адреса в Соединенных Штатах "
+"по предоплаченным адресным лейблам не являющимися возвратными.\n"
+"             25. После того, как товары зарегистрированы на нашем складе, "
+"они страхуются на полную стоимость. В случае утери или повреждения товаров "
+"во время нахождения на нашем складе, вы можете подать иск о возмещении. Мы "
+"имеем право потребовать доказательство стоимости товара. Мы ведем 24-часовой "
+"видео мониторинг склада.<br>\n"
+"             26. Наш склад не оборудован климат-контролем и может быть "
+"подвержен колебаниям температуры и влажности.<br>\n"
+"             27. Мы предоставляем бесплатное хранение вещей в течение 180 "
+"календарных дней с момента их получения. По истечении этого срока с вашего "
+"аккаунта будет списываться $2 в неделю за каждый товар.<br>\n"
+"             28. Посылки будут признаны заброшенными, если они не были "
+"отправлены в течение 180 календарных дней после истечения бесплатного "
+"периода хранения. Заброшенные посылки будут утилизированы и не могут быть "
+"восстановлены.<br>\n"
+"             29. Стоимость хранения собранных, но не отправленных посылок "
+"(консолидаций) составляет $2 в день. Первые 7 календарных дней - бесплатно. "
+"Упакованные, но неотправленные в течение 45 дней посылки будут признаны "
+"заброшенными и утилизированы без возмещения стоимости.<br>\n"
+"             30. Из соображений безопасности наш склад недоступен для общей "
+"публики. Доставка посылок возможна только по предварительной договоренности. "
+"Мы не принимаем посылки от непрошенных посетителей, и не разрешаем забор "
+"посылок со склада в частном порядке. Пожалуйста, свяжитесь с нами через "
+"support@Hermes International.com для получения дополнительной информации."
+"<br>\n"
+"            Условия доставки<br>\n"
+"             31. В настоящее время мы поддерживаем перевозку исключительно "
+"посылок. На данный момент мы не можем перевозить письма, журналы, каталоги, "
+"или любые другие почтовые отправления.<br>\n"
+"             32. Hermes International LLC использует стандартные единицы "
+"измерения США. Несмотря на то, что мы предлагаем эквивалентные измерения в "
+"метрических единицах для Вашего удобства, стандартные единицы измерения США "
+"используются при всех расчетах.<br>\n"
+"             33. Мы подготовим Ваши товары к отправке по вашему запросу. "
+"Наша стандартная услуга упаковки включает в себя подходящую упаковку груза, "
+"при необходимости заполнение пустот и изоленту.<br>\n"
+"             • Упаковка повышенной безопасности, а именно, пузырчатая пленка "
+"или стретч-пленка, доступна за дополнительную плату. Эти сервисы будут "
+"представлены Вам во время отправки запроса на упаковку. Плата за выполнения "
+"данных услуг будет взыскана с вашего счета во время упаковки товаров. При "
+"выполнении услуги отмены упаковки эти сборы не возвращаются<br>\n"
+"             34. После получения Вашего запроса, мы упакуем нужные товары. "
+"Как только это будет сделано, окончательный вес и размеры посылки будут "
+"представлены Вам вместе с возможными методами доставки.<br>\n"
+"            \n"
+"            \n"
+"            35. Вы можете отменить запрос на упаковку после отправления "
+"запроса. Если упаковка товара была выполнена до вашего запроса на отмену, на "
+"Ваш аккаунт будет выставлен счет в размере $10. - Если запрос на упаковку "
+"товара не был взят в обработку, счет выставлен не будет.<br>\n"
+"             36. Мы оставляем за собой право, по собственному усмотрению, "
+"отказаться от запросов на упаковку, которые не могут быть выполнены из-за "
+"физических ограничений в размерах, не отвечают требованиям документации, не "
+"соблюдают условия Hermes International или перевозчиков, или по любым другим "
+"адекватным причинам. Мы сообщим Вам о причине отказа и представим Вам "
+"варианты урегулирования ситуации.<br>\n"
+"             37. Мы поддерживаем только способы доставки, указанные на "
+"странице \"Калькулятор стоимости доставки\". Пожалуйста, обратите внимание, "
+"что некоторые методы доставки ориентируются на объемный вес при расчете "
+"стоимости доставки.<br>\n"
+"             • Объемный вес определяется как; (Д х Ш х В) / 139 = объемный "
+"вес<br>\n"
+"             38. Для Вашего удобства Hermes International предоставляет "
+"ориентировочные сроки доставки для каждого метода отправки. Эти сроки "
+"являются максимально приближенными к реальности, но не являются "
+"гарантированными. Иногда посылки доставляются быстрее или дольше указанных "
+"сроков.<br>\n"
+"             • Скорость доставки любого из представленных методов не "
+"является гарантированной и мы не предоставляем компенсацию за какие-либо "
+"задержки по доставке посылок.<br>\n"
+"            Запрещенные товары<br>\n"
+"             39. При регистрации на нашем сервисе, вы соглашаетесь не "
+"использовать наш сервис для хранения или перевозки запрещенных товаров. "
+"Запрещенные товары включают, но не ограничиваются, следующим;<br>\n"
+"             • Алкоголь и табак, включая жидкости для вапорайзеров<br>\n"
+"             • Электронные сигареты, вейпорайзеры, любые части или "
+"принадлежности к ним. Например, вейп ручки, наборы для вейпинга, бокс-моды, "
+"вейп-соки, жидкости для электронных сигарет, жидкие ароматизаторы и вкусовые "
+"добавки, катушки, провода, батареи, и т.д. Законодательство США строго "
+"регулирует пересылку всех вейпорайзеров и электронных сигарет. По данной "
+"причине отправка таких товаров запрещена даже в пределах США. Любые подобные "
+"товары полученные на склад будут утилизированы без возмещения стоимости."
+"<br>\n"
+"             • Лазерные указки, измерители и прицелы<br>\n"
+"             • Литиевые батареи. Исключением являются случаи когда литиевая "
+"батарея является встроенной, либо упакованной в комплекте в оригинальной "
+"упаковке производителя вместе с устройством. Батареи купленные отдельно от "
+"устройств объединению на складе не подлежат.<br>\n"
+"             • Дроны<br>\n"
+"             • Отпускаемые по рецепту лекарства и любые незаконные или "
+"контролируемые вещества<br>\n"
+"             • Парфюмерия, лак для ногтей, краски и баллончики под "
+"давлением<br>\n"
+"             • Бензин, спички, горючие вещества любого рода<br>\n"
+"             • Химические или коррозийные вещества любого рода<br>\n"
+"             • Огнестрельное оружие и боеприпасы любого рода, в том числе "
+"имитации (игрушки) и запчасти к ним<br>\n"
+"             • Любые ножи, кроме кухонных<br>\n"
+"             • Человеческие органы и / или вещества, а также кровь<br>\n"
+"             • Скоропортящиеся продукты<br>\n"
+"             • Растения в любом виде и в любой форме, в том числе "
+"семена<br>\n"
+"             • Драгоценные камни любого рода, за исключением ювелирных "
+"изделий<br>\n"
+"             • Ювелирные изделия на сумму свыше $1000 (или любые для "
+"отправки через Boxberry)<br>\n"
+"             • Банкноты, ценные бумаги, дорожные чеки, валюта, денежные "
+"эквиваленты любого рода<br>\n"
+"             • Материалы порнографического характера или пропагандирующие "
+"ненависть<br>\n"
+"             • Материалы, нарушающие авторские права<br>\n"
+"             • Любой другой товар, который мы, по нашему усмотрению, считаем "
+"потенциально опасным, вредным или незаконным.<br>\n"
+"             • Товары, запрещённые к перевозке конкретной транспортной "
+"компанией<br>\n"
+"             • Материалы, нарушающие чьи-либо авторские права<br>\n"
+"             • Любой товар запрещённый каким-либо законом или "
+"регулированием<br>\n"
+"             • Любой товар который по нашему мнению может быть потенциально "
+"опасным или запрещённым<br>\n"
+"             • Для России / Беларуси - товары из санкционного списка "
+"Соединённых Штатов и Евросоюза<br>\n"
+"            \n"
+"            \n"
+"            58. Данное тестирование электроники проводится только для Вашего "
+"сведения. Этот тест не гарантирует исправную работу тестируемых устройств в "
+"любое время.<br>\n"
+"             59. Мы не проводим никакие другие диагностические тесты, кроме "
+"подключения устройства к источнику питания.<br>\n"
+"            \n"
+"            Chargebacks и Payment Disputes<br>\n"
+"             60. Пользуясь нашими услугами Вы соглашаетесь с нашими "
+"условиями относительно возвратов средст, страховки и любой компенсации.<br>\n"
+"             61. Запросы на компенсацию не оговорённые в наших условиях "
+"будут отклонены.<br>\n"
+"             62. Пользуясь нашими услугами Вы соглашаетесь не делать "
+"chargeback или любое другое оспаривание платежа для компенсации того, что не "
+"оговорено в наших условиях.<br>\n"
+"             63. В случае оформления Вами chargeback или любого другого "
+"оспаривания платежа Ваш аккаунт будет закрыт и никакие услуги "
+"предоставляться более не будут.<br>\n"
+"            Блокировка / ограничение действия аккаунта<br>\n"
+"             64. Мы оставляем за собой право закрыть или ограничить действия "
+"аккаунта по своему усмотрению.<br>\n"
+"             • Если действие вашего аккаунта было ограничено (неполная "
+"блокировка), то разблокировка аккаунта возможна (но не гарантирована) при "
+"предоставлении определённых документов (подтверждения заказов, их оплаты, "
+"удостоверения личности и т.д), список которых устанавливается в "
+"индивидуальном порядке.<br>\n"
+"             • Если ваш аккаунт был заблокирован из-за ваших действий "
+"мошейнического характера, то вещи оставшиеся в вашем аккаунте будут переданы "
+"изначальному продавцу/отправителю.<br>\n"
+"             65. Вы можете закрыть свой аккаунт в любое время без штрафных "
+"санкций.<br>\n"
+"             • Чтобы закрыть свой аккаунт, Ваш баланс должен быть нулевым "
+"или положительным.<br>\n"
+"             • Любые оставшиеся средства на Вашем счету будут возвращены Вам "
+"поддерживаемыми способами оплаты.<br>\n"
+"             • При закрытии аккаунта, вы отказываетесь от доступа к сервису "
+"Hermes International, к страхованию FastClaim, а также к любым услугам, "
+"предоставляемым Hermes International LLC.<br>\n"
+"            Ограничение объема гарантий<br>\n"
+"            Услуги и сведения на данном веб-сайте предоставлены на условиях "
+"«как есть». Компания Hermes International LLC в полном соответствии с "
+"действующим законодательством отказывается от любых гарантий, явных или "
+"подразумеваемых, включая, но не ограничиваясь подразумеваемыми гарантиями "
+"годности для продажи, не нарушения прав интеллектуальной собственности "
+"третьих сторон и соответствия определенным целям, так же компания Hermes "
+"International LLC в полном соответствии с действующим законодательством "
+"отказывается от любых гарантий, явных или подразумеваемых ОТНОСИТЕЛЬНО "
+"РАБОТЫ ВЕБ-САЙТА ИЛИ ИНФОРМАЦИИ, СОДЕРЖАНИЯ, материалов, продукта (включая "
+"программное обеспечение) или предоставленных услуг. Компания Hermes "
+"International LLC предпринимает все необходимые меры, чтобы исключить "
+"наличие вирусов на страницах веб-сайта, но не может гарантировать их полное "
+"отсутствие и не несет ответственности за последствия действий вирусов. Так "
+"же компания Hermes International LLC не гарантирует что сайт компании, "
+"информация, содержание, материалы, продукт (включая программное обеспечение) "
+"или услуги, доступные на веб-сайте; серверы, электронные письма, "
+"отправленные Hermes International LLC не содержат вирусов или других вредных "
+"компонентов. Примите соответствующие меры безопасности перед загрузкой "
+"информации с наших веб-страниц. В некоторых юрисдикциях запрещается "
+"ограничение объема подразумеваемых гарантий, и отказ от гарантий в данном "
+"разделе может не иметь к вам отношения. При взаимодействии с заказчиками эти "
+"положения не влияют на ваши законные права, от которых вы не можете "
+"отказаться, если таковые имеются. Вы согласны и подтверждаете, что "
+"ограничение объема гарантий и отказ от обязательств и гарантий, "
+"представленные в данном документе об условиях использования, являются "
+"справедливыми и разумно необходимыми, и остаются в силе на неопределенный "
+"срок после прекращения действия настоящего Соглашения.<br>\n"
+"            Лицензии и доступ<br>\n"
+"            \n"
+"            Hermes International LLC является владельцем авторских прав на "
+"опубликованные на данном сайте материалы. Скачивание (кроме кэширования "
+"страниц) или изменение сайта (за исключением вашей личной информации), или "
+"любой его части, запрещено, кроме как с письменного согласия Hermes "
+"International LLC. Воспроизведение материалов с веб-страниц данного сайта "
+"разрешается на следующих условиях; материалы разрешается использовать только "
+"в информационных и некоммерческих целях. Запрещается вносить какие-либо "
+"изменения в материалы. Запрещается без соответствующего разрешения создавать "
+"копии каких-либо торговых марок Hermes International LLC, логотипов, мета-"
+"тегов, скрытого текста, или другой конфиденциальной информации (в том числе "
+"изображения, текст, макет страницы, или формы).Несанкционированное "
+"использование отменяет разрешения или лицензии, выданные Hermes "
+"International LLC. Вам предоставляется ограниченное, отзывное и "
+"неисключительное право создавать гиперссылки на страницах Hermes "
+"International LLC в случае, если ссылка не изображает Hermes International "
+"LLC, ее филиалы, продукты и услуги в ложном, вводящем в заблуждение или ином "
+"подобном оскорбительном свете.<br>\n"
+"            Содержание сайта<br>\n"
+"            Вся текстовая и графическая информация, пользовательские и "
+"графические интерфейсы, торговые наименования, логотипы, музыкальные и "
+"звуковые файлы, графические изображения, фотографии и программный код (далее "
+"– “Контент”), включая, помимо прочего, дизайн, структуру, подбор, "
+"согласование, представление, вид, функции и расположение такого Контента, "
+"содержащегося на данном Веб-сайте, является собственностью, находится под "
+"контролем или залицензировано на компанию Hermes International LLC. Весь "
+"такой Контент защищается законами о фирменном стиле, авторском праве, "
+"товарных знаках и патентах, а также правами на другие различные виды "
+"интеллектуальной собственности и законами о недобросовестной конкуренции. За "
+"исключением случаев, когда иное в явной форме разрешено действующим "
+"соглашением или самим Контентом, запрещается копировать, воспроизводить, "
+"распространять, вновь опубликовывать, загружать на компьютер, "
+"демонстрировать, размещать или передавать любой Контент в любой форме и "
+"любыми способами, включая, помимо прочего, электронные, механические, "
+"фотокопировальные, записывающие и другие методы, без предварительного "
+"официального письменного разрешения Hermes International LLC и/или владельца "
+"соответствующего Контента. Кроме того, запрещается размещать любой Контент с "
+"данного Веб-сайта или любого другого сервера на других ресурсах без "
+"предварительного официального письменного разрешения Hermes International "
+"LLC.<br>\n"
+"            "
+msgstr ""
+"\n"
+" Using Internet sites hermesinternational.ru , you "
+"agree to the following terms (\"Terms of Service\"). <br>\n"
+" Hermes International LLC (“We”) reserves the right,"
+"from time to time, to change the terms of service without prior"
+"notice. Any new features that extend or improve the level of "
+"ongoing maintenance, including the release of new tools and resources, "
+"are part of the “Terms of Service”. Continued use of our "
+" services after any such changes means your acceptance of these "
+"changes. <br>\n"
+" Violation of any of the following conditions will result in the closure of your "
+" account. <br>\n"
+" <br>\n"
+" Terms of Use<br>\n"
+" 1. You are allowed to use our services only after "
+"reaching the age of 18.<br>\n"
+" 2. You have to be a living person. Accounts "
+" registered by automated computer programs or other "
+"methods not provided for will be deleted.<br>\n"
+" 3. We include up to $100 free insurance for parcels in "
+"some countries. Additional insurance is available for $3 for every $100 "
+" cost.<br>\n"
+" 4. You are responsible for maintaining the security of your "
+" account and password. Hermes International LLC is not responsible for "
+"damages related to the theft of access to your account.<br>\n"
+" 5. One individual or legal entity cannot have more than "
+" one account.<br>\n"
+" 6. You have no right to use our services for any "
+"illegal or prohibited purposes. You have no right to violate any laws in "
+"your jurisdiction (including, but not limited to copyright laws)."
+"<br>\n"
+" 7. We provide a translation of our service into Russian for "
+"your convenience; however, in case of disagreement in the content in different languages, "
+"the English version will prevail.<br>\n"
+" Registration<br>\n"
+" 8. When registering, you must provide your real name, "
+"postal address, email address and phone number.<br>\n"
+" 9. Your personal information will be used by us only for "
+"provision of forwarding and postal services.<br>\n"
+" 10. If we have reason to believe that any "
+" information provided is inaccurate or incomplete, we reserve"
+"the right to close your account or restrict your access to your account until "
+"until this discrepancy is corrected.<br>\n"
+" 11. We can send out informational letters about our service. You "
+"can opt out of receiving these emails through your account settings."
+"<br>\n"
+" Payments / prices<br>\n"
+" 12. We accept payments only in US dollars.<br>\n"
+" 13. You must make payments using only the "
+" payment methods owned by you. You cannot make payments using accounts "
+"belonging to other persons (with rare exceptions that"
+"are negotiated in advance with the Hermes International security service). We reserve"
+"the right to close your account or restrict your access to"
+"your account until this discrepancy is corrected.<br>\n"
+" 14. You can top up your account at any time. Upon receipt, "
+" your payment will be automatically added to your balance. When using a "
+" bank transfer, we add a bonus 3%% of the amount of the "
+" transfer to your balance.<br>\n"
+" 15. The cost of services is charged from your balance at the "
+" moment of their execution. However, you do not need to top up your account in advance "
+" to receive parcels in our warehouse. Your parcel will be sent only "
+"after payment for all pre-ordered services and the cost of delivery."
+"<br>\n"
+" 16. Payment for services provided in the agreed manner "
+"is non-refundable. Exceptions are possible only at our discretion.<br>\n"
+" 17. We reserve the right to change prices for any services"
+"provided by us without prior notice.<br>\n"
+" 18. You have the right to refund unused funds"
+"to the original account from which the payment was made, provided that"
+"the refund amount is at least $10 and your account is empty. If the amount "
+"the remaining funds on the balance sheet is less than $10 and/or you have "
+"parcels left in your account, then a refund to the original account is not "
+"possible, but they can be used to pay for Hermes "
+"International services in the future and do not have an expiration date. Incentive bonuses, "
+" credits, and coupons have no monetary value and cannot be refunded. "
+"Bank transfers will be returned to the original settlement account with deduction of "
+"fees of $20.<br>\n"
+" Our warehouse<br>\n"
+" 19. After registration is completed, you will be assigned an address "
+"delivery<br>\n"
+" 20. You must use the full address, including all digits, "
+"when ordering any product for delivery to our warehouse.<br>\n"
+" 21. Our services and obligations come into force only after "
+"receiving your parcels from the delivery services in our warehouse. We are not responsible"
+"for the goods not delivered to our warehouse.<br>\n"
+" \n"
+" \n"
+" 22. Our services are limited to the storage, processing and dispatch of "
+"your goods. All products are solely your property, and "
+"the condition of these goods is solely your responsibility. "
+"Any questions about the condition of your goods at the time of delivery to our warehouse "
+"must be resolved exclusively by you and the seller of the goods.<br>\n"
+" 23. You are responsible for ensuring that "
+"goods delivered to our warehouse do not exceed the maximum weight and dimensions, "
+"in accordance with the limitations of available shipping methods.24. At your request, we can return the goods to the seller within the United States."
+"You are responsible for all expenses,"
+"related to the return of the goods, including postage.<br>\n"
+" • You can send us all the necessary documentation, including the "
+"RMA and a prepaid postal label to use when returning the parcel. "
+"Your account will be charged $3 for each parcel returned "
+"to the sender. When paying postage for a refund, you will not need to pay an additional $3 "
+".<br>\n"
+" • Goods sent to the seller by prepaid address from the"
+"seller are not covered by our insurance after they have left the warehouse."
+"<br>\n"
+" • We do not ship items to other addresses in the United States "
+"by prepaid address labels that are not returnable.\n"
+" 25. After the goods are registered in our warehouse, "
+"they are insured for the full cost. In case of loss or damage to the goods "
+"while in our warehouse, you can file a claim for compensation. We "
+" have the right to demand proof of the value of the goods. We conduct 24-hour "
+"video monitoring of the warehouse.<br>\n"
+" 26. Our warehouse is not equipped with climate control and may be "
+"subject to fluctuations in temperature and humidity.<br>\n"
+" 27. We provide free storage of items for 180"
+"calendar days from the date of their receipt. After this period, your "
+" account will be charged $2 per week for each product.<br>\n"
+" 28. Parcels will be considered abandoned if they have not been "
+"shipped within 180 calendar days after the expiration of the free "
+"storage period. Abandoned parcels will be disposed of and cannot be "
+"restored.<br>\n"
+" 29. The cost of storing collected but not sent parcels "
+" (consolidations) is $2 per day. The first 7 calendar days are free of charge. "
+"Packages packed but not sent within 45 days will be considered "
+"abandoned and disposed of without refund.<br>\n"
+" 30. For security reasons, our warehouse is not accessible to the general "
+" public. Delivery of parcels is possible only by prior arrangement. "
+"We do not accept parcels from uninvited visitors, and we do not allow fence "
+"parcels from the warehouse in private. Please contact us via "
+"support@Hermes International.com for more information."
+"<br>\n"
+" Delivery terms<br>\n"
+" 31. Currently, we support the transportation of exclusively "
+" parcels. At the moment we cannot transport letters, magazines, catalogs, "
+" or any other mail items.<br>\n"
+" 32. Hermes International LLC uses standard units of "
+" measurement of the USA. Despite the fact that we offer equivalent measurements in "
+"metric units for your convenience, the US standard units of measurement "
+"are used in all calculations.<br>\n"
+" 33. We will prepare your goods for shipment according to your request. "
+"Our standard packaging service includes suitable cargo packaging, "
+"void filling and duct tape if necessary.<br>\n"
+" 33. We will prepare your goods for shipment upon your request. "
+"Our standard packaging service includes suitable cargo packaging, "
+"void filling and duct tape if necessary.<br>\n"
+" • High-security packaging, namely bubble wrap "
+" or stretch film, is available for an additional fee. These services will be "
+" presented to you at the time of sending the packaging request. The fee for performing "
+" of these services will be charged from your account during the packaging of the goods. When "
+"performing the package cancellation service, these fees are not refunded<br>\n"
+" 34. After receiving your request, we will pack the necessary goods. "
+"Once this is done, the final weight and dimensions of the parcel will be "
+"presented to you along with possible delivery methods.<br>\n"
+"            \n"
+"            \n"
+"            35. You can cancel the packaging request after sending the "
+" request. If the packaging of the goods was completed before your cancellation request,"
+"an invoice in the amount of $10 will be issued to " "your account. - If the request for packaging "
+" of the goods was not taken into processing, the invoice will not be issued.<br>\n"
+" 36. We reserve the right, at our sole discretion, "
+"to refuse requests for packaging that cannot be fulfilled due to "
+"physical limitations in size, do not meet the requirements of documentation, do not "
+"comply with the conditions of Hermes International or carriers, or for any other "
+"adequate reasons. We will inform you about the reason for the refusal and provide you with "
+"options for resolving the situation.<br>\n"
+" 37. We only support the shipping methods listed on the "
+" page \"Shipping Cost Calculator\". Please note, "
+"that some shipping methods are guided by volumetric weight when calculating the "
+"shipping cost.<br>\n"
+" • Volumetric weight is defined as; (L x W x H) / 139 = volumetric "
+"weight<br>\n"
+" 38. For your convenience, Hermes International provides "
+"approximate delivery times for each shipping method. These deadlines "
+" are as close to reality as possible, but are not "
+"guaranteed. Sometimes parcels are delivered faster or longer than the specified "
+" deadlines.<br>\n"
+" • The delivery speed of any of the presented methods is not "
+"is guaranteed and we do not provide compensation for any "
+"delays in the delivery of parcels.<br>\n"
+" Prohibited goods<br>\n"
+" 39. By registering on our service, you agree not to "
+" use our service for the storage or transportation of prohibited goods. "
+"Prohibited goods include, but are not limited to, the following;<br>\n"
+" • Alcohol and tobacco, including vaporizer liquids<br>\n"
+" • Electronic cigarettes, vaporizers, any parts or "
+"belonging to them. For example, vape pens, vaping kits, box mods, "
+"vape juices, liquids for electronic cigarettes, liquid flavors and flavors, "
+"additives, coils, wires, batteries, etc. US legislation strictly "
+"regulates the shipment of all vapers and electronic cigarettes. For this "
+" reason, the shipment of such goods is prohibited even within the United States. Any such "
+"goods received at the warehouse will be disposed of without refund."
+"<br>\n"
+" • Laser pointers, meters and sights<br>\n"
+" • Lithium batteries. Exceptions are cases when the lithium "
+" battery is built-in, or packaged in the original "
+" packaging of the manufacturer together with the device. Batteries purchased separately from "
+" devices cannot be combined in stock.<br>\n"
+" • Drones<br>\n"
+" • Prescription drugs and any illegal or"
+"controlled substances<br>\n"
+" • Perfumes, nail polish, paints and spray cans under "
+"pressure<br>\n"
+" • Gasoline, matches, combustible substances of any kind<br>\n"
+" • Chemical or corrosive substances of any kind<br>\n"
+" • Firearms and ammunition of any kind, including "
+"imitations (toys) and spare parts for them<br>\n"
+" • Any knives other than kitchen knives<br>\n"
+" • Human organs and / or substances, as well as blood<br>\n"
+" • Perishable products<br>\n"
+" • Plants in any form and in any form, including "
+"seeds<br>\n"
+" • Precious stones of any kind, except jewelry "
+"products<br>\n"
+" • Jewelry worth over $1000 (or any for "
+"sending via Boxberry)<br>\n"
+" • Banknotes, securities, traveler's checks, currency, monetary "
+"equivalents of any kind<br>\n"
+" • Materials of a pornographic nature or propagandizing "
+"hatred<br>\n"
+" • Copyright infringing materials<br>\n"
+" • Any other product that we, in our sole discretion, consider "
+"potentially dangerous, harmful or illegal.<br>\n"
+" • Goods prohibited for carriage by a specific transport company "
+"by the company<br>\n"
+" • Materials that violate someone's copyright<br>\n"
+" • Any product prohibited by any law or"
+"regulation<br>\n"
+" • Any product that in our opinion may be potentially "
+"dangerous or prohibited<br>\n"
+" • For Russia / Belarus - goods from the sanctions list "
+"of the United States and the European Union<br>\n"
+" \n"
+" \n"
+" 58. This testing of electronics is carried out only for your "
+"information. This test does not guarantee the correct operation of the tested devices at "
+" any time.<br>\n"
+" 59. We do not perform any other diagnostic tests except "
+"connecting the device to a power source.<br>\n"
+" \n"
+" Chargebacks and Payment Disputes<br>\n"
+" 60. By using our services, you agree to our "
+" terms and conditions regarding refunds, insurance and any compensation.<br>\n"
+" 61. Requests for compensation not specified in our terms and conditions "
+"will be rejected.<br>\n"
+" 62. By using our services, you agree not to make"
+"a chargeback or any other contesting payment to compensate for what is not "
+"stipulated in our terms.<br>\n"
+"             63. If you issue a chargeback or any other "
+"contesting the payment, your account will be closed and no services "
+"will be provided anymore.<br>\n"
+" Account blocking / restriction<br>\n"
+" 64. We reserve the right to close or restrict the actions of the "
+"account at our discretion.<br>\n"
+" • If the action of your account was limited (incomplete "
+"blocking), then account unblocking is possible (but not guaranteed) with the "
+"provision of certain documents (confirmation of orders, their payment, "
+"identity cards, etc.), the list of which is set in "
+" individually.<br>\n"
+" • If your account was blocked due to your actions "
+"of a mosheinical nature, then the items remaining in your account will be transferred to the "
+"original seller/sender.<br>\n"
+"             65. You can close your account at any time without penalty "
+" sanctions.<br>\n"
+" • To close your account, your balance must be zero "
+" or positive.<br>\n"
+" • Any remaining funds in your account will be refunded to you "
+"by supported payment methods.<br>\n"
+" • When you close your account, you refuse access to the service "
+"Hermes International, FastClaim insurance, as well as to any services "
+"provided by Hermes International LLC.<br>\n"
+" Limitation of the scope of guarantees<br>\n"
+" The services and information on this website are provided on an"
+"as is basis. Hermes International LLC, in full compliance with "
+" applicable law, disclaims any warranties, express or"
+"implied, including, but not limited to, implied warranties of "
+"merchantability, non-infringement of intellectual property rights "
+"of third parties and compliance with certain purposes, as well as Hermes "
+"International LLC in full in accordance with the current legislation "
+"disclaims any warranties, express or implied, REGARDING "
+"THE OPERATION OF THE WEBSITE OR THE INFORMATION, CONTENT, materials, product (including "
+"software) or services provided. Hermes"
+"International LLC takes all necessary measures to exclude"
+"the presence of viruses on the pages of the website, but cannot guarantee their complete"
+"absence and is not responsible for the consequences of the actions of viruses. So "
+"Hermes International LLC does not guarantee that the company's website, "
+"information, content, materials, product (including software)"
+"or services available on the website; servers, emails, "
+"sent by Hermes International LLC do not contain viruses or other harmful "
+"components. Take appropriate security measures before downloading "
+" information from our web pages. In some jurisdictions, it is prohibited to "
+"limit the scope of implied warranties, and the disclaimer of warranties in this "
+" section may not apply to you. When interacting with customers, these "
+"provisions do not affect your legal rights, which you cannot "
+"waive, if any. You agree and confirm that the "
+"limitation of warranties and disclaimer of obligations and warranties, "
+"presented in this document about the terms of use, are "
+"fair and reasonably necessary, and remain in force indefinitely "
+"after the termination of this Agreement.<br>\n"
+" Licenses and achieved<br>\n"
+" \n"
+" LLC 'Hermes International' is the owner of the copyright "
+"materials published on this website. Downloading (except caching "
+"pages) or changing the site (with the exception of your personal information), or "
+"love it, exorbitantly, krum as with the written consent of Hermes "
+"International LLC. Reproduction of materials from the web pages of this site "
+"permitted under the following conditions; the materials are allowed to be used only "
+"for informational and non-commercial purposes. It is forbidden to make any "
+" changes to the materials. It is prohibited to create "
+"copies of any trademarks, LLC 'Hermes International', lohotypes, Moscow-"
+"tags, hidden text, or other confidential information (including "
+"images, text, page layout, or forms) without appropriate permission.Unauthorized "
+"use denies the renunciation of religion issued by Hermes"
+"International LLC. You are granted a limited, revocable and "
+"non-exclusive right to create hyperlinks to Hermes pages "
+"LLC 'International', including if the link does not represent Hermes International"
+"LLC, partners, products and services on the Internet, misleading or otherwise "
+"in such an offensive light.<br>\n"
+" Site content<br>\n"
+" All text and graphic information, user and "
+"graphical interfaces, trade names, logos, music and "
+"sound files, graphic images, photographs and program code (hereinafter "
+"– “Content”), including, but not limited to, design, structure, selection, "
+"coordination, presentation, type, functions and location of such Content, "
+"contained on this Website, is the property, is under "
+"counter-lem or ordered for the company 'Hermes International LLC'. All "
+"such Content is protected by the laws on corporate identity, copyright, "
+"trademarks and patents, as well as rights to other various types "
+"intellectual property and unfair competition laws. Except "
+" unless otherwise expressly permitted by the applicable "
+"agreement or the Content itself, it is prohibited to copy, reproduce, "
+"distribute, republish, upload to a computer, "
+"display, post or transmit any Content in any form and "
+"by any means, including, but not limited to, electronic, mechanical, "
+"photocopying, recording and other methods, without prior "
+"official communication of LLC 'Hermes International' and/or Owned "
+"relevant Content. In addition, it is prohibited to post any Content from "
+"this Website or any other server on other resources without "
+"representative cooperation agreement of 'Hermes International"
+"LLC.<br>\n"
+" "
+
+#: .\main\templates\main\forms\terms.html:125
+msgid "Закрыть"
+msgstr "Close"
+
+#: .\main\templates\main\index.html:56 .\main\templates\main\index.html:822
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\main\templates\main\index.html:61 .\main\templates\main\index.html:747
-#: .\main\templates\main\shops.html:49 .\main\templates\main\shops.html:184
+#: .\main\templates\main\index.html:62 .\main\templates\main\index.html:817
 msgid "О нас"
 msgstr "About us"
 
-#: .\main\templates\main\index.html:67 .\main\templates\main\index.html:757
+#: .\main\templates\main\index.html:68 .\main\templates\main\index.html:827
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\main\templates\main\index.html:117
+#: .\main\templates\main\index.html:102
+msgid "Вход"
+msgstr ""
+
+#: .\main\templates\main\index.html:120
 msgid ""
 "Наша компания предлагает широкий спектр услуг по приему грузов из США. "
 "Независимо от размера или веса отправления, мы гарантируем бережное и "
@@ -418,11 +1128,11 @@ msgstr ""
 "easily and conveniently send your orders to our warehouse in the U.S., ready "
 "for subsequent international shipping."
 
-#: .\main\templates\main\index.html:123
+#: .\main\templates\main\index.html:126
 msgid "Приём"
 msgstr "Reception"
 
-#: .\main\templates\main\index.html:128
+#: .\main\templates\main\index.html:131
 msgid ""
 "Мы специализируемся на эффективной и надежной пересылке товаров из США в "
 "любые страны мира. Наш опытный логистический отдел заботится о том, чтобы "
@@ -434,39 +1144,20 @@ msgstr ""
 "that that your shipment is packed safely, meets all internationalstandards "
 "and delivered to you with minimal delays."
 
-#: .\main\templates\main\index.html:139
+#: .\main\templates\main\index.html:142
 msgid ""
-"Ваши врата к мировому шопингу открыты! Наша компания предлагает надежный и "
-"удобный сервис приёма товаров из США. Независимо от того, покупаете ли вы на "
-"американских сайтах или с аукционов, мы готовы принять ваши заказы на нашем "
-"адресе, обеспечивая безопасное хранение до момента отправки."
+"Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке "
+"товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой "
+"посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель "
+"- обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего "
+"шопингового опыта."
 msgstr ""
-"Your gate to world shopping is open! Our company offers a reliable and "
-"convenient service of receiving goods from the United States. Whether you're "
-"shopping on American websites or auctions, we are ready to receive your "
-"orders at ouraddress, ensuring safe storage until dispatch."
 
-#: .\main\templates\main\index.html:144
-msgid "Скуп"
+#: .\main\templates\main\index.html:147
+msgid "Выкуп товара"
 msgstr "Buyout"
 
-#: .\main\templates\main\index.html:150
-msgid ""
-"Глобальная связь стала ближе. Мы гарантируем надежную и оперативную доставку "
-"ваших товаров из США в любую страну мира. Наша сеть партнёров по доставке "
-"обеспечивает удобные варианты, чтобы ваши покупки добрались до вас быстро и "
-"безопасно."
-msgstr ""
-"Global connectivity has come closer. We guarantee reliable and prompt "
-"deliveryyour goods from the U.S. to any country in the world. Our network of "
-"shipping partnersprovides convenient options to get your purchases to you "
-"quickly andsafely."
-
-#: .\main\templates\main\index.html:156
-msgid "Доставка"
-msgstr "Delivery"
-
-#: .\main\templates\main\index.html:161
+#: .\main\templates\main\index.html:153
 msgid ""
 "Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! "
 "Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских "
@@ -478,7 +1169,7 @@ msgstr ""
 "experienced team of experts will place the order and make the payment on "
 "your behalf."
 
-#: .\main\templates\main\index.html:172
+#: .\main\templates\main\index.html:164
 msgid ""
 "Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных "
 "адресов». Это означает, что вы можете получить уникальный адрес в США, на "
@@ -490,11 +1181,11 @@ msgstr ""
 "S. to which your orders will be delivered. We then forward your packages to "
 "the your request, giving you maximum flexibility and control over delivery."
 
-#: .\main\templates\main\index.html:178
+#: .\main\templates\main\index.html:170
 msgid "Открытие адресов"
 msgstr "Opening addresses"
 
-#: .\main\templates\main\index.html:207
+#: .\main\templates\main\index.html:199
 msgid ""
 "Мы - лучший выбор для всех, кто хочет получить доступ к товарам из "
 "Соединенных Штатов и получить их прямо в свою страну. Наша компания "
@@ -511,144 +1202,141 @@ msgstr ""
 "opportunity to open personal addresses in America, which allows you to make "
 "the receipt of goods even more convenient and safe."
 
-#: .\main\templates\main\index.html:211 .\main\templates\main\index.html:451
+#: .\main\templates\main\index.html:203 .\main\templates\main\index.html:443
 msgid "Попробовать"
 msgstr "Try for free"
 
-#: .\main\templates\main\index.html:366
+#: .\main\templates\main\index.html:358
 msgid "Новые заказы"
 msgstr "New orders"
 
-#: .\main\templates\main\index.html:367
+#: .\main\templates\main\index.html:359
 msgid "Ежедневно добавляются"
 msgstr "Added daily"
 
-#: .\main\templates\main\index.html:378
+#: .\main\templates\main\index.html:370
 msgid "Доставки"
 msgstr "Delivery"
 
-#: .\main\templates\main\index.html:379
+#: .\main\templates\main\index.html:371
 msgid "Успешно доставленные заказы"
 msgstr "Successfully delivered orders"
 
-#: .\main\templates\main\index.html:390 .\main\templates\main\index.html:472
+#: .\main\templates\main\index.html:382 .\main\templates\main\index.html:464
 msgid "Наши клиенты"
 msgstr "Our clients"
 
-#: .\main\templates\main\index.html:391
+#: .\main\templates\main\index.html:383
 msgid "Среднее количество пользователей в сутки"
 msgstr "Average number of users per day"
 
-#: .\main\templates\main\index.html:403
+#: .\main\templates\main\index.html:395
 msgid "Панель"
 msgstr "Dashboard"
 
-#: .\main\templates\main\index.html:405
+#: .\main\templates\main\index.html:397
 msgid "Приятный дизайн"
 msgstr "Nice design"
 
-#: .\main\templates\main\index.html:407
+#: .\main\templates\main\index.html:399
 msgid "Удобство пользования"
 msgstr "Ease of use"
 
-#: .\main\templates\main\index.html:410
+#: .\main\templates\main\index.html:402
 msgid "Мы можем добавить покупку за вас"
 msgstr "We can add a purchase for you"
 
-#: .\main\templates\main\index.html:412
+#: .\main\templates\main\index.html:404
 msgid "Более простого способа заказа вы ещё нее видели"
 msgstr "An easier way to order you have seen it"
 
-#: .\main\templates\main\index.html:420
+#: .\main\templates\main\index.html:412
 msgid "Действительные данные о заказах на ваши адреса"
 msgstr "Valid order data to your addresses"
 
-#: .\main\templates\main\index.html:429
+#: .\main\templates\main\index.html:421
 msgid "Добавления покупки в один клик"
 msgstr "Adding a purchase in one click"
 
-#: .\main\templates\main\index.html:438
+#: .\main\templates\main\index.html:430
 msgid "Быстрый отклик панели"
 msgstr "Fast panel response"
 
-#: .\main\templates\main\index.html:447
+#: .\main\templates\main\index.html:439
 msgid "Поддержка 24/7"
 msgstr "Support 24/7"
 
-#: .\main\templates\main\index.html:473
+#: .\main\templates\main\index.html:465
 msgid "Что о нас говорят"
 msgstr "What they say about us"
 
-#: .\main\templates\main\index.html:474
+#: .\main\templates\main\index.html:466
 msgid "Не уверены в нас? Просто взгляните на отзывы!"
 msgstr "Not sure about us? Just take a look at the reviews!"
 
-#: .\main\templates\main\index.html:486
+#: .\main\templates\main\index.html:478 .\main\templates\main\index.html:550
 msgid "1 день назад"
 msgstr "1 day ago"
 
-#: .\main\templates\main\index.html:490
+#: .\main\templates\main\index.html:482 .\main\templates\main\index.html:554
 msgid ""
-"\"Достаточно хорошая панель, поддержка быстро ответила на все вопросы, "
-"рекомендую.\""
-msgstr ""
-"\"Good enough panel, support responded quickly to all questions, I recommend."
-"\""
+"\"Достаточно хорошая панель, поддержка быстро ответила на все вопросы.\""
+msgstr "\"Good enough panel, support responded quickly to all questions.\""
 
-#: .\main\templates\main\index.html:509
+#: .\main\templates\main\index.html:501 .\main\templates\main\index.html:575
 msgid "1 неделю назад"
 msgstr "1 week ago"
 
-#: .\main\templates\main\index.html:513
+#: .\main\templates\main\index.html:505 .\main\templates\main\index.html:579
 msgid ""
 "\"Сервис \"Покупка за вас\" стал моим фаворитом среди других проектов!!!\""
 msgstr ""
 "\"Service \"Purchase for you\" has become my favorite among other projects!!!"
 "\""
 
-#: .\main\templates\main\index.html:532
+#: .\main\templates\main\index.html:524 .\main\templates\main\index.html:600
 msgid "3 недели назад"
 msgstr "3 weeks ago"
 
-#: .\main\templates\main\index.html:536
+#: .\main\templates\main\index.html:528 .\main\templates\main\index.html:604
 msgid "\"Хороший сервис. Быстро помог решить проблему с покупкой в США\""
 msgstr ""
 "\"Good service. Quickly helped to solve the problem with the purchase in the "
 "US\""
 
-#: .\main\templates\main\index.html:588
+#: .\main\templates\main\index.html:658
 msgid "Смотреть все"
 msgstr "See all"
 
-#: .\main\templates\main\index.html:593
+#: .\main\templates\main\index.html:663
 msgid "И это ещё не всё... Мы принимаем более 1.000 различных магазинов в США!"
 msgstr "And that's not all... We accept over 1,000 different shops in the US!"
 
-#: .\main\templates\main\index.html:603
+#: .\main\templates\main\index.html:673
 msgid "Часто задаваемые вопросы"
 msgstr "Frequently asked questions"
 
-#: .\main\templates\main\index.html:604
+#: .\main\templates\main\index.html:674
 msgid "Ниже смотрите, что спрашивали другие пользователи."
 msgstr "See what other users have asked below."
 
-#: .\main\templates\main\index.html:616
+#: .\main\templates\main\index.html:686
 msgid " Как работает \"покупка за вас\"?"
 msgstr "How does 'buy for you' work?"
 
-#: .\main\templates\main\index.html:625
+#: .\main\templates\main\index.html:695
 msgid "Вы просто заполняете декларацию о товаре и платите за него."
 msgstr "You simply fill out a declaration about the product and pay for it."
 
-#: .\main\templates\main\index.html:626
+#: .\main\templates\main\index.html:696
 msgid "Мы приобретаем его в США и отправляем."
 msgstr "We purchase it in the USA and ship it."
 
-#: .\main\templates\main\index.html:636
+#: .\main\templates\main\index.html:706
 msgid "Безопасно ли отправлять посылку?"
 msgstr "Is it safe to send a parcel?"
 
-#: .\main\templates\main\index.html:645
+#: .\main\templates\main\index.html:715
 msgid ""
 "Мы - официально зарегистрированная компания <b> Hermes International LLC</"
 "b>. Все риски, связанные с деформацией и потерей посылки, несёт за собой "
@@ -658,11 +1346,11 @@ msgstr ""
 "associated with the deformation and loss of the parcel, bearsour "
 "organization."
 
-#: .\main\templates\main\index.html:655
+#: .\main\templates\main\index.html:725
 msgid "Как совершить первую покупку?"
 msgstr "How to make the first purchase?"
 
-#: .\main\templates\main\index.html:664
+#: .\main\templates\main\index.html:734
 msgid ""
 "Когда вы покупаете товар в США просто указываете адрес одного из адресов в "
 "панели. Заполняете декларацию и адрес доставки"
@@ -670,11 +1358,11 @@ msgstr ""
 "When you buy a product in the US, simply enter the address of one of the "
 "addresses in the panels. Fill in the declaration and delivery address"
 
-#: .\main\templates\main\index.html:674
+#: .\main\templates\main\index.html:744
 msgid "Имеетcя ли возможность открыть личный адрес в США?"
 msgstr "Is it possible to open a personal address in the USA?"
 
-#: .\main\templates\main\index.html:683
+#: .\main\templates\main\index.html:753
 msgid ""
 "Определённо. Вы можете добавить свой адрес в меню в личном кабинете во "
 "вкладке \"Мои адреса\"."
@@ -682,59 +1370,55 @@ msgstr ""
 "Definitely. You can add your address to the menu in your account in tab \"My "
 "addresses\"."
 
-#: .\main\templates\main\index.html:693
+#: .\main\templates\main\index.html:763
 msgid "Какие есть дополнения?"
 msgstr "What are the add-ons?"
 
-#: .\main\templates\main\index.html:702
+#: .\main\templates\main\index.html:772
 msgid ""
 "Мы можем упаковать заказ в пакет, убрать обувную коробку или добавить "
 "обрешётку."
 msgstr "We can pack the order in a bag, remove the shoe box or add crate."
 
-#: .\main\templates\main\index.html:715
+#: .\main\templates\main\index.html:785
 msgid "Связаться с нами"
 msgstr "Contact us"
 
-#: .\main\templates\main\index.html:716
+#: .\main\templates\main\index.html:786
 msgid "Есть вопросы или нужна помощь?"
 msgstr "Do you have questions or need help?"
 
-#: .\main\templates\main\index.html:717
+#: .\main\templates\main\index.html:787
 msgid "Не стесняйтесь обращаться к нам в Telegram!"
 msgstr "Feel free to contact us on Telegram!"
 
-#: .\main\templates\main\index.html:718
+#: .\main\templates\main\index.html:788
 msgid "Написать в Telegram"
 msgstr "Write in Telegram"
 
-#: .\main\templates\main\index.html:738 .\main\templates\main\shops.html:175
+#: .\main\templates\main\index.html:808
 msgid "Доставляйте быстро в любую точку мира"
 msgstr "Deliver fast to anywhere in the world"
 
-#: .\main\templates\main\index.html:743 .\main\templates\main\shops.html:180
+#: .\main\templates\main\index.html:813
 msgid "Компания"
 msgstr "Company"
 
-#: .\main\templates\main\index.html:770 .\main\templates\main\shops.html:202
+#: .\main\templates\main\index.html:840
 msgid "Лицензии"
 msgstr "Licenses"
 
-#: .\main\templates\main\index.html:774 .\main\templates\main\shops.html:206
+#: .\main\templates\main\index.html:844
 msgid "Оферта"
 msgstr "Offer"
 
-#: .\main\templates\main\index.html:793 .\main\templates\main\shops.html:225
+#: .\main\templates\main\index.html:863
 msgid "Все права защищены. Copyright"
 msgstr "All rights reserved. Copyright"
 
-#: .\main\templates\main\index.html:797 .\main\templates\main\shops.html:229
+#: .\main\templates\main\index.html:867
 msgid "Разработано"
 msgstr "Developed by"
-
-#: .\main\templates\main\shops.html:108
-msgid "Вернуться на главную"
-msgstr "Go back to the main page"
 
 #: .\packageLocker\settings.py:134
 msgid "English"
@@ -763,6 +1447,43 @@ msgstr "According to these details, the transfer is available during"
 #: .\payments\templates\payments\pay.html:339
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
+
+#~ msgid "Добавление"
+#~ msgstr "Add"
+
+#~ msgid "Добавить адрес"
+#~ msgstr "Add address"
+
+#~ msgid ""
+#~ "Ваши врата к мировому шопингу открыты! Наша компания предлагает надежный "
+#~ "и удобный сервис приёма товаров из США. Независимо от того, покупаете ли "
+#~ "вы на американских сайтах или с аукционов, мы готовы принять ваши заказы "
+#~ "на нашем адресе, обеспечивая безопасное хранение до момента отправки."
+#~ msgstr ""
+#~ "Your gate to world shopping is open! Our company offers a reliable and "
+#~ "convenient service of receiving goods from the United States. Whether "
+#~ "you're shopping on American websites or auctions, we are ready to receive "
+#~ "your orders at ouraddress, ensuring safe storage until dispatch."
+
+#~ msgid "Скуп"
+#~ msgstr "Buyout"
+
+#~ msgid ""
+#~ "Глобальная связь стала ближе. Мы гарантируем надежную и оперативную "
+#~ "доставку ваших товаров из США в любую страну мира. Наша сеть партнёров по "
+#~ "доставке обеспечивает удобные варианты, чтобы ваши покупки добрались до "
+#~ "вас быстро и безопасно."
+#~ msgstr ""
+#~ "Global connectivity has come closer. We guarantee reliable and prompt "
+#~ "deliveryyour goods from the U.S. to any country in the world. Our network "
+#~ "of shipping partnersprovides convenient options to get your purchases to "
+#~ "you quickly andsafely."
+
+#~ msgid "Доставка"
+#~ msgstr "Delivery"
+
+#~ msgid "Вернуться на главную"
+#~ msgstr "Go back to the main page"
 
 #~ msgid "Да. Все риски несёт за собой наша платформа."
 #~ msgstr "Yes. All risks are borne by our platform."
