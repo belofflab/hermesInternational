@@ -98,12 +98,22 @@
 <script>
   $(document).ready(function() {
     $('#testimonial-slider').owlCarousel({
-      items: 3,
+      // items: 3,
       loop: true,
       autoplay: true,
       autoplayTimeout: 3000, // Adjust the time interval as needed
-      responsiveClass: true
-      // You can add more Owl Carousel options here
+      responsiveClass: true,
+      responsive:{
+        0:{
+            items:1,
+        },
+        600:{
+            items:2,
+        },
+        1200:{
+            items:3,
+        }
+    }
     });
   });
   </script>

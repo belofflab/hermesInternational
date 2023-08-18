@@ -84,10 +84,10 @@
       <div class="container">
         <br>
         <div class="row align-items-center">
-          <div class="col-8">
+          <div class="col-sm-12 col-lg-8">
             <h1>{% translate 'Адрес в США' %}</h1>
           </div>
-          <div class="col-4">
+          <div class="col-sm-12  col-lg-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
               {% translate 'Открыть собственный адрес' %}
             </button>
@@ -123,17 +123,14 @@
                 </ul>
                 <div class="card-body">
 
-                  <div class="row row-cols-1 row-cols-md-3 g-4">
+                  <div class="row ">
                     {% for shop in warehouse.warehouse_shops %}
-                    <div class="row">
-                      <div class="col-sm-3 col-md-3 col-lg-1">
+                      <div class="col-sm-6 col-md-3 col-lg-2">
                         <div class="shop-info">
                           <img src="{{shop.image.url}}" alt="{{shop.name}}"> -
                           <span class="shop-info_quantity">{{shop.quantity}}</span>
                         </div>
                       </div>
-                    </div>
-        
                     {% endfor %}
                   </div>
                 </div>
