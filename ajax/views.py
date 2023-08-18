@@ -339,3 +339,14 @@ class AccountWarehouseDeleteView(LoginRequiredMixin, View):
         AccountWarehouse.objects.filter(id=warehouse).delete()
 
         return JsonResponse({"status": True, "message": ""})
+
+
+class AccountAvatarChange(View):
+    def post(self, request):
+        if request.FILES.get('profile_image'):
+            user = request.user
+            profile_image = request.FILES['profile_image']
+            user.profile_image = profile_image
+            user.save()
+            return JsonResponse({'image_url': user.profile_image.url})
+        return JsonResponse({'error': 'Image upload failed'}, status=400) 

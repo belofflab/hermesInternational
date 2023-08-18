@@ -12,7 +12,8 @@
   <div class="row gx-4">
     <div class="col-auto">
       <div class="avatar avatar-xl position-relative">
-        <img  src="{% static 'accounts/img/profile.png' %}" alt="profile_image" class="w-100 border-radius-lg"> <!-- shadow-sm -->
+        <input type="file" id="profile-image-input" style="display: none;">
+        <img style="cursor: pointer;" id="profile-image" src="{% if request.user.profile_image %}{{request.user.profile_image.url}}{% else%}{% static 'accounts/img/profile.png' %}{% endif %}" alt="profile_image" class="w-100 border-radius-lg">
       </div>  
     </div>
     <div class="col-auto my-auto">

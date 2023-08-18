@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.utils.deconstruct import deconstructible
 
 PURCHASE_STATUS_CHOICES = (
     ("BUYOUT", "buyout"),
@@ -34,7 +35,9 @@ class Purchase(models.Model):
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
     address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True)
-    delivery_method = models.CharField(verbose_name="Метод доставки", max_length=255, null=True)
+    delivery_method = models.CharField(
+        verbose_name="Метод доставки", max_length=255, null=True
+    )
     is_deliveried = models.BooleanField(verbose_name="Доставлена", default=False)
     options = models.ManyToManyField(
         to=PurchaseDeliveryOption, verbose_name="Доступные опции доставки", blank=True
@@ -100,6 +103,17 @@ class AccountData(models.Model):
     def __str__(self) -> str:
         return f"{self.country} -> {self.city} -> {self.street}"
 
+@deconstructible
+class UserImagePath:
+    def __init__(self, sub_path):
+        self.sub_path = sub_path
+
+    def __call__(self, instance, filename):
+        # filename will be the original uploaded filename
+        # Generate a unique filename based on user's id and original file extension
+        ext = filename.split('.')[-1]
+        new_filename = f'user_{instance.id}.{ext}'
+        return f'profile_images/{self.sub_path}/{new_filename}'
 
 class Account(AbstractBaseUser):
     """Кастомная модель пользователя"""
@@ -110,6 +124,9 @@ class Account(AbstractBaseUser):
     sur_name = models.CharField(verbose_name="Отчество", max_length=255, null=True)
     balance = models.DecimalField(
         verbose_name="Баланс", max_digits=12, decimal_places=2, default=0
+    )
+    profile_image = models.ImageField(
+        upload_to=UserImagePath('profile_images'), blank=True, null=True
     )
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase)
     country = models.CharField(verbose_name="Страна", max_length=255, null=True)
@@ -140,7 +157,7 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
-    
+
     def update_balance(self, amount):
         """
         Update the balance of the account by adding the given amount.
@@ -180,29 +197,28 @@ class AccountNotifySettings(models.Model):
         return self.account.email
 
 
-
 class BuyoutCategory(models.Model):
     name = models.CharField(max_length=255)
     is_visible = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name="Категория"
-        verbose_name_plural="Категории скуп-листа"
-    
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории скуп-листа"
+
     def __str__(self) -> str:
         return f"({'Включена' if self.is_visible else 'Отключена'}) {self.name}"
-    
 
-class Buyout(models.Model): 
 
+class Buyout(models.Model):
     category = models.ForeignKey(BuyoutCategory, on_delete=models.CASCADE)
     name = models.CharField(verbose_name="Товар|Товары", max_length=1024)
-    percent = models.DecimalField(verbose_name="Процент", max_digits=12, decimal_places=2)
+    percent = models.DecimalField(
+        verbose_name="Процент", max_digits=12, decimal_places=2
+    )
 
     class Meta:
-        verbose_name="Товар"
-        verbose_name_plural="Скуп-лист"
+        verbose_name = "Товар"
+        verbose_name_plural = "Скуп-лист"
 
     def __str__(self) -> str:
         return f"{self.category.name} -> {self.name} {self.percent}%"
-    

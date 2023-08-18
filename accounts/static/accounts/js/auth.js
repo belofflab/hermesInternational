@@ -510,3 +510,31 @@ function updatePurchaseData(purchaseId, addressId) {
         console.log(response)
     });
 }
+
+
+$("#profile-image").on("click", function() {
+    $("#profile-image-input").click();
+  });
+
+$('#profile-image-input').change(function(e) {
+var file = e.target.files[0];
+if (file && file.type.startsWith('image/')) {
+    var formData = new FormData();
+    formData.append('profile_image', file);
+    formData.append('csrfmiddlewaretoken', csrf_token);
+
+    $.ajax({
+    type: 'POST',
+    url: '/ajax/accounts/profile/avatar', // Replace with the actual URL for image upload
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function(response) {
+        $('#profile-image').attr('src', response.image_url);
+    },
+    error: function(error) {
+        console.log(error);
+    }
+    });
+}
+});

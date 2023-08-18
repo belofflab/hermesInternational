@@ -17,6 +17,7 @@ urlpatterns = [
   path('accounts/login', views.LoginView.as_view(), name="login"),
   path('accounts/signup', views.RegistrationView.as_view(), name="signup"),
   path('accounts/profile', views.AccountNotifySettingsView.as_view(), name='profile'),
+  path('accounts/profile/avatar', views.AccountAvatarChange.as_view(), name='profile_avatar'),
 
   path('purchase/status/update', views.PurchaseChangeStatusView.as_view(), name="purchase_change_status")
 ]
