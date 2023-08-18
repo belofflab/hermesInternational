@@ -49,10 +49,12 @@
                             </a>
                         {% else %}
                         
-                            <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
+                            <!-- <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
                                     data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
                         <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
-                            data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
+                            data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a> -->
+                            <a class="btn btn-sm bg-gradient-primary d-lg-none d-block text-capitalize mb-0 ms-auto border-radius-sm px-3"
+                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Авторизация' %}</a>
                         {% endif %}
                         
                     <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,11 +115,19 @@
                                 </a>
                             </li>
                             {% else %}
-                            <li class="nav-item">
-                                <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
+                            <!-- <li class="nav-item">
+                                <div class="d-flex justify-content-between">
                                     <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
+                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
+
+                                <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
                                     data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
+                                </div>
+                            </li> -->
+                            <li class="nav-item">
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
+                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Авторизация' %}</a>
                             </li>
                             {% endif %}
                         </ul>
@@ -135,7 +145,7 @@
             <div class="row">
                 <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
-                        <span class="mask bg-dark border-radius-xl z-index-1"></span>
+                        <span class="mask bg-dark border-radius-xl z-index-1 "></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
                             <a href="#" class="text-white  text-sm d-flex align-items-center">
 
@@ -177,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer; width: auto;" class="col-6 col-md-4 col-lg-2"  data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2"  data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
