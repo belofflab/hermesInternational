@@ -84,10 +84,10 @@
       <div class="container">
         <br>
         <div class="row align-items-center">
-          <div class="col-sm-12 col-lg-8">
+          <div class="col-sm-12 col-md-6 col-lg-8">
             <h1>{% translate 'Адрес в США' %}</h1>
           </div>
-          <div class="col-sm-12  col-lg-4">
+          <div class="col-sm-12 col-md-6 col-lg-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
               {% translate 'Открыть собственный адрес' %}
             </button>
@@ -96,7 +96,7 @@
         <br>
         <div id="locker-slider" class="owl-carousel">
           {% for warehouse in warehouses %}
-          <div style="display: flex; justify-content: center;" class="item"
+          <div style="display: flex; justify-content: center; padding: 0px !important;" class="item"
             data-dot="<button role='button' {% if warehouse.account %} style='background-color: gold!important' {% endif %} class='owl-dot'><span>{{forloop.counter}}</span></button>">
             <div class="card" >
               <div class="card-body">
@@ -125,7 +125,7 @@
 
                   <div class="row ">
                     {% for shop in warehouse.warehouse_shops %}
-                      <div class="col-sm-6 col-md-3 col-lg-2">
+                      <div class="col-3 mb-3">
                         <div class="shop-info">
                           <img src="{{shop.image.url}}" alt="{{shop.name}}"> -
                           <span class="shop-info_quantity">{{shop.quantity}}</span>
