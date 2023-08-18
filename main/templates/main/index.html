@@ -13,6 +13,20 @@
     white-space: normal;
 }
 
+.text-hidden {
+        display: none;
+    }
+    .expanded {
+        display: block !important;
+    }
+
+    @media (max-width: 767px) {
+        .split-text {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
 </style>
 <div class="container-md container-fluid">
     <div class="row">
@@ -20,37 +34,36 @@
             <nav class="navbar navbar-expand-lg shadow-none my-1 py-2">
                 <div class="container-fluid px-0">
                     <div class="navbar-brand font-weight-bolder ms-sm-3">
-                        <div class="d-inline position-relative pe-1">
-                            <a href="/" class="w-45">
-                                <img src="{% static 'main/img/logo.png' %}" class="w-sm-15 w-25">
-                                <span class="text-darker ms-2">Hermes</span>
+                        <div class="d-flex align-items-center">
+                            <a href="/" class="d-flex align-items-center">
+                                <img src="{% static 'main/img/logo.png' %}" class="w-25 me-2">
+                                <span class="text-darker split-text">
+                                    Hermes<br>
+                                    International
+                                </span>
                             </a>
-                            <hr class="vertical dark my-0" />
-                        </div>
-                        <span class="text-darker ms-2">International</span>
-                    </div>
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'accounts:profile' %}"
-                        class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm px-3">
-                        {% translate 'Профиль' %}
-                    </a>
-                    {% else %}
-                    
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'accounts:profile' %}"
+                                class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm px-3">
+                                {% translate 'Профиль' %}
+                            </a>
+                        {% else %}
+                        
+                            <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
+                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
                         <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
-                                data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
-                    <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
-                        data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
-                    {% endif %}
-
-                    <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon mt-2">
-                            <span class="navbar-toggler-bar bar1"></span>
-                            <span class="navbar-toggler-bar bar2"></span>
-                            <span class="navbar-toggler-bar bar3"></span>
-                        </span>
-                    </button>
+                            data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
+                        {% endif %}
+                        
+                    <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon mt-2">
+                        <span class="navbar-toggler-bar bar1"></span>
+                        <span class="navbar-toggler-bar bar2"></span>
+                        <span class="navbar-toggler-bar bar3"></span>
+                    </span>
+                </button>
+                        </div>
+                    </div>
                     <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
                         <ul class="navbar-nav navbar-nav-hover mx-auto">
                             <li class="nav-item mx-2">
@@ -116,11 +129,11 @@
     </div>
 </div>
 <header class="header-2">
-    <div
+    <div                                                                                        
         class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-6 pb-7 bg-gradient-dark-radial">
         <div class="container">
             <div class="row">
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 col-xs-2 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
@@ -131,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 col-xs-2 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
@@ -142,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 col-xs-2 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative" >
@@ -153,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 col-xs-2 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
+                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
@@ -164,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-xl-2 col-lg-3 col-sm-4 col-xs-2 mx-lg-0 mx-auto" data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
+                <div onclick="toRegister()" style="cursor: pointer; width: auto;" class="col-6 col-md-4 col-lg-2"  data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
@@ -178,7 +191,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-5 col-sm-7 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">
+                    <div class="border-radius-xl p-1 mb-3 position-relative">   
                         <!-- <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center z-index-2 position-relative">
                             <span class="badge bg-warning badge-sm rounded-pill">Внимание</span>
@@ -198,9 +211,18 @@
                         Hermes International
                         <br />
                     </h1>
-                    <p class="font-weight-normal text-lg text-white mb-4">
+                    <p class="d-none d-sm-none d-md-none d-lg-block font-weight-normal text-lg text-white mb-4">
                         {% translate 'Мы - лучший выбор для всех, кто хочет получить доступ к товарам из Соединенных Штатов и получить их прямо в свою страну. Наша компания специализируется на международной пересылке товаров, позволяя вам покупать на американских площадках онлайн и получать заказы с минимальными затратами и максимальным комфортом. У нас есть возможность открывать личные адреса в Америке, что позволяет сделать получение товаров еще более удобным и безопасным.' %}
                     </p>
+                    <div class="d-block d-lg-none font-weight-normal text-lg text-white mb-4">
+                        <span class="text-content">
+                            {% translate 'Мы - лучший выбор для всех, кто хочет получить доступ к товарам из Соединенных Штатов и получить их прямо в свою страну. Наша компания специализируется на международной пересылке товаров, позволяя вам покупать на американских площадках' %}
+                        </span>
+                        <span class="text-hidden">
+                            {% translate ' онлайн и получать заказы с минимальными затратами и максимальным комфортом. У нас есть возможность открывать личные адреса в Америке, что позволяет сделать получение товаров еще более удобным и безопасным.' %}
+                        </span>
+                        <a href="#" class="read-more-link text-blue btn-link">читать далее</a>
+                    </div>
                     <a data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal"
                         class="btn bg-gradient-primary text-capitalize border-radius-sm mb-lg-0 mb-5">
                         {% translate 'Попробовать' %}
@@ -882,5 +904,7 @@
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+</script>
+
 </script>
 {% endblock %}

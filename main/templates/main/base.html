@@ -79,7 +79,7 @@
   var csrf_token = '{{csrf_token}}';
 </script>
 <script src="{% static 'accounts/js/auth.js' %}"></script>
-<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+<!-- <script src="{% static 'main/js/bootstrap.min.js' %}"></script> -->
 <script src="{% static 'accounts/js/countrySelect.min.js' %}"></script>
 <script src="{% static 'main/js/soft-design.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'main/js/countup.min.js' %}"></script>
@@ -145,6 +145,17 @@
   }
 
 </script>
-
+<script>
+$(document).ready(function() {
+        $(".read-more-link").click(function(e) {
+            e.preventDefault();
+            $(this).prev(".text-content").toggleClass("expanded");
+            $(this).prev(".text-hidden").toggleClass("expanded");
+            $(this).text(function(i, text) {
+                return text === "читать далее" ? "скрыть" : "читать далее";
+            });
+        });
+    });
+</script>
 
 </html>
