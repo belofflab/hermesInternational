@@ -12,30 +12,36 @@ $(document).ready(function () {
 
         // $('#warehouse_but').attr('disabled', 'disabled');
 
-        // $.ajax({
-        //     url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
-        //     type: "POST",
-        //     data: {
-        //         phone: phone,
-        //         city: city,
-        //         street: street,
-        //         state: state,
-        //         postal_code: postal_code,
-        //         csrfmiddlewaretoken: csrf_token
-        //     },
-        //     success: function (response) {
-        //         $('#warehouseAddModal').modal('hide');
-        //         window.location.reload();
-        //     },
-        //     error: function (xhr, errmsg, err) {
-        //         console.log(xhr.status + ": " + xhr.responseText);
-        //         $("#warehouse_but").removeAttr('disabled');
-        //     }
-        // });
-        $('#warehouseAddModal').modal('hide');
+        $.ajax({
+            url: "/ajax/accounts/profile/warehouses/create",
+            type: "POST",
+            data: {
+                phone: phone,
+                city: city,
+                street: street,
+                state: state,
+                postal_code: postal_code,
+                csrfmiddlewaretoken: csrf_token
+            },
+            success: function (response) {
+                if (response.status) {
+                    $("#user_warehouse").hide();
+                    $("#success_info").show();
+                } else {
+                    $("#user_warehouse").hide();
+                    $("#error_info").show();
+                }
+                // $(this).clear()
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+                $("#user_warehouse").hide();
+                $("#error_info").show();
+                $("#warehouse_but").removeAttr('disabled');
+            }
+        });
     });
 });
-
 
 $('#signinModal').on('show.bs.modal', function (event) {
     if (user !== 'AnonymousUser') {
@@ -130,34 +136,34 @@ $('#signup_password').on('input', (e) => {
 })
 
 
-$('#signup_first_name').on('keyup', function() {
+$('#signup_first_name').on('keyup', function () {
     var inputValue = $(this).val();
     var filteredValue = inputValue.replace(/[^a-zA-Z]/g, ''); // Remove non-letter characters
     $(this).val(filteredValue);
-  });
+});
 
-$('#signup_last_name').on('keyup', function() {
+$('#signup_last_name').on('keyup', function () {
     var inputValue = $(this).val();
     var filteredValue = inputValue.replace(/[^a-zA-Z]/g, ''); // Remove non-letter characters
     $(this).val(filteredValue);
-  });
+});
 
-  function validateOnlyNumberInput(inputElement) {
+function validateOnlyNumberInput(inputElement) {
     // Get the current input value
     let inputValue = inputElement.value;
-  
+
     // Remove any non-numeric characters except for periods (for floats)
     inputValue = inputValue.replace(/[^0-9.]/g, '');
-  
+
     // Remove leading zeros
     inputValue = inputValue.replace(/^0+/g, '');
-  
+
     // If there is more than one period, keep only the first one
     const periods = inputValue.split('.');
     if (periods.length > 2) {
         inputValue = periods[0] + '.' + periods.slice(1).join('');
     }
-  
+
     // Update the input value with the sanitized content
     inputElement.value = inputValue;
 }
@@ -165,15 +171,15 @@ $('#signup_last_name').on('keyup', function() {
 function validateNumberInput(inputElement) {
     // Get the current input value
     let inputValue = inputElement.value;
-  
+
     // Remove any non-numeric characters except for periods (for floats)
     inputValue = inputValue.replace(/[^0-9.]/g, '');
-  
+
     // If there is more than one period, keep only the first one
     if (inputValue.indexOf('.') !== inputValue.lastIndexOf('.')) {
-      inputValue = inputValue.replace(/(.*\..*)\./g, '$1');
+        inputValue = inputValue.replace(/(.*\..*)\./g, '$1');
     }
-  
+
     // Update the input value with the sanitized content
     inputElement.value = inputValue;
 }
@@ -477,7 +483,7 @@ function addressToForm(address) {
     $('#address_form_state').val(address.state);
     $('#address_form_phone').val(address.phone);
     $('#address_form_postal_code').val(address.postal_code);
-    
+
 }
 
 function updatePurchaseData(purchaseId, addressId) {
@@ -512,29 +518,63 @@ function updatePurchaseData(purchaseId, addressId) {
 }
 
 
-$("#profile-image").on("click", function() {
-    $("#profile-image-input").click();
-  });
-
-$('#profile-image-input').change(function(e) {
-var file = e.target.files[0];
-if (file && file.type.startsWith('image/')) {
-    var formData = new FormData();
-    formData.append('profile_image', file);
-    formData.append('csrfmiddlewaretoken', csrf_token);
-
-    $.ajax({
-    type: 'POST',
-    url: '/ajax/accounts/profile/avatar', // Replace with the actual URL for image upload
-    data: formData,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        $('#profile-image').attr('src', response.image_url);
-    },
-    error: function(error) {
-        console.log(error);
+function removePurchase(idx) {
+    var url = window.location.href;
+    var locale = "ru";
+    if (url.includes("/ru/")) {
+        locale = "ru"
+    } else {
+        locale ="en"
     }
-    });
+    var messages = {
+        "en": "Are you sure you want to delete this purchase?",
+        "ru": "Вы уверены, что хотите удалить эту покупку?",
+    }
+    var message = messages[locale]
+    var confirmation = confirm(message);
+    if (confirmation) {
+        var requestData = {
+            idx: parseInt(idx),
+            csrfmiddlewaretoken: csrf_token
+        };
+    
+        $.ajax({
+            data: requestData,
+            method: 'POST',
+            url: '/ajax/accounts/profile/purchases/remove',
+        }).then((response) => {
+            if (response.status) {
+                window.location.reload()
+            }
+        }).catch((response) => {
+            console.log(response)
+        });
+    }    
 }
+
+$("#profile-image").on("click", function () {
+    $("#profile-image-input").click();
+});
+
+$('#profile-image-input').change(function (e) {
+    var file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+        var formData = new FormData();
+        formData.append('profile_image', file);
+        formData.append('csrfmiddlewaretoken', csrf_token);
+
+        $.ajax({
+            type: 'POST',
+            url: '/ajax/accounts/profile/avatar', // Replace with the actual URL for image upload
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                $('#profile-image').attr('src', response.image_url);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 });

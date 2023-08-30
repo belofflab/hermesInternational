@@ -188,7 +188,15 @@ class PurchaseGetView(LoginRequiredMixin, View):
             response_data["address"] = model_to_dict(address)
 
         return JsonResponse(response_data)
+    
 
+class PurchaseRemoveView(LoginRequiredMixin, View):
+    def post(self, request):    
+        request_data = request.POST
+        idx = request_data.get("idx")
+        Purchase.objects.filter(id=int(idx)).delete()
+
+        return JsonResponse({"status": True})
 
 class PurchaseChangeStatusView(LoginRequiredMixin, View):
     def post(self, request):
@@ -313,20 +321,26 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
 class AccountWarehouseCreateView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
+        user = request.user
+        summ_of_warehouse = 50
+        if user.balance < summ_of_warehouse:
+            return JsonResponse({"status": False, "message": ""}) 
+        
+        user.update_balance(-summ_of_warehouse)
         address = request_data.get("street")
         city = request_data.get("city")
         state = request_data.get("state")
         zip = request_data.get("postal_code")
         phone = request_data.get("phone")
 
-        AccountWarehouse.objects.create(
-            account=Account.objects.get(email=request.user),
-            address=address,
-            city=city,
-            state=state,
-            zip=zip,
-            phone=phone,
-        )
+        # AccountWarehouse.objects.create(
+        #     account=Account.objects.get(email=request.user),
+        #     address=address,
+        #     city=city,
+        #     state=state,
+        #     zip=zip,
+        #     phone=phone,
+        # )
 
         return JsonResponse({"status": True, "message": ""})
 

@@ -12,6 +12,7 @@ urlpatterns = [
   path('accounts/profile/warehouses/delete', views.AccountWarehouseDeleteView.as_view(), name='warehouse_delete'),
 
   path('accounts/profile/purchases/get', views.PurchaseGetView.as_view(), name='purchase_get'),
+  path('accounts/profile/purchases/remove', views.PurchaseRemoveView.as_view(), name='purchase_remove'),
 
 
   path('accounts/login', views.LoginView.as_view(), name="login"),

@@ -122,7 +122,9 @@
                   <li class="list-group-item"><b>{% translate 'Номер телефона' %}: </b>{{warehouse.phone}}</li>
                 </ul>
                 <div class="card-body">
-
+                  <div class="card-header">
+                    <p>Данные иконки показывают, сколько раз на этот адрес было заказанно посылок.</p>
+                  </div>
                   <div class="row ">
                     {% for shop in warehouse.warehouse_shops %}
                       <div class="col-3 mb-3">
