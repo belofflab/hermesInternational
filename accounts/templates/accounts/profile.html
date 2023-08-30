@@ -3,6 +3,11 @@
 {% load static %}
 
 {% block content %}
+<style>
+  #profile-image:hover {
+    opacity: 0.8;
+  }
+</style>
 {% include 'accounts/forms/edit_profile_form.html' %}
 <div class="container-fluid">
   <div class="page-header min-height-300 border-radius-xl mt-4">
@@ -63,7 +68,7 @@
                   <div class="form-check form-switch ps-0">
                       <input class="form-check-input ms-auto" name="telegram_news" type="checkbox" id="telegram_news" {% if settings.is_telegram_news %} checked{% endif %}>
                       <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                          for="telegram_news">{% translate 'Уведомлять об измении <br> статуса заказа' %}</label>
+                          for="telegram_news">{% translate 'Уведомлять об изменении <br> статуса заказа' %}</label>
                   </div>
               </li>
               <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">{% translate 'Почта' %}</h6>
@@ -72,7 +77,7 @@
                   <div class="form-check form-switch ps-0">
                       <input class="form-check-input ms-auto" name="email_status" type="checkbox" id="email_status" {% if settings.is_email_status %} checked{% endif %}>
                       <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                          for="email_status">{% translate 'Уведомлять об измении <br> статуса заказа' %}</label>
+                          for="email_status">{% translate 'Уведомлять об изменении <br> статуса заказа' %}</label>
                   </div>
               </li>
                 <li class="list-group-item border-0 px-0">
