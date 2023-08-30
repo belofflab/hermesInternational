@@ -11,3 +11,4 @@ def shops(request):
 
 def email_test(request):
     send_mail("123", "123", "Hermes International <support@hermesinternational.ru>", recipient_list=["belofflab@gmail.com"])
+    return render(request, "main/shops.html", context={})
