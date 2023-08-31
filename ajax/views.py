@@ -104,6 +104,11 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             )
         
         status = request_data.get("status") 
+
+        if not status:
+            return JsonResponse(
+                {"status": False, "message": _("Пожалуйста, выберите что делаем с заказом")}
+            )
         
         kwargs = {
             "defaults": {
