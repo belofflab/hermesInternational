@@ -23,7 +23,8 @@ class InvoiceView(View):
             print(payload)
 
             invoice = Invoice.objects.get(invoice_id=payload["invoice_id"])
-            invoice.status = payload["status"]
+            print("INVOICE:", invoice)
+            invoice.status = str(payload["status"]).upper()
             invoice.save()
 
             account = Account.objects.get(email=invoice.account)
