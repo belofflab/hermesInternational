@@ -24,6 +24,7 @@ class InvoiceView(View):
 
             invoice = Invoice.objects.get(invoice_id=payload["invoice_id"])
             invoice.status = payload["status"]
+            invoice.save()
 
             account = Account.objects.get(email=invoice.account)
             account.update_balance(invoice.amount)
