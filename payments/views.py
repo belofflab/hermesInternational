@@ -19,7 +19,9 @@ class InvoiceView(View):
     def post(self, request):
         try:
             payload = json.loads(request.body)
+            payload = payload.get("payload")
             print(payload)
+
             invoice = Invoice.objects.get(invoice_id=payload["invoice_id"])
             invoice.status = payload["status"]
 
