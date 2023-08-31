@@ -9,6 +9,12 @@
  .form-select.form-select-sm {
     width: 115px; /* Set the width as needed */
 }
+
+.form-select:focus {
+        border-color: #0084ff !important;
+        outline: 0;
+        box-shadow: 0 0 0 2px #0084ff !important;
+}
 :root {
     --bs-blue: #63b3ed;
     --bs-indigo: #596cff;

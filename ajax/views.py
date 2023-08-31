@@ -1,21 +1,19 @@
+import threading
 import datetime
-import json
-from django.forms.models import model_to_dict
 from decimal import Decimal, InvalidOperation
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
+from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 from django.views import View
 
-from accounts.models import (
-    Account,
-    AccountData,
-    AccountNotifySettings,
-    Purchase,
-    Visits,
-)
+from accounts.models import (Account, AccountData, AccountNotifySettings,
+                             Purchase, Visits)
 from accounts.services import message
 from main.models import AccountWarehouse
 
@@ -94,7 +92,7 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         url = request_data.get("url")
         track_number = request_data.get("track_number")
         quantity = request_data.get("quantity")
-        id = request_data.get("id") 
+        id = request_data.get("id")
 
         try:
             price = Decimal(request_data.get("price"))
@@ -102,14 +100,18 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             return JsonResponse(
                 {"status": False, "message": _("Некорректно задана цена")}
             )
-        
-        status = request_data.get("status") 
 
-        if not status:
-            return JsonResponse(
-                {"status": False, "message": _("Пожалуйста, выберите что делаем с заказом")}
-            )
-        
+        status = request_data.get("status")
+
+
+        # if not status:
+        #     return JsonResponse(
+        #         {
+        #             "status": False,
+        #             "message": _("Пожалуйста, выберите что делаем с заказом"),
+        #         }
+        #     )
+
         kwargs = {
             "defaults": {
                 "name": name,
@@ -117,7 +119,7 @@ class PurchaseCreateView(LoginRequiredMixin, View):
                 "tracking_number": track_number,
                 "quantity": quantity,
                 "price": price,
-                "status": status
+                "status": status if status == "BUYOUT" else "ACCEPTANCE",
             }
         }
         try:
@@ -130,7 +132,7 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             else:
                 kwargs["id"] = id
         else:
-            kwargs["id"] = None 
+            kwargs["id"] = None
 
         new_purchase, created = Purchase.objects.update_or_create(**kwargs)
 
@@ -142,21 +144,22 @@ class PurchaseCreateView(LoginRequiredMixin, View):
 
 
 def serialize_address(address, delivery_method):
-    if address is None: return None
+    if address is None:
+        return None
     return {
-                'id': address.id,
-                'phone': address.phone,
-                'city': address.city,
-                'street': address.street,
-                'delivery_method':delivery_method,
-                'state': address.state,
-                'postal_code': address.postal_code,
-                'country': address.country,
-            }
-    
+        "id": address.id,
+        "phone": address.phone,
+        "city": address.city,
+        "street": address.street,
+        "delivery_method": delivery_method,
+        "state": address.state,
+        "postal_code": address.postal_code,
+        "country": address.country,
+    }
+
 
 class PurchaseGetView(LoginRequiredMixin, View):
-    def post(self, request):    
+    def post(self, request):
         request_data = request.POST
         purchaseId = request_data.get("purchaseId")
         addressId = request_data.get("addressId")
@@ -166,16 +169,20 @@ class PurchaseGetView(LoginRequiredMixin, View):
             "name": purchase.name,
             "link": purchase.link,
             "quantity": purchase.quantity,
-            "address": serialize_address(purchase.address, purchase.delivery_method),  # Assuming you want to serialize the address_id.
+            "address": serialize_address(
+                purchase.address, purchase.delivery_method
+            ),  # Assuming you want to serialize the address_id.
             "delivery_method": purchase.delivery_method,
             "is_deliveried": purchase.is_deliveried,
-            "options": [option.id for option in purchase.options.all()],  # Assuming you want to serialize the option names.
+            "options": [
+                option.id for option in purchase.options.all()
+            ],  # Assuming you want to serialize the option names.
             "price": str(purchase.price),  # Convert DecimalField to string.
             "tracking_number": purchase.tracking_number,
             "status": purchase.status,
             "created": purchase.created.isoformat(),  # Convert DateTimeField to ISO 8601 format.
         }
-        
+
         if addressId is not None:
             try:
                 address = AccountData.objects.get(id=addressId)
@@ -193,15 +200,16 @@ class PurchaseGetView(LoginRequiredMixin, View):
             response_data["address"] = model_to_dict(address)
 
         return JsonResponse(response_data)
-    
+
 
 class PurchaseRemoveView(LoginRequiredMixin, View):
-    def post(self, request):    
+    def post(self, request):
         request_data = request.POST
         idx = request_data.get("idx")
         Purchase.objects.filter(id=int(idx)).delete()
 
         return JsonResponse({"status": True})
+
 
 class PurchaseChangeStatusView(LoginRequiredMixin, View):
     def post(self, request):
@@ -212,10 +220,32 @@ class PurchaseChangeStatusView(LoginRequiredMixin, View):
         return JsonResponse({"status": True})
 
 
+def send_purchase_confirmation_email(purchase, user):
+    subject = "Информация о оформлении отправления"
+    recipient_email = user.email
+
+    context = {
+        "purchase": purchase,
+    }
+
+    html_message = render_to_string(
+        "ajax/email_templates/purchase_confirmation.html", context
+    )
+    plain_message = strip_tags(html_message)
+
+    send_mail(
+        subject,
+        plain_message,
+        "Hermes International <support@hermesinternational.ru>",
+        [recipient_email],
+        html_message=html_message,
+    )
+
+
 class AccountDataCreateView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
-        id = request_data.get('id')
+        id = request_data.get("id")
         phone = request_data.get("phone")
         city = request_data.get("city")
         street = request_data.get("street")
@@ -226,15 +256,15 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         deliveryMethod = request_data.get("deliveryMethod")
         purchase = Purchase.objects.get(id=request_data.get("purchase"))
 
-        kwargs = {  
+        kwargs = {
             "defaults": {
-                'phone': phone,
-                'city': city,
-                'street': street,
+                "phone": phone,
+                "city": city,
+                "street": street,
                 # 'delivery_method': deliveryMethod,
-                'state': state,
-                'postal_code': postal_code,
-                'country': country,
+                "state": state,
+                "postal_code": postal_code,
+                "country": country,
             }
         }
         try:
@@ -247,8 +277,7 @@ class AccountDataCreateView(LoginRequiredMixin, View):
             else:
                 kwargs["id"] = id
         else:
-            kwargs["id"] = None 
-        
+            kwargs["id"] = None
 
         new_account, created = AccountData.objects.update_or_create(**kwargs)
 
@@ -263,6 +292,9 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.save()
 
+        email_thread = threading.Thread(target=send_purchase_confirmation_email, args=(purchase, request.user))
+        email_thread.start()
+        # TODO
         message.send(
             f"""
 Пользователь: <b>{request.user}</b> оформил покупку
@@ -329,8 +361,8 @@ class AccountWarehouseCreateView(LoginRequiredMixin, View):
         user = request.user
         summ_of_warehouse = 50
         if user.balance < summ_of_warehouse:
-            return JsonResponse({"status": False, "message": ""}) 
-        
+            return JsonResponse({"status": False, "message": ""})
+
         user.update_balance(-summ_of_warehouse)
         address = request_data.get("street")
         city = request_data.get("city")
@@ -362,10 +394,10 @@ class AccountWarehouseDeleteView(LoginRequiredMixin, View):
 
 class AccountAvatarChange(View):
     def post(self, request):
-        if request.FILES.get('profile_image'):
+        if request.FILES.get("profile_image"):
             user = request.user
-            profile_image = request.FILES['profile_image']
+            profile_image = request.FILES["profile_image"]
             user.profile_image = profile_image
             user.save()
-            return JsonResponse({'image_url': user.profile_image.url})
-        return JsonResponse({'error': 'Image upload failed'}, status=400) 
+            return JsonResponse({"image_url": user.profile_image.url})
+        return JsonResponse({"error": "Image upload failed"}, status=400)

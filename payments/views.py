@@ -20,10 +20,8 @@ class InvoiceView(View):
         try:
             payload = json.loads(request.body)
             payload = payload.get("payload")
-            print(payload)
 
             invoice = Invoice.objects.get(invoice_id=payload["invoice_id"])
-            print("INVOICE:", invoice)
             invoice.status = str(payload["status"]).upper()
             invoice.save()
 

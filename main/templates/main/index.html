@@ -8,14 +8,15 @@
 
 <style>
     .tooltip-inner {
-    max-width: none;
-    width: 400px;
-    white-space: normal;
-}
+        max-width: none;
+        width: 400px;
+        white-space: normal;
+    }
 
-.text-hidden {
+    .text-hidden {
         display: none;
     }
+
     .expanded {
         display: block !important;
     }
@@ -32,7 +33,6 @@
             width: auto;
         }
     }
-
 </style>
 <div class="container-md container-fluid">
     <div class="row">
@@ -48,28 +48,16 @@
                                     International
                                 </span>
                             </a>
-                            {% if request.user.is_authenticated %}
-                            <a href="{% url 'accounts:profile' %}"
-                                class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm px-3">
-                                {% translate 'Профиль' %}
-                            </a>
-                        {% else %}
-                        
-                            <!-- <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
-                        <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
-                            data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a> -->
-                            <a class="btn btn-sm bg-gradient-primary d-lg-none d-block text-capitalize mb-0 ms-auto border-radius-sm px-3"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Авторизация' %}</a>
-                        {% endif %}
-                        
-                    <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon mt-2">
-                        <span class="navbar-toggler-bar bar1"></span>
-                        <span class="navbar-toggler-bar bar2"></span>
-                        <span class="navbar-toggler-bar bar3"></span>
-                    </span>
-                </button>
+
+                            <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon mt-2">
+                                    <span class="navbar-toggler-bar bar1"></span>
+                                    <span class="navbar-toggler-bar bar2"></span>
+                                    <span class="navbar-toggler-bar bar3"></span>
+                                </span>
+                            </button>
                         </div>
                     </div>
                     <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
@@ -112,6 +100,41 @@
                                 {% endfor %}
                             </select>
                         </form>
+                        <ul class="navbar-nav navbar-nav-hover mx-auto mt-4">
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="{% url 'accounts:profile' %}"
+                                            class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm">
+                                            {% translate 'Профиль' %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            {% else %}
+                            <li class="nav-item mx-2">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="#"
+                                            class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
+                                            data-bs-toggle="modal" id="spec-sign-in"
+                                                data-bs-target="#signinModal">
+                                            {% translate 'Вход' %}
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <a href="#"
+                                            class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto d-lg-none d-block border-radius-sm"
+                                            data-bs-toggle="modal" id="spec-sign-in"
+                                                data-bs-target="#signupModal">
+                                            {% translate 'Регистрация' %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endif %}
+                        </ul>
                         <ul class="navbar-nav navbar-nav-hover mx-auto d-none d-lg-block">
                             {% if request.user.is_authenticated %}
                             <li class="nav-item list-group-item border-0 p-0">
@@ -121,19 +144,23 @@
                                 </a>
                             </li>
                             {% else %}
-                            <!-- <li class="nav-item">
-                                <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Вход' %}</a>
-
-                                <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
-                                </div>
-                            </li> -->
                             <li class="nav-item">
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm px-3"
-                                    data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal">{% translate 'Авторизация' %}</a>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm"
+                                                data-bs-toggle="modal" id="spec-sign-in"
+                                                data-bs-target="#signinModal">{% translate 'Вход' %}</a>
+
+
+                                        </div>
+                                        <div class="col-6">
+                                            <a class="btn btn-sm bg-gradient-primary text-capitalize mb-0 ms-auto border-radius-sm"
+                                                data-bs-toggle="modal" id="spec-sign-in"
+                                                data-bs-target="#signupModal">{% translate 'Регистрация' %}</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             {% endif %}
                         </ul>
@@ -145,11 +172,12 @@
     </div>
 </div>
 <header class="header-2">
-    <div                                                                                        
+    <div
         class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-4 pb-4 bg-gradient-dark-radial">
         <div class="container">
             <div class="row justify-content-center">
-                <div  style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
+                <div style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip"
+                    title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 "></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
@@ -160,21 +188,24 @@
                         </div>
                     </div>
                 </div>
-                <div  style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
+                <div style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip"
+                    title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="{% url 'accounts:packages' %}" class="text-white text-sm d-flex align-items-center">
-                                    
+                            <a href="{% url 'accounts:packages' %}"
+                                class="text-white text-sm d-flex align-items-center">
+
                                 <b>{% translate 'Пересыл' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div  style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
+                <div style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip"
+                    title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
-                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative" >
+                        <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
                             <a href="{% url 'accounts:buyout' %}" class="text-white text-sm d-flex align-items-center">
                                 <b>{% translate 'Выкуп товара' %}</b>
                             </a>
@@ -182,22 +213,26 @@
                         </div>
                     </div>
                 </div>
-                <div style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
+                <div style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip"
+                    title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="{% url 'accounts:profile' %}" class="text-white text-sm ms-2 d-flex align-items-center">
+                            <a href="{% url 'accounts:profile' %}"
+                                class="text-white text-sm ms-2 d-flex align-items-center">
 
                                 <b>{% translate 'Покупка за вас' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div id="open_address" style="cursor: pointer;"  class="col-7 col-md-4 col-lg-2"  data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
+                <div id="open_address" style="cursor: pointer;" class="col-7 col-md-4 col-lg-2" data-bs-toggle="tooltip"
+                    title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="{% url 'accounts:warehouses' %}" class="text-white text-sm d-flex align-items-center">
+                            <a href="{% url 'accounts:warehouses' %}"
+                                class="text-white text-sm d-flex align-items-center">
 
                                 <b>{% translate 'Открытие адресов' %}</b>
                             </a>
@@ -207,7 +242,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-4 col-lg-5 col-sm-7 mx-lg-0 mx-auto">
-                    <div class="border-radius-xl p-1 mb-3 position-relative">   
+                    <div class="border-radius-xl p-1 mb-3 position-relative">
                         <!-- <span class="mask bg-dark border-radius-xl z-index-1 opacity-5"></span>
                         <div class="d-flex align-items-center z-index-2 position-relative">
                             <span class="badge bg-warning badge-sm rounded-pill">Внимание</span>
@@ -481,7 +516,8 @@
                     </div>
                 </div>
                 <a data-bs-toggle="modal" id="spec-sign-in" data-bs-target="#signinModal"
-                    class="btn bg-gradient-primary text-capitalize border-radius-sm mt-4">{% translate 'Попробовать' %}</a>
+                    class="btn bg-gradient-primary text-capitalize border-radius-sm mt-4">{% translate 'Попробовать'
+                    %}</a>
             </div>
             <div class="col-md-7 col-12 my-auto ms-auto">
                 {% get_current_language as LANGUAGE_CODE %}
@@ -580,82 +616,82 @@
         </div> -->
         <div id="testimonial-slider" class="owl-carousel">
             <div class="item">
-              
+
                 <div class="card bg-gradient-primary">
-                  <div class="card-body">
-                    <div class="author">
-                      <div class="name">
-                        <h6 class="text-white mb-0 font-weight-bolder">Nick Willever</h6>
-                        <div class="stats text-white">
-                          <i class="far fa-clock"></i>
-                          {% translate '1 день назад' %}
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-4 text-white">{% translate '"Достаточно хорошая панель, поддержка быстро ответила на все вопросы."' %}</p>
-                    <div class="rating mt-3">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-            <div class="item">
-                
-                    <div class="card bg-gradient-primary">
-                        <div class="card-body">
-                            <div class="author align-items-center">
-                                <div class="name">
-                                    <h6 class="text-white mb-0 font-weight-bolder">Shailesh Kushwaha</h6>
-                                    <div class="stats text-white">
-                                        <i class="far fa-clock"></i>
-                                        {% translate '1 неделю назад' %}
-                                    </div>
+                    <div class="card-body">
+                        <div class="author">
+                            <div class="name">
+                                <h6 class="text-white mb-0 font-weight-bolder">Nick Willever</h6>
+                                <div class="stats text-white">
+                                    <i class="far fa-clock"></i>
+                                    {% translate '1 день назад' %}
                                 </div>
                             </div>
-                            <p class="mt-4 text-white">{% translate '"Сервис "Покупка за вас" стал моим фаворитом среди других проектов!!!"' %}</p>
-                            <div class="rating mt-3">
-                                <i class="fas fa-star text-white"></i>
-                                <i class="fas fa-star text-white"></i>
-                                <i class="fas fa-star text-white"></i>
-                                <i class="fas fa-star text-white"></i>
-                                <i class="fas fa-star text-white"></i>
-                            </div>
+                        </div>
+                        <p class="mt-4 text-white">{% translate '"Достаточно хорошая панель, поддержка быстро ответила на все вопросы."' %}</p>
+                        <div class="rating mt-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
-                
+
+                </div>
             </div>
             <div class="item">
-                
-                    <div class="card bg-gradient-primary">
-                        <div class="card-body">
-                            <div class="author">
-                                <div class="name">
-                                    <h6 class="text-white mb-0 font-weight-bolder">Samuel Kamuli</h6>
-                                    <div class="stats text-white">
-                                        <i class="far fa-clock"></i>
-                                        {% translate '3 недели назад' %}
-                                    </div>
+
+                <div class="card bg-gradient-primary">
+                    <div class="card-body">
+                        <div class="author align-items-center">
+                            <div class="name">
+                                <h6 class="text-white mb-0 font-weight-bolder">Shailesh Kushwaha</h6>
+                                <div class="stats text-white">
+                                    <i class="far fa-clock"></i>
+                                    {% translate '1 неделю назад' %}
                                 </div>
                             </div>
-                            <p class="mt-4 text-white">{% translate '"Хороший сервис. Быстро помог решить проблему с покупкой в США"' %}</p>
-                            <div class="rating mt-3">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
+                        </div>
+                        <p class="mt-4 text-white">{% translate '"Сервис "Покупка за вас" стал моим фаворитом среди других проектов!!!"' %}</p>
+                        <div class="rating mt-3">
+                            <i class="fas fa-star text-white"></i>
+                            <i class="fas fa-star text-white"></i>
+                            <i class="fas fa-star text-white"></i>
+                            <i class="fas fa-star text-white"></i>
+                            <i class="fas fa-star text-white"></i>
                         </div>
                     </div>
-                
+                </div>
+
             </div>
-          </div>
-        
+            <div class="item">
+
+                <div class="card bg-gradient-primary">
+                    <div class="card-body">
+                        <div class="author">
+                            <div class="name">
+                                <h6 class="text-white mb-0 font-weight-bolder">Samuel Kamuli</h6>
+                                <div class="stats text-white">
+                                    <i class="far fa-clock"></i>
+                                    {% translate '3 недели назад' %}
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-white">{% translate '"Хороший сервис. Быстро помог решить проблему с покупкой в США"' %}</p>
+                        <div class="rating mt-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <hr class="horizontal dark my-5">
         <div class="row align-items-center">
             <div class="col-lg-2 col-md-4 col-6 ms-auto">
@@ -699,10 +735,10 @@
                     {% translate 'Смотреть все' %}
                 </a>
            </div> -->
-        </div> 
+        </div>
         <div class="d-flex justify-content-center mt-4">
             <h5>{% translate 'И это ещё не всё... Мы принимаем более 1.000 различных магазинов в США!' %} </h5>
-        </div> 
+        </div>
         <hr class="horizontal dark my-5">
     </div>
 </section>
@@ -881,7 +917,8 @@
                     <h6 class="text-gradient text-primary text-sm">{% translate 'Лицензии' %}</h6>
                     <ul class="flex-column ms-n3 nav">
                         <li class="nav-item">
-                            <a style="cursor: pointer;" class="nav-link" data-bs-toggle="modal" data-bs-target="#termsModal">
+                            <a style="cursor: pointer;" class="nav-link" data-bs-toggle="modal"
+                                data-bs-target="#termsModal">
                                 {% translate 'Оферта' %}
                             </a>
                         </li>
@@ -918,7 +955,7 @@
     // Initialize tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl)
+        return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 </script>
 

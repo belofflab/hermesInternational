@@ -258,33 +258,8 @@ $("form[name='buy_out']").submit((e) => {
     var quantity = $('#buy_form_quantity').val();
     var price = $('#buy_form_price').val();
     var status = $("#buy_option_select option:selected").val();
+    // console.log(status)
     if (!id.length > 0) { id = null }
-    if (status === "BUYOUT") {
-        $("#buyout_but").attr('disabled', 'disabled');
-        $.ajax({
-            data: {
-                id: parseInt(id),
-                name: name,
-                url: url,
-                track_number: track_number,
-                quantity: quantity,
-                price: price,
-                status: status,
-                csrfmiddlewaretoken: csrf_token
-            },
-            method: 'POST',
-            url: '/ajax/inbox/create'
-        }).then((response) => {
-
-            if (response.status) {
-                window.location.href = '/accounts/profile/inbox/';
-            } else {
-                error_box.text(response.message);
-                $("#buyout_but").removeAttr('disabled');
-            }
-        })
-        return;
-    }
     $("#buyout_but").attr('disabled', 'disabled');
     $.ajax({
         data: {
@@ -301,6 +276,9 @@ $("form[name='buy_out']").submit((e) => {
         url: '/ajax/inbox/create'
     }).then((response) => {
         if (response.status) {
+            if (status === "BUYOUT") {
+                return window.location.reload()
+            }
             $('#purchaseAddModal').modal('hide');
             localStorage.setItem("purchaseToAddingAccountData", response.data)
             $('#addressAddModal').modal('show');
@@ -594,3 +572,9 @@ $('#profile-image-input').change(function (e) {
         });
     }
 });
+
+
+
+function skipAddressForm() {
+    window.location.reload()    
+}
