@@ -131,6 +131,7 @@ class LogoutView(View):
 
 
 class PurchaseDetailView(LoginRequiredMixin, View):
+    login_url="/"
     def get(self, request, pk):
         try:
             purchase = models.Purchase.objects.get(id=pk)
@@ -206,6 +207,7 @@ def get_buyout_items_by_category():
 
 
 class BuyOutView(LoginRequiredMixin, View):
+    login_url="/"
     def get(self, request):
         return render(
             request,
@@ -215,6 +217,7 @@ class BuyOutView(LoginRequiredMixin, View):
 
 
 class ProfileSimplePurchaseView(LoginRequiredMixin, View):
+    login_url="/"
     def get(self, request):
         return render(
             request,

@@ -149,55 +149,55 @@
         class="page-header overflow-visible mx-4 mb-0 border-radius-md align-items-center pt-4 pb-4 bg-gradient-dark-radial">
         <div class="container">
             <div class="row justify-content-center">
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
+                <div  style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Наша компания предлагает широкий спектр услуг по приему грузов из США. Независимо от размера или веса отправления, мы гарантируем бережное и профессиональное обслуживание на этапе приема. С нашей помощью вы можете легко и удобно отправить свои заказы на наш склад в США, готовые к последующей международной пересылке.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1 "></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white  text-sm d-flex align-items-center">
+                            <a href="{% url 'accounts:inbox' %}" class="text-white  text-sm d-flex align-items-center">
 
                                 <b>{% translate 'Приём' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
+                <div  style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Мы специализируемся на эффективной и надежной пересылке товаров из США в любые страны мира. Наш опытный логистический отдел заботится о том, чтобы ваш груз был упакован безопасно, соответствовал всем международным стандартам и был доставлен вам с минимальными задержками.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
+                            <a href="{% url 'accounts:packages' %}" class="text-white text-sm d-flex align-items-center">
                                     
                                 <b>{% translate 'Пересыл' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
+                <div  style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой посылок самостоятельно, мы можем купить необходимые товары за вас. Наша цель - обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего шопингового опыта.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative" >
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
+                            <a href="{% url 'accounts:buyout' %}" class="text-white text-sm d-flex align-items-center">
                                 <b>{% translate 'Выкуп товара' %}</b>
                             </a>
 
                         </div>
                     </div>
                 </div>
-                <div onclick="toRegister()" style="cursor: pointer;" class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
+                <div style="cursor: pointer;"  class="col-6 col-md-4 col-lg-2" data-bs-toggle="tooltip" title="{% translate 'Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских платформах, а опытная команда наших специалистов сделает заказ и оформит оплату от вашего имени.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm ms-2 d-flex align-items-center">
+                            <a href="{% url 'accounts:profile' %}" class="text-white text-sm ms-2 d-flex align-items-center">
 
                                 <b>{% translate 'Покупка за вас' %}</b>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div id="open_address" onclick="toRegister()" style="cursor: pointer;" class="col-7 col-md-4 col-lg-2"  data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
+                <div id="open_address" style="cursor: pointer;"  class="col-7 col-md-4 col-lg-2"  data-bs-toggle="tooltip" title="{% translate 'Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных адресов». Это означает, что вы можете получить уникальный адрес в США, на который будут доставляться ваши заказы. Мы затем пересылаем ваши посылки по вашему запросу, обеспечивая максимальную гибкость и контроль над доставкой.' %}">
                     <div class="border-radius-xl p-2 mb-3 position-relative">
                         <span class="mask bg-dark border-radius-xl z-index-1"></span>
                         <div class="d-flex align-items-center justify-content-center z-index-2 position-relative">
-                            <a href="#" class="text-white text-sm d-flex align-items-center">
+                            <a href="{% url 'accounts:warehouses' %}" class="text-white text-sm d-flex align-items-center">
 
                                 <b>{% translate 'Открытие адресов' %}</b>
                             </a>

@@ -1,6 +1,11 @@
 const recaptchaSiteKey = '6LdIh4UnAAAAAI3ta-SSP_smWqV2fJeHJ0wkQ9py';
 
 $(document).ready(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const nextPage = urlParams.get('next');
+    if (nextPage) {
+        $('#signupModal').modal('show');
+    }
     $("#user_warehouse").submit(function (event) {
         event.preventDefault(); // Prevent form submission
 
@@ -61,15 +66,16 @@ $('#signupModal').on('show.bs.modal', function (event) {
     return;
 });
 
-function toRegister() {
+// function toRegister() {
+//     $('#signupModal').modal('show');
 
-    $('#signupModal').modal('show');
-
-}
+// }
 
 
 $("form[name='signup']").submit((e) => {
     e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    const nextPage = urlParams.get('next');
     var error_box = $('#signup_errorbox');
     var first_name = $('#signup_first_name').val();
     var last_name = $('#signup_last_name').val();
@@ -103,7 +109,11 @@ $("form[name='signup']").submit((e) => {
                 url: '/ajax/accounts/signup'
             }).then((response) => {
                 if (response.status) {
-                    window.location.href = '/accounts/profile/'
+                    if (nextPage) {
+                        window.location.href = nextPage;
+                    } else {
+                        window.location.href = '/accounts/profile/'
+                    }
                 } else {
                     error_box.text(response.message);
                     $("#signup_but").removeAttr('disabled');
@@ -187,6 +197,8 @@ function validateNumberInput(inputElement) {
 
 $("form[name='signin']").submit((e) => {
     e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    const nextPage = urlParams.get('next');
     var errorbox = $('#signin_errorbox')
     var email = $('#signin_email').val();
     var password = $('#signin_password').val();
@@ -209,7 +221,11 @@ $("form[name='signin']").submit((e) => {
                 url: '/ajax/accounts/login'
             }).then((response) => {
                 if (response.status) {
-                    window.location.href = '/accounts/profile/';
+                    if (nextPage) {
+                        window.location.href = nextPage;
+                    } else {
+                        window.location.href = '/accounts/profile/'
+                    }
                 } else {
                     errorbox.text(response.message);
                     $("#signin_but").removeAttr('disabled');
