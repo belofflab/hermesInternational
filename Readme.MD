@@ -4,5 +4,5 @@ Webhook Url (POST) - https://domain.com/payments/invoice/Y7ACEnFxgk5XHXltIBDPiEB
 
 ## Locales 
 
-    python .\manage.py makemessages -l en --ignore venv
+python .\manage.py makemessages -l en --ignore venv
 python .\manage.py compilemessages -l en
