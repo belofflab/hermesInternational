@@ -128,10 +128,10 @@ class Account(AbstractBaseUser):
     profile_image = models.ImageField(
         upload_to=UserImagePath('profile_images'), blank=True, null=True
     )
-    purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase)
+    purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase, blank=True)
     country = models.CharField(verbose_name="Страна", max_length=255, null=True)
     addresses = models.ManyToManyField(
-        to=AccountData, verbose_name="Адреса пользователя"
+        to=AccountData, verbose_name="Адреса пользователя", blank=True
     )
     date_joined = models.DateTimeField(
         verbose_name="Дата создания аккаунта", auto_now_add=True
