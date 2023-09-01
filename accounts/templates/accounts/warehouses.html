@@ -102,7 +102,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-9">
-                    <h5 class="card-title">#{{forloop.counter}} {% translate 'Склад' %} - {{warehouse.city}}</h5>
+                    <h5 class="card-title">{% translate 'Основной склад' %} - {{warehouse.city}}</h5>
                   </div>
                   <div class="col-3">
                     {% if warehouse.account %}
@@ -116,6 +116,8 @@
                   </div>
                 </div>
                 <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>{% translate 'Имя и фамилия' %}:</b> {{request.user.first_name}} {{request.user.last_name}}</li>
+                  <li class="list-group-item"><b>{% translate 'Город' %}:</b> {{warehouse.city}}</li>
                   <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
                   <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
                   <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{warehouse.zip}}</li>

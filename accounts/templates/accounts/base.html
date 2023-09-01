@@ -477,6 +477,35 @@
       });
     });
   </script>
+  <script>
+    jQuery(document).ready(function ($) {
+      "use strict";
+      $('#locker-slider1').owlCarousel({
+        // loop: true,
+        // autoWidth: true,
+        nav: true,
+        // autoplay: true,       // Enable autoplay
+        // autoplayTimeout: 5000,
+        // items: 1,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1400: {
+            items: 1
+          }
+        },
+        dotData: true,
+        dotsData: true,
+        center: true,
+
+      });
+    });
+  </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="{% static 'accounts/js/soft-ui-dashboard.js' %}"></script>
 
