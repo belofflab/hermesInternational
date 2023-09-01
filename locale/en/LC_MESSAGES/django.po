@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-31 13:39+0300\n"
+"POT-Creation-Date: 2023-09-01 18:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid "Пополнить баланс"
 msgstr "Payment"
 
 #: .\accounts\templates\accounts\base.html:268
-#: .\main\templates\main\index.html:54 .\main\templates\main\index.html:120
+#: .\main\templates\main\index.html:110 .\main\templates\main\index.html:143
 msgid "Профиль"
 msgstr "Profile"
 
@@ -90,11 +90,12 @@ msgid "Улица"
 msgstr "Street"
 
 #: .\accounts\templates\accounts\forms\address_form.html:37
+#: .\accounts\templates\accounts\warehouses.html:120
 msgid "Город"
 msgstr "City"
 
 #: .\accounts\templates\accounts\forms\address_form.html:43
-#: .\accounts\templates\accounts\warehouses.html:120
+#: .\accounts\templates\accounts\warehouses.html:122
 msgid "Штат"
 msgstr "State"
 
@@ -105,7 +106,7 @@ msgid "Страна"
 msgstr "Country"
 
 #: .\accounts\templates\accounts\forms\address_form.html:65
-#: .\accounts\templates\accounts\warehouses.html:122
+#: .\accounts\templates\accounts\warehouses.html:124
 msgid "Номер телефона"
 msgstr "Phone number"
 
@@ -116,6 +117,10 @@ msgstr "Postal code"
 #: .\accounts\templates\accounts\forms\address_form.html:84
 msgid "Разместить"
 msgstr "Place"
+
+#: .\accounts\templates\accounts\forms\address_form.html:85
+msgid "Пропустить"
+msgstr "Skip"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:7
 msgid "Заполните декларацию"
@@ -151,7 +156,7 @@ msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:55
 #: .\accounts\templates\accounts\inbox.html:73
-#: .\main\templates\main\index.html:169
+#: .\main\templates\main\index.html:199
 msgid "Пересыл"
 msgstr "Forwarding"
 
@@ -189,7 +194,6 @@ msgid "Отчество"
 msgstr "Surname"
 
 #: .\accounts\templates\accounts\forms\signin_form.html:15
-#: .\main\templates\main\index.html:63 .\main\templates\main\index.html:136
 msgid "Авторизация"
 msgstr "Sign in"
 
@@ -220,7 +224,7 @@ msgstr "Not registered yet?"
 
 #: .\accounts\templates\accounts\forms\signin_form.html:51
 #: .\accounts\templates\accounts\forms\signup_form.html:18
-#: .\main\templates\main\index.html:61 .\main\templates\main\index.html:130
+#: .\main\templates\main\index.html:131 .\main\templates\main\index.html:160
 msgid "Регистрация"
 msgstr "Sign up"
 
@@ -417,7 +421,7 @@ msgid "Последние покупки"
 msgstr "Recent purchases"
 
 #: .\accounts\templates\accounts\simple_purchase.html:16
-#: .\main\templates\main\index.html:191
+#: .\main\templates\main\index.html:224
 msgid "Покупка за вас"
 msgstr "Purchase for you"
 
@@ -438,22 +442,26 @@ msgid "Открыть собственный адрес"
 msgstr "Open your own address"
 
 #: .\accounts\templates\accounts\warehouses.html:105
-msgid "Склад"
-msgstr "Warehouse"
+msgid "Основной склад"
+msgstr "Main warehouse"
 
 #: .\accounts\templates\accounts\warehouses.html:110
 msgid "Удалить склад"
 msgstr "Remove warehouse"
 
 #: .\accounts\templates\accounts\warehouses.html:119
+msgid "Данные получателя"
+msgstr "Recipient's details"
+
+#: .\accounts\templates\accounts\warehouses.html:121
 msgid "Адрес"
 msgstr "Adress"
 
-#: .\accounts\templates\accounts\warehouses.html:121
+#: .\accounts\templates\accounts\warehouses.html:123
 msgid "Почтовый индекс"
 msgstr "Postal code"
 
-#: .\accounts\templates\accounts\warehouses.html:126
+#: .\accounts\templates\accounts\warehouses.html:128
 msgid ""
 "Данные иконки показывают, сколько раз на этот адрес было заказанно посылок."
 msgstr ""
@@ -468,12 +476,13 @@ msgid ""
 "Уважаемый(ая) {{ purchase.address.first_name }} {{ purchase.address."
 "last_name }},"
 msgstr ""
-"Dear {{ purchase.address.first_name }} {{ purchase.address."
-"last_name }},"
+"Dear {{ purchase.address.first_name }} {{ purchase.address.last_name }},"
 
 #: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:9
 msgid "Вы успешно оформили отправление. Вот информация о вашей покупке:"
-msgstr "You have successfully completed the shipment. Here is the information about your purchase:"
+msgstr ""
+"You have successfully completed the shipment. Here is the information about "
+"your purchase:"
 
 #: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:11
 msgid "Наименование товара:"
@@ -523,9 +532,13 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:110
-msgid "Пожалуйста, выберите что делаем с заказом"
-msgstr "Please choose what we do with the order"
+#: .\main\templates\main\base.html:155
+msgid "читать далее"
+msgstr "read more"
+
+#: .\main\templates\main\base.html:155
+msgid "скрыть"
+msgstr "hide"
 
 #: .\main\templates\main\forms\terms.html:7
 msgid "Условия предоставления услуг"
@@ -1183,23 +1196,23 @@ msgstr ""
 "InternationalLLC.<br>\n"
 " "
 
-#: .\main\templates\main\index.html:59 .\main\templates\main\index.html:127
-msgid "Вход"
-msgstr "Login"
-
-#: .\main\templates\main\index.html:80 .\main\templates\main\index.html:863
+#: .\main\templates\main\index.html:68 .\main\templates\main\index.html:898
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\main\templates\main\index.html:86 .\main\templates\main\index.html:858
+#: .\main\templates\main\index.html:74 .\main\templates\main\index.html:893
 msgid "О нас"
 msgstr "About us"
 
-#: .\main\templates\main\index.html:92 .\main\templates\main\index.html:868
+#: .\main\templates\main\index.html:80 .\main\templates\main\index.html:903
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\main\templates\main\index.html:152
+#: .\main\templates\main\index.html:123 .\main\templates\main\index.html:153
+msgid "Вход"
+msgstr "Login"
+
+#: .\main\templates\main\index.html:180
 msgid ""
 "Наша компания предлагает широкий спектр услуг по приему грузов из США. "
 "Независимо от размера или веса отправления, мы гарантируем бережное и "
@@ -1213,11 +1226,11 @@ msgstr ""
 "easily and conveniently send your orders to our warehouse in the U.S., ready "
 "for subsequent international shipping."
 
-#: .\main\templates\main\index.html:158
+#: .\main\templates\main\index.html:186
 msgid "Приём"
 msgstr "Reception"
 
-#: .\main\templates\main\index.html:163
+#: .\main\templates\main\index.html:192
 msgid ""
 "Мы специализируемся на эффективной и надежной пересылке товаров из США в "
 "любые страны мира. Наш опытный логистический отдел заботится о том, чтобы "
@@ -1229,7 +1242,7 @@ msgstr ""
 "that that your shipment is packed safely, meets all internationalstandards "
 "and delivered to you with minimal delays."
 
-#: .\main\templates\main\index.html:174
+#: .\main\templates\main\index.html:205
 msgid ""
 "Ваши врата к мировому шопингу открыты! Мы предлагаем услуги по покупке "
 "товаров согласно нашим тарифам. Если вы не желаете заниматься отправкой "
@@ -1238,11 +1251,11 @@ msgid ""
 "шопингового опыта."
 msgstr ""
 
-#: .\main\templates\main\index.html:179
+#: .\main\templates\main\index.html:210
 msgid "Выкуп товара"
 msgstr "Buyout"
 
-#: .\main\templates\main\index.html:185
+#: .\main\templates\main\index.html:217
 msgid ""
 "Хотите сделать покупки в США, но столкнулись с ограничениями? Мы поможем! "
 "Наш сервис «Покупка за вас» позволяет вам выбирать товары на американских "
@@ -1254,7 +1267,7 @@ msgstr ""
 "experienced team of experts will place the order and make the payment on "
 "your behalf."
 
-#: .\main\templates\main\index.html:196
+#: .\main\templates\main\index.html:230
 msgid ""
 "Для удобства наших клиентов, мы предлагаем услугу «Открытие собственных "
 "адресов». Это означает, что вы можете получить уникальный адрес в США, на "
@@ -1266,11 +1279,11 @@ msgstr ""
 "S. to which your orders will be delivered. We then forward your packages to "
 "the your request, giving you maximum flexibility and control over delivery."
 
-#: .\main\templates\main\index.html:202
+#: .\main\templates\main\index.html:237
 msgid "Открытие адресов"
 msgstr "Opening addresses"
 
-#: .\main\templates\main\index.html:231
+#: .\main\templates\main\index.html:266
 msgid ""
 "Мы - лучший выбор для всех, кто хочет получить доступ к товарам из "
 "Соединенных Штатов и получить их прямо в свою страну. Наша компания "
@@ -1287,7 +1300,7 @@ msgstr ""
 "opportunity to open personal addresses in America, which allows you to make "
 "the receipt of goods even more convenient and safe."
 
-#: .\main\templates\main\index.html:235
+#: .\main\templates\main\index.html:270
 msgid ""
 "Мы - лучший выбор для всех, кто хочет получить доступ к товарам из "
 "Соединенных Штатов и получить их прямо в свою страну. Наша компания "
@@ -1299,7 +1312,7 @@ msgstr ""
 "specialises in international shipping, allowing you to buy on American "
 "marketplaces"
 
-#: .\main\templates\main\index.html:238
+#: .\main\templates\main\index.html:273
 msgid ""
 " онлайн и получать заказы с минимальными затратами и максимальным комфортом. "
 "У нас есть возможность открывать личные адреса в Америке, что позволяет "
@@ -1309,141 +1322,141 @@ msgstr ""
 "the ability to open personal addresses in America, which allows to make "
 "receiving goods even more convenient and secure."
 
-#: .\main\templates\main\index.html:244 .\main\templates\main\index.html:484
+#: .\main\templates\main\index.html:279 .\main\templates\main\index.html:519
 msgid "Попробовать"
 msgstr "Try for free"
 
-#: .\main\templates\main\index.html:399
+#: .\main\templates\main\index.html:434
 msgid "Новые заказы"
 msgstr "New orders"
 
-#: .\main\templates\main\index.html:400
+#: .\main\templates\main\index.html:435
 msgid "Ежедневно добавляются"
 msgstr "Added daily"
 
-#: .\main\templates\main\index.html:411
+#: .\main\templates\main\index.html:446
 msgid "Доставки"
 msgstr "Delivery"
 
-#: .\main\templates\main\index.html:412
+#: .\main\templates\main\index.html:447
 msgid "Успешно доставленные заказы"
 msgstr "Successfully delivered orders"
 
-#: .\main\templates\main\index.html:423 .\main\templates\main\index.html:505
+#: .\main\templates\main\index.html:458 .\main\templates\main\index.html:540
 msgid "Наши клиенты"
 msgstr "Our clients"
 
-#: .\main\templates\main\index.html:424
+#: .\main\templates\main\index.html:459
 msgid "Среднее количество пользователей в сутки"
 msgstr "Average number of users per day"
 
-#: .\main\templates\main\index.html:436
+#: .\main\templates\main\index.html:471
 msgid "Панель"
 msgstr "Dashboard"
 
-#: .\main\templates\main\index.html:438
+#: .\main\templates\main\index.html:473
 msgid "Приятный дизайн"
 msgstr "Nice design"
 
-#: .\main\templates\main\index.html:440
+#: .\main\templates\main\index.html:475
 msgid "Удобство пользования"
 msgstr "Ease of use"
 
-#: .\main\templates\main\index.html:443
+#: .\main\templates\main\index.html:478
 msgid "Мы можем добавить покупку за вас"
 msgstr "We can add a purchase for you"
 
-#: .\main\templates\main\index.html:445
+#: .\main\templates\main\index.html:480
 msgid "Более простого способа заказа вы ещё нее видели"
 msgstr "An easier way to order you have seen it"
 
-#: .\main\templates\main\index.html:453
+#: .\main\templates\main\index.html:488
 msgid "Действительные данные о заказах на ваши адреса"
 msgstr "Valid order data to your addresses"
 
-#: .\main\templates\main\index.html:462
+#: .\main\templates\main\index.html:497
 msgid "Добавления покупки в один клик"
 msgstr "Adding a purchase in one click"
 
-#: .\main\templates\main\index.html:471
+#: .\main\templates\main\index.html:506
 msgid "Быстрый отклик панели"
 msgstr "Fast panel response"
 
-#: .\main\templates\main\index.html:480
+#: .\main\templates\main\index.html:515
 msgid "Поддержка 24/7"
 msgstr "Support 24/7"
 
-#: .\main\templates\main\index.html:506
+#: .\main\templates\main\index.html:541
 msgid "Что о нас говорят"
 msgstr "What they say about us"
 
-#: .\main\templates\main\index.html:507
+#: .\main\templates\main\index.html:542
 msgid "Не уверены в нас? Просто взгляните на отзывы!"
 msgstr "Not sure about us? Just take a look at the reviews!"
 
-#: .\main\templates\main\index.html:519 .\main\templates\main\index.html:591
+#: .\main\templates\main\index.html:554 .\main\templates\main\index.html:626
 msgid "1 день назад"
 msgstr "1 day ago"
 
-#: .\main\templates\main\index.html:523 .\main\templates\main\index.html:595
+#: .\main\templates\main\index.html:558 .\main\templates\main\index.html:630
 msgid ""
 "\"Достаточно хорошая панель, поддержка быстро ответила на все вопросы.\""
 msgstr "\"Good enough panel, support responded quickly to all questions.\""
 
-#: .\main\templates\main\index.html:542 .\main\templates\main\index.html:616
+#: .\main\templates\main\index.html:577 .\main\templates\main\index.html:651
 msgid "1 неделю назад"
 msgstr "1 week ago"
 
-#: .\main\templates\main\index.html:546 .\main\templates\main\index.html:620
+#: .\main\templates\main\index.html:581 .\main\templates\main\index.html:655
 msgid ""
 "\"Сервис \"Покупка за вас\" стал моим фаворитом среди других проектов!!!\""
 msgstr ""
 "\"Service \"Purchase for you\" has become my favorite among other projects!!!"
 "\""
 
-#: .\main\templates\main\index.html:565 .\main\templates\main\index.html:641
+#: .\main\templates\main\index.html:600 .\main\templates\main\index.html:676
 msgid "3 недели назад"
 msgstr "3 weeks ago"
 
-#: .\main\templates\main\index.html:569 .\main\templates\main\index.html:645
+#: .\main\templates\main\index.html:604 .\main\templates\main\index.html:680
 msgid "\"Хороший сервис. Быстро помог решить проблему с покупкой в США\""
 msgstr ""
 "\"Good service. Quickly helped to solve the problem with the purchase in the "
 "US\""
 
-#: .\main\templates\main\index.html:699
+#: .\main\templates\main\index.html:734
 msgid "Смотреть все"
 msgstr "See all"
 
-#: .\main\templates\main\index.html:704
+#: .\main\templates\main\index.html:739
 msgid "И это ещё не всё... Мы принимаем более 1.000 различных магазинов в США!"
 msgstr "And that's not all... We accept over 1,000 different shops in the US!"
 
-#: .\main\templates\main\index.html:714
+#: .\main\templates\main\index.html:749
 msgid "Часто задаваемые вопросы"
 msgstr "Frequently asked questions"
 
-#: .\main\templates\main\index.html:715
+#: .\main\templates\main\index.html:750
 msgid "Ниже смотрите, что спрашивали другие пользователи."
 msgstr "See what other users have asked below."
 
-#: .\main\templates\main\index.html:727
+#: .\main\templates\main\index.html:762
 msgid " Как работает \"покупка за вас\"?"
 msgstr "How does 'buy for you' work?"
 
-#: .\main\templates\main\index.html:736
+#: .\main\templates\main\index.html:771
 msgid "Вы просто заполняете декларацию о товаре и платите за него."
 msgstr "You simply fill out a declaration about the product and pay for it."
 
-#: .\main\templates\main\index.html:737
+#: .\main\templates\main\index.html:772
 msgid "Мы приобретаем его в США и отправляем."
 msgstr "We purchase it in the USA and ship it."
 
-#: .\main\templates\main\index.html:747
+#: .\main\templates\main\index.html:782
 msgid "Безопасно ли отправлять посылку?"
 msgstr "Is it safe to send a parcel?"
 
-#: .\main\templates\main\index.html:756
+#: .\main\templates\main\index.html:791
 msgid ""
 "Мы - официально зарегистрированная компания <b> Hermes International LLC</"
 "b>. Все риски, связанные с деформацией и потерей посылки, несёт за собой "
@@ -1453,11 +1466,11 @@ msgstr ""
 "associated with the deformation and loss of the parcel, bearsour "
 "organization."
 
-#: .\main\templates\main\index.html:766
+#: .\main\templates\main\index.html:801
 msgid "Как совершить первую покупку?"
 msgstr "How to make the first purchase?"
 
-#: .\main\templates\main\index.html:775
+#: .\main\templates\main\index.html:810
 msgid ""
 "Когда вы покупаете товар в США просто указываете адрес одного из адресов в "
 "панели. Заполняете декларацию и адрес доставки"
@@ -1465,11 +1478,11 @@ msgstr ""
 "When you buy a product in the US, simply enter the address of one of the "
 "addresses in the panels. Fill in the declaration and delivery address"
 
-#: .\main\templates\main\index.html:785
+#: .\main\templates\main\index.html:820
 msgid "Имеетcя ли возможность открыть личный адрес в США?"
 msgstr "Is it possible to open a personal address in the USA?"
 
-#: .\main\templates\main\index.html:794
+#: .\main\templates\main\index.html:829
 msgid ""
 "Определённо. Вы можете добавить свой адрес в меню в личном кабинете во "
 "вкладке \"Мои адреса\"."
@@ -1477,55 +1490,47 @@ msgstr ""
 "Definitely. You can add your address to the menu in your account in tab \"My "
 "addresses\"."
 
-#: .\main\templates\main\index.html:804
+#: .\main\templates\main\index.html:839
 msgid "Какие есть дополнения?"
 msgstr "What are the add-ons?"
 
-#: .\main\templates\main\index.html:813
+#: .\main\templates\main\index.html:848
 msgid ""
 "Мы можем упаковать заказ в пакет, убрать обувную коробку или добавить "
 "обрешётку."
 msgstr "We can pack the order in a bag, remove the shoe box or add crate."
 
-#: .\main\templates\main\index.html:826
+#: .\main\templates\main\index.html:861
 msgid "Связаться с нами"
 msgstr "Contact us"
 
-#: .\main\templates\main\index.html:827
+#: .\main\templates\main\index.html:862
 msgid "Есть вопросы или нужна помощь?"
 msgstr "Do you have questions or need help?"
 
-#: .\main\templates\main\index.html:828
+#: .\main\templates\main\index.html:863
 msgid "Не стесняйтесь обращаться к нам в Telegram!"
 msgstr "Feel free to contact us on Telegram!"
 
-#: .\main\templates\main\index.html:829
+#: .\main\templates\main\index.html:864
 msgid "Написать в Telegram"
 msgstr "Write in Telegram"
 
-#: .\main\templates\main\index.html:849
+#: .\main\templates\main\index.html:884
 msgid "Доставляйте быстро в любую точку мира"
 msgstr "Deliver fast to anywhere in the world"
 
-#: .\main\templates\main\index.html:854
+#: .\main\templates\main\index.html:889
 msgid "Компания"
 msgstr "Company"
 
-#: .\main\templates\main\index.html:881
+#: .\main\templates\main\index.html:916
 msgid "Лицензии"
 msgstr "Licenses"
 
-#: .\main\templates\main\index.html:885
+#: .\main\templates\main\index.html:921
 msgid "Оферта"
 msgstr "Offer"
-
-#: .\main\templates\main\index.html:904
-msgid "Все права защищены. Copyright"
-msgstr "All rights reserved. Copyright"
-
-#: .\main\templates\main\index.html:908
-msgid "Разработано"
-msgstr "Developed by"
 
 #: .\packageLocker\settings.py:134
 msgid "English"
@@ -1554,6 +1559,21 @@ msgstr "According to these details, the transfer is available during"
 #: .\payments\templates\payments\pay.html:339
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
+
+#~ msgid "Имя и фамилия"
+#~ msgstr "Last name"
+
+#~ msgid "Склад"
+#~ msgstr "Warehouse"
+
+#~ msgid "Пожалуйста, выберите что делаем с заказом"
+#~ msgstr "Please choose what we do with the order"
+
+#~ msgid "Все права защищены. Copyright"
+#~ msgstr "All rights reserved. Copyright"
+
+#~ msgid "Разработано"
+#~ msgstr "Developed by"
 
 #~ msgid "1 день"
 #~ msgstr "1 day ago"
