@@ -152,7 +152,7 @@ $(document).ready(function() {
             $(this).prev(".text-content").toggleClass("expanded");
             $(this).prev(".text-hidden").toggleClass("expanded");
             $(this).text(function(i, text) {
-                return text === "{% translate 'читать далее' %}" ? "{% translate 'скрыть' %}" : "{% translate 'читать далее' %}";
+                return text === "{% translate 'читать далее ' %}" ? "{% translate 'скрыть' %}" : "{% translate 'читать далее' %}";
             });
         });
     });

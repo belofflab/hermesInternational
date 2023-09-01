@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-01 18:38+0300\n"
+"POT-Creation-Date: 2023-09-01 18:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -533,12 +533,16 @@ msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
 #: .\main\templates\main\base.html:155
-msgid "читать далее"
+msgid "читать далее "
 msgstr "read more"
 
 #: .\main\templates\main\base.html:155
 msgid "скрыть"
 msgstr "hide"
+
+#: .\main\templates\main\base.html:155
+msgid "читать далее"
+msgstr "read more"
 
 #: .\main\templates\main\forms\terms.html:7
 msgid "Условия предоставления услуг"
