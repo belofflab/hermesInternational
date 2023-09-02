@@ -242,10 +242,81 @@ $("#or_signin").on('click', (e) => {
     $('#signinModal').modal('show');
 })
 
+$("#or_forget").on('click', (e) => {
+    $('#signinModal').modal('hide');
+    $('#passwordFullChangeModal').modal('show');
+})
+
 $("#or_signup").on('click', (e) => {
     $('#signinModal').modal('hide');
     $('#signupModal').modal('show');
 })
+
+$("form[name='change_password']").submit(function(event) {
+    event.preventDefault();
+
+    var email = $("form[name='change_password'] > input[name='email']").val();
+    var newPassword = $("#change_password_new_password").val();
+    var repeatNewPassword = $("#change_password_repeat_new_password").val();
+
+    var data = {
+        'email': email,
+        'new_password': newPassword,
+        'repeat_new_password': repeatNewPassword,
+        'csrfmiddlewaretoken': csrf_token
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/ajax/account/password/update',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            console.log(response)
+            if (response.status) {
+                // $('#passwordChangeModal').modal('hide'); 
+                // $("form[name='change_password']")[0].reset();  
+                window.location = '/accounts/profile/' 
+            } else {
+                $('#change_password_errorbox').text(response.message);
+            }
+        },
+        error: function(xhr, errmsg, err) {
+            console.log(errmsg);
+        }
+    });
+});
+
+$("form[name='full_change_password']").submit(function(event) {
+    event.preventDefault();
+
+    var email = $("#full_change_password_email").val();
+
+    var data = {
+        "email": email,
+        'csrfmiddlewaretoken': csrf_token
+    };
+
+    $("#full_change_password_but").attr("disabled", "disabled")
+
+    $.ajax({
+        type: 'POST',
+        url: '/ajax/account/full_password/update',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            $("#full_change_password_but").removeAttr('disabled');
+            if (response.status) {
+                $('#full_change_password_successbox').text(response.message);
+            } else {
+                $('#full_change_password_errorbox').text(response.message);
+            }
+        },
+        error: function(xhr, errmsg, err) {
+            console.log(errmsg);
+        }
+    });
+});
 
 
 $("form[name='buy_out']").submit((e) => {

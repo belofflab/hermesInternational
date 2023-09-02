@@ -9,6 +9,7 @@
   }
 </style>
 {% include 'accounts/forms/edit_profile_form.html' %}
+{% include 'accounts/forms/change_password.html' %}
 <div class="container-fluid">
   <div class="page-header min-height-300 border-radius-xl mt-4">
   <span class="mask bg-gradient-primary opacity-6"></span>
@@ -109,13 +110,14 @@
         </div>
         <div class="card-body p-3">
           <ul class="list-group">
-            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">{% translate 'Полное имя' %}</strong> &nbsp;
+            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">{% translate 'Данные получателя: ' %}</strong> &nbsp;
               {{request.user.first_name}} {{request.user.last_name}}</li>
-            <!-- <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; +7 (913)
-              112 90 76 </li> -->
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
               {{request.user}}</li>
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">{% translate 'Страна' %}:</strong> &nbsp; {{request.user.country}}
+            </li>
+            <li class="list-group-item border-0 ps-0 text-sm mt-4">
+                <button type="submit" class="btn btn-sm btn-primary"  data-bs-toggle="modal" data-bs-target="#passwordChangeModal">{% translate 'Изменить пароль' %}</button>
             </li>
           </ul>
         </div>

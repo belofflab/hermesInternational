@@ -6,3 +6,4 @@ psycopg2-binary
 pyTelegramBotAPI
 requests
 django-modeltranslation
+PyJwt

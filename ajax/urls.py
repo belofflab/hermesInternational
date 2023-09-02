@@ -7,6 +7,9 @@ urlpatterns = [
 
   path('account/data/create', views.AccountDataCreateView.as_view(), name="account_data_create"),
   path('account/data/update', views.AccountDataUpdateView.as_view(), name="account_data_update"),
+
+  path('account/password/update', views.AccountPasswordUpdateView.as_view(), name="account_password_update"),
+  path('account/full_password/update', views.AccountFullPasswordUpdateView.as_view(), name="account_full_password_update"),
   
   path('accounts/profile/warehouses/create', views.AccountWarehouseCreateView.as_view(), name='warehouse_create'),
   path('accounts/profile/warehouses/delete', views.AccountWarehouseDeleteView.as_view(), name='warehouse_delete'),

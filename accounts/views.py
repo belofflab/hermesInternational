@@ -1,8 +1,11 @@
+import jwt
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.db.models import Q
+from django.utils.http import urlsafe_base64_decode
 from django.urls import reverse
+from django.conf import settings
 from payments.services.crypto import Crypto
 from collections import defaultdict
 from django.views import View
@@ -13,7 +16,7 @@ from . import forms, models
 
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
 
-crypto = Crypto(token="110981:AA3FManAQxim0xd6CNZF8zf1uzUIziDbe5d")
+crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
 
 
 def get_client_ip(request):
@@ -161,24 +164,20 @@ class InboxView(LoginRequiredMixin, View):
         )
 
 
-class ResetPasswordView(LoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        form = forms.ResetPasswordForm(request.POST or None)
+class PasswordResetConfirmView(View):
+    def get(self, request, uidb64, token):
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = models.Account.objects.get(pk=uid)
+        errors = []
+        try:
+            decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            if decoded_token['email'] != user.email:
+                raise jwt.ExpiredSignatureError()
+        except jwt.ExpiredSignatureError:
+            errors.append("Токен истёк")
+            
+        return render(request, "accounts/change_password.html", context={"errors": errors, "email": user.email})
 
-        context = {"form": form, "title": "res"}
-        return render(request, "accounts/reset-password.html", context)
-
-    def post(self, request, *args, **kwargs):
-        form = forms.ResetPasswordForm(request.POST)
-        if form.is_valid():
-            user = models.Account.objects.get(username=request.user)
-            new_password = form.cleaned_data["new_password"]
-            user.set_password(new_password)
-            user.save()
-            return redirect("/accounts/logout/")
-
-        context = {"form": form, "title": "Sign Up"}
-        return render(request, "accounts/reset-password.html", context)
 
 
 def get_buyout_items_by_category():

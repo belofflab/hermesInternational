@@ -1,14 +1,20 @@
-import threading
 import datetime
+import threading
 from decimal import Decimal, InvalidOperation
 
-from django.contrib.auth import authenticate, login
+import jwt
+from django.conf import settings
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
 from django.template.loader import render_to_string
+from django.urls import reverse
+from django.utils.encoding import force_bytes
 from django.utils.html import strip_tags
+from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext as _
 from django.views import View
 
@@ -353,6 +359,70 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
         account.save()
 
         return JsonResponse({"status": True, "message": ""})
+    
+class AccountPasswordUpdateView(View):
+    def post(self, request):
+        new_password = request.POST.get('new_password')
+        repeat_new_password = request.POST.get('repeat_new_password')
+        email = request.POST.get("email")
+
+        if email:
+            
+            try:
+                cur_user = Account.objects.get(email=email)
+            except Account.DoesNotExist:
+                return JsonResponse({'status': False, 'message': _("Пользователь не найден")})
+
+            if new_password != repeat_new_password:
+                return JsonResponse({'status': False, 'message': _("Пароли не совпадают")})
+
+            cur_user.set_password(new_password)
+            cur_user.save()
+
+            user = authenticate(request=request, username=email, password=new_password)
+
+            if user:
+                login(request=request, user=user)
+                return JsonResponse({'status': True})
+            
+            return JsonResponse({"status": False, 'message': _("Неверный email или пароль")})
+        else: 
+            new_password = request.POST.get('new_password')
+            repeat_new_password = request.POST.get('repeat_new_password')
+            if new_password != repeat_new_password:
+                return JsonResponse({'status': False, 'message': _("Пароли не совпадают")})
+
+            request.user.set_password(new_password)
+            request.user.save()
+            update_session_auth_hash(request, request.user)
+
+            return JsonResponse({"status": True})
+        
+class AccountFullPasswordUpdateView(View):
+    def post(self, request):
+        email = request.POST.get('email')
+        try:
+            user = Account.objects.get(email=email)
+        except Account.DoesNotExist:
+            return JsonResponse({'status': False, 'message': _('Запрашиваемый пользователь не найден')})
+        
+        uidb64 = urlsafe_base64_encode(force_bytes(user.id))
+
+        expiration = datetime.datetime.utcnow() + datetime.timedelta(minutes=60)
+        token = jwt.encode({'email': email, 'exp': expiration}, settings.SECRET_KEY, algorithm='HS256')
+
+        reset_url = request.build_absolute_uri(reverse('accounts:password_reset_confirm', args=[uidb64, token]))
+
+        current_site = get_current_site(request)
+        subject = 'Сброс пароля'
+        message = render_to_string('accounts/email/password_reset_request.txt', {
+            'user': user,
+            'reset_url': reset_url,
+            'domain': current_site.domain
+        })
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
+
+        return JsonResponse({'status': True, 'message': _('Ссылка для сброса пароля успешно отправлена')})
 
 
 class AccountWarehouseCreateView(LoginRequiredMixin, View):

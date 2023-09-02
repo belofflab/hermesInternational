@@ -119,6 +119,7 @@ EMAIL_USE_TLS = True if os.getenv("EMAIL_USE_TLS") in ["1", 1, "True", True] els
 EMAIL_USE_SSL = True if os.getenv("EMAIL_USE_SSL") in ["1", 1, "True", True] else False
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'Hermes International <support@hermesinternational.ru>'
 
 LANGUAGE_CODE = "ru"
 
