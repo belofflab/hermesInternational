@@ -411,7 +411,7 @@ class AccountFullPasswordUpdateView(View):
         expiration = datetime.datetime.utcnow() + datetime.timedelta(minutes=60)
         token = jwt.encode({'email': email, 'exp': expiration}, settings.SECRET_KEY, algorithm='HS256')
 
-        reset_url = request.build_absolute_uri(reverse('accounts:password_reset_confirm', args=[uidb64, token]))
+        reset_url = 'https://hermesinternational.ru' + reverse('accounts:password_reset_confirm', args=[uidb64, token])
 
         current_site = get_current_site(request)
         subject = 'Сброс пароля'
