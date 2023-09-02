@@ -18,8 +18,13 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext as _
 from django.views import View
 
-from accounts.models import (Account, AccountData, AccountNotifySettings,
-                             Purchase, Visits)
+from accounts.models import (
+    Account,
+    AccountData,
+    AccountNotifySettings,
+    Purchase,
+    Visits,
+)
 from accounts.services import message
 from main.models import AccountWarehouse
 
@@ -110,14 +115,6 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         status = request_data.get("status")
 
 
-        # if not status:
-        #     return JsonResponse(
-        #         {
-        #             "status": False,
-        #             "message": _("Пожалуйста, выберите что делаем с заказом"),
-        #         }
-        #     )
-
         kwargs = {
             "defaults": {
                 "name": name,
@@ -145,6 +142,9 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         current_user = Account.objects.get(email=request.user)
 
         current_user.purchases.add(new_purchase)
+
+        if status == "BUYOUT":
+            send_purchase_confirmation_email(new_purchase, request)
 
         return JsonResponse({"status": True, "data": new_purchase.id})
 
@@ -226,25 +226,19 @@ class PurchaseChangeStatusView(LoginRequiredMixin, View):
         return JsonResponse({"status": True})
 
 
-def send_purchase_confirmation_email(purchase, user):
-    subject = "Информация о оформлении отправления"
-    recipient_email = user.email
-
-    context = {
-        "purchase": purchase,
-    }
-
+def send_purchase_confirmation_email(purchase, request):
+    subject = _("Информация о оформлении отправления")
+    current_site = get_current_site(request)
     html_message = render_to_string(
-        "ajax/email_templates/purchase_confirmation.html", context
+        "ajax/email_templates/purchase_confirmation.txt",
+        {"purchase": purchase, "user": request.user, "domain": current_site.domain},
     )
-    plain_message = strip_tags(html_message)
 
     send_mail(
         subject,
-        plain_message,
-        "Hermes International <support@hermesinternational.ru>",
-        [recipient_email],
-        html_message=html_message,
+        html_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [request.user.email],
     )
 
 
@@ -298,8 +292,7 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.save()
 
-        email_thread = threading.Thread(target=send_purchase_confirmation_email, args=(purchase, request.user))
-        email_thread.start()
+        send_purchase_confirmation_email(purchase, request)
         # TODO
         message.send(
             f"""
@@ -359,22 +352,26 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
         account.save()
 
         return JsonResponse({"status": True, "message": ""})
-    
+
+
 class AccountPasswordUpdateView(View):
     def post(self, request):
-        new_password = request.POST.get('new_password')
-        repeat_new_password = request.POST.get('repeat_new_password')
+        new_password = request.POST.get("new_password")
+        repeat_new_password = request.POST.get("repeat_new_password")
         email = request.POST.get("email")
-    
+
         if email:
-            
             try:
                 cur_user = Account.objects.get(email=email)
             except Account.DoesNotExist:
-                return JsonResponse({'status': False, 'message': _("Пользователь не найден")})
+                return JsonResponse(
+                    {"status": False, "message": _("Пользователь не найден")}
+                )
 
             if new_password != repeat_new_password:
-                return JsonResponse({'status': False, 'message': _("Пароли не совпадают")})
+                return JsonResponse(
+                    {"status": False, "message": _("Пароли не совпадают")}
+                )
 
             cur_user.set_password(new_password)
             cur_user.save()
@@ -383,46 +380,61 @@ class AccountPasswordUpdateView(View):
 
             if user:
                 login(request=request, user=user)
-                return JsonResponse({'status': True})
-            
-            return JsonResponse({"status": False, 'message': _("Неверный email или пароль")})
-        else: 
-            new_password = request.POST.get('new_password')
-            repeat_new_password = request.POST.get('repeat_new_password')
+                return JsonResponse({"status": True})
+
+            return JsonResponse(
+                {"status": False, "message": _("Неверный email или пароль")}
+            )
+        else:
+            new_password = request.POST.get("new_password")
+            repeat_new_password = request.POST.get("repeat_new_password")
             if new_password != repeat_new_password:
-                return JsonResponse({'status': False, 'message': _("Пароли не совпадают")})
+                return JsonResponse(
+                    {"status": False, "message": _("Пароли не совпадают")}
+                )
 
             request.user.set_password(new_password)
             request.user.save()
             update_session_auth_hash(request, request.user)
 
             return JsonResponse({"status": True})
-        
+
+
 class AccountFullPasswordUpdateView(View):
     def post(self, request):
-        email = request.POST.get('email')
+        email = request.POST.get("email")
         try:
             user = Account.objects.get(email=email)
         except Account.DoesNotExist:
-            return JsonResponse({'status': False, 'message': _('Запрашиваемый пользователь не найден')})
-        
+            return JsonResponse(
+                {"status": False, "message": _("Запрашиваемый пользователь не найден")}
+            )
+
         uidb64 = urlsafe_base64_encode(force_bytes(user.id))
 
         expiration = datetime.datetime.utcnow() + datetime.timedelta(minutes=60)
-        token = jwt.encode({'email': email, 'exp': expiration}, settings.SECRET_KEY, algorithm='HS256')
+        token = jwt.encode(
+            {"email": email, "exp": expiration}, settings.SECRET_KEY, algorithm="HS256"
+        )
 
-        reset_url = 'https://hermesinternational.ru' + reverse('accounts:password_reset_confirm', args=[uidb64, token])
+        reset_url = "https://hermesinternational.ru" + reverse(
+            "accounts:password_reset_confirm", args=[uidb64, token]
+        )
 
         current_site = get_current_site(request)
-        subject = 'Сброс пароля'
-        message = render_to_string('accounts/email/password_reset_request.txt', {
-            'user': user,
-            'reset_url': reset_url,
-            'domain': current_site.domain
-        })
+        subject = _("Сброс пароля")
+        message = render_to_string(
+            "accounts/email/password_reset_request.txt",
+            {"user": user, "reset_url": reset_url, "domain": current_site.domain},
+        )
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
 
-        return JsonResponse({'status': True, 'message': _('Ссылка для сброса пароля успешно отправлена')})
+        return JsonResponse(
+            {
+                "status": True,
+                "message": _("Ссылка для сброса пароля успешно отправлена"),
+            }
+        )
 
 
 class AccountWarehouseCreateView(LoginRequiredMixin, View):

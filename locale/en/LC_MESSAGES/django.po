@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 14:14+0300\n"
+"POT-Creation-Date: 2023-09-02 14:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,8 +117,34 @@ msgid ""
 "Пароль должен состоять не менее чем из 8 символов и содержать специальный "
 "символ."
 msgstr ""
-"Password must be at least 8 characters long and contain the special "
-"symbol."
+"Password must be at least 8 characters long and contain the special symbol."
+
+#: .\accounts\templates\accounts\email\password_reset_request.txt:3
+#, python-format
+msgid ""
+"\n"
+"Дорогой пользователь,\n"
+"\n"
+"Для сброса пароля на нашем сайте перейдите по следующей ссылке:\n"
+"\n"
+"%(reset_url)s\n"
+"\n"
+"Если вы не запрашивали сброс пароля, проигнорируйте это сообщение.\n"
+"\n"
+"С уважением,\n"
+"Команда Hermes International\n"
+msgstr ""
+"\n"
+"Dear User,\n"
+"\n"
+"To reset your password on our site, please visit the following link:\n"
+"\n"
+"%(reset_url)s\n"
+"\n"
+"If you did not request a password reset, please ignore this message.\n"
+"\n"
+"Sincerely,\n"
+"Team Hermes International\n"
 
 #: .\accounts\templates\accounts\forms\address_form.html:15
 msgid "Информация о получателе"
@@ -347,7 +373,9 @@ msgstr "Apply"
 
 #: .\accounts\templates\accounts\forms\warehouse_form.html:43
 msgid "Спасибо, ваша заявка подана. Срок открытия 3-5 рабочих дней. Ожидайте."
-msgstr "Thank you, your application has been submitted. Opening time 3-5 working days. Wait."
+msgstr ""
+"Thank you, your application has been submitted. Opening time 3-5 working "
+"days. Wait."
 
 #: .\accounts\templates\accounts\forms\warehouse_form.html:46
 #: .\accounts\templates\accounts\forms\warehouse_form.html:53
@@ -360,8 +388,7 @@ msgid ""
 "Для открытия вам необходимо <a href=\"/accounts/profile/payment/\">пополнить "
 "баланс на $50</a>"
 msgstr ""
-"To open you need <a href=\"/accounts/profile/paying/\">top up "
-"$50 balance</a>"
+"To open you need <a href=\"/accounts/profile/paying/\">top up $50 balance</a>"
 
 #: .\accounts\templates\accounts\inbox-detail.html:11
 msgid "Покупка"
@@ -544,54 +571,40 @@ msgstr "Own address"
 msgid "Удалить склад"
 msgstr "Remove warehouse"
 
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:5
-msgid "Информация о оформлении отправления"
-msgstr "Information on despatch processing"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:8
+#: .\ajax\templates\ajax\email_templates\purchase_confirmation.txt:3
+#, python-format
 msgid ""
-"Уважаемый(ая) {{ purchase.address.first_name }} {{ purchase.address."
-"last_name }},"
+"\n"
+"Уважаемый(ая)  %(user.first_name)s %(user.last_name)s,\n"
+"\n"
+"Вы успешно оформили отправление. Вот информация о вашей покупке:\n"
+"\n"
+"Наименование: %(purchase.name)s\n"
+"Ссылка: <a href=\"%(purchase.link)s\">%(purchase.link)s</a>\n"
+"Количество: %(purchase.quantity)s\n"
+"Цена: $%(purchase.price)s\n"
+"Трек-номер: %(purchase.tracking_number)s\n"
+"\n"
+"Спасибо за ваш заказ!\n"
+"\n"
+"С уважением,\n"
+"Ваша команда Hermes International.\n"
 msgstr ""
-"Dear {{ purchase.address.first_name }} {{ purchase.address.last_name }},"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:9
-msgid "Вы успешно оформили отправление. Вот информация о вашей покупке:"
-msgstr ""
-"You have successfully completed the shipment. Here is the information about "
-"your purchase:"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:11
-msgid "Наименование товара:"
-msgstr "Product Name:"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:12
-msgid "Ссылка на товар:"
-msgstr "Product Reference:"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:13
-msgid "Количество:"
-msgstr "Quantity"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:14
-msgid "Цена:"
-msgstr "Price"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:15
-msgid "Трек номер:"
-msgstr "Track number"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:17
-msgid "Спасибо за ваш заказ!"
-msgstr "Thank you for your order!"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:18
-msgid "С уважением,"
-msgstr "Respectfully,"
-
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.html:19
-msgid "Ваша команда Hermes International."
-msgstr "Your Hermes International team."
+"\n"
+"Dear %(user.first_name)s %(user.last_name)s,\n"
+"\n"
+"You have successfully completed your shipment. Here is the information about your purchase:\n"
+"\n"
+"Name: %(purchase.name)s\n"
+"Link: <a href=\"%(purchase.link)s\">%(purchase.link)s</a>\n"
+"Quantity: %(purchase.quantity)s\n"
+"Price: $%(purchase.price)s\n"
+"Track number: %(purchase.tracking_number)s\n"
+"\n"
+"Thank you for your order!\n"
+"\n"
+"Sincerely,\n"
+"Your team is Hermes International.\n"
 
 #: .\ajax\views.py:51
 msgid "Некорректный Email или пароль"
@@ -609,23 +622,31 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:374
+#: .\ajax\views.py:230
+msgid "Информация о оформлении отправления"
+msgstr "Information on despatch processing"
+
+#: .\ajax\views.py:373
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:377 .\ajax\views.py:393
+#: .\ajax\views.py:376 .\ajax\views.py:392
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:388
+#: .\ajax\views.py:387
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:407
+#: .\ajax\views.py:406
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:425
+#: .\ajax\views.py:416
+msgid "Сброс пароля"
+msgstr "Reset Password"
+
+#: .\ajax\views.py:424
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
 
@@ -658,8 +679,8 @@ msgid ""
 "Главная задача Hermes International заключается в том, чтобы сделать процесс "
 "пересылки товаров из США простым, удобным и быстрым."
 msgstr ""
-"The main task of Hermes International is to make the process "
-"shipping goods from the US is simple, convenient and fast."
+"The main task of Hermes International is to make the process shipping goods "
+"from the US is simple, convenient and fast."
 
 #: .\main\templates\main\about.html:155
 msgid ""
@@ -668,10 +689,10 @@ msgid ""
 "есть масса интересных, качественных и недорогих товаров. Но есть проблема, у "
 "вас нет своего адреса."
 msgstr ""
-"Online shopping has become a popular and affordable way to shop"
-"all over the world. American stores have gained particular popularity, in which "
-"there are a lot of interesting, high-quality and inexpensive goods. But there is a problem,"
-"You don't have your address."
+"Online shopping has become a popular and affordable way to shopall over the "
+"world. American stores have gained particular popularity, in which there are "
+"a lot of interesting, high-quality and inexpensive goods. But there is a "
+"problem,You don't have your address."
 
 #: .\main\templates\main\about.html:158
 msgid ""
@@ -681,11 +702,11 @@ msgid ""
 "из них. А потом, конечно же, отправить посылку на свой адрес. Легко, "
 "спокойно и без лишних хлопот."
 msgstr ""
-"That's why we launched the Hermes International forwarding service, which allows us to "
-"Shop in the US for everyone, no matter where you are. By sending "
-"your orders to our warehouses, you get the opportunity to personally check each "
-"of them. And then, of course, send the package to your address. Easy, "
-"Quiet and hassle-free."
+"That's why we launched the Hermes International forwarding service, which "
+"allows us to Shop in the US for everyone, no matter where you are. By "
+"sending your orders to our warehouses, you get the opportunity to personally "
+"check each of them. And then, of course, send the package to your address. "
+"Easy, Quiet and hassle-free."
 
 #: .\main\templates\main\about.html:179 .\main\templates\main\index.html:886
 msgid "Доставляйте быстро в любую точку мира"
@@ -1702,6 +1723,41 @@ msgstr "According to these details, the transfer is available during"
 #: .\payments\templates\payments\pay.html:339
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
+
+#~ msgid ""
+#~ "Уважаемый(ая) {{ purchase.address.first_name }} {{ purchase.address."
+#~ "last_name }},"
+#~ msgstr ""
+#~ "Dear {{ purchase.address.first_name }} {{ purchase.address.last_name }},"
+
+#~ msgid "Вы успешно оформили отправление. Вот информация о вашей покупке:"
+#~ msgstr ""
+#~ "You have successfully completed the shipment. Here is the information "
+#~ "about your purchase:"
+
+#~ msgid "Наименование товара:"
+#~ msgstr "Product Name:"
+
+#~ msgid "Ссылка на товар:"
+#~ msgstr "Product Reference:"
+
+#~ msgid "Количество:"
+#~ msgstr "Quantity"
+
+#~ msgid "Цена:"
+#~ msgstr "Price"
+
+#~ msgid "Трек номер:"
+#~ msgstr "Track number"
+
+#~ msgid "Спасибо за ваш заказ!"
+#~ msgstr "Thank you for your order!"
+
+#~ msgid "С уважением,"
+#~ msgstr "Respectfully,"
+
+#~ msgid "Ваша команда Hermes International."
+#~ msgstr "Your Hermes International team."
 
 #~ msgid "Спасибо, ваша заявка подана"
 #~ msgstr "Thank you, your application has been submitted"

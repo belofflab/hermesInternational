@@ -1,0 +1,18 @@
+
+{% load i18n %}
+{% blocktrans %}
+Уважаемый(ая)  {{ user.first_name }} {{ user.last_name }},
+
+Вы успешно оформили отправление. Вот информация о вашей покупке:
+
+Наименование: {{ purchase.name }}
+Ссылка: <a href="{{ purchase.link }}">{{ purchase.link }}</a>
+Количество: {{ purchase.quantity }}
+Цена: ${{ purchase.price }}
+Трек-номер: {{ purchase.tracking_number }}
+
+Спасибо за ваш заказ!
+
+С уважением,
+Ваша команда Hermes International.
+{% endblocktrans %}
