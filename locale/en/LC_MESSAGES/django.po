@@ -265,7 +265,7 @@ msgstr "Remember me"
 
 #: .\accounts\templates\accounts\forms\signin_form.html:44
 msgid "Забыли пароль?"
-msgstr "Забыли пароль?"
+msgstr "Forgot your password?"
 
 #: .\accounts\templates\accounts\forms\signin_form.html:47
 #: .\accounts\templates\accounts\forms\signup_form.html:72
