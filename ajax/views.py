@@ -114,7 +114,6 @@ class PurchaseCreateView(LoginRequiredMixin, View):
 
         status = request_data.get("status")
 
-
         kwargs = {
             "defaults": {
                 "name": name,
@@ -144,6 +143,18 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         current_user.purchases.add(new_purchase)
 
         if status == "BUYOUT":
+            message.send(
+                f"""
+            Пользователь: <b>{request.user}</b> оформил покупку
+
+            Наименование: {new_purchase.name}
+            Ссылка на товар: <a href="{new_purchase.link}">{new_purchase.name}</a>
+            Количество: {new_purchase.quantity}
+            Цена: ${new_purchase.price}
+            Трек номер: {new_purchase.tracking_number}       
+
+            """
+            )
             send_purchase_confirmation_email(new_purchase, request)
 
         return JsonResponse({"status": True, "data": new_purchase.id})
@@ -293,7 +304,6 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         purchase.save()
 
         send_purchase_confirmation_email(purchase, request)
-        # TODO
         message.send(
             f"""
 Пользователь: <b>{request.user}</b> оформил покупку
