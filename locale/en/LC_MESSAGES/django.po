@@ -106,7 +106,7 @@ msgstr "Cancel"
 #: .\accounts\templates\accounts\forms\change_password.html:35
 #: .\accounts\templates\accounts\forms\full_change_password.html:36
 msgid "Сменить"
-msgstr "Chan"
+msgstr "Change"
 
 #: .\accounts\templates\accounts\change_password.html:77
 msgid "Пароли не совпадают."
