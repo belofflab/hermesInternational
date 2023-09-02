@@ -365,7 +365,7 @@ class AccountPasswordUpdateView(View):
         new_password = request.POST.get('new_password')
         repeat_new_password = request.POST.get('repeat_new_password')
         email = request.POST.get("email")
-
+    
         if email:
             
             try:

@@ -46,6 +46,31 @@
 			margin-bottom:10px;
 	}
 }
+#locker-slider1 {
+	.item-details{
+		background-color: #333333;
+		color: #fff;
+		padding: 5px 5px;
+		text-align: left;
+		h5{
+			margin: 0 0 15px;
+			font-size: 18px;
+			line-height: 18px;
+			span{
+				color: red;
+				float:right;
+				padding-right: 20px;
+			}
+		}
+		p{
+			font-size: 14px;
+		}
+	}
+	.item {
+    padding: 40px;
+			margin-bottom:10px;
+	}
+}
 .owl-carousel .owl-nav [class*='owl-'] {
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
@@ -80,20 +105,20 @@
 </style>
 
 <div class="row">
-  <div class="col-xl-12 s-12">
+  <div class="col-sm-6">
       <div class="container">
-        <br>
+        
         <div class="row align-items-center">
           <div class="col-sm-12 col-md-6 col-lg-8">
-            <h1>{% translate 'Адрес в США' %}</h1>
+            <h3>{% translate 'Основной адрес' %}</h3>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-4">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
               {% translate 'Открыть собственный адрес' %}
-            </button>
+            </button> -->
           </div>
         </div>
-        <br>
+        
         <div id="locker-slider" class="owl-carousel">
           {% for warehouse in warehouses %}
           <div style="display: flex; justify-content: center; padding: 0px !important;" class="item"
@@ -105,14 +130,6 @@
                     <h5 class="card-title">{% translate 'Основной склад' %} - {{warehouse.city}}</h5>
                   </div>
                   <div class="col-3">
-                    {% if warehouse.account %}
-                    <svg onclick="deleteUserWarehouse('{{warehouse.id}}')" style="cursor: pointer;"
-                      data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Удалить склад' %}"
-                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="25px" height="25px">
-                      <path
-                        d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
-                    </svg>
-                    {% endif %}
                   </div>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -129,6 +146,72 @@
                   </div>
                   <div class="row ">
                     {% for shop in warehouse.warehouse_shops %}
+                      <div class="col-3 mb-3">
+                        <div class="shop-info">
+                          <img src="{{shop.image.url}}" alt="{{shop.name}}"> -
+                          <span class="shop-info_quantity">{{shop.quantity}}</span>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="container">
+        
+        <div class="row align-items-center">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <h3>{% translate 'Ваши адреса' %}</h3>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warehouseAddModal">
+              {% translate 'Открыть собственный адрес' %}
+            </button>
+          </div>
+        </div>
+        {% if not account_warehouses|length %}
+        <p>{% translate 'Вы ещё не добавляли личных адресов' %}</p>
+        {% endif %}
+        
+        <div id="locker-slider1" class="owl-carousel">
+          {% for account_warehouse in account_warehouses %}
+          <div style="display: flex; justify-content: center; padding: 0px !important;" class="item"
+            data-dot="<button role='button'  style='background-color: #0084ff!important'class='owl-dot text-white'><span>{{forloop.counter}}</span></button>">
+            <div class="card" >
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-9">
+                    <h5 class="card-title">{% translate 'Собственный адрес' %} - {{account_warehouse.city}}</h5>
+                  </div>
+                  <div class="col-3">
+                    <svg onclick="deleteUserWarehouse('{{account_warehouse.id}}')" style="cursor: pointer;"
+                      data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Удалить склад' %}"
+                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="25px" height="25px">
+                      <path
+                        d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
+                    </svg>
+                  </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>{% translate 'Данные получателя' %}:</b> {{request.user.first_name}} {{request.user.last_name}}</li>
+                  <li class="list-group-item"><b>{% translate 'Город' %}:</b> {{warehouse.city}}</li>
+                  <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
+                  <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
+                  <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{warehouse.zip}}</li>
+                  <li class="list-group-item"><b>{% translate 'Номер телефона' %}: </b>{{warehouse.phone}}</li>
+                </ul>
+                <div class="card-body">
+                  <div class="card-header">
+                    <p>{% translate 'Данные иконки показывают, сколько раз на этот адрес было заказанно посылок.' %}</p>
+                  </div>
+                  <div class="row ">
+                    {% for shop in account_warehouse.warehouse_shops %}
                       <div class="col-3 mb-3">
                         <div class="shop-info">
                           <img src="{{shop.image.url}}" alt="{{shop.name}}"> -

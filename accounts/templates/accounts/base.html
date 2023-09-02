@@ -171,7 +171,7 @@
           </a>
         </li>
         <li class="nav-item"  data-bs-toggle="tooltip" title="{% translate 'Скоро...' %}">
-          <a style="opacity: 0.8;" class="nav-link disabled "
+          <a class="nav-link {% if page == 'simple_purchase' %}active{% endif %} "
             href="{% url 'accounts:simple_purchase' %}">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">

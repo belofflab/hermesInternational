@@ -730,11 +730,6 @@
             <div class="col-lg-2 col-md-4 col-6 me-md-auto mx-md-0 mx-auto">
                 <img width="100" height="110" src="{% static 'main/img/gap.svg' %}" alt="Logo">
             </div>
-            <!-- <div class="col-lg-2 col-md-4 col-6 ms-auto">
-                <a href="{% url 'main:shops' %}">
-                    {% translate 'Смотреть все' %}
-                </a>
-           </div> -->
         </div>
         <div class="d-flex justify-content-center mt-4">
             <h5>{% translate 'И это ещё не всё... Мы принимаем более 1.000 различных магазинов в США!' %} </h5>
@@ -862,11 +857,17 @@
                 <h5 class="text-gradient text-primary font-weight-bolder">{% translate 'Связаться с нами' %}</h5>
                 <h2>{% translate 'Есть вопросы или нужна помощь?' %}</h2>
                 <p class="text-lg">{% translate 'Не стесняйтесь обращаться к нам в Telegram!' %}</p>
+                <p class="text-lg">{% translate 'Вы также можете связаться с нами по следующим контактам:' %}</p>
+                
+                <p><strong>Email:</strong> <a href="mailto:support@hermesinternational.ru">support@hermesinternational.ru</a></p>
+                <p><strong>WhatsApp:</strong> +1234567890</p> <!-- Replace with your WhatsApp number -->
+                
                 <a target="_blank" href="https://t.me/HermesSupp" class="btn btn-primary btn-lg mt-3">{% translate 'Написать в Telegram' %}</a>
             </div>
         </div>
     </div>
 </section>
+
 <footer class="footer">
     <hr class="horizontal dark mb-5">
     <div class="container">

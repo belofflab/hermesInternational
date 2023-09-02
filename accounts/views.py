@@ -57,23 +57,28 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
         account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
         warehouses = Warehouse.objects.all()
 
-        # Fetch related WarehouseShop objects for both types of warehouses
         warehouse_shops = WarehouseShop.objects.filter(
-            content_type__model__in=["warehouse", "accountwarehouse"]
+            content_type__model__in=["warehouse" ,"accountwarehouse"]
         )
 
-        # Manually associate the warehouse shops with the warehouses
-        all_warehouses = list(chain(account_warehouses, warehouses))
 
-        for warehouse in all_warehouses:
+        for warehouse in warehouses:
             warehouse.warehouse_shops = [
-                shop
-                for shop in warehouse_shops
+                shop for shop in warehouse_shops
                 if shop.object_id == warehouse.id
                 and shop.content_type.model == warehouse.__class__.__name__.lower()
             ]
+        for account_warehouse in account_warehouses:
+            account_warehouse.warehouse_shops = [
+                shop for shop in warehouse_shops
+                if shop.object_id == account_warehouse.id
+                and shop.content_type.model == account_warehouse.__class__.__name__.lower()
+            ]
+
+
         context = {
-            "warehouses": all_warehouses,
+            "account_warehouses": account_warehouses,
+            "warehouses": warehouses,
             "page": "warehouses",
         }
         return render(request, "accounts/warehouses.html", context)

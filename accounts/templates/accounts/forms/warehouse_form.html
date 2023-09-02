@@ -25,13 +25,12 @@
                       <div class="form-outline">
                         <label class="form-label">{% translate 'Тарифы и время' %}</label>
                         <ul class="list-unstyled">
-                          <li>{% translate 'Стоимость открытия адреса: 50$' %}</li>
+                          <li>{% translate 'Стоимость открытия адреса: $50' %}</li>
                           <li>{% translate 'Срок открытия:     3-5 рабочих дней' %} </li>
                           <br>
                           <li>{% translate 'примечание.' %}</li>
                           <li>{% translate 'возможность продления адреса имеется.' %}</li>
                         </ul>
-
                       </div>
                     </div>
                   </div>
@@ -41,13 +40,13 @@
                   <button type="button" class="btn w-100  btn-secondary" data-bs-dismiss="modal">{% translate 'Отмена' %}</button>
                 </form>
                 <div id="success_info" style="padding: 35px; color: green; display: none;">
-                  <p>{% translate 'Спасибо, ваша заявка подана' %}</p>
+                  <p>{% translate 'Спасибо, ваша заявка подана. Срок открытия 3-5 рабочих дней. Ожидайте.' %}</p>
                   <br>
 
                   <button type="button" class="btn w-100  btn-secondary" data-bs-dismiss="modal">{% translate 'Закрыть' %}</button>
                 </div>
                 <div id="error_info" style="padding: 35px; color: red; display: none;">
-                  <p>{% translate 'Для открытия вам необходимо <a href="/accounts/profile/payment/">пополнить баланс</a>' %}</p>
+                  <p>{% translate 'Для открытия вам необходимо <a href="/accounts/profile/payment/">пополнить баланс на $50</a>' %}</p>
 
                   <br>
 
