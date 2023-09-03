@@ -1,0 +1,62 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>All Mail</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Subject</th>
+                        <th>From</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for email_data in email_list %}
+                    <tr>
+                        <td>{{ email_data.ID }}</td>
+                        <td>{{ email_data.Subject }}</td>
+                        <td>{{ email_data.From }}</td>
+                        <td>{{ email_data.Date }}</td>
+                    </tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Добавьте здесь пагинацию, если необходимо -->
+        </div>
+        <div class="col-12">
+            <h1>Отправить почту</h1>
+            <form id="emailSendForm" method="post" action="{% url 'accounts:send_email' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="recipient">Получатель:</label>
+                    <input type="email" class="form-control" id="recipient" name="recipient" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Тема:</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea  rows="5" id="mymessage" name="mymessage"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Email</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <script>
+    const emailForm = document.getElementById("emailSendForm");
+    emailForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const message = document.getElementById("mymessage")
+        console.log(message)
+    }) 
+</script> -->
+
+{% endblock %}

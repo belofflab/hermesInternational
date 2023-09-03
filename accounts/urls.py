@@ -12,5 +12,7 @@ urlpatterns = [
   path('profile/packages/', views.ProfilePackagesView.as_view(), name='packages'),
   path('profile/inbox/', views.InboxView.as_view(), name="inbox"),
   path('profile/buyout/', views.BuyOutView.as_view(), name="buyout"),
+  path('profile/mail/', views.MailListView.as_view(), name="mail_list"),
+  path('profile/mail/send/', views.MailSendView.as_view(), name="send_email"),
   path('profile/inbox/<int:pk>/', views.PurchaseDetailView.as_view(), name="inbox_detail"),
 ]

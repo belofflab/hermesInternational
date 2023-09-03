@@ -61,6 +61,8 @@
   <script src="//code.jivo.ru/widget/8QPqVdED36" async></script>
   {% endif %}
 
+
+  <script src="https://cdn.tiny.cloud/1/32h176p22qtwrnyxbinsnq9u04dacegwpq6pr4m0wpciael3/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -236,6 +238,14 @@
             <span class="nav-link-text ms-1">{% translate 'Пополнить баланс' %}</span>
           </a>
         </li>
+
+        {% if request.user.is_admin %}
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'accounts:mail_list' %}">
+            <span class="btn btn-sm w-100 btn-primary  ms-1">{% translate 'Почта' %}</span>
+          </a>
+        </li>
+        {% endif %}
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Ваш аккаунт</h6>
         </li>
@@ -440,6 +450,14 @@
   <script src="{% static 'accounts/js/auth.js' %}"></script>
   <script src="{% static 'accounts/js/countrySelect.min.js' %}"></script>
   <script src="{% static 'accounts/js/owl.carousel.min.js' %}"></script>
+
+  <script>
+    tinymce.init({
+        selector: '#mymessage',
+        plugins: 'advlist autolink lists link image charmap preview anchor',
+        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    });
+</script>
   <script>
     $("#country_selector").countrySelect({
       excludeCountries: ['ru']

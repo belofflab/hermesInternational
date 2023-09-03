@@ -4,14 +4,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.db.models import Q
 from django.utils.http import urlsafe_base64_decode
+from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.conf import settings
 from payments.services.crypto import Crypto
 from collections import defaultdict
 from django.views import View
-from itertools import chain
 from payments.models import Invoice
-
+from .services.mail import get_email
+from django.core.mail import send_mail
 from . import forms, models
 
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
@@ -37,7 +38,12 @@ class ProfileView(LoginRequiredMixin, View):
             settings = models.AccountNotifySettings.objects.get(account=request.user)
         except models.AccountNotifySettings.DoesNotExist:
             settings = {}
-        last_visit = models.Visits.objects.filter(account=account).latest("last_login")
+        try:
+            last_visit = models.Visits.objects.filter(account=account).latest(
+                "last_login"
+            )
+        except models.Visits.DoesNotExist:
+            last_visit = {}
         context = {
             "purchases": account.purchases.all()[:5],
             "last_visit": last_visit,
@@ -58,23 +64,24 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
         warehouses = Warehouse.objects.all()
 
         warehouse_shops = WarehouseShop.objects.filter(
-            content_type__model__in=["warehouse" ,"accountwarehouse"]
+            content_type__model__in=["warehouse", "accountwarehouse"]
         )
-
 
         for warehouse in warehouses:
             warehouse.warehouse_shops = [
-                shop for shop in warehouse_shops
+                shop
+                for shop in warehouse_shops
                 if shop.object_id == warehouse.id
                 and shop.content_type.model == warehouse.__class__.__name__.lower()
             ]
         for account_warehouse in account_warehouses:
             account_warehouse.warehouse_shops = [
-                shop for shop in warehouse_shops
+                shop
+                for shop in warehouse_shops
                 if shop.object_id == account_warehouse.id
-                and shop.content_type.model == account_warehouse.__class__.__name__.lower()
+                and shop.content_type.model
+                == account_warehouse.__class__.__name__.lower()
             ]
-
 
         context = {
             "account_warehouses": account_warehouses,
@@ -139,7 +146,8 @@ class LogoutView(View):
 
 
 class PurchaseDetailView(LoginRequiredMixin, View):
-    login_url="/"
+    login_url = "/"
+
     def get(self, request, pk):
         try:
             purchase = models.Purchase.objects.get(id=pk)
@@ -175,14 +183,17 @@ class PasswordResetConfirmView(View):
         user = models.Account.objects.get(pk=uid)
         errors = []
         try:
-            decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-            if decoded_token['email'] != user.email:
+            decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+            if decoded_token["email"] != user.email:
                 raise jwt.ExpiredSignatureError()
         except jwt.ExpiredSignatureError:
             errors.append("Токен истёк")
-            
-        return render(request, "accounts/change_password.html", context={"errors": errors, "email": user.email})
 
+        return render(
+            request,
+            "accounts/change_password.html",
+            context={"errors": errors, "email": user.email},
+        )
 
 
 def get_buyout_items_by_category():
@@ -211,7 +222,8 @@ def get_buyout_items_by_category():
 
 
 class BuyOutView(LoginRequiredMixin, View):
-    login_url="/"
+    login_url = "/"
+
     def get(self, request):
         return render(
             request,
@@ -220,8 +232,40 @@ class BuyOutView(LoginRequiredMixin, View):
         )
 
 
+class MailListView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        if not request.user.is_admin: return redirect("accounts:profile")
+        email_list = get_email()
+        return render(
+            request,
+            "accounts/all_mail.html",
+            context={"email_list": email_list, "page": "buyout"},
+        )
+
+
+class MailSendView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def post(self, request):
+        if not request.user.is_admin: return redirect("accounts:profile")
+        request_data = request.POST
+
+        recipient = request_data.get("recipient")
+        subject = request_data.get("subject")
+        mymessage = request_data.get("mymessage")
+
+        email = EmailMessage(subject=subject, body=mymessage, from_email=settings.DEFAULT_FROM_EMAIL,to=[recipient])
+
+        email.content_subtype = 'html' 
+        email.send()
+        return redirect("accounts:mail_list")
+
+
 class ProfileSimplePurchaseView(LoginRequiredMixin, View):
-    login_url="/"
+    login_url = "/"
+
     def get(self, request):
         return render(
             request,
