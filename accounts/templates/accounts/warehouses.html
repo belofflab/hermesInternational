@@ -200,11 +200,11 @@
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><b>{% translate 'Данные получателя' %}:</b> {{request.user.first_name}} {{request.user.last_name}}</li>
-                  <li class="list-group-item"><b>{% translate 'Город' %}:</b> {{warehouse.city}}</li>
-                  <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{warehouse.address}}</li>
-                  <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{warehouse.state}}</li>
-                  <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{warehouse.zip}}</li>
-                  <li class="list-group-item"><b>{% translate 'Номер телефона' %}: </b>{{warehouse.phone}}</li>
+                  <li class="list-group-item"><b>{% translate 'Город' %}:</b> {{account_warehouse.city}}</li>
+                  <li class="list-group-item"><b>{% translate 'Адрес' %}:</b> {{account_warehouse.address}}</li>
+                  <li class="list-group-item"><b>{% translate 'Штат' %}: </b>{{account_warehouse.state}}</li>
+                  <li class="list-group-item"><b>{% translate 'Почтовый индекс' %}: </b>{{account_warehouse.zip}}</li>
+                  <li class="list-group-item"><b>{% translate 'Номер телефона' %}: </b>{{account_warehouse.phone}}</li>
                 </ul>
                 <div class="card-body">
                   <div class="card-header">
