@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def index(request):
     return render(request, "main/index.html", context={})
@@ -9,7 +9,8 @@ def about(request):
 
 
 def handler404(request, exception): 
-    return render(request, "main/404.html")
+    current_language_prefix = request.LANGUAGE_CODE
+    return redirect(f'/{current_language_prefix}/')
 
 def handler403(request, exception): 
     return render(request, "main/404.html")
