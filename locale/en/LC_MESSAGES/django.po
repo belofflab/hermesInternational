@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 14:43+0300\n"
+"POT-Creation-Date: 2023-09-03 09:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,51 +18,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\templates\accounts\base.html:83
+#: .\accounts\templates\accounts\base.html:85
 #: .\accounts\templates\accounts\profile.html:39
 msgid "Баланс"
 msgstr "Balance"
 
-#: .\accounts\templates\accounts\base.html:115
+#: .\accounts\templates\accounts\base.html:117
 msgid "Мои адреса"
 msgstr "My addresses"
 
-#: .\accounts\templates\accounts\base.html:141
+#: .\accounts\templates\accounts\base.html:143
 #: .\accounts\templates\accounts\inbox.html:13
 msgid "Покупки"
 msgstr "Purchases"
 
-#: .\accounts\templates\accounts\base.html:170
+#: .\accounts\templates\accounts\base.html:172
 #: .\accounts\templates\accounts\packages.html:13
 msgid "Прием посылок"
 msgstr "Packages"
 
-#: .\accounts\templates\accounts\base.html:173
+#: .\accounts\templates\accounts\base.html:175
 #: .\accounts\templates\accounts\payment.html:29
 #: .\accounts\templates\accounts\payment.html:35
 msgid "Скоро..."
 msgstr "Soon..."
 
-#: .\accounts\templates\accounts\base.html:184
+#: .\accounts\templates\accounts\base.html:186
 msgid "Покупка за вас (Скоро...)"
 msgstr "Shopping for you (Soon...)"
 
-#: .\accounts\templates\accounts\base.html:210
+#: .\accounts\templates\accounts\base.html:212
 msgid "Скуп-лист (Скоро...)"
 msgstr "Buyout (Soon...)"
 
-#: .\accounts\templates\accounts\base.html:236
+#: .\accounts\templates\accounts\base.html:238
 #: .\accounts\templates\accounts\payment.html:14
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:268
+#: .\accounts\templates\accounts\base.html:245
+#: .\accounts\templates\accounts\profile.html:75
+msgid "Почта"
+msgstr "Email"
+
+#: .\accounts\templates\accounts\base.html:278
 #: .\main\templates\main\about.html:79 .\main\templates\main\about.html:112
 #: .\main\templates\main\index.html:111 .\main\templates\main\index.html:144
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:294
+#: .\accounts\templates\accounts\base.html:304
 msgid "Выход"
 msgstr "Logout"
 
@@ -483,10 +488,6 @@ msgstr "Notify you about new <br> promotions and news"
 msgid "Уведомлять об изменении <br> статуса заказа"
 msgstr "Notify about change of <br> order status"
 
-#: .\accounts\templates\accounts\profile.html:75
-msgid "Почта"
-msgstr "Email"
-
 #: .\accounts\templates\accounts\profile.html:102
 msgid "Информация"
 msgstr "Info"
@@ -593,7 +594,8 @@ msgstr ""
 "\n"
 "Dear %(user.first_name)s %(user.last_name)s,\n"
 "\n"
-"You have successfully completed your shipment. Here is the information about your purchase:\n"
+"You have successfully completed your shipment. Here is the information about "
+"your purchase:\n"
 "\n"
 "Name: %(purchase.name)s\n"
 "Link: <a href=\"%(purchase.link)s\">%(purchase.link)s</a>\n"
@@ -606,49 +608,78 @@ msgstr ""
 "Sincerely,\n"
 "Your team is Hermes International.\n"
 
-#: .\ajax\views.py:51
+#: .\ajax\views.py:56
 msgid "Некорректный Email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:65 .\ajax\views.py:91
+#: .\ajax\views.py:70 .\ajax\views.py:96
 msgid "Некорректные данные"
 msgstr "Incorrect data"
 
-#: .\ajax\views.py:68
+#: .\ajax\views.py:73
 msgid "Пользователь уже существует"
 msgstr "User already exists"
 
-#: .\ajax\views.py:107
+#: .\ajax\views.py:112
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:230
+#: .\ajax\views.py:241
 msgid "Информация о оформлении отправления"
 msgstr "Information on despatch processing"
 
-#: .\ajax\views.py:373
+#: .\ajax\views.py:378
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:376 .\ajax\views.py:392
+#: .\ajax\views.py:383 .\ajax\views.py:403
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:387
+#: .\ajax\views.py:396
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:406
+#: .\ajax\views.py:420
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:416
+#: .\ajax\views.py:435
 msgid "Сброс пароля"
 msgstr "Reset Password"
 
-#: .\ajax\views.py:424
+#: .\ajax\views.py:445
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
+
+#: .\main\templates\main\403.html:8 .\main\templates\main\403.html:26
+msgid "Ошибка 403. Доступ запрещен"
+msgstr "Error 403. Access denied"
+
+#: .\main\templates\main\403.html:27
+msgid "У вас нет разрешения на доступ к этой странице."
+msgstr "You do not have permission to access this page."
+
+#: .\main\templates\main\403.html:28 .\main\templates\main\404.html:28
+#: .\main\templates\main\500.html:28
+msgid "Вернуться на главную"
+msgstr "Go back to the main page"
+
+#: .\main\templates\main\404.html:8
+msgid "Страница не найдена"
+msgstr "Page not found"
+
+#: .\main\templates\main\404.html:26
+msgid "Ошибка 404. Страница не найдена"
+msgstr "Error 404. Page not found"
+
+#: .\main\templates\main\500.html:8 .\main\templates\main\500.html:26
+msgid "Ошибка 500. Внутренняя ошибка сервера"
+msgstr "Error 500. Internal server error"
+
+#: .\main\templates\main\500.html:27
+msgid "Внутренняя ошибка сервера. Пожалуйста, попробуйте позднее."
+msgstr "Internal server error. Please try again later"
 
 #: .\main\templates\main\about.html:37 .\main\templates\main\about.html:193
 #: .\main\templates\main\index.html:69 .\main\templates\main\index.html:900
@@ -1819,9 +1850,6 @@ msgstr "Awaiting payment....For now:"
 
 #~ msgid "Доставка"
 #~ msgstr "Delivery"
-
-#~ msgid "Вернуться на главную"
-#~ msgstr "Go back to the main page"
 
 #~ msgid "Да. Все риски несёт за собой наша платформа."
 #~ msgstr "Yes. All risks are borne by our platform."

@@ -20,6 +20,6 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-# handler404='trading.views.handler404'
-# handler403='trading.views.handler403'
-# handler500='trading.views.handler500'
+handler404='main.views.handler404'
+handler403='main.views.handler403'
+handler500='main.views.handler500'
