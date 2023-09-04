@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-04 08:25+0300\n"
+"POT-Creation-Date: 2023-09-04 13:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,6 @@ msgid "Пополнить баланс"
 msgstr "Payment"
 
 #: .\accounts\templates\accounts\base.html:264
-#: .\accounts\templates\accounts\prices.html:10
 msgid "Прайс-лист"
 msgstr "Price list"
 
@@ -479,17 +478,93 @@ msgstr "How do I refill it?"
 msgid "Продолжить"
 msgstr "Continue"
 
+#: .\accounts\templates\accounts\prices.html:10
+msgid "Адрес в США бесплатно"
+msgstr "Address in the USA for free"
+
+#: .\accounts\templates\accounts\prices.html:13
+msgid ""
+"При регистрации вы получаете бесплатный адрес в США, а также возможность "
+"открывать свои собственные личные физические адреса в рамках нашего сервиса."
+msgstr ""
+"When you sign up, you get a free US address, as well as the ability to "
+" to open your own personal physical addresses as part of our service."
+
 #: .\accounts\templates\accounts\prices.html:14
-msgid "Прием послыки + пересыл:"
-msgstr "Receipt of parcels + forwarding:"
+msgid "В данный момент мы открываем склады в штатах: (MD), (VA), (DC)"
+msgstr "We are currently opening warehouses in states: (MD), (VA), (DC)"
 
 #: .\accounts\templates\accounts\prices.html:15
-msgid "Тестирование электроники:"
-msgstr "Electronics testing:"
+msgid "Вы можете использовать свой локер по мере необходимости."
+msgstr "You can use your locker as needed."
 
 #: .\accounts\templates\accounts\prices.html:16
-msgid "Убрать коробку из-под обуви:"
-msgstr "Remove the shoebox:"
+msgid "Мы всегда готовы принять, упаковать, и отправить ваши товары."
+msgstr "We are always ready to receive, pack, and ship your items."
+
+#: .\accounts\templates\accounts\prices.html:17
+msgid "Актуальные прайсы:"
+msgstr "Up-to-date price lists:"
+
+#: .\accounts\templates\accounts\prices.html:19
+msgid "прием посылки: free (бесплатное хранение 90 дней)"
+msgstr "parcel acceptance: free (free storage for 90 days)"
+
+#: .\accounts\templates\accounts\prices.html:20
+msgid "пересыл посылки по USA 35$ ( оплата курьерских расходов по чеку )"
+msgstr "parcel postage on USA 35$ ( payment of courier expenses by cheque )"
+
+#: .\accounts\templates\accounts\prices.html:21
+msgid "Доставка посылки посылок до др стран ( договорная )"
+msgstr "Delivery of parcels parcels to other countries ( negotiable )"
+
+#: .\accounts\templates\accounts\prices.html:22
+msgid "тестирование электроники: 5$"
+msgstr "electronics testing: $5"
+
+#: .\accounts\templates\accounts\prices.html:23
+msgid "убрать коробку из-под обуви 1$"
+msgstr "to remove the shoebox $1"
+
+#: .\accounts\templates\accounts\prices.html:24
+msgid "добавление доп пузырчатой пленки 1$"
+msgstr "adding extra bubble wrap $1"
+
+#: .\accounts\templates\accounts\prices.html:25
+msgid "обрешетка 5$"
+msgstr "crate $5"
+
+#: .\accounts\templates\accounts\prices.html:27
+msgid "Фото посылок бесплатно"
+msgstr "Free parcel photos"
+
+#: .\accounts\templates\accounts\prices.html:28
+msgid ""
+"(Мы делаем фото коробки и адресной этикетки для каждой входящей посылки "
+"бесплатно.)"
+msgstr ""
+"(We take a photo of the box and address label for each incoming parcel "
+" for free.)"
+
+#: .\accounts\templates\accounts\prices.html:29
+msgid "Фото содержимого каждой посылки $2"
+msgstr "A photo of the contents of each parcel $2"
+
+#: .\accounts\templates\accounts\prices.html:30
+msgid ""
+"(Мы будем автоматически распаковывать все входящие посылки и делать фото "
+"каждой отдельной вещи.)"
+msgstr ""
+"(We will automatically unpack all incoming parcels and take a photo "
+"of each individual item.)"
+
+#: .\accounts\templates\accounts\prices.html:31
+msgid "Налогов с продаж в США нет"
+msgstr "There are no sales taxes in the U.S."
+
+#: .\accounts\templates\accounts\prices.html:32
+msgid "Скрытых сборов нет"
+msgstr "There are no hidden fees"
 
 #: .\accounts\templates\accounts\profile.html:42
 msgid "Последний IP адрес"
@@ -1788,6 +1863,9 @@ msgstr "According to these details, the transfer is available during"
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
 
+#~ msgid "Прием послыки + пересыл:"
+#~ msgstr "Receipt of parcels + forwarding:"
+
 #~ msgid ""
 #~ "Уважаемый(ая) {{ purchase.address.first_name }} {{ purchase.address."
 #~ "last_name }},"
@@ -1822,9 +1900,6 @@ msgstr "Awaiting payment....For now:"
 
 #~ msgid "Спасибо, ваша заявка подана"
 #~ msgstr "Thank you, your application has been submitted"
-
-#~ msgid "Адрес в США"
-#~ msgstr "USA address"
 
 #~ msgid "Смотреть все"
 #~ msgstr "See all"
