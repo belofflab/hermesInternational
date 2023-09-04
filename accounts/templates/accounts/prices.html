@@ -1,0 +1,22 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>{% translate 'Прайс-лист' %}</h2>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>{% translate 'Прием послыки + пересыл:' %} $35</li>
+                    <li>{% translate 'Тестирование электроники:' %} $5</li>
+                    <li>{% translate 'Убрать коробку из-под обуви:' %} $1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

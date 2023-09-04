@@ -119,6 +119,12 @@ class ProfilePaymentView(LoginRequiredMixin, View):
         return render(request, "accounts/payment.html", context={"page": "payment"})
 
 
+class ProfilePricesView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        return render(request, "accounts/prices.html", context={"page": "prices"})
+
 class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
 

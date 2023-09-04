@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-03 09:49+0300\n"
+"POT-Creation-Date: 2023-09-04 08:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,18 +56,23 @@ msgstr "Buyout (Soon...)"
 msgid "Пополнить баланс"
 msgstr "Payment"
 
-#: .\accounts\templates\accounts\base.html:245
+#: .\accounts\templates\accounts\base.html:264
+#: .\accounts\templates\accounts\prices.html:10
+msgid "Прайс-лист"
+msgstr "Price list"
+
+#: .\accounts\templates\accounts\base.html:271
 #: .\accounts\templates\accounts\profile.html:75
 msgid "Почта"
 msgstr "Email"
 
-#: .\accounts\templates\accounts\base.html:278
+#: .\accounts\templates\accounts\base.html:304
 #: .\main\templates\main\about.html:79 .\main\templates\main\about.html:112
 #: .\main\templates\main\index.html:111 .\main\templates\main\index.html:144
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\accounts\templates\accounts\base.html:304
+#: .\accounts\templates\accounts\base.html:330
 msgid "Выход"
 msgstr "Logout"
 
@@ -212,13 +217,13 @@ msgid "Трек номер"
 msgstr "Track number"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:40
-#: .\accounts\templates\accounts\inbox.html:67
+#: .\accounts\templates\accounts\inbox.html:70
 #: .\accounts\templates\accounts\packages.html:64
 msgid "Количество"
 msgstr "Quantity"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:47
-#: .\accounts\templates\accounts\inbox.html:66
+#: .\accounts\templates\accounts\inbox.html:69
 #: .\accounts\templates\accounts\packages.html:63
 msgid "Цена"
 msgstr "Price"
@@ -228,7 +233,7 @@ msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:55
-#: .\accounts\templates\accounts\inbox.html:73
+#: .\accounts\templates\accounts\inbox.html:76
 #: .\main\templates\main\index.html:200
 msgid "Пересыл"
 msgstr "Forwarding"
@@ -403,30 +408,34 @@ msgstr "Purchase"
 msgid "Изменение декларации"
 msgstr "Changing the declaration"
 
-#: .\accounts\templates\accounts\inbox.html:25
+#: .\accounts\templates\accounts\inbox.html:21
+msgid "Как добавить заказ?"
+msgstr "How do I add an order?"
+
+#: .\accounts\templates\accounts\inbox.html:28
 msgid "На данный момент вы не добавляли покупки..."
 msgstr "You have not added any purchases at this time...."
 
-#: .\accounts\templates\accounts\inbox.html:36
+#: .\accounts\templates\accounts\inbox.html:39
 #: .\accounts\templates\accounts\packages.html:41
 msgid "Посылка доставлена"
 msgstr "Package delivered"
 
-#: .\accounts\templates\accounts\inbox.html:43
+#: .\accounts\templates\accounts\inbox.html:46
 #: .\accounts\templates\accounts\packages.html:48
 msgid "Изменить данные"
 msgstr "Edit data"
 
-#: .\accounts\templates\accounts\inbox.html:44
+#: .\accounts\templates\accounts\inbox.html:47
 msgid "Удалить покупку"
 msgstr "Remove purchase"
 
-#: .\accounts\templates\accounts\inbox.html:64
+#: .\accounts\templates\accounts\inbox.html:67
 #: .\accounts\templates\accounts\packages.html:61
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:72
+#: .\accounts\templates\accounts\inbox.html:75
 msgid "Выкуп"
 msgstr "Buyout"
 
@@ -462,9 +471,25 @@ msgstr "Disband"
 msgid "Редактировать"
 msgstr "Edit"
 
-#: .\accounts\templates\accounts\payment.html:46
+#: .\accounts\templates\accounts\payment.html:47
+msgid "Как пополнить?"
+msgstr "How do I refill it?"
+
+#: .\accounts\templates\accounts\payment.html:53
 msgid "Продолжить"
 msgstr "Continue"
+
+#: .\accounts\templates\accounts\prices.html:14
+msgid "Прием послыки + пересыл:"
+msgstr "Receipt of parcels + forwarding:"
+
+#: .\accounts\templates\accounts\prices.html:15
+msgid "Тестирование электроники:"
+msgstr "Electronics testing:"
+
+#: .\accounts\templates\accounts\prices.html:16
+msgid "Убрать коробку из-под обуви:"
+msgstr "Remove the shoebox:"
 
 #: .\accounts\templates\accounts\profile.html:42
 msgid "Последний IP адрес"
@@ -563,6 +588,10 @@ msgstr "Your addresses"
 #: .\accounts\templates\accounts\warehouses.html:179
 msgid "Вы ещё не добавляли личных адресов"
 msgstr "You have not added personal addresses yet"
+
+#: .\accounts\templates\accounts\warehouses.html:179
+msgid "Как открыть адрес?"
+msgstr "How do you open an address?"
 
 #: .\accounts\templates\accounts\warehouses.html:190
 msgid "Собственный адрес"
@@ -747,11 +776,11 @@ msgstr "Deliver fast to anywhere in the world"
 msgid "Компания"
 msgstr "Company"
 
-#: .\main\templates\main\about.html:211 .\main\templates\main\index.html:918
+#: .\main\templates\main\about.html:211 .\main\templates\main\index.html:923
 msgid "Лицензии"
 msgstr "Licenses"
 
-#: .\main\templates\main\about.html:216 .\main\templates\main\index.html:923
+#: .\main\templates\main\about.html:216 .\main\templates\main\index.html:928
 msgid "Оферта"
 msgstr "Offer"
 
@@ -1727,6 +1756,10 @@ msgstr "You can also contact us at the following contacts:"
 msgid "Написать в Telegram"
 msgstr "Write in Telegram"
 
+#: .\main\templates\main\index.html:915
+msgid "Обучение"
+msgstr "Training"
+
 #: .\packageLocker\settings.py:135
 msgid "English"
 msgstr ""
@@ -1780,9 +1813,6 @@ msgstr "Awaiting payment....For now:"
 
 #~ msgid "Трек номер:"
 #~ msgstr "Track number"
-
-#~ msgid "Спасибо за ваш заказ!"
-#~ msgstr "Thank you for your order!"
 
 #~ msgid "С уважением,"
 #~ msgstr "Respectfully,"
