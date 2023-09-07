@@ -239,7 +239,7 @@ class PurchaseUpdateStatusView(LoginRequiredMixin, View):
                 f"""
 Пользователь: <b>{request.user}</b> поставил статус покупки на доставлена
 
-Ссылка на панель: {"https://" + current_site.domain + f"/UQhCgbBPEuPhAbAPfwbTaX/accounts/purchase/{purchase.id}/change/"}
+Ссылка на панель: {f"https://hermesinternational.ru/UQhCgbBPEuPhAbAPfwbTaX/accounts/purchase/{purchase.id}/change/"}
 """
             )
         return JsonResponse({"status": True})
