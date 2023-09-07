@@ -34,9 +34,9 @@ class Purchase(models.Model):
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
-    address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True)
+    address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True, blank=True)
     delivery_method = models.CharField(
-        verbose_name="Метод доставки", max_length=255, null=True
+        verbose_name="Метод доставки", max_length=255, null=True, blank=True
     )
     is_deliveried = models.BooleanField(verbose_name="Доставлена", default=False)
     options = models.ManyToManyField(
