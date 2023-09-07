@@ -1,2 +1,5 @@
 profile_images/*
 !profile_images/__init__.py
+
+purchase_photos/*
+!purchase_photos/__init__.py
