@@ -51,8 +51,20 @@
               </div>
             </div>
             {% if purchase.status == 'BUYOUT' %}
-            <img src="{% static 'accounts/img/fast-time.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
-            {% endif %}
+              {% with purchase_photos=purchase.photos.all %}
+                    {% if not purchase_photos %}
+                    <img src="{% static 'accounts/img/fast-time.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
+                    {% else %}
+                        <div id="owl-carousel3" class="owl-carousel owl-theme custom-carousel">
+                            {% for photo in purchase_photos %}
+                                <div class="item">
+                                    <img src="{{ photo.photo.url }}" alt="Photo">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}   
+              {% endif %}
             {% if purchase.status == 'FORWARDING' %}
             <img src="{% static 'accounts/img/free-sticker-paper-plane.png' %}" class="card-img-top"
               alt="Chicago Skyscrapers" />
@@ -70,12 +82,11 @@
             <li class="list-group-item px-4"><b>{% translate 'Количество' %}: </b>{{purchase.quantity}}</li>
           </ul>
           <div class="card-body">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried %}
+            {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried %}
               <button class="btn btn-primary" onclick="toBuyout('{{purchase.id}}')" type="button" {% if purchase.status == "BUYOUT" %} disabled {% endif %} >{% translate 'Выкуп' %}</button>
               <button class="btn btn-success" onclick="toForwarding('{{purchase.id}}')" type="button">{% translate 'Пересыл' %}</button>
-              {% endif %}
-            </div>
+              <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button">{% translate 'Отметить посылку доставленной' %}</button>
+            {% endif %}
           </div>
         </div>
       </div>

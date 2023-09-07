@@ -50,7 +50,19 @@
               </div>
             </div>
             {% if purchase.status == 'FORWARDING' %}
-            <img src="{% static 'accounts/img/free-sticker-paper-plane.png' %}" class="card-img-top" />
+              {% with purchase_photos=purchase.photos.all %}
+                  {% if not purchase_photos %}
+                      <img src="{% static 'accounts/img/free-sticker-paper-plane.png' %}" class="card-img-top" />
+                  {% else %}
+                      <div id="owl-carousel3" class="owl-carousel owl-theme custom-carousel">
+                          {% for photo in purchase_photos %}
+                              <div class="item">
+                                  <img src="{{ photo.photo.url }}" alt="Photo">
+                              </div>
+                          {% endfor %}
+                      </div>
+                  {% endif %}
+              {% endwith %}     
             {% endif %}
             {% if purchase.status == 'ACCEPTANCE' %}
             <img src="{% static 'accounts/img/delivery-box.png' %}" class="card-img-top" />
@@ -69,6 +81,7 @@
               <div class="row">
                   <button class="btn btn-outline-danger" onclick="toAcceptance('{{purchase.id}}')" type="button">{% translate 'Расформировать' %}</button>
                   <button class="btn btn-outline-primary" onclick="updatePurchaseData('{{ purchase.id }}', '{{purchase.address.id}}')" type="button">{% translate 'Редактировать' %}</button>
+                  <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button">{% translate 'Отметить посылку доставленной' %}</button>
               </div>
             </div>
           </div>

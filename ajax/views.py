@@ -226,6 +226,23 @@ class PurchaseRemoveView(LoginRequiredMixin, View):
         Purchase.objects.filter(id=int(idx)).delete()
 
         return JsonResponse({"status": True})
+    
+class PurchaseUpdateStatusView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        idx = request_data.get("purchase")
+        purchase = Purchase.objects.get(id=int(idx))
+        purchase.is_deliveried = True
+        purchase.save()
+        current_site = get_current_site(request)
+        message.send(
+                f"""
+Пользователь: <b>{request.user}</b> поставил статус покупки на доставлена
+
+Ссылка на панель: {"https://" + current_site.domain + f"/UQhCgbBPEuPhAbAPfwbTaX/accounts/purchase/{purchase.id}/change/"}
+"""
+            )
+        return JsonResponse({"status": True})
 
 
 class PurchaseChangeStatusView(LoginRequiredMixin, View):

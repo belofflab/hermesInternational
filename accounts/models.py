@@ -59,10 +59,32 @@ class Purchase(models.Model):
     class Meta:
         verbose_name = "Покупка"
         verbose_name_plural = "Покупки"
+        ordering = ['-created']
 
     def __str__(self) -> str:
         return f"{self.name}_{self.quantity}_${self.price}"
 
+
+class PurchasePhoto(models.Model):
+    """Модель для фотографий покупок"""
+
+    purchase = models.ForeignKey(
+        Purchase,
+        on_delete=models.CASCADE,
+        related_name='photos',
+        verbose_name="Покупка",
+    )
+    photo = models.ImageField(
+        verbose_name="Фотография",
+        upload_to='purchase_photos/',
+    )
+
+    class Meta:
+        verbose_name = "Фотография покупки"
+        verbose_name_plural = "Фотографии покупок"
+
+    def __str__(self):
+        return f"Фото для {self.purchase.name}"
 
 class AccountManager(BaseUserManager):
     """Менеджер кастомной модели пользователя"""

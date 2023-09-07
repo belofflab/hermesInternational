@@ -16,6 +16,7 @@ urlpatterns = [
 
   path('accounts/profile/purchases/get', views.PurchaseGetView.as_view(), name='purchase_get'),
   path('accounts/profile/purchases/remove', views.PurchaseRemoveView.as_view(), name='purchase_remove'),
+  path('accounts/profile/purchases/status/update', views.PurchaseUpdateStatusView.as_view(), name='purchase_status_update'),
 
 
   path('accounts/login', views.LoginView.as_view(), name="login"),

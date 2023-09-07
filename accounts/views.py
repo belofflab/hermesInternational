@@ -12,7 +12,6 @@ from collections import defaultdict
 from django.views import View
 from payments.models import Invoice
 from .services.mail import get_email
-from django.core.mail import send_mail
 from . import forms, models
 
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
@@ -129,7 +128,7 @@ class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        purchases = models.Purchase.objects.filter(
+        purchases = models.Purchase.objects.prefetch_related("photos").filter(
             Q(account=request.user) & Q(status="FORWARDING")
         )
         return render(

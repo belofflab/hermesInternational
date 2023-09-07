@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import (Account, AccountData, Purchase,
+from .models import (Account, AccountData, Purchase, PurchasePhoto,
                      PurchaseDeliveryOption, AccountNotifySettings, Visits, Buyout, BuyoutCategory)
 
 
@@ -21,6 +21,7 @@ admin.site.register(AccountData)
 admin.site.register(Visits)
 
 admin.site.register(Purchase)
+admin.site.register(PurchasePhoto)
 admin.site.register(PurchaseDeliveryOption)
 
 admin.site.register(AccountNotifySettings)

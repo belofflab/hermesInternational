@@ -505,6 +505,23 @@ function toAcceptance(purchaseId) {
     })
 }
 
+function updateIsDeliveried(purchaseId) {
+    $.ajax({
+        data: {
+            purchase: parseInt(purchaseId),
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchases/status/update'
+    }).then((response) => {
+        if (response.status) {
+            window.location.reload()
+        } else {
+            console.log(response)
+        }
+    })
+}
+
 
 
 function deleteUserWarehouse(warehouseId) {
