@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-04 13:50+0300\n"
+"POT-Creation-Date: 2023-09-07 08:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -216,14 +216,14 @@ msgid "Трек номер"
 msgstr "Track number"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:40
-#: .\accounts\templates\accounts\inbox.html:70
-#: .\accounts\templates\accounts\packages.html:64
+#: .\accounts\templates\accounts\inbox.html:82
+#: .\accounts\templates\accounts\packages.html:76
 msgid "Количество"
 msgstr "Quantity"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:47
-#: .\accounts\templates\accounts\inbox.html:69
-#: .\accounts\templates\accounts\packages.html:63
+#: .\accounts\templates\accounts\inbox.html:81
+#: .\accounts\templates\accounts\packages.html:75
 msgid "Цена"
 msgstr "Price"
 
@@ -232,7 +232,7 @@ msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:55
-#: .\accounts\templates\accounts\inbox.html:76
+#: .\accounts\templates\accounts\inbox.html:87
 #: .\main\templates\main\index.html:200
 msgid "Пересыл"
 msgstr "Forwarding"
@@ -429,14 +429,19 @@ msgstr "Edit data"
 msgid "Удалить покупку"
 msgstr "Remove purchase"
 
-#: .\accounts\templates\accounts\inbox.html:67
-#: .\accounts\templates\accounts\packages.html:61
+#: .\accounts\templates\accounts\inbox.html:79
+#: .\accounts\templates\accounts\packages.html:73
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:75
+#: .\accounts\templates\accounts\inbox.html:86
 msgid "Выкуп"
 msgstr "Buyout"
+
+#: .\accounts\templates\accounts\inbox.html:88
+#: .\accounts\templates\accounts\packages.html:84
+msgid "Отметить посылку доставленной"
+msgstr "Mark the parcel delivered"
 
 #: .\accounts\templates\accounts\packages.html:15
 msgid "Мы принимаем посылки на "
@@ -462,11 +467,11 @@ msgstr "purchases"
 msgid "Заполните данные получателя"
 msgstr "Fill in the recipient's details"
 
-#: .\accounts\templates\accounts\packages.html:70
+#: .\accounts\templates\accounts\packages.html:82
 msgid "Расформировать"
 msgstr "Disband"
 
-#: .\accounts\templates\accounts\packages.html:71
+#: .\accounts\templates\accounts\packages.html:83
 msgid "Редактировать"
 msgstr "Edit"
 
@@ -487,8 +492,8 @@ msgid ""
 "При регистрации вы получаете бесплатный адрес в США, а также возможность "
 "открывать свои собственные личные физические адреса в рамках нашего сервиса."
 msgstr ""
-"When you sign up, you get a free US address, as well as the ability to "
-" to open your own personal physical addresses as part of our service."
+"When you sign up, you get a free US address, as well as the ability to  to "
+"open your own personal physical addresses as part of our service."
 
 #: .\accounts\templates\accounts\prices.html:14
 msgid "В данный момент мы открываем склады в штатах: (MD), (VA), (DC)"
@@ -543,8 +548,8 @@ msgid ""
 "(Мы делаем фото коробки и адресной этикетки для каждой входящей посылки "
 "бесплатно.)"
 msgstr ""
-"(We take a photo of the box and address label for each incoming parcel "
-" for free.)"
+"(We take a photo of the box and address label for each incoming parcel  for "
+"free.)"
 
 #: .\accounts\templates\accounts\prices.html:29
 msgid "Фото содержимого каждой посылки $2"
@@ -555,8 +560,8 @@ msgid ""
 "(Мы будем автоматически распаковывать все входящие посылки и делать фото "
 "каждой отдельной вещи.)"
 msgstr ""
-"(We will automatically unpack all incoming parcels and take a photo "
-"of each individual item.)"
+"(We will automatically unpack all incoming parcels and take a photo of each "
+"individual item.)"
 
 #: .\accounts\templates\accounts\prices.html:31
 msgid "Налогов с продаж в США нет"
@@ -728,31 +733,31 @@ msgstr "User already exists"
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:241
+#: .\ajax\views.py:258
 msgid "Информация о оформлении отправления"
 msgstr "Information on despatch processing"
 
-#: .\ajax\views.py:378
+#: .\ajax\views.py:395
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:383 .\ajax\views.py:403
+#: .\ajax\views.py:400 .\ajax\views.py:420
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:396
+#: .\ajax\views.py:413
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:420
+#: .\ajax\views.py:437
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:435
+#: .\ajax\views.py:452
 msgid "Сброс пароля"
 msgstr "Reset Password"
 
-#: .\ajax\views.py:445
+#: .\ajax\views.py:462
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
 
