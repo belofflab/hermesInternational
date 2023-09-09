@@ -37,6 +37,7 @@ class PurchaseAdmin(admin.ModelAdmin):
         "name",
         "quantity",
         "price",
+        "address",
         "delivery_warehouse_display", 
         "delivery_method",
         "related_accounts",
