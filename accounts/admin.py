@@ -9,7 +9,7 @@ from .models import (Account, AccountData, Buyout, BuyoutCategory, Purchase,
 
 
 class AccountAdmin(UserAdmin):
-    list_display = ("email", "date_joined")
+    list_display = ("first_name", "last_name", "email", "date_joined")
     search_fields = ("email",)
     ordering = ("-date_joined",)
 
