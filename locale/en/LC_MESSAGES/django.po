@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-07 08:05+0300\n"
+"POT-Creation-Date: 2023-09-09 09:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,6 +75,12 @@ msgstr "Profile"
 msgid "Выход"
 msgstr "Logout"
 
+#: .\accounts\templates\accounts\base.html:489
+#: .\accounts\templates\accounts\forms\buy_form.html:61
+#: .\accounts\templates\accounts\forms\buy_form.html:63
+msgid "Выберите склад"
+msgstr "Select a warehouse"
+
 #: .\accounts\templates\accounts\buyout.html:6
 msgid "Поиск по категории"
 msgstr "Search by category"
@@ -103,7 +109,7 @@ msgid "Подтвердите новый пароль"
 msgstr "Confirm the new password"
 
 #: .\accounts\templates\accounts\change_password.html:26
-#: .\accounts\templates\accounts\forms\buy_form.html:62
+#: .\accounts\templates\accounts\forms\buy_form.html:70
 #: .\accounts\templates\accounts\forms\change_password.html:34
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:51
 #: .\accounts\templates\accounts\forms\full_change_password.html:35
@@ -227,21 +233,21 @@ msgstr "Quantity"
 msgid "Цена"
 msgstr "Price"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:53
+#: .\accounts\templates\accounts\forms\buy_form.html:54
 msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:55
-#: .\accounts\templates\accounts\inbox.html:87
+#: .\accounts\templates\accounts\forms\buy_form.html:56
+#: .\accounts\templates\accounts\inbox.html:92
 #: .\main\templates\main\index.html:200
 msgid "Пересыл"
 msgstr "Forwarding"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:56
+#: .\accounts\templates\accounts\forms\buy_form.html:57
 msgid "Отправить в скуп-лист"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\forms\buy_form.html:63
+#: .\accounts\templates\accounts\forms\buy_form.html:71
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:52
 msgid "Далее"
 msgstr "Continue"
@@ -434,11 +440,11 @@ msgstr "Remove purchase"
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:86
+#: .\accounts\templates\accounts\inbox.html:89
 msgid "Выкуп"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\inbox.html:88
+#: .\accounts\templates\accounts\inbox.html:94
 #: .\accounts\templates\accounts\packages.html:84
 msgid "Отметить посылку доставленной"
 msgstr "Mark the parcel delivered"
@@ -717,47 +723,47 @@ msgstr ""
 "Sincerely,\n"
 "Your team is Hermes International.\n"
 
-#: .\ajax\views.py:56
+#: .\ajax\views.py:50
 msgid "Некорректный Email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:70 .\ajax\views.py:96
+#: .\ajax\views.py:64 .\ajax\views.py:90
 msgid "Некорректные данные"
 msgstr "Incorrect data"
 
-#: .\ajax\views.py:73
+#: .\ajax\views.py:67
 msgid "Пользователь уже существует"
 msgstr "User already exists"
 
-#: .\ajax\views.py:112
+#: .\ajax\views.py:113
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:258
+#: .\ajax\views.py:261
 msgid "Информация о оформлении отправления"
 msgstr "Information on despatch processing"
 
-#: .\ajax\views.py:395
+#: .\ajax\views.py:398
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:400 .\ajax\views.py:420
+#: .\ajax\views.py:403 .\ajax\views.py:423
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:413
+#: .\ajax\views.py:416
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:437
+#: .\ajax\views.py:440
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:452
+#: .\ajax\views.py:455
 msgid "Сброс пароля"
 msgstr "Reset Password"
 
-#: .\ajax\views.py:462
+#: .\ajax\views.py:465
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
 
@@ -1847,6 +1853,14 @@ msgstr ""
 #: .\packageLocker\settings.py:136
 msgid "Russian"
 msgstr ""
+
+#: .\payments\templates\payments\invoice_email_template.html:8
+msgid "Вам выписан новый чек на оплату"
+msgstr "You have been issued a new cheque for payment"
+
+#: .\payments\templates\payments\invoice_email_template.html:9
+msgid "Нажмите для перехода:"
+msgstr "Click to go to:"
 
 #: .\payments\templates\payments\pay.html:313
 msgid "Валюта"

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load  i18n %}
 <html>
 <head>
     <title>Чек</title>
 </head>
 <body>
-    <h1>Ваш чек</h1>
-    Нажмите для перехода: <a href="{{pay_url}}">{{pay_url}}</a>
+    <h4>{% translate 'Вам выписан новый чек на оплату' %}</h4>
+    {% translate 'Нажмите для перехода:' %} <a href="{{pay_url}}">{{pay_url}}</a>
 </body>
 </html>
