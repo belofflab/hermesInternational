@@ -23,7 +23,7 @@ admin.site.register(Account, AccountAdmin)
 
 
 class AccountDataAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "phone", "related_accounts")
+    list_display = ("first_name", "last_name",  "phone", "related_accounts", "city", "street", "state")
     list_filter = (("account", admin.RelatedOnlyFieldListFilter),)
     search_fields = ("first_name", "last_name")
     list_per_page = 30
