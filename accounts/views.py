@@ -89,7 +89,6 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
         }
         return render(request, "accounts/warehouses.html", context)
 
-
 class ProfilePaymentView(LoginRequiredMixin, View):
     login_url = "/"
 

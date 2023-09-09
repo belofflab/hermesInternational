@@ -5,8 +5,6 @@
 </head>
 <body>
     <h1>Ваш чек</h1>
-    <p>Номер транзакции: {{ invoice.invoice_id }}</p>
-    <p>Сумма: ${{ invoice.amount }}</p>
-    <!-- Другие детали вашего чека -->
+    Нажмите для перехода: <a href="{{pay_url}}">{{pay_url}}</a>
 </body>
 </html>

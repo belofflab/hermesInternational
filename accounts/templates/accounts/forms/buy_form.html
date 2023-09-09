@@ -49,12 +49,20 @@
                         <!-- {{purchase_form.price}} -->
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <label for="buy_option_select" class="form-control-label">{% translate 'Что делаем с заказом?' %}</label>
-                      <select id="buy_option_select" class="form-select" aria-label="Option select example">
-                        <option value="FORWARDING" selected>{% translate 'Пересыл' %}</option>
-                        <option value="BUYOUT">{% translate 'Отправить в скуп-лист' %}</option>
-                      </select>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="buy_option_select" class="form-control-label">{% translate 'Что делаем с заказом?' %}</label>
+                        <select id="buy_option_select" class="form-select" aria-label="Option select example">
+                          <option value="FORWARDING" selected>{% translate 'Пересыл' %}</option>
+                          <option value="BUYOUT">{% translate 'Отправить в скуп-лист' %}</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="buy_warehouse_select" class="form-control-label">{% translate 'Выберите склад' %}</label>
+                        <select id="buy_warehouse_select" class="form-select" aria-label="Option select example" required>
+                          <option value="">{% translate 'Выберите склад' %}</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                   <br>

@@ -477,6 +477,45 @@
   <script src="{% static 'accounts/js/countrySelect.min.js' %}"></script>
   <script src="{% static 'accounts/js/owl.carousel.min.js' %}"></script>
   <script>
+    $(document).ready(function() {
+      // Function to populate the select element
+      function populateWarehouseSelect(data) {
+        const selectElement = $('#buy_warehouse_select');
+        selectElement.empty(); // Clear existing options
+
+        // Add a default option
+        selectElement.append($('<option>', {
+          value: '',
+          text: '{% translate "Выберите склад" %}'
+        }));
+
+        // Add options from the JSON data
+        data.warehouse_options.forEach(function(option) {
+          selectElement.append($('<option>', {
+            value: option.value,
+            text: option.label,
+            'data-model': option.model  // Store the model type information as a data attribute
+          }));
+        });
+      }
+  
+      // Event listener for when the modal is opened
+      $('#purchaseAddModal').on('shown.bs.modal', function() {
+        // Fetch data from Django view
+        $.ajax({
+          url: '/ajax/accounts/profile/warehouses/all',  
+          method: 'GET',
+          success: function(data) {
+            populateWarehouseSelect(data);
+          },
+          error: function() {
+            console.error('Failed to fetch warehouse options');
+          }
+        });
+      });
+    });
+  </script>
+  <script>
     $(document).ready(function () {
         $("#owl-carousel3").owlCarousel({
             items: 1, // Количество отображаемых элементов

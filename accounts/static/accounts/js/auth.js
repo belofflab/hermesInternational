@@ -329,7 +329,9 @@ $("form[name='buy_out']").submit((e) => {
     var quantity = $('#buy_form_quantity').val();
     var price = $('#buy_form_price').val();
     var status = $("#buy_option_select option:selected").val();
-    // console.log(status)
+    var warehouse = $("#buy_warehouse_select option:selected");
+    const warehouseId = warehouse.val();
+    const warehouseModel = warehouse.data("model")
     if (!id.length > 0) { id = null }
     $("#buyout_but").attr('disabled', 'disabled');
     $.ajax({
@@ -341,6 +343,8 @@ $("form[name='buy_out']").submit((e) => {
             quantity: quantity,
             price: price,
             status: status,
+            warehouseId: warehouseId,
+            warehouseModel: warehouseModel,
             csrfmiddlewaretoken: csrf_token
         },
         method: 'POST',

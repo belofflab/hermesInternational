@@ -1,9 +1,10 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from django.utils.deconstruct import deconstructible
-
+from django.utils.translation import gettext_lazy as _
 
 PURCHASE_STATUS_CHOICES = (
     ("BUYOUT", "buyout"),
@@ -41,6 +42,21 @@ class Purchase(models.Model):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+    )
+    delivery_warehouse_type = models.ForeignKey(
+        ContentType,
+        verbose_name="Тип склада для доставки",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    delivery_warehouse_id = models.PositiveIntegerField(
+        verbose_name="Идентификатор склада для доставки",
+        null=True,
+        blank=True,
+    )
+    delivery_warehouse = GenericForeignKey(
+        "delivery_warehouse_type", "delivery_warehouse_id"
     )
     delivery_method = models.CharField(
         verbose_name="Метод доставки", max_length=255, null=True, blank=True

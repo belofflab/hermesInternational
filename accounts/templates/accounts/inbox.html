@@ -81,13 +81,21 @@
             <li class="list-group-item px-4"><b>{% translate 'Цена' %}: </b>${{purchase.price}}</li>
             <li class="list-group-item px-4"><b>{% translate 'Количество' %}: </b>{{purchase.quantity}}</li>
           </ul>
-          <div class="card-body">
-            {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried %}
-              <button class="btn btn-primary" onclick="toBuyout('{{purchase.id}}')" type="button" {% if purchase.status == "BUYOUT" %} disabled {% endif %} >{% translate 'Выкуп' %}</button>
-              <button class="btn btn-success" onclick="toForwarding('{{purchase.id}}')" type="button">{% translate 'Пересыл' %}</button>
-              <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button">{% translate 'Отметить посылку доставленной' %}</button>
-            {% endif %}
-          </div>
+          {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried %}
+            <div class="card-body">
+                <div class="d-grid mx-auto content-md-center">
+                  <div class="row">
+                    <div class="col-6">
+                      <button class="btn btn-outline-primary" onclick="toBuyout('{{purchase.id}}')" type="button" {% if purchase.status == "BUYOUT" %} disabled {% endif %} >{% translate 'Выкуп' %}</button>
+                    </div>
+                    <div class="col-6">
+                      <button class="btn btn-outline-success" onclick="toForwarding('{{purchase.id}}')" type="button">{% translate 'Пересыл' %}</button>
+                    </div>
+                    <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button">{% translate 'Отметить посылку доставленной' %}</button>
+                  </div>
+                </div>
+            </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}

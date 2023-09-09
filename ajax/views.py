@@ -1,11 +1,11 @@
 import datetime
-import threading
 from decimal import Decimal, InvalidOperation
 
 import jwt
 from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.forms.models import model_to_dict
@@ -13,20 +13,14 @@ from django.http.response import JsonResponse
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.encoding import force_bytes
-from django.utils.html import strip_tags
 from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext as _
 from django.views import View
 
-from accounts.models import (
-    Account,
-    AccountData,
-    AccountNotifySettings,
-    Purchase,
-    Visits,
-)
+from accounts.models import (Account, AccountData, AccountNotifySettings,
+                             Purchase, Visits)
 from accounts.services import message
-from main.models import AccountWarehouse
+from main.models import AccountWarehouse, Warehouse
 
 
 def get_client_ip(request):
@@ -103,6 +97,13 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         url = request_data.get("url")
         track_number = request_data.get("track_number")
         quantity = request_data.get("quantity")
+        warehouseModel = request_data.get("warehouseModel")
+        warehouseId = request_data.get("warehouseId")
+        warehouses = {
+            "Warehouse": Warehouse,
+            "AccountWarehouse": AccountWarehouse
+        }
+        warehouse = warehouses[warehouseModel].objects.get(id=warehouseId)
         id = request_data.get("id")
 
         try:
@@ -121,6 +122,8 @@ class PurchaseCreateView(LoginRequiredMixin, View):
                 "tracking_number": track_number,
                 "quantity": quantity,
                 "price": price,
+                "delivery_warehouse_type": ContentType.objects.get_for_model(warehouse),
+                "delivery_warehouse_id": warehouse.id,
                 "status": status if status == "BUYOUT" else "ACCEPTANCE",
             }
         }
@@ -499,6 +502,35 @@ class AccountWarehouseDeleteView(LoginRequiredMixin, View):
         AccountWarehouse.objects.filter(id=warehouse).delete()
 
         return JsonResponse({"status": True, "message": ""})
+
+
+def get_warehouse_options(request):
+    warehouse_options = []
+
+    # Retrieve options from the Warehouse model
+    warehouses = Warehouse.objects.all()
+    for warehouse in warehouses:
+        warehouse_options.append({
+            'value': warehouse.id,
+            'label': f'Наш склад: {warehouse.state}, {warehouse.city}, {warehouse.address}',
+            'model': 'Warehouse'
+        })
+
+    # Retrieve options from the AccountWarehouse model
+    account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
+    for account_warehouse in account_warehouses:
+        warehouse_options.append({
+            'value': account_warehouse.id,
+            'label': f'Ваш склад: {account_warehouse.state}, {account_warehouse.city}, {account_warehouse.address}',
+            'model': 'AccountWarehouse'
+        })
+
+    return warehouse_options
+
+class AccountWarehouseListView(LoginRequiredMixin, View):
+    def get(self, request):
+        warehouse_options = get_warehouse_options(request)
+        return JsonResponse({"status": True, "warehouse_options": warehouse_options})
 
 
 class AccountAvatarChange(View):
