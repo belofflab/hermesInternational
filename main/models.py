@@ -1,11 +1,9 @@
 import datetime
-from django.db import models
-from django.contrib.auth import get_user_model
 
+from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericRelation
-
+from django.db import models
 
 User = get_user_model()
 
@@ -33,7 +31,7 @@ class Warehouse(models.Model):
         verbose_name_plural = "Склады"
 
     def __str__(self) -> str:
-        return f"{self.opened} -> {self.state} -> {self.city} -> {self.address}"
+        return f"Склад: {self.state}, {self.city}, {self.address}"
 
 
 class WarehouseShop(models.Model):

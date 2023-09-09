@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.utils.deconstruct import deconstructible
 
+
 PURCHASE_STATUS_CHOICES = (
     ("BUYOUT", "buyout"),
     ("FORWARDING", "forwarding"),
@@ -34,7 +35,13 @@ class Purchase(models.Model):
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
-    address = models.ForeignKey("AccountData", on_delete=models.CASCADE, null=True, blank=True)
+    address = models.ForeignKey(
+        "AccountData",
+        verbose_name="Куда нужно переслать",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
     delivery_method = models.CharField(
         verbose_name="Метод доставки", max_length=255, null=True, blank=True
     )
@@ -56,10 +63,18 @@ class Purchase(models.Model):
     )
     created = models.DateTimeField(auto_now_add=True)
 
+    def search_related_accounts(self, query):
+        return Account.objects.filter(purchases=self, email__icontains=query)
+
+    def related_accounts(self):
+        return ", ".join([account.email for account in self.account_set.all()])
+
+    related_accounts.short_description = "Связанные аккаунты"
+
     class Meta:
-        verbose_name = "Покупка"
-        verbose_name_plural = "Покупки"
-        ordering = ['-created']
+        verbose_name = "покупку"
+        verbose_name_plural = "покупки"
+        ordering = ["-created"]
 
     def __str__(self) -> str:
         return f"{self.name}_{self.quantity}_${self.price}"
@@ -71,12 +86,12 @@ class PurchasePhoto(models.Model):
     purchase = models.ForeignKey(
         Purchase,
         on_delete=models.CASCADE,
-        related_name='photos',
+        related_name="photos",
         verbose_name="Покупка",
     )
     photo = models.ImageField(
         verbose_name="Фотография",
-        upload_to='purchase_photos/',
+        upload_to="purchase_photos/",
     )
 
     class Meta:
@@ -85,6 +100,7 @@ class PurchasePhoto(models.Model):
 
     def __str__(self):
         return f"Фото для {self.purchase.name}"
+
 
 class AccountManager(BaseUserManager):
     """Менеджер кастомной модели пользователя"""
@@ -111,6 +127,12 @@ class AccountManager(BaseUserManager):
 class AccountData(models.Model):
     """Информация о пользователе для доставок"""
 
+    first_name = models.CharField(
+        verbose_name="Имя", max_length=255, blank=True, null=True
+    )
+    last_name = models.CharField(
+        verbose_name="Фамилия", max_length=255, blank=True, null=True
+    )
     phone = models.CharField(verbose_name="Номер телефона", max_length=255, null=True)
     city = models.CharField(verbose_name="Город", max_length=255)
     street = models.CharField(verbose_name="Улица", max_length=255)
@@ -118,12 +140,21 @@ class AccountData(models.Model):
     postal_code = models.CharField(verbose_name="Почтовый индекс", max_length=255)
     country = models.CharField(verbose_name="Страна", max_length=255)
 
+    def search_related_accounts(self, query):
+        return Account.objects.filter(purchases=self, email__icontains=query)
+
+    def related_accounts(self):
+        return ", ".join([account.email for account in self.account_set.all()])
+
+    related_accounts.short_description = "Связанные аккаунты"
+
     class Meta:
         verbose_name = "Доставочный адрес"
         verbose_name_plural = "Доставочные адреса"
 
     def __str__(self) -> str:
         return f"{self.country} -> {self.city} -> {self.street}"
+
 
 @deconstructible
 class UserImagePath:
@@ -133,9 +164,10 @@ class UserImagePath:
     def __call__(self, instance, filename):
         # filename will be the original uploaded filename
         # Generate a unique filename based on user's id and original file extension
-        ext = filename.split('.')[-1]
-        new_filename = f'user_{instance.id}.{ext}'
-        return f'profile_images/{self.sub_path}/{new_filename}'
+        ext = filename.split(".")[-1]
+        new_filename = f"user_{instance.id}.{ext}"
+        return f"profile_images/{self.sub_path}/{new_filename}"
+
 
 class Account(AbstractBaseUser):
     """Кастомная модель пользователя"""
@@ -148,7 +180,7 @@ class Account(AbstractBaseUser):
         verbose_name="Баланс", max_digits=12, decimal_places=2, default=0
     )
     profile_image = models.ImageField(
-        upload_to=UserImagePath('profile_images'), blank=True, null=True
+        upload_to=UserImagePath("profile_images"), blank=True, null=True
     )
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase, blank=True)
     country = models.CharField(verbose_name="Страна", max_length=255, null=True)
