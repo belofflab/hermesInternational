@@ -321,7 +321,7 @@
                                           <hr>
                                           <div class="c-crypto-form__field">
                                                 <div class="c-crypto-form__label">{% translate 'Сумма' %}</div>
-                                                <div class="c-crypto-form__value">${{invoice.amount}}</div>
+                                                <div class="c-crypto-form__value">${% if invoice.service %}{{invoice.service.price}}{% else %}{{invoice.amount}}{% endif %}</div>
                                           </div>
                                           <hr>
                                           <div class="c-crypto-form__field">
