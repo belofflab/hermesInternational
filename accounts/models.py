@@ -157,7 +157,7 @@ class AccountData(models.Model):
     country = models.CharField(verbose_name="Страна", max_length=255)
 
     def search_related_accounts(self, query):
-        return Account.objects.filter(purchases=self, email__icontains=query)
+        return Account.objects.filter(addresses=self, email__icontains=query)
 
     def related_accounts(self):
         return ", ".join([account.email for account in self.account_set.all()])
