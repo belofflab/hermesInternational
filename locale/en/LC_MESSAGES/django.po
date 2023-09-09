@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-09 09:07+0300\n"
+"POT-Creation-Date: 2023-09-09 15:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,43 +165,55 @@ msgstr ""
 msgid "Информация о получателе"
 msgstr "Recipient information"
 
-#: .\accounts\templates\accounts\forms\address_form.html:29
+#: .\accounts\templates\accounts\forms\address_form.html:30
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:28
+#: .\accounts\templates\accounts\forms\signup_form.html:36
+msgid "Имя"
+msgstr "First name"
+
+#: .\accounts\templates\accounts\forms\address_form.html:36
+#: .\accounts\templates\accounts\forms\edit_profile_form.html:34
+#: .\accounts\templates\accounts\forms\signup_form.html:41
+msgid "Фамилия"
+msgstr "Last name"
+
+#: .\accounts\templates\accounts\forms\address_form.html:43
 msgid "Улица"
 msgstr "Street"
 
-#: .\accounts\templates\accounts\forms\address_form.html:37
+#: .\accounts\templates\accounts\forms\address_form.html:51
 #: .\accounts\templates\accounts\warehouses.html:137
 #: .\accounts\templates\accounts\warehouses.html:203
 msgid "Город"
 msgstr "City"
 
-#: .\accounts\templates\accounts\forms\address_form.html:43
+#: .\accounts\templates\accounts\forms\address_form.html:57
 #: .\accounts\templates\accounts\warehouses.html:139
 #: .\accounts\templates\accounts\warehouses.html:205
 msgid "Штат"
 msgstr "State"
 
-#: .\accounts\templates\accounts\forms\address_form.html:50
+#: .\accounts\templates\accounts\forms\address_form.html:64
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:45
 #: .\accounts\templates\accounts\profile.html:117
 msgid "Страна"
 msgstr "Country"
 
-#: .\accounts\templates\accounts\forms\address_form.html:65
+#: .\accounts\templates\accounts\forms\address_form.html:79
 #: .\accounts\templates\accounts\warehouses.html:141
 #: .\accounts\templates\accounts\warehouses.html:207
 msgid "Номер телефона"
 msgstr "Phone number"
 
-#: .\accounts\templates\accounts\forms\address_form.html:71
+#: .\accounts\templates\accounts\forms\address_form.html:85
 msgid "Почтовый код"
 msgstr "Postal code"
 
-#: .\accounts\templates\accounts\forms\address_form.html:84
+#: .\accounts\templates\accounts\forms\address_form.html:98
 msgid "Разместить"
 msgstr "Place"
 
-#: .\accounts\templates\accounts\forms\address_form.html:85
+#: .\accounts\templates\accounts\forms\address_form.html:99
 msgid "Пропустить"
 msgstr "Skip"
 
@@ -222,14 +234,14 @@ msgid "Трек номер"
 msgstr "Track number"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:40
-#: .\accounts\templates\accounts\inbox.html:82
-#: .\accounts\templates\accounts\packages.html:76
+#: .\accounts\templates\accounts\inbox.html:90
+#: .\accounts\templates\accounts\packages.html:84
 msgid "Количество"
 msgstr "Quantity"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:47
-#: .\accounts\templates\accounts\inbox.html:81
-#: .\accounts\templates\accounts\packages.html:75
+#: .\accounts\templates\accounts\inbox.html:89
+#: .\accounts\templates\accounts\packages.html:83
 msgid "Цена"
 msgstr "Price"
 
@@ -238,7 +250,7 @@ msgid "Что делаем с заказом?"
 msgstr "What do we do with the order?"
 
 #: .\accounts\templates\accounts\forms\buy_form.html:56
-#: .\accounts\templates\accounts\inbox.html:92
+#: .\accounts\templates\accounts\inbox.html:100
 #: .\main\templates\main\index.html:200
 msgid "Пересыл"
 msgstr "Forwarding"
@@ -265,16 +277,6 @@ msgstr "Old Password"
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:13
 msgid "Изменение профиля"
 msgstr "Changing the profile"
-
-#: .\accounts\templates\accounts\forms\edit_profile_form.html:28
-#: .\accounts\templates\accounts\forms\signup_form.html:36
-msgid "Имя"
-msgstr "First name"
-
-#: .\accounts\templates\accounts\forms\edit_profile_form.html:34
-#: .\accounts\templates\accounts\forms\signup_form.html:41
-msgid "Фамилия"
-msgstr "Last name"
 
 #: .\accounts\templates\accounts\forms\edit_profile_form.html:40
 msgid "Отчество"
@@ -422,32 +424,46 @@ msgid "На данный момент вы не добавляли покупк�
 msgstr "You have not added any purchases at this time...."
 
 #: .\accounts\templates\accounts\inbox.html:39
-#: .\accounts\templates\accounts\packages.html:41
-msgid "Посылка доставлена"
-msgstr "Package delivered"
+msgid "Посылка доставлена и оплачена. Ожидается пересыл."
+msgstr ""
 
-#: .\accounts\templates\accounts\inbox.html:46
-#: .\accounts\templates\accounts\packages.html:48
+#: .\accounts\templates\accounts\inbox.html:43
+#: .\accounts\templates\accounts\packages.html:45
+msgid "Посылка доставлена. Пожалуйста, оплатите пересыл посылки."
+msgstr "The parcel has been delivered. Please pay the postage for the parcel."
+
+#: .\accounts\templates\accounts\inbox.html:47
+#: .\accounts\templates\accounts\packages.html:49
+msgid "Посылка доставлена. Ожидайте подтверждения получения"
+msgstr "The parcel has been delivered. Awaiting confirmation of receipt"
+
+#: .\accounts\templates\accounts\inbox.html:54
+#: .\accounts\templates\accounts\packages.html:56
 msgid "Изменить данные"
 msgstr "Edit data"
 
-#: .\accounts\templates\accounts\inbox.html:47
+#: .\accounts\templates\accounts\inbox.html:55
 msgid "Удалить покупку"
 msgstr "Remove purchase"
 
-#: .\accounts\templates\accounts\inbox.html:79
-#: .\accounts\templates\accounts\packages.html:73
+#: .\accounts\templates\accounts\inbox.html:87
+#: .\accounts\templates\accounts\packages.html:81
 msgid "Название"
 msgstr "Name"
 
-#: .\accounts\templates\accounts\inbox.html:89
+#: .\accounts\templates\accounts\inbox.html:97
 msgid "Выкуп"
 msgstr "Buyout"
 
-#: .\accounts\templates\accounts\inbox.html:94
-#: .\accounts\templates\accounts\packages.html:84
+#: .\accounts\templates\accounts\inbox.html:102
+#: .\accounts\templates\accounts\packages.html:92
 msgid "Отметить посылку доставленной"
 msgstr "Mark the parcel delivered"
+
+#: .\accounts\templates\accounts\inbox.html:111
+#: .\accounts\templates\accounts\packages.html:101
+msgid "Оплатить"
+msgstr "Pay"
 
 #: .\accounts\templates\accounts\packages.html:15
 msgid "Мы принимаем посылки на "
@@ -473,11 +489,15 @@ msgstr "purchases"
 msgid "Заполните данные получателя"
 msgstr "Fill in the recipient's details"
 
-#: .\accounts\templates\accounts\packages.html:82
+#: .\accounts\templates\accounts\packages.html:41
+msgid "Посылка доставлена и оплачена"
+msgstr "Parcel delivered and paid for"
+
+#: .\accounts\templates\accounts\packages.html:90
 msgid "Расформировать"
 msgstr "Disband"
 
-#: .\accounts\templates\accounts\packages.html:83
+#: .\accounts\templates\accounts\packages.html:91
 msgid "Редактировать"
 msgstr "Edit"
 
@@ -723,47 +743,47 @@ msgstr ""
 "Sincerely,\n"
 "Your team is Hermes International.\n"
 
-#: .\ajax\views.py:50
+#: .\ajax\views.py:55
 msgid "Некорректный Email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:64 .\ajax\views.py:90
+#: .\ajax\views.py:69 .\ajax\views.py:95
 msgid "Некорректные данные"
 msgstr "Incorrect data"
 
-#: .\ajax\views.py:67
+#: .\ajax\views.py:72
 msgid "Пользователь уже существует"
 msgstr "User already exists"
 
-#: .\ajax\views.py:113
+#: .\ajax\views.py:129
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:261
+#: .\ajax\views.py:327
 msgid "Информация о оформлении отправления"
 msgstr "Information on despatch processing"
 
-#: .\ajax\views.py:398
+#: .\ajax\views.py:471
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:403 .\ajax\views.py:423
+#: .\ajax\views.py:476 .\ajax\views.py:496
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:416
+#: .\ajax\views.py:489
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:440
+#: .\ajax\views.py:513
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:455
+#: .\ajax\views.py:528
 msgid "Сброс пароля"
 msgstr "Reset Password"
 
-#: .\ajax\views.py:465
+#: .\ajax\views.py:538
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
 
@@ -1854,13 +1874,9 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
-#: .\payments\templates\payments\invoice_email_template.html:8
-msgid "Вам выписан новый чек на оплату"
-msgstr "You have been issued a new cheque for payment"
-
-#: .\payments\templates\payments\invoice_email_template.html:9
-msgid "Нажмите для перехода:"
-msgstr "Click to go to:"
+#: .\payments\models.py:63
+msgid "Ваш чек на оплату "
+msgstr "Your cheque for payment "
 
 #: .\payments\templates\payments\pay.html:313
 msgid "Валюта"
@@ -1881,6 +1897,9 @@ msgstr "According to these details, the transfer is available during"
 #: .\payments\templates\payments\pay.html:339
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
+
+#~ msgid "Нажмите для перехода:"
+#~ msgstr "Click to go to:"
 
 #~ msgid "Прием послыки + пересыл:"
 #~ msgstr "Receipt of parcels + forwarding:"
