@@ -327,6 +327,9 @@ class AccountDataCreateView(LoginRequiredMixin, View):
 
         purchase.save()
 
+        request.user.addresses.add(new_account)
+        request.user.save()
+
         send_purchase_confirmation_email(purchase, request)
         message.send(
             f"""
