@@ -372,8 +372,8 @@ $("form[name='address_inf']").submit((e) => {
     e.preventDefault();
     var purchase = localStorage.getItem("purchaseToAddingAccountData");
     var id = $('#address_form_id').val();
-    // var first_name = $('#address_form_first_name').val();
-    // var last_name = $('#address_form_last_name').val();
+    var first_name = $('#address_form_first_name').val();
+    var last_name = $('#address_form_last_name').val();
     // var sur_name = $('#address_form_sur_name').val();
     var phone = $('#address_form_phone').val();
     var city = $('#address_form_city').val();
@@ -400,6 +400,8 @@ $("form[name='address_inf']").submit((e) => {
             id: id,
             purchase: purchase,
             phone: phone,
+            first_name: first_name,
+            last_name: last_name,
             city: city,
             street: street,
             state: state,

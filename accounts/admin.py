@@ -51,12 +51,12 @@ class PurchaseAdmin(admin.ModelAdmin):
         if obj.delivery_warehouse_type:
             if obj.delivery_warehouse_type.model == ContentType.objects.get_for_model(Warehouse).model:
                 warehouse = Warehouse.objects.get(id=obj.delivery_warehouse_id)
-                return "Склад пользователя: {0}, {1}, {2}".format(
+                return "Наш склад: {0}, {1}, {2}".format(
                     warehouse.state, warehouse.city, warehouse.address
                 )
             elif obj.delivery_warehouse_type.model == ContentType.objects.get_for_model(AccountWarehouse).model:
                 account_warehouse = AccountWarehouse.objects.get(id=obj.delivery_warehouse_id)
-                return "Наш склад: {0}, {1}, {2}".format(
+                return "Склад пользователя: {0}, {1}, {2}".format(
                     account_warehouse.state, account_warehouse.city, account_warehouse.address
                 )
         return "Неизвестный склад"

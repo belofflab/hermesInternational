@@ -277,6 +277,8 @@ class AccountDataCreateView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
         id = request_data.get("id")
+        first_name = request_data.get("first_name")
+        last_name = request_data.get("last_name")
         phone = request_data.get("phone")
         city = request_data.get("city")
         street = request_data.get("street")
@@ -292,6 +294,8 @@ class AccountDataCreateView(LoginRequiredMixin, View):
                 "phone": phone,
                 "city": city,
                 "street": street,
+                "first_name": first_name,
+                "last_name": last_name,
                 # 'delivery_method': deliveryMethod,
                 "state": state,
                 "postal_code": postal_code,
