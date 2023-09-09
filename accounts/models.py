@@ -96,7 +96,7 @@ class Purchase(models.Model):
         ordering = ["-created"]
 
     def __str__(self) -> str:
-        return f"{self.name}_{self.quantity}_${self.price}"
+        return f"{self.tracking_number}#{self.name} (${self.price})"
 
 
 class PurchasePhoto(models.Model):

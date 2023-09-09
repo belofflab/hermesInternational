@@ -57,7 +57,7 @@ class Invoice(models.Model):
     def send_invoice_email(self):
         new_invoice = {}
         if self.pay_url is None and self.invoice_id is None:
-            new_invoice = self.create_invoice(amount=str(self.amount))
+            new_invoice = self.create_invoice(amount=str(self.service.price) if self.service is not None else self.amount)
         if not self.email_sent:
             subject = _("Ваш чек на оплату ") + f"«{self.service.name.lower()}» ${self.amount}"
             context = {"pay_url": new_invoice, "service": self.service.name}
