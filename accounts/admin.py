@@ -42,6 +42,7 @@ class PurchaseAdmin(admin.ModelAdmin):
         "delivery_method",
         "related_accounts",
         "is_deliveried",
+        "is_ready_pay",
         "status",
     )
     list_filter = (("account", admin.RelatedOnlyFieldListFilter),)
@@ -66,10 +67,9 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Purchase, PurchaseAdmin)
-
-
+            
 class PurchasePhotoAdmin(admin.ModelAdmin):
-    list_display = ("purchase_name", "photo")
+    list_display = ("purchase_name",)
     search_fields = ["purchase__name"]
     list_per_page = 30
 

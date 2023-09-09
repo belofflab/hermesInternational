@@ -1,4 +1,5 @@
 import datetime
+import re
 from decimal import Decimal, InvalidOperation
 
 import jwt
@@ -20,7 +21,11 @@ from django.views import View
 from accounts.models import (Account, AccountData, AccountNotifySettings,
                              Purchase, Visits)
 from accounts.services import message
-from main.models import AccountWarehouse, Warehouse
+from main.models import AccountWarehouse, Warehouse, WarehouseShop
+from payments.models import Invoice, Service
+from payments.services.crypto import Crypto
+
+crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
 
 
 def get_client_ip(request):
@@ -88,6 +93,18 @@ class RegistrationView(View):
             return JsonResponse({"status": True, "message": ""})
 
         return JsonResponse({"status": False, "message": _("Некорректные данные")})
+    
+
+def update_warehouse_quantity(url: str, shops):
+    match = re.search(r"(www\.)?(\w+\.\w+)", url)
+    matched_shop = match.group(2)
+
+    for shop in shops:
+        if matched_shop.startswith(shop.name):
+            shop.quantity = shop.quantity + 1
+            shop.save()
+            
+
 
 
 class PurchaseCreateView(LoginRequiredMixin, View):
@@ -99,11 +116,10 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         quantity = request_data.get("quantity")
         warehouseModel = request_data.get("warehouseModel")
         warehouseId = request_data.get("warehouseId")
-        warehouses = {
-            "Warehouse": Warehouse,
-            "AccountWarehouse": AccountWarehouse
-        }
+        warehouses = {"Warehouse": Warehouse, "AccountWarehouse": AccountWarehouse}
         warehouse = warehouses[warehouseModel].objects.get(id=warehouseId)
+        shops = WarehouseShop.objects.filter(content_type=ContentType.objects.get_for_model(warehouses[warehouseModel]), object_id=warehouseId).all()
+        update_warehouse_quantity(url=url, shops=shops)
         id = request_data.get("id")
 
         try:
@@ -140,6 +156,8 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             kwargs["id"] = None
 
         new_purchase, created = Purchase.objects.update_or_create(**kwargs)
+
+
 
         current_user = Account.objects.get(email=request.user)
 
@@ -229,7 +247,55 @@ class PurchaseRemoveView(LoginRequiredMixin, View):
         Purchase.objects.filter(id=int(idx)).delete()
 
         return JsonResponse({"status": True})
-    
+
+
+def create_invoice(request, c_service: Service, purchase: Purchase, amount: str):
+    if purchase.invoice_id:
+        c_invoice = Invoice.objects.get(invoice_id=purchase.invoice_id)
+        if c_invoice.status == "active" or c_invoice.status == "PAID":
+            invoice_detail_url = reverse(
+                "payments:invoice_detail", kwargs={"invoice_slug": c_invoice.slug}
+            )
+            return invoice_detail_url
+    receipt = crypto.createInvoice("USDT", amount=amount)
+    if receipt.get("ok"):
+        result = receipt.get("result")
+        new_invoice = Invoice.objects.create(
+                account=request.user,
+                invoice_id=result.get("invoice_id"),
+                service=c_service,
+                asset=result.get("asset"),
+                amount=result.get("amount"),
+                pay_url=result.get("pay_url"),
+                status=result.get("status"),
+                created_at=result.get("created_at"),
+            )
+        purchase.invoice_id = new_invoice.invoice_id
+        purchase.save()
+
+        invoice_detail_url = reverse(
+            "payments:invoice_detail", kwargs={"invoice_slug": new_invoice.slug}
+        )
+        return invoice_detail_url
+    return ""
+
+
+class PurchasePayView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        idx = request_data.get("purchase")
+        try:
+            c_service = Service.objects.filter(name__startswith="Пересыл посылки").first()
+        except Service.DoesNotExist:
+            c_service = None
+        if not c_service:
+            return JsonResponse({"status": False})
+        purchase = Purchase.objects.get(id=idx)
+        pay_url = create_invoice(request=request, c_service=c_service, purchase=purchase, amount=str(c_service.price))
+
+        return JsonResponse({"status": True, "pay_url": pay_url})
+
+
 class PurchaseUpdateStatusView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
@@ -239,12 +305,12 @@ class PurchaseUpdateStatusView(LoginRequiredMixin, View):
         purchase.save()
         current_site = get_current_site(request)
         message.send(
-                f"""
+            f"""
 Пользователь: <b>{request.user}</b> поставил статус покупки на доставлена
 
 Ссылка на панель: {f"https://hermesinternational.ru/UQhCgbBPEuPhAbAPfwbTaX/accounts/purchase/{purchase.id}/change/"}
 """
-            )
+        )
         return JsonResponse({"status": True})
 
 
@@ -517,22 +583,27 @@ def get_warehouse_options(request):
     # Retrieve options from the Warehouse model
     warehouses = Warehouse.objects.all()
     for warehouse in warehouses:
-        warehouse_options.append({
-            'value': warehouse.id,
-            'label': f'Наш склад: {warehouse.state}, {warehouse.city}, {warehouse.address}',
-            'model': 'Warehouse'
-        })
+        warehouse_options.append(
+            {
+                "value": warehouse.id,
+                "label": f"Наш склад: {warehouse.state}, {warehouse.city}, {warehouse.address}",
+                "model": "Warehouse",
+            }
+        )
 
     # Retrieve options from the AccountWarehouse model
     account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
     for account_warehouse in account_warehouses:
-        warehouse_options.append({
-            'value': account_warehouse.id,
-            'label': f'Ваш склад: {account_warehouse.state}, {account_warehouse.city}, {account_warehouse.address}',
-            'model': 'AccountWarehouse'
-        })
+        warehouse_options.append(
+            {
+                "value": account_warehouse.id,
+                "label": f"Ваш склад: {account_warehouse.state}, {account_warehouse.city}, {account_warehouse.address}",
+                "model": "AccountWarehouse",
+            }
+        )
 
     return warehouse_options
+
 
 class AccountWarehouseListView(LoginRequiredMixin, View):
     def get(self, request):

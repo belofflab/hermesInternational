@@ -6,11 +6,13 @@ from django.db import models
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import strip_tags
+from django.utils.translation import gettext as _
 
 from accounts.models import Account
 from payments.services.crypto import Crypto
 
 crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
+
 INVOICE_CHOICES = (
     ("ACTIVE", "active"),
     ("PAID", "paid"),
@@ -18,10 +20,27 @@ INVOICE_CHOICES = (
 )
 
 
+class Service(models.Model):
+    name = models.CharField(verbose_name="Наименование услуги", max_length=255)
+    price = models.DecimalField(
+        verbose_name="Цена ($)", max_digits=12, decimal_places=2
+    )
+
+    def __str__(self) -> str:
+        return f"{self.name} (${self.price})"
+    
+    class Meta:
+        verbose_name = "Услугу"
+        verbose_name_plural = "Услуги"
+
+
 class Invoice(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     invoice_id = models.BigIntegerField(
         verbose_name="Идентификатор транзакции", null=True, blank=True
+    )
+    service = models.ForeignKey(
+        Service, verbose_name="Наименование услуги", on_delete=models.CASCADE, blank=True, null=True
     )
     slug = models.CharField(verbose_name="SLUG", max_length=1024, default=uuid4)
     asset = models.CharField(max_length=10, null=True, blank=True)
@@ -40,8 +59,8 @@ class Invoice(models.Model):
         if self.pay_url is None and self.invoice_id is None:
             new_invoice = self.create_invoice(amount=str(self.amount))
         if not self.email_sent:
-            subject = f"Ваш чек на оплату {self.amount}"
-            context = {"pay_url": new_invoice}
+            subject = _("Ваш чек на оплату ") + f"«{self.service.name.lower()}» ${self.amount}"
+            context = {"pay_url": new_invoice, "service": self.service.name}
             html_message = render_to_string(
                 "payments/invoice_email_template.html", context
             )
@@ -63,11 +82,11 @@ class Invoice(models.Model):
         receipt = crypto.createInvoice("USDT", amount=amount)
         if receipt.get("ok"):
             result = receipt.get("result")
-            self.invoice_id=result.get("invoice_id")
-            self.asset=result.get("asset")
-            self.pay_url=result.get("pay_url")
-            self.status=result.get("status")
-            self.created_at=result.get("created_at")
+            self.invoice_id = result.get("invoice_id")
+            self.asset = result.get("asset")
+            self.pay_url = result.get("pay_url")
+            self.status = result.get("status")
+            self.created_at = result.get("created_at")
 
             self.save()
 

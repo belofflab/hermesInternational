@@ -35,8 +35,16 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                {% if purchase.is_deliveried %}
-                <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="tooltip" data-bs-placement="left" title="{% translate 'Посылка доставлена' %}" height="1.5em" viewBox="0 0 25 25" fill="yellow">
+                {% if purchase.is_deliveried and purchase.is_paid %}
+                <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="tooltip" data-bs-placement="left" title="{% translate 'Посылка доставлена и оплачена. Ожидается пересыл.' %}" height="1.5em" viewBox="0 0 25 25" fill="#90EE90" >
+                  <path d="M12.5 10V14M12.5 17V15.5M14.2483 5.64697L20.8493 17.5287C21.5899 18.8618 20.6259 20.5 19.101 20.5H5.89903C4.37406 20.5 3.41013 18.8618 4.15072 17.5287L10.7517 5.64697C11.5137 4.27535 13.4863 4.27535 14.2483 5.64697Z" stroke="#121923" stroke-width="1.2"/>
+                  </svg>
+                  {% elif purchase.is_deliveried and purchase.is_ready_pay %}
+                  <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="tooltip" data-bs-placement="left" title="{% translate 'Посылка доставлена. Пожалуйста, оплатите пересыл посылки.' %}" height="1.5em" viewBox="0 0 25 25" fill="yellow">
+                    <path d="M12.5 10V14M12.5 17V15.5M14.2483 5.64697L20.8493 17.5287C21.5899 18.8618 20.6259 20.5 19.101 20.5H5.89903C4.37406 20.5 3.41013 18.8618 4.15072 17.5287L10.7517 5.64697C11.5137 4.27535 13.4863 4.27535 14.2483 5.64697Z" stroke="#121923" stroke-width="1.2"/>
+                    </svg>
+                {% elif purchase.is_deliveried %}
+                <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="tooltip" data-bs-placement="left" title="{% translate 'Посылка доставлена. Ожидайте подтверждения получения' %}" height="1.5em" viewBox="0 0 25 25" fill="yellow">
                   <path d="M12.5 10V14M12.5 17V15.5M14.2483 5.64697L20.8493 17.5287C21.5899 18.8618 20.6259 20.5 19.101 20.5H5.89903C4.37406 20.5 3.41013 18.8618 4.15072 17.5287L10.7517 5.64697C11.5137 4.27535 13.4863 4.27535 14.2483 5.64697Z" stroke="#121923" stroke-width="1.2"/>
                   </svg>
                   {% endif %}
@@ -95,6 +103,15 @@
                   </div>
                 </div>
             </div>
+          {% endif %}
+          {% if not purchase.is_paid and purchase.is_ready_pay %}
+          <div class="card-body">
+            <div class="d-grid mx-auto content-md-center">
+              <div class="row">
+                  <button class="btn btn-outline-success" onclick="payPurchase('{{ purchase.id }}')" type="button">{% translate 'Оплатить' %}</button>
+              </div>
+            </div>
+          </div>
           {% endif %}
         </div>
       </div>

@@ -4,14 +4,17 @@ from django.dispatch import receiver
 from .models import AccountWarehouse, Warehouse, WarehouseShop
 
 shops = [
-    {"name": "Apple", "image": "img/shops/apple.png"},
-    {"name": "AT&T", "image": "img/shops/att.png"},
-    {"name": "Best Buy", "image": "img/shops/best_buy.png"},
-    {"name": "Body Building", "image": "img/shops/body_building.png"},
-    {"name": "New Egg", "image": "img/shops/new_egg.png"},
-    {"name": "Nordstorm", "image": "img/shops/nordstorm.png"},
+    {"name": "amazon", "image": "img/shops/amazon.svg"},
+    {"name": "ebay", "image": "img/shops/ebay.svg"},
+    {"name": "nike", "image": "img/shops/nike.svg"},
+    {"name": "adidas", "image": "img/shops/adidas.svg"},
+    {"name": "zara", "image": "img/shops/zara.svg"},
+    {"name": "apple", "image": "img/shops/apple.svg"},
+    {"name": "asos", "image": "img/shops/asos.svg"},
+    {"name": "bestbuy", "image": "img/shops/best_buy.svg"},
+    # {"name": "New Egg", "image": "img/shops/new_egg.svg"},
+    # {"name": "Nordstorm", "image": "img/shops/nordstorm.svg"},
 ]
-
 
 @receiver(post_save, sender=Warehouse)
 def post_save_warehouse(created, instance, **kwargs):

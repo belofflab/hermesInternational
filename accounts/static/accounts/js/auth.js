@@ -528,6 +528,24 @@ function updateIsDeliveried(purchaseId) {
     })
 }
 
+function payPurchase(purchaseId) {
+    $.ajax({
+        data: {
+            purchase: parseInt(purchaseId),
+            csrfmiddlewaretoken: csrf_token
+        },
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchases/pay'
+    }).then((response) => {
+        if (response.status) {
+            console.log(response.pay_url)
+            window.location.href = response.pay_url
+        } else {
+            console.log(response)
+        }
+    })
+}
+
 
 
 function deleteUserWarehouse(warehouseId) {

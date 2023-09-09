@@ -62,6 +62,9 @@ class Purchase(models.Model):
         verbose_name="Метод доставки", max_length=255, null=True, blank=True
     )
     is_deliveried = models.BooleanField(verbose_name="Доставлена", default=False)
+    invoice_id = models.BigIntegerField(verbose_name="Идентификатор транзакции", blank=True, null=True)
+    is_ready_pay = models.BooleanField(verbose_name="Готова к оплате", default=False)
+    is_paid = models.BooleanField(verbose_name="Оплачена", default=False)
     options = models.ManyToManyField(
         to=PurchaseDeliveryOption, verbose_name="Доступные опции доставки", blank=True
     )
