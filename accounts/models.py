@@ -169,7 +169,7 @@ class AccountData(models.Model):
         verbose_name_plural = "Доставочные адреса"
 
     def __str__(self) -> str:
-        return f"{self.country} -> {self.city} -> {self.street}"
+        return f"{self.country}, {self.city}, {self.street}"
 
 
 @deconstructible
