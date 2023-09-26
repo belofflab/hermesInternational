@@ -1,7 +1,8 @@
 from uuid import uuid4
 
 from django.conf import settings
-from django.core.mail import send_mail
+
+# from django.core.mail import send_mail
 from django.db import models
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -10,6 +11,8 @@ from django.utils.translation import gettext as _
 
 from accounts.models import Account
 from payments.services.crypto import Crypto
+
+from ajax.tasks import send_email
 
 crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
 
@@ -28,7 +31,7 @@ class Service(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name} (${self.price})"
-    
+
     class Meta:
         verbose_name = "Услугу"
         verbose_name_plural = "Услуги"
@@ -40,7 +43,11 @@ class Invoice(models.Model):
         verbose_name="Идентификатор транзакции", null=True, blank=True
     )
     service = models.ForeignKey(
-        Service, verbose_name="Наименование услуги", on_delete=models.CASCADE, blank=True, null=True
+        Service,
+        verbose_name="Наименование услуги",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     slug = models.CharField(verbose_name="SLUG", max_length=1024, default=uuid4)
     asset = models.CharField(max_length=10, null=True, blank=True)
@@ -60,21 +67,17 @@ class Invoice(models.Model):
         if self.pay_url is None and self.invoice_id is None:
             new_invoice = self.create_invoice(amount=amount)
         if not self.email_sent:
-            subject = _("Ваш чек на оплату ") + f"«{self.service.name.lower()}» ${amount}"
+            subject = (
+                _("Ваш чек на оплату ") + f"«{self.service.name.lower()}» ${amount}"
+            )
             context = {"pay_url": new_invoice, "service": self.service.name}
             html_message = render_to_string(
                 "payments/invoice_email_template.html", context
             )
             plain_message = strip_tags(html_message)
-            from_email = settings.DEFAULT_FROM_EMAIL
-            to_email = self.account.email
 
-            send_mail(
-                subject,
-                plain_message,
-                from_email,
-                [to_email],
-                html_message=html_message,
+            send_email(
+                body=plain_message, subject=subject, recipients=[self.account.email]
             )
             self.email_sent = True
             self.save()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-09 15:14+0300\n"
+"POT-Creation-Date: 2023-09-26 08:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -425,7 +425,7 @@ msgstr "You have not added any purchases at this time...."
 
 #: .\accounts\templates\accounts\inbox.html:39
 msgid "Посылка доставлена и оплачена. Ожидается пересыл."
-msgstr ""
+msgstr "The parcel has been delivered and paid for. Awaiting forwarding."
 
 #: .\accounts\templates\accounts\inbox.html:43
 #: .\accounts\templates\accounts\packages.html:45
@@ -707,85 +707,77 @@ msgstr "Own address"
 msgid "Удалить склад"
 msgstr "Remove warehouse"
 
-#: .\ajax\templates\ajax\email_templates\purchase_confirmation.txt:3
+#: .\ajax\templates\ajax\email\purchase_confirmation.txt:2
 #, python-format
 msgid ""
 "\n"
-"Уважаемый(ая)  %(user.first_name)s %(user.last_name)s,\n"
+"Уважаемый(ая)  %(first_name)s %(last_name)s\n"
 "\n"
-"Вы успешно оформили отправление. Вот информация о вашей покупке:\n"
+"Вы успешно оформили отправление!\n"
 "\n"
-"Наименование: %(purchase.name)s\n"
-"Ссылка: <a href=\"%(purchase.link)s\">%(purchase.link)s</a>\n"
-"Количество: %(purchase.quantity)s\n"
-"Цена: $%(purchase.price)s\n"
-"Трек-номер: %(purchase.tracking_number)s\n"
+"Вот информация о вашей покупке:\n"
+"Наименование: %(name)s\n"
+"Ссылка: %(link)s\n"
+"Количество: %(quantity)s\n"
+"Цена: $ %(price)s\n"
+"Трек-номер: %(tracking_number)s\n"
 "\n"
 "Спасибо за ваш заказ!\n"
-"\n"
 "С уважением,\n"
 "Ваша команда Hermes International.\n"
 msgstr ""
-"\n"
-"Dear %(user.first_name)s %(user.last_name)s,\n"
-"\n"
-"You have successfully completed your shipment. Here is the information about "
-"your purchase:\n"
-"\n"
-"Name: %(purchase.name)s\n"
-"Link: <a href=\"%(purchase.link)s\">%(purchase.link)s</a>\n"
-"Quantity: %(purchase.quantity)s\n"
-"Price: $%(purchase.price)s\n"
-"Track number: %(purchase.tracking_number)s\n"
-"\n"
-"Thank you for your order!\n"
-"\n"
-"Sincerely,\n"
-"Your team is Hermes International.\n"
 
-#: .\ajax\views.py:55
+#: .\ajax\views.py:60
 msgid "Некорректный Email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:69 .\ajax\views.py:95
+#: .\ajax\views.py:74 .\ajax\views.py:100
 msgid "Некорректные данные"
 msgstr "Incorrect data"
 
-#: .\ajax\views.py:72
+#: .\ajax\views.py:77
 msgid "Пользователь уже существует"
 msgstr "User already exists"
 
-#: .\ajax\views.py:129
+#: .\ajax\views.py:135
 msgid "Некорректно задана цена"
 msgstr "Incorrect price set"
 
-#: .\ajax\views.py:327
-msgid "Информация о оформлении отправления"
+#: .\ajax\views.py:184 .\ajax\views.py:405
+msgid "Информация об оформлении отправления"
 msgstr "Information on despatch processing"
 
-#: .\ajax\views.py:471
+#: .\ajax\views.py:480
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:476 .\ajax\views.py:496
+#: .\ajax\views.py:485 .\ajax\views.py:505
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:489
+#: .\ajax\views.py:498
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:513
+#: .\ajax\views.py:522
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:528
+#: .\ajax\views.py:537
 msgid "Сброс пароля"
 msgstr "Reset Password"
 
-#: .\ajax\views.py:538
+#: .\ajax\views.py:547
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
+
+#: .\ajax\views.py:597
+msgid "Наш склад: "
+msgstr "Our warehouse: "
+
+#: .\ajax\views.py:608
+msgid "Ваш склад: "
+msgstr "Your warehouse: "
 
 #: .\main\templates\main\403.html:8 .\main\templates\main\403.html:26
 msgid "Ошибка 403. Доступ запрещен"
@@ -1596,6 +1588,10 @@ msgid ""
 "- обеспечить вас максимальным комфортом и уверенностью в каждом шаге вашего "
 "шопингового опыта."
 msgstr ""
+"Your gate to world shopping is open! We offer shopping servicesgoods at our "
+"rates. If you don't want to handle the shippingparcels yourself, we can buy "
+"the necessary goods for you. Our goal is to provide you with the utmost "
+"comfort and confidence in every step of yourshopping experience."
 
 #: .\main\templates\main\index.html:211
 msgid "Выкуп товара"
@@ -1866,15 +1862,15 @@ msgstr "Write in Telegram"
 msgid "Обучение"
 msgstr "Training"
 
-#: .\packageLocker\settings.py:135
+#: .\packageLocker\settings.py:142
 msgid "English"
 msgstr ""
 
-#: .\packageLocker\settings.py:136
+#: .\packageLocker\settings.py:143
 msgid "Russian"
 msgstr ""
 
-#: .\payments\models.py:63
+#: .\payments\models.py:71
 msgid "Ваш чек на оплату "
 msgstr "Your cheque for payment "
 

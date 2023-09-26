@@ -5,4 +5,4 @@ register = template.Library()
 
 @register.filter("minimalize")
 def minimalize(value):
-    return value[:40]
+    return value[:15]

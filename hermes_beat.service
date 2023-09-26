@@ -1,0 +1,11 @@
+[Unit]
+Description=hermesLogistics beat
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/hermesLogistics
+ExecStart=/home/hermesLogistics/venv/bin/celery -A packageLocker beat --loglevel=info
+[Install]
+WantedBy=multi-user.target

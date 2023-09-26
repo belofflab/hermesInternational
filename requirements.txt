@@ -7,3 +7,6 @@ pyTelegramBotAPI
 requests
 django-modeltranslation
 PyJwt
+celery[redis]
+flower
+eventlet

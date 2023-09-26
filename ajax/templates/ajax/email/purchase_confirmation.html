@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение покупки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>{% blocktrans %}Уважаемый(ая)  {{ first_name }} {{ last_name }}{% endblocktrans %}</h1>
+
+    <p>{% blocktrans %}
+        <h3>Вы успешно оформили отправление!</h3>
+        
+        <p>Вот информация о вашей покупке:</p>
+        <p>Наименование: {{ name }}</p>
+        <p>Ссылка: <a href="{{ link }}" >перейти</a></p>
+        <p>Количество: {{ quantity }}</p>
+        <p>Цена: $ {{ price }}</p>
+        <p>Трек-номер: {{ tracking_number }}</p>
+        
+        <p>Спасибо за ваш заказ!</p>
+        <p>С уважением,</p>
+        <p>Ваша команда Hermes International.</p>
+    {% endblocktrans %}</p>
+</div>
+</body>
+</html>

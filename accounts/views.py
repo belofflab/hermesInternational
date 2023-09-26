@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.db.models import Q
 from django.utils.http import urlsafe_base64_decode
-from django.core.mail import EmailMessage
+
 from django.urls import reverse
 from django.conf import settings
 from payments.services.crypto import Crypto
@@ -13,6 +13,7 @@ from django.views import View
 from payments.models import Invoice
 from .services.mail import get_email
 from . import forms, models
+from ajax.tasks import send_email
 
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
 
@@ -89,6 +90,7 @@ class ProfileWarehouseView(LoginRequiredMixin, View):
         }
         return render(request, "accounts/warehouses.html", context)
 
+
 class ProfilePaymentView(LoginRequiredMixin, View):
     login_url = "/"
 
@@ -122,6 +124,7 @@ class ProfilePricesView(LoginRequiredMixin, View):
 
     def get(self, request):
         return render(request, "accounts/prices.html", context={"page": "prices"})
+
 
 class ProfilePackagesView(LoginRequiredMixin, View):
     login_url = "/"
@@ -201,7 +204,6 @@ class PasswordResetConfirmView(View):
 
 
 def get_buyout_items_by_category():
-    # First, retrieve all the Buyout objects, prefetching the related category
     buyouts = models.Buyout.objects.select_related("category").filter(
         category__is_visible=True
     )
@@ -240,7 +242,8 @@ class MailListView(LoginRequiredMixin, View):
     login_url = "/"
 
     def get(self, request):
-        if not request.user.is_admin: return redirect("accounts:profile")
+        if not request.user.is_admin:
+            return redirect("accounts:profile")
         email_list = get_email()
         return render(
             request,
@@ -253,18 +256,17 @@ class MailSendView(LoginRequiredMixin, View):
     login_url = "/"
 
     def post(self, request):
-        if not request.user.is_admin: return redirect("accounts:profile")
+        if not request.user.is_admin:
+            return redirect(reverse("accounts:profile"))
         request_data = request.POST
 
         recipient = request_data.get("recipient")
         subject = request_data.get("subject")
         mymessage = request_data.get("mymessage")
 
-        email = EmailMessage(subject=subject, body=mymessage, from_email=settings.DEFAULT_FROM_EMAIL,to=[recipient])
+        send_email(body=mymessage, subject=subject, recipients=[recipient])
 
-        email.content_subtype = 'html' 
-        email.send()
-        return redirect("accounts:mail_list")
+        return redirect(reverse("accounts:mail_list"))
 
 
 class ProfileSimplePurchaseView(LoginRequiredMixin, View):

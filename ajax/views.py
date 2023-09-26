@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import send_mail
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
 from django.template.loader import render_to_string
@@ -18,12 +17,18 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext as _
 from django.views import View
 
-from accounts.models import (Account, AccountData, AccountNotifySettings,
-                             Purchase, Visits)
-from accounts.services import message
+from accounts.models import (
+    Account,
+    AccountData,
+    AccountNotifySettings,
+    Purchase,
+    Visits,
+)
 from main.models import AccountWarehouse, Warehouse, WarehouseShop
 from payments.models import Invoice, Service
 from payments.services.crypto import Crypto
+
+from .tasks import notify_admin_by_telegram, send_email
 
 crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
 
@@ -93,7 +98,7 @@ class RegistrationView(View):
             return JsonResponse({"status": True, "message": ""})
 
         return JsonResponse({"status": False, "message": _("Некорректные данные")})
-    
+
 
 def update_warehouse_quantity(url: str, shops):
     match = re.search(r"(www\.)?(\w+\.\w+)", url)
@@ -103,8 +108,6 @@ def update_warehouse_quantity(url: str, shops):
         if matched_shop.startswith(shop.name):
             shop.quantity = shop.quantity + 1
             shop.save()
-            
-
 
 
 class PurchaseCreateView(LoginRequiredMixin, View):
@@ -118,7 +121,10 @@ class PurchaseCreateView(LoginRequiredMixin, View):
         warehouseId = request_data.get("warehouseId")
         warehouses = {"Warehouse": Warehouse, "AccountWarehouse": AccountWarehouse}
         warehouse = warehouses[warehouseModel].objects.get(id=warehouseId)
-        shops = WarehouseShop.objects.filter(content_type=ContentType.objects.get_for_model(warehouses[warehouseModel]), object_id=warehouseId).all()
+        shops = WarehouseShop.objects.filter(
+            content_type=ContentType.objects.get_for_model(warehouses[warehouseModel]),
+            object_id=warehouseId,
+        ).all()
         update_warehouse_quantity(url=url, shops=shops)
         id = request_data.get("id")
 
@@ -157,26 +163,41 @@ class PurchaseCreateView(LoginRequiredMixin, View):
 
         new_purchase, created = Purchase.objects.update_or_create(**kwargs)
 
-
-
         current_user = Account.objects.get(email=request.user)
 
         current_user.purchases.add(new_purchase)
 
         if status == "BUYOUT":
-            message.send(
+            notify_admin_by_telegram(
                 f"""
-            Пользователь: <b>{request.user}</b> оформил покупку
+Пользователь: <b>{request.user}</b> оформил покупку
 
-            Наименование: {new_purchase.name}
-            Ссылка на товар: <a href="{new_purchase.link}">{new_purchase.name}</a>
-            Количество: {new_purchase.quantity}
-            Цена: ${new_purchase.price}
-            Трек номер: {new_purchase.tracking_number}       
+Наименование: {new_purchase.name}
+Ссылка на товар: <a href="{new_purchase.link}">{new_purchase.name}</a>
+Количество: {new_purchase.quantity}
+Цена: ${new_purchase.price}
+Трек номер: {new_purchase.tracking_number}       
 
-            """
+"""
             )
-            send_purchase_confirmation_email(new_purchase, request)
+
+            subject = _("Информация об оформлении отправления")
+            html_message = render_to_string(
+                "ajax/email/purchase_confirmation.html",
+                {
+                    "first_name": new_purchase.address.first_name,
+                    "last_name": new_purchase.address.last_name,
+                    "name": new_purchase.name,
+                    "link": new_purchase.link,
+                    "quantity": new_purchase.quantity,
+                    "price": new_purchase.price,
+                    "tracking_number": new_purchase.tracking_number,
+                },
+            )
+
+            send_email(
+                body=html_message, subject=subject, recipients=[request.user.email]
+            )
 
         return JsonResponse({"status": True, "data": new_purchase.id})
 
@@ -207,18 +228,14 @@ class PurchaseGetView(LoginRequiredMixin, View):
             "name": purchase.name,
             "link": purchase.link,
             "quantity": purchase.quantity,
-            "address": serialize_address(
-                purchase.address, purchase.delivery_method
-            ),  # Assuming you want to serialize the address_id.
+            "address": serialize_address(purchase.address, purchase.delivery_method),
             "delivery_method": purchase.delivery_method,
             "is_deliveried": purchase.is_deliveried,
-            "options": [
-                option.id for option in purchase.options.all()
-            ],  # Assuming you want to serialize the option names.
-            "price": str(purchase.price),  # Convert DecimalField to string.
+            "options": [option.id for option in purchase.options.all()],
+            "price": str(purchase.price),
             "tracking_number": purchase.tracking_number,
             "status": purchase.status,
-            "created": purchase.created.isoformat(),  # Convert DateTimeField to ISO 8601 format.
+            "created": purchase.created.isoformat(),
         }
 
         if addressId is not None:
@@ -261,15 +278,15 @@ def create_invoice(request, c_service: Service, purchase: Purchase, amount: str)
     if receipt.get("ok"):
         result = receipt.get("result")
         new_invoice = Invoice.objects.create(
-                account=request.user,
-                invoice_id=result.get("invoice_id"),
-                service=c_service,
-                asset=result.get("asset"),
-                amount=result.get("amount"),
-                pay_url=result.get("pay_url"),
-                status=result.get("status"),
-                created_at=result.get("created_at"),
-            )
+            account=request.user,
+            invoice_id=result.get("invoice_id"),
+            service=c_service,
+            asset=result.get("asset"),
+            amount=result.get("amount"),
+            pay_url=result.get("pay_url"),
+            status=result.get("status"),
+            created_at=result.get("created_at"),
+        )
         purchase.invoice_id = new_invoice.invoice_id
         purchase.save()
 
@@ -285,13 +302,20 @@ class PurchasePayView(LoginRequiredMixin, View):
         request_data = request.POST
         idx = request_data.get("purchase")
         try:
-            c_service = Service.objects.filter(name__startswith="Пересыл посылки").first()
+            c_service = Service.objects.filter(
+                name__startswith="Пересыл посылки"
+            ).first()
         except Service.DoesNotExist:
             c_service = None
         if not c_service:
             return JsonResponse({"status": False})
         purchase = Purchase.objects.get(id=idx)
-        pay_url = create_invoice(request=request, c_service=c_service, purchase=purchase, amount=str(c_service.price))
+        pay_url = create_invoice(
+            request=request,
+            c_service=c_service,
+            purchase=purchase,
+            amount=str(c_service.price),
+        )
 
         return JsonResponse({"status": True, "pay_url": pay_url})
 
@@ -303,8 +327,7 @@ class PurchaseUpdateStatusView(LoginRequiredMixin, View):
         purchase = Purchase.objects.get(id=int(idx))
         purchase.is_deliveried = True
         purchase.save()
-        current_site = get_current_site(request)
-        message.send(
+        notify_admin_by_telegram(
             f"""
 Пользователь: <b>{request.user}</b> поставил статус покупки на доставлена
 
@@ -321,22 +344,6 @@ class PurchaseChangeStatusView(LoginRequiredMixin, View):
         purchase.status = request_data.get("status")
         purchase.save()
         return JsonResponse({"status": True})
-
-
-def send_purchase_confirmation_email(purchase, request):
-    subject = _("Информация о оформлении отправления")
-    current_site = get_current_site(request)
-    html_message = render_to_string(
-        "ajax/email_templates/purchase_confirmation.txt",
-        {"purchase": purchase, "user": request.user, "domain": current_site.domain},
-    )
-
-    send_mail(
-        subject,
-        html_message,
-        settings.DEFAULT_FROM_EMAIL,
-        [request.user.email],
-    )
 
 
 class AccountDataCreateView(LoginRequiredMixin, View):
@@ -362,7 +369,6 @@ class AccountDataCreateView(LoginRequiredMixin, View):
                 "street": street,
                 "first_name": first_name,
                 "last_name": last_name,
-                # 'delivery_method': deliveryMethod,
                 "state": state,
                 "postal_code": postal_code,
                 "country": country,
@@ -396,8 +402,22 @@ class AccountDataCreateView(LoginRequiredMixin, View):
         request.user.addresses.add(new_account)
         request.user.save()
 
-        send_purchase_confirmation_email(purchase, request)
-        message.send(
+        subject = _("Информация об оформлении отправления")
+        html_message = render_to_string(
+                "ajax/email/purchase_confirmation.html",
+                {
+                    "first_name": purchase.address.first_name,
+                    "last_name": purchase.address.last_name,
+                    "name": purchase.name,
+                    "link": purchase.link,
+                    "quantity": purchase.quantity,
+                    "price": purchase.price,
+                    "tracking_number": purchase.tracking_number,
+                },
+            )
+
+        send_email(body=html_message, subject=subject, recipients=[request.user.email])
+        notify_admin_by_telegram(
             f"""
 Пользователь: <b>{request.user}</b> оформил покупку
 
@@ -442,15 +462,11 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
     def post(self, request):
         request_data = request.POST
         account = Account.objects.get(email=request.user)
-        first_name = request_data.get("first_name")
-        last_name = request_data.get("last_name")
-        sur_name = request_data.get("sur_name")
-        country = request_data.get("country")
 
-        account.first_name = first_name
-        account.last_name = last_name
-        account.sur_name = sur_name
-        account.country = country
+        account.first_name = request_data.get("first_name")
+        account.last_name = request_data.get("last_name")
+        account.sur_name = request_data.get("sur_name")
+        account.country = request_data.get("country")
 
         account.save()
 
@@ -527,10 +543,10 @@ class AccountFullPasswordUpdateView(View):
         current_site = get_current_site(request)
         subject = _("Сброс пароля")
         message = render_to_string(
-            "accounts/email/password_reset_request.txt",
+            "accounts/email/password_reset_request.html",
             {"user": user, "reset_url": reset_url, "domain": current_site.domain},
         )
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
+        send_email(body=message, subject=subject, recipients=[email])
 
         return JsonResponse(
             {
@@ -580,24 +596,24 @@ class AccountWarehouseDeleteView(LoginRequiredMixin, View):
 def get_warehouse_options(request):
     warehouse_options = []
 
-    # Retrieve options from the Warehouse model
     warehouses = Warehouse.objects.all()
     for warehouse in warehouses:
         warehouse_options.append(
             {
                 "value": warehouse.id,
-                "label": f"Наш склад: {warehouse.state}, {warehouse.city}, {warehouse.address}",
+                "label": _("Наш склад: ")
+                + f"{warehouse.state}, {warehouse.city}, {warehouse.address}",
                 "model": "Warehouse",
             }
         )
 
-    # Retrieve options from the AccountWarehouse model
     account_warehouses = AccountWarehouse.objects.filter(account=request.user).all()
     for account_warehouse in account_warehouses:
         warehouse_options.append(
             {
                 "value": account_warehouse.id,
-                "label": f"Ваш склад: {account_warehouse.state}, {account_warehouse.city}, {account_warehouse.address}",
+                "label": _("Ваш склад: ")
+                + f"{account_warehouse.state}, {account_warehouse.city}, {account_warehouse.address}",
                 "model": "AccountWarehouse",
             }
         )

@@ -10,11 +10,8 @@ if os.path.exists(ENV_PATH):
     load_dotenv(ENV_PATH)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-
 DEBUG = True if os.getenv("DEBUG") in ["1", 1, "True", True] else False
-
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split()
-
 CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS").split()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -68,14 +65,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "packageLocker.wsgi.application"
 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -111,15 +100,33 @@ AUTHENTICATION_BACKENDS = (
     "accounts.backends.EmailBackend",
 )
 
-# Email Configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
+REDIS_HOST = "127.0.0.1"
+REDIS_PORT = "6379"
+
+CELERY_BROKER_URL = "redis://" + REDIS_HOST + ":" + REDIS_PORT + "/0"
+CELERY_BROKER_TRANSPORT_OPTION = {"visibility_timeout": 3600}
+CELERY_RESULT_BACKEND = "redis://" + REDIS_HOST + ":" + REDIS_PORT + "/0"
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_USE_TLS = True if os.getenv("EMAIL_USE_TLS") in ["1", 1, "True", True] else False
 EMAIL_USE_SSL = True if os.getenv("EMAIL_USE_SSL") in ["1", 1, "True", True] else False
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = 'Hermes International <support@hermesinternational.ru>'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = "Hermes International <support@hermesinternational.ru>"
 
 LANGUAGE_CODE = "ru"
 

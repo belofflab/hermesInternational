@@ -1,0 +1,11 @@
+[Unit]
+Description=hermesLogistics celery
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/hermesLogistics
+ExecStart=/home/hermesLogistics/venv/bin/celery -A packageLocker worker --loglevel=info -P eventlet
+[Install]
+WantedBy=multi-user.target
