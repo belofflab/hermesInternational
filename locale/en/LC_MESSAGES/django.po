@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 09:12+0300\n"
+"POT-Creation-Date: 2023-09-26 09:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,6 +64,10 @@ msgstr "Price list"
 #: .\accounts\templates\accounts\profile.html:75
 msgid "Почта"
 msgstr "Email"
+
+#: .\accounts\templates\accounts\base.html:276
+msgid "Ваш аккаунт"
+msgstr "Your account"
 
 #: .\accounts\templates\accounts\base.html:304
 #: .\main\templates\main\about.html:79 .\main\templates\main\about.html:112
