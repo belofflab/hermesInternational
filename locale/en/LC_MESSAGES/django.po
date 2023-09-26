@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 08:33+0300\n"
+"POT-Creation-Date: 2023-09-26 09:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,32 +134,41 @@ msgid ""
 msgstr ""
 "Password must be at least 8 characters long and contain the special symbol."
 
-#: .\accounts\templates\accounts\email\password_reset_request.txt:3
+#: .\accounts\templates\accounts\email\password_reset_request.html:7
+#: .\accounts\templates\accounts\email\password_reset_request.html:41
+#: .\ajax\views.py:544
+msgid "Сброс пароля"
+msgstr "Reset Password"
+
+#: .\accounts\templates\accounts\email\password_reset_request.html:44
 #, python-format
 msgid ""
 "\n"
-"Дорогой пользователь,\n"
-"\n"
-"Для сброса пароля на нашем сайте перейдите по следующей ссылке:\n"
-"\n"
-"%(reset_url)s\n"
-"\n"
-"Если вы не запрашивали сброс пароля, проигнорируйте это сообщение.\n"
-"\n"
-"С уважением,\n"
-"Команда Hermes International\n"
+"            <p>Дорогой пользователь,</p>\n"
+"            <p>Для сброса пароля на нашем сайте перейдите по следующей "
+"ссылке:</p>\n"
+"            <p><a href=\"%(reset_url)s\">%(reset_url)s</a></p>\n"
+"            <p>Если вы не запрашивали сброс пароля, проигнорируйте это "
+"сообщение.</p>\n"
+"            "
 msgstr ""
 "\n"
-"Dear User,\n"
+" <p>Dear user,</p>\n"
+" <p>To reset your password on our website, go to the following link:</p>\n"
+" <p><a href=\"%(reset_url)s\">%(reset_url)s</a></p>\n"
+" <p>If you did not request a password reset, please ignore this message.</"
+"p>\n"
+" "
+
+#: .\accounts\templates\accounts\email\password_reset_request.html:52
+msgid ""
 "\n"
-"To reset your password on our site, please visit the following link:\n"
+"            <p>С уважением,<br>Команда Hermes International</p>\n"
+"            "
+msgstr ""
 "\n"
-"%(reset_url)s\n"
-"\n"
-"If you did not request a password reset, please ignore this message.\n"
-"\n"
-"Sincerely,\n"
-"Team Hermes International\n"
+" <p>Sincerely,<br>Hermes International Team</p>\n"
+" "
 
 #: .\accounts\templates\accounts\forms\address_form.html:15
 msgid "Информация о получателе"
@@ -707,25 +716,43 @@ msgstr "Own address"
 msgid "Удалить склад"
 msgstr "Remove warehouse"
 
-#: .\ajax\templates\ajax\email\purchase_confirmation.txt:2
+#: .\ajax\templates\ajax\email\purchase_confirmation.html:37
+#, python-format
+msgid "Уважаемый(ая)  %(first_name)s %(last_name)s"
+msgstr "Dear %(first_name)s %(last_name)s"
+
+#: .\ajax\templates\ajax\email\purchase_confirmation.html:39
 #, python-format
 msgid ""
 "\n"
-"Уважаемый(ая)  %(first_name)s %(last_name)s\n"
-"\n"
-"Вы успешно оформили отправление!\n"
-"\n"
-"Вот информация о вашей покупке:\n"
-"Наименование: %(name)s\n"
-"Ссылка: %(link)s\n"
-"Количество: %(quantity)s\n"
-"Цена: $ %(price)s\n"
-"Трек-номер: %(tracking_number)s\n"
-"\n"
-"Спасибо за ваш заказ!\n"
-"С уважением,\n"
-"Ваша команда Hermes International.\n"
+"        <h3>Вы успешно оформили отправление!</h3>\n"
+"        \n"
+"        <p>Вот информация о вашей покупке:</p>\n"
+"        <p>Наименование: %(name)s</p>\n"
+"        <p>Ссылка: <a href=\"%(link)s\" >перейти</a></p>\n"
+"        <p>Количество: %(quantity)s</p>\n"
+"        <p>Цена: $ %(price)s</p>\n"
+"        <p>Трек-номер: %(tracking_number)s</p>\n"
+"        \n"
+"        <p>Спасибо за ваш заказ!</p>\n"
+"        <p>С уважением,</p>\n"
+"        <p>Ваша команда Hermes International.</p>\n"
+"    "
 msgstr ""
+"\n"
+" <h3>You have successfully processed your shipment!</h3>\n"
+"\n"
+" <p>Here is the information about your purchase:</p>\n"
+" <p>Name: %(name)s</p>\n"
+" <p>Link: <a href=\"%(link)s\" >go</a></p>\n"
+" <p>Quantity: %(quantity)s</p>\n"
+" <p>Price: $ %(price)s</p>\n"
+" <p>Tracking number: %(tracking_number)s</p>\n"
+"\n"
+" <p>Thank you for your order!</p>\n"
+" <p>Sincerely,</p>\n"
+" <p>Your Hermes International team.</p>\n"
+" "
 
 #: .\ajax\views.py:60
 msgid "Некорректный Email или пароль"
@@ -747,35 +774,31 @@ msgstr "Incorrect price set"
 msgid "Информация об оформлении отправления"
 msgstr "Information on despatch processing"
 
-#: .\ajax\views.py:480
+#: .\ajax\views.py:487
 msgid "Пользователь не найден"
 msgstr "User not found"
 
-#: .\ajax\views.py:485 .\ajax\views.py:505
+#: .\ajax\views.py:492 .\ajax\views.py:512
 msgid "Пароли не совпадают"
 msgstr "The passwords don't match"
 
-#: .\ajax\views.py:498
+#: .\ajax\views.py:505
 msgid "Неверный email или пароль"
 msgstr "Incorrect Email or password"
 
-#: .\ajax\views.py:522
+#: .\ajax\views.py:529
 msgid "Запрашиваемый пользователь не найден"
 msgstr "The requested user was not found"
 
-#: .\ajax\views.py:537
-msgid "Сброс пароля"
-msgstr "Reset Password"
-
-#: .\ajax\views.py:547
+#: .\ajax\views.py:554
 msgid "Ссылка для сброса пароля успешно отправлена"
 msgstr "Password reset link sent successfully"
 
-#: .\ajax\views.py:597
+#: .\ajax\views.py:604
 msgid "Наш склад: "
 msgstr "Our warehouse: "
 
-#: .\ajax\views.py:608
+#: .\ajax\views.py:615
 msgid "Ваш склад: "
 msgstr "Your warehouse: "
 
@@ -1894,17 +1917,20 @@ msgstr "According to these details, the transfer is available during"
 msgid "Ожидание оплаты....Осталось:"
 msgstr "Awaiting payment....For now:"
 
+#~ msgid ""
+#~ "\n"
+#~ " <p>Sincerely,<br>Hermes International Team</p>\n"
+#~ " "
+#~ msgstr ""
+#~ "\n"
+#~ " <p>С уважением,<br>Команда Hermes International</p>\n"
+#~ " "
+
 #~ msgid "Нажмите для перехода:"
 #~ msgstr "Click to go to:"
 
 #~ msgid "Прием послыки + пересыл:"
 #~ msgstr "Receipt of parcels + forwarding:"
-
-#~ msgid ""
-#~ "Уважаемый(ая) {{ purchase.address.first_name }} {{ purchase.address."
-#~ "last_name }},"
-#~ msgstr ""
-#~ "Dear {{ purchase.address.first_name }} {{ purchase.address.last_name }},"
 
 #~ msgid "Вы успешно оформили отправление. Вот информация о вашей покупке:"
 #~ msgstr ""
