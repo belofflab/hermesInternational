@@ -73,9 +73,20 @@
                     {% endif %}
                 {% endwith %}   
               {% endif %}
-            {% if purchase.status == 'FORWARDING' %}
-            <img src="{% static 'accounts/img/free-sticker-paper-plane.png' %}" class="card-img-top"
-              alt="Chicago Skyscrapers" />
+              {% if purchase.status == 'FORWARDING' %}
+              {% with purchase_photos=purchase.photos.all %}
+                  {% if not purchase_photos %}
+                      <img src="{% static 'accounts/img/free-sticker-paper-plane.png' %}" class="card-img-top" />
+                  {% else %}
+                      <div class="owl-carousel owl-carousel-purchase owl-theme custom-carousel">
+                          {% for photo in purchase_photos %}
+                              <div class="item">
+                                  <img src="{{ photo.photo.url }}" alt="Photo">
+                              </div>
+                          {% endfor %}
+                      </div>
+                  {% endif %}
+              {% endwith %}     
             {% endif %}
             {% if purchase.status == 'ACCEPTANCE' %}
             <img src="{% static 'accounts/img/delivery-box.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
@@ -89,7 +100,7 @@
             <li class="list-group-item px-4"><b>{% translate 'Цена' %}: </b>${{purchase.price}}</li>
             <li class="list-group-item px-4"><b>{% translate 'Количество' %}: </b>{{purchase.quantity}}</li>
           </ul>
-          {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried %}
+          {% if purchase.status == 'ACCEPTANCE' or not purchase.is_deliveried and purchase.status != 'FORWARDING' %}
             <div class="card-body">
                 <div class="d-grid mx-auto content-md-center">
                   <div class="row">
@@ -103,6 +114,28 @@
                   </div>
                 </div>
             </div>
+          {% endif %}
+          {% if purchase.status == 'FORWARDING' %}
+            {% if not purchase.is_deliveried %}
+            <div class="card-body">
+              <div class="d-grid mx-auto content-md-center">
+                <div class="row">
+                    <button class="btn btn-outline-danger" onclick="toAcceptance('{{purchase.id}}')" type="button">{% translate 'Расформировать' %}</button>
+                    <button class="btn btn-outline-primary" onclick="updatePurchaseData('{{ purchase.id }}', '{{purchase.address.id}}')" type="button">{% translate 'Редактировать' %}</button>
+                    <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button">{% translate 'Отметить посылку доставленной' %}</button>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            <!-- {% if not purchase.is_paid and purchase.is_ready_pay %}
+            <div class="card-body">
+              <div class="d-grid mx-auto content-md-center">
+                <div class="row">
+                    <button class="btn btn-outline-success" onclick="payPurchase('{{ purchase.id }}')" type="button">{% translate 'Оплатить' %}</button>
+                </div>
+              </div>
+            </div>
+            {% endif %} -->
           {% endif %}
           {% if not purchase.is_paid and purchase.is_ready_pay %}
           <div class="card-body">

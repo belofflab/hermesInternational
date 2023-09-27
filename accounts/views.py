@@ -176,7 +176,7 @@ class InboxView(LoginRequiredMixin, View):
             "accounts/inbox.html",
             {
                 "purchases": account.purchases.filter(
-                    Q(status="BUYOUT") | Q(status="ACCEPTANCE")
+                    Q(status="BUYOUT") | Q(status="ACCEPTANCE") | Q(status="FORWARDING")
                 ).all(),
                 "purchase_form": purchase_form,
                 "page": "inbox",

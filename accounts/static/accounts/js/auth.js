@@ -417,7 +417,8 @@ $("form[name='address_inf']").submit((e) => {
         if (response.status) {
             $('#addressAddModal').modal('hide');
             localStorage.setItem("purchaseToAddingAccountData", "")
-            window.location.href = '/accounts/profile/packages/'
+            // window.location.href = '/accounts/profile/packages/'
+            window.location.reload()
         } else {
             console.log(response)
             $("#address_inf_but").removeAttr('disabled');

@@ -100,7 +100,7 @@ class BuyoutAdmin(admin.ModelAdmin):
     list_per_page = 30
 
 
-admin.site.register(Buyout, BuyoutAdmin)
+# admin.site.register(Buyout, BuyoutAdmin)
 
 
 class BuyoutCategoryAdmin(admin.ModelAdmin):
@@ -115,4 +115,4 @@ class BuyoutCategoryAdmin(admin.ModelAdmin):
     total_buyouts.short_description = "Всего вариаций"
 
 
-admin.site.register(BuyoutCategory, BuyoutCategoryAdmin)
+# admin.site.register(BuyoutCategory, BuyoutCategoryAdmin)
