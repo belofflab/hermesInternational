@@ -5,6 +5,13 @@
 {% load i18n %}
 {% include 'accounts/forms/buy_form.html' %}
 {% include 'accounts/forms/address_form.html' %}
+<style>
+
+   .owl-carousel .item {
+      width: auto;
+      height: 240px;
+    }
+</style>
 <div class="row">
   <div class="col-12">
     <div class="card-header">
@@ -61,7 +68,7 @@
             {% if purchase.status == 'BUYOUT' %}
               {% with purchase_photos=purchase.photos.all %}
                     {% if not purchase_photos %}
-                    <img width="240" height="240" src="{% static 'accounts/img/fast-time.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
+                    <img src="{% static 'accounts/img/fast-time.png' %}" class="card-img-top" alt="Chicago Skyscrapers" />
                     {% else %}
                         <div class="owl-carousel owl-carousel-purchase owl-theme custom-carousel">
                             {% for photo in purchase_photos %}
@@ -81,7 +88,7 @@
                       <div class="owl-carousel owl-carousel-purchase owl-theme custom-carousel">
                           {% for photo in purchase_photos %}
                               <div class="item">
-                                  <img width="240" height="240" src="{{ photo.photo.url }}" alt="Photo">
+                                  <img src="{{ photo.photo.url }}" alt="Photo">
                               </div>
                           {% endfor %}
                       </div>
