@@ -612,6 +612,82 @@
       });
     });
   </script>
+  <script>
+    $(document).ready(function() {
+        $("#searchPurchaseInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".search-item").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $(".filter-toggle").on("click", function() {
+            var filter = $(this).data("filter");
+            var value = $(this).data("value");
+
+            if ($(this).hasClass("active")) {
+                // Кнопка уже активна, отключите фильтр
+                $(this).removeClass("active");
+                value = "";
+            } else {
+                // Включите фильтр, добавьте класс "active" и сбросьте остальные фильтры
+                $(this).addClass("active").siblings().removeClass("active");
+            }
+
+            filterTable(filter, value);
+        });
+
+        var allFiltersCleared = $(".filter-toggle").not(".active").length === $(".filter-toggle").length;
+        if (allFiltersCleared) {
+            $(".search-item").show();
+        }
+
+        function filterTable(filter, value) {
+            $(".search-item").each(function() {
+                var isDeliveried = $(this).data("is-deliveried");
+                var isReadyPay = $(this).data("is-ready-pay");
+                var isPaid = $(this).data("is-paid");
+                var status = $(this).find("td:nth-child(5)").text();
+
+                var showRow = true;
+
+                if (filter === "isDeliveriedFilter" && isDeliveried !== "True") {
+                    showRow = false;
+                }
+
+                if (filter === "isReadyPayFilter" && isReadyPay !== "True") {
+                    showRow = false;
+                }
+
+                if (filter === "isPaidFilter" && isPaid !== "True") {
+                    showRow = false;
+                }
+
+                if (filter === "statusFilter" && status !== value) {
+                    showRow = false;
+                }
+
+                $(this).toggle(showRow);
+            });
+        }
+
+        $("#filterForm input[type='checkbox'], #statusFilter").on("change", function() {
+            var statusFilter = $("#statusFilter").val();
+
+            $(".search-item").filter(function() {
+                var status = $(this).data("status");
+
+                var showRow = true;
+
+                if (statusFilter && status !== statusFilter) {
+                    showRow = false;
+                }
+
+                $(this).toggle(showRow);
+            });
+        }); 
+    });
+</script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="{% static 'accounts/js/soft-ui-dashboard.js' %}"></script>
 

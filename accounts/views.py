@@ -14,6 +14,7 @@ from payments.models import Invoice
 from .services.mail import get_email
 from . import forms, models
 from ajax.tasks import send_email
+from django.core.paginator import Paginator
 
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
 
@@ -27,6 +28,17 @@ def get_client_ip(request):
     else:
         ip = request.META.get("REMOTE_ADDR")
     return ip
+
+
+def test(request):
+    send_email(
+        body="123",
+        subject="123",
+        recipients=[
+            "belofflab@gmail.com",
+        ],
+    )
+    return {""}
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -54,6 +66,24 @@ class ProfileView(LoginRequiredMixin, View):
 
     def post(self, request):
         return render(request, "accounts/profile.html", {})
+
+
+class ProfileAdminView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        if not request.user.is_admin:
+            return redirect(reverse("main:index"))
+        accounts = models.Account.objects.all()
+        purchase_per_accounts = [
+            {
+                account: account.purchases.prefetch_related("address").all(),
+            }
+            for account in accounts
+        ]
+
+        context = {"purchase_per_accounts": purchase_per_accounts}
+        return render(request, "accounts/admin_profile.html", context)
 
 
 class ProfileWarehouseView(LoginRequiredMixin, View):

@@ -5,7 +5,9 @@ from celery import shared_task
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.db.models import Q
 from telebot import TeleBot
+from accounts.models import AccountNotifySettings, Account
 
 logger = logging.getLogger(__name__)
 
@@ -15,16 +17,14 @@ bot = TeleBot(token=settings.BOT_TOKEN, parse_mode="HTML")
 @shared_task
 def send_email(body: str, subject: str, recipients: List[str], **kwargs) -> None:
     try:
-
         message = EmailMultiAlternatives(
             subject=subject,
             body=body,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            to=recipients
+            to=recipients,
         )
 
         message.content_subtype = "html"
-    
 
         message.send()
         logger.info("Сообщения были разосланы")

@@ -185,8 +185,8 @@ class PurchaseCreateView(LoginRequiredMixin, View):
             html_message = render_to_string(
                 "ajax/email/purchase_confirmation.html",
                 {
-                    # "first_name": new_purchase.address.first_name,
-                    # "last_name": new_purchase.address.last_name,
+                    "first_name": request.user.first_name,
+                    "last_name": request.user.last_name,
                     "name": new_purchase.name,
                     "link": new_purchase.link,
                     "quantity": new_purchase.quantity,
