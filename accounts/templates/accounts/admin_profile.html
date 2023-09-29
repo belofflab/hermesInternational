@@ -54,24 +54,20 @@
             </tr>
         </thead>
         <tbody>
-            {% for el in purchase_per_accounts %}
-                {% for account, purchases in el.items %}
-                    {% for purchase in purchases %}
-                        <tr 
-                        class="search-item" 
-                        data-is-deliveried="{{purchase.is_deliveried}}"
-                        data-is-ready-pay="{{purchase.is_ready_pay}}"
-                        data-is-paid="{{purchase.is_paid}}"
-                        data-status="{{purchase.status}}"
-                        >
-                            <td><a href="">{{ purchase.tracking_number }}</a></td>
-                            <td>{{ purchase.address.first_name }}</td>
-                            <td>{{ purchase.address.last_name }}</td>
-                            <td>{{ account.email }}</td>
-                            <td style="display: none;">{{purchase.status}}</td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
+            {% for purchase in purchase_per_accounts %}
+                <tr 
+                    class="search-item" 
+                    data-is-deliveried="{{purchase.is_deliveried}}"
+                    data-is-ready-pay="{{purchase.is_ready_pay}}"
+                    data-is-paid="{{purchase.is_paid}}"
+                    data-status="{{purchase.status}}"
+                >
+                    <td><a href="">{{ purchase.tracking_number }}</a></td>
+                    <td>{{ purchase.address.first_name }}</td>
+                    <td>{{ purchase.address.last_name }}</td>
+                    <td>{{ purchase.account.email }}</td>
+                    <td style="display: none;">{{purchase.status}}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>

@@ -15,7 +15,7 @@ from .services.mail import get_email
 from . import forms, models
 from ajax.tasks import send_email
 from django.core.paginator import Paginator
-
+from django.db.models import Value, ForeignKey
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
 
 crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
@@ -74,13 +74,14 @@ class ProfileAdminView(LoginRequiredMixin, View):
     def get(self, request):
         if not request.user.is_admin:
             return redirect(reverse("main:index"))
+        
         accounts = models.Account.objects.all()
-        purchase_per_accounts = [
-            {
-                account: account.purchases.prefetch_related("address").all(),
-            }
-            for account in accounts
-        ]
+        purchase_per_accounts = []
+        for account in accounts:
+            purchase_list = account.purchases.all()
+            for purchase in purchase_list:
+                purchase.account = account
+            purchase_per_accounts.extend(purchase_list)
 
         context = {"purchase_per_accounts": purchase_per_accounts}
         return render(request, "accounts/admin_profile.html", context)

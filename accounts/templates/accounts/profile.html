@@ -32,7 +32,7 @@
         </p>
       </div>
       {% if request.user.is_superuser %}
-      <a type="submit" class="btn btn-sm btn-outline-danger" href="{% url 'accounts:profile_admin' %}">{% translate 'Админ' %}</a>
+        <a type="submit" class="btn btn-sm btn-outline-danger" href="{% url 'accounts:profile_admin' %}">{% translate 'Админ' %}</a>
       {% endif %}
     </div>
     <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
