@@ -613,81 +613,64 @@
     });
   </script>
   <script>
-    $(document).ready(function() {
-        $("#searchPurchaseInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $(".search-item").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-
-        $(".filter-toggle").on("click", function() {
-            var filter = $(this).data("filter");
-            var value = $(this).data("value");
-
-            if ($(this).hasClass("active")) {
-                // Кнопка уже активна, отключите фильтр
-                $(this).removeClass("active");
-                value = "";
-            } else {
-                // Включите фильтр, добавьте класс "active" и сбросьте остальные фильтры
-                $(this).addClass("active").siblings().removeClass("active");
-            }
-
-            filterTable(filter, value);
-        });
-
-        var allFiltersCleared = $(".filter-toggle").not(".active").length === $(".filter-toggle").length;
-        if (allFiltersCleared) {
-            $(".search-item").show();
+    function filterTable(searchInput) {
+      var isDeliveried = $('#isDeliveriedFilter').is(':checked');
+      var isReadyPay = $('#isReadyPayFilter').is(':checked');
+      var isPaid = $('#isPaidFilter').is(':checked');
+  
+      var status = $('#statusFilter').val();
+  
+      var tr = $('tbody').find('tr');
+  
+      for (var i = 0; i < tr.length; i++) {
+        var currentItem = $(tr[i]);
+  
+        var isDeliveriedValue = (currentItem.attr('data-is-deliveried') == "False") ? false : true;
+        var isReadyPayValue = (currentItem.attr('data-is-ready-pay') == "False") ? false : true;
+        var isPaidValue = (currentItem.attr('data-is-paid') == "False") ? false : true;
+        var statusValue = currentItem.attr('data-status');
+  
+        if ((!isDeliveried || isDeliveriedValue === true) &&
+          (!isReadyPay || isReadyPayValue === true) &&
+          (!isPaid || isPaidValue === true) &&
+          (status === '' || status === statusValue)) {
+          if (!searchInput || isRowContainsSearchInput(currentItem, searchInput)) {
+            currentItem.show();
+          } else {
+            currentItem.hide();
+          }
+        } else {
+          currentItem.hide();
         }
-
-        function filterTable(filter, value) {
-            $(".search-item").each(function() {
-                var isDeliveried = $(this).data("is-deliveried");
-                var isReadyPay = $(this).data("is-ready-pay");
-                var isPaid = $(this).data("is-paid");
-                var status = $(this).find("td:nth-child(5)").text();
-
-                var showRow = true;
-
-                if (filter === "isDeliveriedFilter" && isDeliveried !== "True") {
-                    showRow = false;
-                }
-
-                if (filter === "isReadyPayFilter" && isReadyPay !== "True") {
-                    showRow = false;
-                }
-
-                if (filter === "isPaidFilter" && isPaid !== "True") {
-                    showRow = false;
-                }
-
-                if (filter === "statusFilter" && status !== value) {
-                    showRow = false;
-                }
-
-                $(this).toggle(showRow);
-            });
-        }
-
-        $("#filterForm input[type='checkbox'], #statusFilter").on("change", function() {
-            var statusFilter = $("#statusFilter").val();
-
-            $(".search-item").filter(function() {
-                var status = $(this).data("status");
-
-                var showRow = true;
-
-                if (statusFilter && status !== statusFilter) {
-                    showRow = false;
-                }
-
-                $(this).toggle(showRow);
-            });
-        }); 
+      }
+    }
+  
+    function isRowContainsSearchInput(rowItem, searchInput) {
+      var td = rowItem.find('td').eq(0);
+      if (td) {
+        var txtValue = td.text();
+        return txtValue.toUpperCase().indexOf(searchInput.toUpperCase()) > -1;
+      }
+      return false;
+    }
+  
+    $('#isDeliveriedFilter').add('#isReadyPayFilter').add('#isPaidFilter').change(function() {
+      filterTable($('#searchPurchaseInput').val());
     });
-</script>
+  
+    $('#statusFilter').change(function() {
+      filterTable($('#searchPurchaseInput').val());
+    });
+  
+    $('#searchPurchaseInput').keyup(function() {
+      filterTable($(this).val());
+    });
+  
+    filterTable();
+  
+  </script>
+  
+
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="{% static 'accounts/js/soft-ui-dashboard.js' %}"></script>
 

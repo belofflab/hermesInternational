@@ -78,7 +78,7 @@ class ProfileAdminView(LoginRequiredMixin, View):
         accounts = models.Account.objects.all()
         purchase_per_accounts = []
         for account in accounts:
-            purchase_list = account.purchases.all()
+            purchase_list = account.purchases.all().prefetch_related("address")
             for purchase in purchase_list:
                 purchase.account = account
             purchase_per_accounts.extend(purchase_list)
