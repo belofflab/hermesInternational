@@ -58,11 +58,20 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Track number</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
+                <th scope="col">{% translate 'Фото' %}</th>
+                <th scope="col">{% translate 'Дата создания' %}</th>
+                <th scope="col">{% translate 'Имя пользователя' %}</th>
+                <th scope="col">{% translate 'Почта' %}</th>
+                <th scope="col">{% translate 'Трэк' %}</th>
+                <th scope="col">{% translate 'Товар' %}</th>
+                <th scope="col">{% translate 'Цена' %}</th>
+                <th scope="col">{% translate 'Ссылка' %}</th>
+                <th scope="col">{% translate 'Адрес' %}</th>
+                <th scope="col">{% translate 'Код получения' %}</th>
+                <th scope="col">{% translate 'Адрес отправления' %}</th>
+                <th scope="col">{% translate 'Телеграм' %}</th>
+                <th scope="col">{% translate 'Трэк после отправления' %}</th>
+                <th scope="col">{% translate 'Примечание' %}</th>
                 <!-- <th scope="col">Status</th> -->
             </tr>
         </thead>
@@ -80,10 +89,19 @@
                             <img src="/static/accounts/img/plus-circle-1425-svgrepo-com.svg" height="20" width="20">
                         </a>
                     </td>
-                    <td><a href="">{{ purchase.tracking_number }}</a></td>
-                    <td>{{ purchase.address.first_name }}</td>
-                    <td>{{ purchase.address.last_name }}</td>
+                    <td>{{ purchase.created }}</td>
+                    <td>{{ purchase.account.username }}</td>
                     <td>{{ purchase.account.email }}</td>
+                    <td><a href="">{{ purchase.tracking_number }}</a></td>
+                    <td>{{ purchase.name }}</td>
+                    <td>{{ purchase.price }}</td>
+                    <td>{{ purchase.link }}</td>
+                    <td>{{ purchase.address }}</td>
+                    <td>{{ purchase.invoice_id }}</td>
+                    <td>{{ purchase.account.street }}</td>
+                    <td>{{ purchase.account.phone }}</td>
+                    <td>{{ purchase.tracking_number }}</td>
+                    <td>{{ purchase.tracking_number }}</td>
                     <td style="display: none;">{{purchase.status}}</td>
                 </tr>
             {% endfor %}
@@ -142,24 +160,29 @@
             $('#photoModal').modal('show');
 
             // Очищаем предыдущие превью фотографий
-            $('#selectedPhotos').empty();
+            $('#selectedPhotos').addClass("row row-cols-1 row-cols-md-3 g-4").empty();
 
             var photos = response.photos;
             for (var i = 0; i < photos.length; i++) {
                 var photoDiv = $('<div>')
+                    .addClass('col')
                     .appendTo('#selectedPhotos');
 
-                var imgElement = $('<img>')
-                    .addClass('mr-2 mb-2')
-                    .attr('src', photos[i].url)
-                    .attr('height', '250')
+                var cardDiv = $('<div>')
+                    .addClass('card')
                     .appendTo(photoDiv);
 
+                var imgElement = $('<img>')
+                    .addClass('card-img-top mr-2 mb-2')
+                    .attr('src', photos[i].url)
+                    .attr('height', '250')
+                    .appendTo(cardDiv);
+
                 var removeButton = $('<button>')
-                    .addClass('btn btn-danger remove-photo')
+                    .addClass('col-6 d-grid mx-auto content-md-center btn btn-outline-danger btn-sm remove-photo')
                     .text('Remove')
                     .attr('data-index', photos[i].id)
-                    .appendTo(photoDiv);
+                    .appendTo(cardDiv);
 
                 imgElement.after(removeButton);
             }
@@ -214,25 +237,30 @@ $('#photos').change(function (event) {
             $('#photoModal').modal('show');
 
             // Очищаем предыдущие превью фотографий
-            $('#selectedPhotos').empty();
+            $('#selectedPhotos').addClass("row row-cols-1 row-cols-md-3 g-4").empty();
 
             var photos = response.photos;
         
             for (var i = 0; i < photos.length; i++) {
                 var photoDiv = $('<div>')
+                    .addClass('col')
                     .appendTo('#selectedPhotos');
 
-                var imgElement = $('<img>')
-                    .addClass('mr-2 mb-2')
-                    .attr('src', photos[i].url)
-                    .attr('height', '250')
+                var cardDiv = $('<div>')
+                    .addClass('card')
                     .appendTo(photoDiv);
 
+                var imgElement = $('<img>')
+                    .addClass('card-img-top mr-2 mb-2')
+                    .attr('src', photos[i].url)
+                    .attr('height', '250')
+                    .appendTo(cardDiv);
+
                 var removeButton = $('<button>')
-                    .addClass('btn btn-danger remove-photo')
+                    .addClass('col-6 d-grid mx-auto content-md-center btn btn-outline-danger btn-sm remove-photo')
                     .text('Remove')
                     .attr('data-index', photos[i].id)
-                    .appendTo(photoDiv);
+                    .appendTo(cardDiv);
 
                 imgElement.after(removeButton);
             }

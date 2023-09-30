@@ -34,7 +34,6 @@
                     <form >
                         {% csrf_token %}
                         <!-- Add Photo Section -->
-                        <input id="photo_form_id" type="hidden" value="">
                         <div class="card-header text-center">
                             <p id="buy_form_errorbox" style="color: red;" class="mb-0"></p>
                         </div>
@@ -51,6 +50,7 @@
                             <label class="form-label">Photos:</label>
                             <div id="selectedPhotos"></div>
                         </div>
+                        <input id="photo_form_id" type="hidden" value="">
                     </form>
                 </div>
               </div>
