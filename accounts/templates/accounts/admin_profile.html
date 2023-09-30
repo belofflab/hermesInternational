@@ -1,6 +1,9 @@
 {% extends 'accounts/base.html' %}
 {% load i18n %}
 {% block content %}
+{% load static %}
+{% include 'accounts/forms/photo_form.html' %}
+
 <style>
     .filter-toggle {
         cursor: pointer;
@@ -55,6 +58,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th scope="col">Image</th>
                 <th scope="col">Track number</th>
                 <th scope="col">First name</th>
                 <th scope="col">Last Name</th>
@@ -70,7 +74,12 @@
                     data-is-ready-pay={{purchase.is_ready_pay}}
                     data-is-paid={{purchase.is_paid}}
                     data-status={{purchase.status}}
-                >
+                >   
+                    <td style="text-align: center;">
+                        <a type="button"  data-bs-toggle="modal" data-bs-target="#photoModal" onclick="getPurchaseData('{{purchase.id}}')">
+                            <img src="/static/accounts/img/plus-circle-1425-svgrepo-com.svg" height="20" width="20">
+                        </a>
+                    </td>
                     <td><a href="">{{ purchase.tracking_number }}</a></td>
                     <td>{{ purchase.address.first_name }}</td>
                     <td>{{ purchase.address.last_name }}</td>
@@ -115,5 +124,120 @@
     </nav>
     
 </div>
-    
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function getPurchaseData(purchaseId) {
+    var requestData = {
+        purchaseId: parseInt(purchaseId),
+        csrfmiddlewaretoken: csrf_token
+    };
+
+    $.ajax({
+        data: requestData,
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchase_photo/get',
+    }).then((response) => {
+        if (response.status) {
+            $('#photo_form_id').val(purchaseId);
+            $('#photoModal').modal('show');
+
+            // Очищаем предыдущие превью фотографий
+            $('#selectedPhotos').empty();
+
+            var photos = response.photos;
+            for (var i = 0; i < photos.length; i++) {
+                var photoDiv = $('<div>')
+                    .appendTo('#selectedPhotos');
+
+                var imgElement = $('<img>')
+                    .addClass('mr-2 mb-2')
+                    .attr('src', photos[i].url)
+                    .attr('height', '250')
+                    .appendTo(photoDiv);
+
+                var removeButton = $('<button>')
+                    .addClass('btn btn-danger remove-photo')
+                    .text('Remove')
+                    .attr('data-index', photos[i].id)
+                    .appendTo(photoDiv);
+
+                imgElement.after(removeButton);
+            }
+                    }
+                }).catch((response) => {
+                    console.log(response);
+                });
+            }
+        
+
+$(document).ready(function() {
+    $('#selectedPhotos').on('click', '.remove-photo', function() {
+        var index = $(this).data('index');
+        var requestData = {
+            photoId: parseInt(index),
+            csrfmiddlewaretoken: csrf_token
+        };
+        $.ajax({
+            url: '/ajax/accounts/profile/purchase_photo/delete',
+            method: 'POST',
+            data: requestData,
+
+        }).then(
+            $(this).parent().remove()
+        );
+    });
+});
+$('#photos').change(function (event) {
+    var files = event.target.files;
+    var data = new FormData();
+
+    var purchaseId = $('#photo_form_id').val();
+
+    for (var i = 0; i < files.length; i++) {
+        data.append("file", files[i]);
+    }
+
+    // Добавляем CSRF-токен в данные
+    data.append("purchaseId", purchaseId)
+    data.append('csrfmiddlewaretoken', csrf_token);
+
+    $.ajax({
+        url: '/ajax/accounts/profile/purchase_photo/add',           // адрес серверного обработчика
+        type: 'POST',
+        data: data,
+        cache: false,
+        processData: false,
+        contentType: false
+    }).done(function (response) {
+        if (response.status) {
+            $('#photo_form_id').val(purchaseId);
+            $('#photoModal').modal('show');
+
+            // Очищаем предыдущие превью фотографий
+            $('#selectedPhotos').empty();
+
+            var photos = response.photos;
+        
+            for (var i = 0; i < photos.length; i++) {
+                var photoDiv = $('<div>')
+                    .appendTo('#selectedPhotos');
+
+                var imgElement = $('<img>')
+                    .addClass('mr-2 mb-2')
+                    .attr('src', photos[i].url)
+                    .attr('height', '250')
+                    .appendTo(photoDiv);
+
+                var removeButton = $('<button>')
+                    .addClass('btn btn-danger remove-photo')
+                    .text('Remove')
+                    .attr('data-index', photos[i].id)
+                    .appendTo(photoDiv);
+
+                imgElement.after(removeButton);
+            }
+        }
+    });
+})
+</script>
 {% endblock %}

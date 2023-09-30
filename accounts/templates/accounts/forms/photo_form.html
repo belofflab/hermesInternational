@@ -1,0 +1,64 @@
+{% load i18n %}
+{% load static %}
+<style>
+    .photo-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    .modal-dialog {
+    max-width: 1000px;
+}
+
+.modal-content {
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 200px); /* Вы можете изменить значение 200px на ваше усмотрение */
+    overflow-y: auto;
+}
+
+</style>
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photo_info" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addressee_info">{% translate 'Информация о получателе' %}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="card mb-4">
+                <div class="container">
+                    <form >
+                        {% csrf_token %}
+                        <!-- Add Photo Section -->
+                        <input id="photo_form_id" type="hidden" value="">
+                        <div class="card-header text-center">
+                            <p id="buy_form_errorbox" style="color: red;" class="mb-0"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="photos" class="form-label">Add Photos:</label>
+                            <input type="file" class="form-control" id="photos" name="photos" multiple>
+                            <div id="photosPreview" class="mt-2">
+                                <div id="photosPreview" class="mt-2 photo-preview"></div>
+                            </div>
+                        </div>
+                    
+                        <!-- Remove Photo Section -->
+                        <div class="mb-3">
+                            <label class="form-label">Photos:</label>
+                            <div id="selectedPhotos"></div>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

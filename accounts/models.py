@@ -87,6 +87,9 @@ class Purchase(models.Model):
 
     def related_accounts(self):
         return ", ".join([account.email for account in self.account_set.all()])
+    
+    def get_purchase_photos(self):
+        return PurchasePhoto.objects.filter(purchase=self)
 
     related_accounts.short_description = "Связанные аккаунты"
 

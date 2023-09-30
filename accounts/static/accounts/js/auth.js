@@ -610,6 +610,7 @@ function updatePurchaseData(purchaseId, addressId) {
     }).then((response) => {
         if (response.status) {
             console.log(response)
+            console.log(purchaseId)
             purchaseToForm(response.purchase);
             if (addressId.length > 0) {
                 var address = response.address
@@ -623,6 +624,7 @@ function updatePurchaseData(purchaseId, addressId) {
         console.log(response)
     });
 }
+
 
 
 function removePurchase(idx) {

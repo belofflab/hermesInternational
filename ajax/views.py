@@ -1,7 +1,7 @@
 import datetime
 import re
 from decimal import Decimal, InvalidOperation
-
+import os
 import jwt
 from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -22,6 +22,7 @@ from accounts.models import (
     AccountData,
     AccountNotifySettings,
     Purchase,
+    PurchasePhoto,
     Visits,
 )
 from main.models import AccountWarehouse, Warehouse, WarehouseShop
@@ -636,3 +637,46 @@ class AccountAvatarChange(View):
             user.save()
             return JsonResponse({"image_url": user.profile_image.url})
         return JsonResponse({"error": "Image upload failed"}, status=400)
+    
+
+class GetPurchasePhoto(View):
+    def post(self, request):
+        request_data = request.POST
+        purchase_id = request_data.get("purchaseId")
+
+        purchase = Purchase.objects.get(id=int(purchase_id))
+        photos = purchase.get_purchase_photos()
+        response = {
+            "status": 200,
+            "purchase": model_to_dict(purchase),
+            "photos": [{'url': photo.photo.url, "id": photo.id} for photo in photos]
+        }
+
+        return JsonResponse(response)
+
+
+class PurchasePhotoDelete(View):
+    def post(self, request):
+        request_data = request.POST
+        purchase_id = request_data.get("photoId")
+
+        PurchasePhoto.objects.get(id=purchase_id).delete()
+        return JsonResponse({"status": 200})
+    
+
+class PurchasePhotoAdd(View):
+    def post(self, request):
+        request_data = request.POST
+        purchase_id = request_data.get("purchaseId")
+        files = request.FILES.getlist('file') 
+
+        for file in files:
+            with open(os.path.join('media/purchase_photos', file.name), 'wb+') as destination:
+                for chunk in file.chunks():
+                    destination.write(chunk)
+                    PurchasePhoto.objects.create(
+                        purchase=Purchase.objects.get(id=int(purchase_id)),
+                        photo=f"purchase_photos/{file.name}"
+                    )
+
+        return GetPurchasePhoto.post(self, request)
