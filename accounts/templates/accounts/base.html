@@ -267,8 +267,8 @@
 
         {% if request.user.is_admin %}
         <li class="nav-item">
-          <a class="nav-link " href="{% url 'accounts:mail_list' %}">
-            <span class="btn btn-sm w-100 btn-primary  ms-1">{% translate 'Почта' %}</span>
+          <a class="nav-link " href="{% url 'accounts:profile_admin' %}">
+            <span class="btn btn-sm w-100 btn-primary  ms-1">{% translate 'Админ панель' %}</span>
           </a>
         </li>
         {% endif %}
