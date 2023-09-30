@@ -83,7 +83,10 @@ class ProfileAdminView(LoginRequiredMixin, View):
                 purchase.account = account
             purchase_per_accounts.extend(purchase_list)
 
-        context = {"purchase_per_accounts": purchase_per_accounts}
+        paginator = Paginator(purchase_per_accounts, 12)          
+        purchase_per_accounts_page = paginator.get_page(request.GET.get('page'))
+
+        context = {"purchase_per_accounts": purchase_per_accounts_page}
         return render(request, "accounts/admin_profile.html", context)
 
 
