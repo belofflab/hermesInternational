@@ -1,0 +1,140 @@
+{% extends 'accounts/admin_profile_base.html' %}
+
+{% load i18n %}
+{% load format_text %}
+
+
+
+{% block tab %}
+<div>
+    <div class="row">
+        {% for key, value in purchase_statuses.items %}
+            <div class="col-4 mb-1" style="background-color: {{value.color}}; border-radius: 30px; color: {{value.tcolor}}">
+                {{value.status}}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <input class="form-control" type="text" id="searchPurchaseInput" placeholder="Search...">
+        </div>
+        <div class="col-9">
+            <form id="filterForm">
+                <div class="d-flex justify-content-between">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="isDeliveriedFilter">
+                        <label class="form-check-label" for="isDeliveriedFilter">
+                            Доставлена
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="isReadyPayFilter">
+                        <label class="form-check-label" for="isReadyPayFilter">
+                            Готова к оплате
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="isPaidFilter">
+                        <label class="form-check-label" for="isPaidFilter">
+                            Оплачена
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="statusFilter" name="status">
+                            <option value="">Выберите статус</option>
+                            <option value="BUYOUT">buyout</option>
+                            <option value="FORWARDING">forwarding</option>
+                            <option value="ACCEPTANCE">acceptance</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">{% translate 'Фото' %}</th>
+                <th scope="col">{% translate 'Трек' %}</th>
+                <th scope="col">{% translate 'ФИО' %}</th>
+                <th scope="col">{% translate 'Email' %}</th>
+                <th scope="col">{% translate 'Дата создания' %}</th>
+                <th scope="col">{% translate 'Товар' %}</th>
+                <th scope="col">{% translate 'Цена' %}</th>
+                <th scope="col">{% translate 'Ссылка' %}</th>
+                <th scope="col">{% translate 'Адрес' %}</th>
+                <!-- <th scope="col">{% translate 'Код получения' %}</th> -->
+                <!-- <th scope="col">{% translate 'Адрес отправления' %}</th> -->
+                <th scope="col">{% translate 'Телеграм' %}</th>
+                <th scope="col">{% translate 'Трек после отправления' %}</th>
+                <th scope="col">{% translate 'Примечание' %}</th>
+                <!-- <th scope="col">Status</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchase_per_accounts %}
+                <tr 
+                    class="search-item"
+                    data-is-deliveried={{purchase.is_deliveried}}
+                    data-is-ready-pay={{purchase.is_ready_pay}}
+                    data-is-paid={{purchase.is_paid}}
+                    data-status={{purchase.status}}
+                    style="background-color: {{ purchase.get_purchase_status_color }}"
+                >   
+                    <td style="text-align: center;">
+                        <a type="button"  data-bs-toggle="modal" data-bs-target="#photoModal" onclick="getPurchaseData('{{purchase.id}}')">
+                            <img src="/static/accounts/img/plus-circle-1425-svgrepo-com.svg" height="20" width="20">
+                        </a>
+                    </td>
+                    <td><a  style="color: {{purchase.get_purchase_status_tcolor}}" href="">{{ purchase.tracking_number }}</a></td>
+                    <td  style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.address.first_name }} {{ purchase.address.last_name }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.account.email }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.created }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.name | minimalize }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.price }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.link | minimalize }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.address }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.account.telegram }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.account.last_track_number }}</td>
+                    <td style="color: {{purchase.get_purchase_status_tcolor}}">{{ purchase.remarks }}</td>
+                    <td style="display: none;">{{purchase.status}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if purchase_per_accounts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?purchase_page={{ purchase_per_accounts.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&lsaquo;</span>
+                </a>
+            </li>
+                <li class="page-item">
+                    <a class="page-link" href="?purchase_page=1" aria-label="First">
+                        1
+                    </a>
+                </li>
+            {% endif %}
+            
+            <li class="page-item" aria-current="page">
+                <span class="page-link white-page-number">{{ purchase_per_accounts.number }}</span>
+            </li>
+            
+            {% if purchase_per_accounts.has_next %}
+                <!-- <li class="page-item">
+                    <a class="page-link" href="?purchase_page={{ purchase_per_accounts.paginator.num_pages }}" aria-label="Last">
+                        {{ purchase_per_accounts.paginator.num_pages }}
+                    </a>
+                </li> -->
+                <li class="page-item">
+                    <a class="page-link" href="?purchase_page={{ purchase_per_accounts.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&rsaquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
