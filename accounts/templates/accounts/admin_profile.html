@@ -1,5 +1,6 @@
 {% extends 'accounts/base.html' %}
 {% load i18n %}
+{% load format_text %}
 {% block content %}
 {% load static %}
 {% include 'accounts/forms/photo_form.html' %}
@@ -93,9 +94,9 @@
                     <td>{{ purchase.account.username }}</td>
                     <td>{{ purchase.account.email }}</td>
                     <td><a href="">{{ purchase.tracking_number }}</a></td>
-                    <td>{{ purchase.name }}</td>
+                    <td>{{ purchase.name | minimalize }}</td>
                     <td>{{ purchase.price }}</td>
-                    <td>{{ purchase.link }}</td>
+                    <td>{{ purchase.link | minimalize }}</td>
                     <td>{{ purchase.address }}</td>
                     <td>{{ purchase.invoice_id }}</td>
                     <td>{{ purchase.account.street }}</td>
