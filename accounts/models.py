@@ -12,6 +12,24 @@ PURCHASE_STATUS_CHOICES = (
     ("ACCEPTANCE", "acceptance"),
 )
 
+purchase_statuses = {
+        0: {"status": "Не требуются действия", "color": "#fff", "tcolor": "#000"},
+        1: {"status": "Требуется отправить посылку", "color": "#ffa500", "tcolor": "#fff"},
+        2: {"status": "Посылка доставлена", "color": "#154360", "tcolor": "#fff"},
+        3: {"status": "Ждём оплату посылки", "color": "#186d3b", "tcolor": "#fff"},
+        4: {"status": "Посылка отправлена покупателю", "color": "#8e44ad", "tcolor": "#fff"},
+        5: {"status": "Требуется действие покупателя", "color": "#a93226", "tcolor": "#fff"},
+        6: {"status": "Требуется открыть адрес", "color": "#f4d03f", "tcolor": "#fff"},
+        7: {"status": "Требуется найти посылку на складе", "color": "#45b39d", "tcolor": "#fff"},
+        8: {"status": "Требуется тестирование посылки", "color": "#eb984e", "tcolor": "#fff"},
+        9: {"status": "Требуется техническая работа специалиста", "color": "#99a3a4", "tcolor": "#fff"},
+    }
+users_statuses = {
+        0: {"status": "Не требуются действия", "color": "#fff", "tcolor": "#000"},
+        1: {"status": "Требуется открыть адрес", "color": "#f4d03f", "tcolor": "#fff"},
+        2: {"status": "Требуется открыть адрес (Оплачена)", "color": "green", "tcolor": "#fff"},
+    }
+
 
 class PurchaseDeliveryOption(models.Model):
     """Добавочные функции отправки посылки"""
@@ -32,19 +50,6 @@ class PurchaseDeliveryOption(models.Model):
 
 class Purchase(models.Model):
     """Модель покупки"""
-
-    purchase_statuses = {
-        0: {"status": "Не требуются действия", "color": "ffa500"},
-        1: {"status": "Требуется отправить посылку", "color": "ffa500"},
-        2: {"status": "Посылка доставлена", "color": "154360"},
-        3: {"status": "Ждём оплату посылки", "color": "186d3b"},
-        4: {"status": "Посылка отправлена покупателю", "color": "8e44ad"},
-        5: {"status": "Требуется действие покупателя", "color": "a93226"},
-        6: {"status": "Требуется открыть адрес", "color": "f4d03f"},
-        7: {"status": "Требуется найти посылку на складе", "color": "45b39d"},
-        8: {"status": "Требуется тестирование посылки", "color": "eb984e"},
-        9: {"status": "Требуется техническая работа специалиста", "color": "99a3a4"},
-    }
 
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
@@ -109,10 +114,13 @@ class Purchase(models.Model):
     )
 
     def get_purchase_status(self):
-        return self.purchase_statuses.get(self.purchase_status, {}).get("status")
+        return purchase_statuses.get(self.purchase_status, {}).get("status")
 
     def get_purchase_status_color(self):
-        return self.purchase_statuses.get(self.purchase_status, {}).get("color")
+        return purchase_statuses.get(self.purchase_status, {}).get("color")
+
+    def get_purchase_status_tcolor(self):
+        return purchase_statuses.get(self.purchase_status, {}).get("tcolor")
 
     def search_related_accounts(self, query):
         return Account.objects.filter(purchases=self, email__icontains=query)
@@ -249,6 +257,11 @@ class Account(AbstractBaseUser):
     addresses = models.ManyToManyField(
         to=AccountData, verbose_name="Адреса пользователя", blank=True
     )
+    user_status = models.PositiveSmallIntegerField(
+        verbose_name="Статус",
+        default=0
+    )
+    user_status_last_update = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     date_joined = models.DateTimeField(
         verbose_name="Дата создания аккаунта", auto_now_add=True
     )

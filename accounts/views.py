@@ -15,7 +15,6 @@ from .services.mail import get_email
 from . import forms, models
 from ajax.tasks import send_email
 from django.core.paginator import Paginator
-from django.db.models import Value, ForeignKey
 from main.models import Warehouse, AccountWarehouse, WarehouseShop
 
 crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
@@ -83,12 +82,13 @@ class ProfileAdminView(LoginRequiredMixin, View):
                 purchase.account = account
             purchase_per_accounts.extend(purchase_list)
 
-        paginator_purchase = Paginator(purchase_per_accounts, 1)          
+        paginator_purchase = Paginator(purchase_per_accounts, 20)          
 
         purchase_per_accounts_page = paginator_purchase.get_page(request.GET.get('purchase_page'))
 
         context = {
                 "purchase_per_accounts": purchase_per_accounts_page,
+                "purchase_statuses": models.purchase_statuses,
                 "page": "profile_admin"
             }
         return render(request, "accounts/admin_profile_purchases.html", context)
@@ -106,7 +106,8 @@ class ProfileAdminUsersView(LoginRequiredMixin, View):
 
         context = {
                 "accounts": accounts_page,
-                "page": "profile_admin_users"
+                "page": "profile_admin_users",
+                "users_statuses": models.users_statuses
             }
         return render(request, "accounts/admin_profile_users.html", context)
 

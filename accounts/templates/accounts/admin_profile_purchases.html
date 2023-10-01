@@ -8,6 +8,13 @@
 {% block tab %}
 <div>
     <div class="row">
+        {% for key, value in purchase_statuses.items %}
+            <div class="col-4 mb-1" style="background-color: {{value.color}}; border-radius: 30px; color: {{value.tcolor}}">
+                {{value.status}}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
         <div class="col-3">
             <input class="form-control" type="text" id="searchPurchaseInput" placeholder="Search...">
         </div>
@@ -49,16 +56,16 @@
         <thead>
             <tr>
                 <th scope="col">{% translate 'Фото' %}</th>
-                <th scope="col">{% translate 'Дата создания' %}</th>
-                <th scope="col">{% translate 'Имя пользователя' %}</th>
-                <th scope="col">{% translate 'Почта' %}</th>
                 <th scope="col">{% translate 'Трек' %}</th>
+                <th scope="col">{% translate 'ФИО' %}</th>
+                <th scope="col">{% translate 'Email' %}</th>
+                <th scope="col">{% translate 'Дата создания' %}</th>
                 <th scope="col">{% translate 'Товар' %}</th>
                 <th scope="col">{% translate 'Цена' %}</th>
                 <th scope="col">{% translate 'Ссылка' %}</th>
                 <th scope="col">{% translate 'Адрес' %}</th>
-                <th scope="col">{% translate 'Код получения' %}</th>
-                <th scope="col">{% translate 'Адрес отправления' %}</th>
+                <!-- <th scope="col">{% translate 'Код получения' %}</th> -->
+                <!-- <th scope="col">{% translate 'Адрес отправления' %}</th> -->
                 <th scope="col">{% translate 'Телеграм' %}</th>
                 <th scope="col">{% translate 'Трек после отправления' %}</th>
                 <th scope="col">{% translate 'Примечание' %}</th>
@@ -67,30 +74,36 @@
         </thead>
         <tbody>
             {% for purchase in purchase_per_accounts %}
+                <style>
+                    .table td {
+                        color: {{purchase.get_purchase_status_tcolor}} !important;
+                    }
+                    .table td a{
+                        color: {{purchase.get_purchase_status_tcolor}} !important;
+                    }
+                </style>
                 <tr 
                     class="search-item"
                     data-is-deliveried={{purchase.is_deliveried}}
                     data-is-ready-pay={{purchase.is_ready_pay}}
                     data-is-paid={{purchase.is_paid}}
                     data-status={{purchase.status}}
-                    style="background-color: #{{ purchase.get_purchase_status_color }}"
+                    style="background-color: {{ purchase.get_purchase_status_color }}"
                 >   
                     <td style="text-align: center;">
                         <a type="button"  data-bs-toggle="modal" data-bs-target="#photoModal" onclick="getPurchaseData('{{purchase.id}}')">
                             <img src="/static/accounts/img/plus-circle-1425-svgrepo-com.svg" height="20" width="20">
                         </a>
                     </td>
-                    <td>{{ purchase.created }}</td>
-                    <td>{{ purchase.account.username }}</td>
-                    <td>{{ purchase.account.email }}</td>
                     <td><a href="">{{ purchase.tracking_number }}</a></td>
+                    <td>{{ purchase.address.first_name }} {{ purchase.address.last_name }}</td>
+                    <td>{{ purchase.account.email }}</td>
+                    <td>{{ purchase.created }}</td>
                     <td>{{ purchase.name | minimalize }}</td>
                     <td>{{ purchase.price }}</td>
                     <td>{{ purchase.link | minimalize }}</td>
                     <td>{{ purchase.address }}</td>
-                    <td>{{ purchase.invoice_id }}</td>
-                    <td>{{ purchase.account.street }}</td>
-                    <td>{{ purchase.account.phone }}</td>
+                    <td>{{ purchase.account.telegram }}</td>
                     <td>{{ purchase.account.last_track_number }}</td>
                     <td>{{ purchase.remarks }}</td>
                     <td style="display: none;">{{purchase.status}}</td>

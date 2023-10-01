@@ -62,7 +62,7 @@ $(document).ready(function () {
 
                     var removeButton = $('<button>')
                         .addClass('col-6 d-grid mx-auto content-md-center btn btn-outline-danger btn-sm remove-photo')
-                        .text('Remove')
+                        .text('Удалить')
                         .attr('data-index', photos[i].id)
                         .appendTo(cardDiv);
 
@@ -109,7 +109,7 @@ function getPurchaseData(purchaseId) {
 
                 var removeButton = $('<button>')
                     .addClass('col-6 d-grid mx-auto content-md-center btn btn-outline-danger btn-sm remove-photo')
-                    .text('Remove')
+                    .text('Удалить')
                     .attr('data-index', photos[i].id)
                     .appendTo(cardDiv);
 
@@ -119,4 +119,4 @@ function getPurchaseData(purchaseId) {
     }).catch((response) => {
         console.log(response);
     });
-}
+}   
