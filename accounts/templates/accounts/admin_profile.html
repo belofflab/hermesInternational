@@ -63,7 +63,7 @@
                 <th scope="col">{% translate 'Дата создания' %}</th>
                 <th scope="col">{% translate 'Имя пользователя' %}</th>
                 <th scope="col">{% translate 'Почта' %}</th>
-                <th scope="col">{% translate 'Трэк' %}</th>
+                <th scope="col">{% translate 'Трек' %}</th>
                 <th scope="col">{% translate 'Товар' %}</th>
                 <th scope="col">{% translate 'Цена' %}</th>
                 <th scope="col">{% translate 'Ссылка' %}</th>
@@ -71,7 +71,7 @@
                 <th scope="col">{% translate 'Код получения' %}</th>
                 <th scope="col">{% translate 'Адрес отправления' %}</th>
                 <th scope="col">{% translate 'Телеграм' %}</th>
-                <th scope="col">{% translate 'Трэк после отправления' %}</th>
+                <th scope="col">{% translate 'Трек после отправления' %}</th>
                 <th scope="col">{% translate 'Примечание' %}</th>
                 <!-- <th scope="col">Status</th> -->
             </tr>
@@ -84,6 +84,7 @@
                     data-is-ready-pay={{purchase.is_ready_pay}}
                     data-is-paid={{purchase.is_paid}}
                     data-status={{purchase.status}}
+                    style="background-color: #{{ purchase.get_purchase_status_color }}"
                 >   
                     <td style="text-align: center;">
                         <a type="button"  data-bs-toggle="modal" data-bs-target="#photoModal" onclick="getPurchaseData('{{purchase.id}}')">
@@ -100,9 +101,9 @@
                     <td>{{ purchase.address }}</td>
                     <td>{{ purchase.invoice_id }}</td>
                     <td>{{ purchase.account.street }}</td>
-                    <td>{{ purchase.account.phone }}</td>
-                    <td>{{ purchase.tracking_number }}</td>
-                    <td>{{ purchase.tracking_number }}</td>
+                    <td>{{ purchase.account.telegram }}</td>
+                    <td>{{ purchase.account.last_track_number }}</td>
+                    <td>{{ purchase.remarks }}</td>
                     <td style="display: none;">{{purchase.status}}</td>
                 </tr>
             {% endfor %}
