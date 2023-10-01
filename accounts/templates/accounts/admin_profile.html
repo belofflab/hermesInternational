@@ -18,133 +18,235 @@
     }
 </style>
 <div class="container">
-    <div class="row">
-        <div class="col-3">
-            <input class="form-control" type="text" id="searchPurchaseInput" placeholder="Search...">
-        </div>
-        <div class="col-9">
-            <form id="filterForm">
-                <div class="d-flex justify-content-between">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="isDeliveriedFilter">
-                        <label class="form-check-label" for="isDeliveriedFilter">
-                            Доставлена
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="isReadyPayFilter">
-                        <label class="form-check-label" for="isReadyPayFilter">
-                            Готова к оплате
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="isPaidFilter">
-                        <label class="form-check-label" for="isPaidFilter">
-                            Оплачена
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <select class="form-control" id="statusFilter" name="status">
-                            <option value="">Выберите статус</option>
-                            <option value="BUYOUT">buyout</option>
-                            <option value="FORWARDING">forwarding</option>
-                            <option value="ACCEPTANCE">acceptance</option>
-                        </select>
-                    </div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <input class="form-control" type="text" id="searchPurchaseInput" placeholder="Search...">
                 </div>
-            </form>
+                <div class="col-9">
+                    <form id="filterForm">
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="isDeliveriedFilter">
+                                <label class="form-check-label" for="isDeliveriedFilter">
+                                    Доставлена
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="isReadyPayFilter">
+                                <label class="form-check-label" for="isReadyPayFilter">
+                                    Готова к оплате
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="isPaidFilter">
+                                <label class="form-check-label" for="isPaidFilter">
+                                    Оплачена
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="statusFilter" name="status">
+                                    <option value="">Выберите статус</option>
+                                    <option value="BUYOUT">buyout</option>
+                                    <option value="FORWARDING">forwarding</option>
+                                    <option value="ACCEPTANCE">acceptance</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">{% translate 'Фото' %}</th>
+                        <th scope="col">{% translate 'Дата создания' %}</th>
+                        <th scope="col">{% translate 'Имя пользователя' %}</th>
+                        <th scope="col">{% translate 'Почта' %}</th>
+                        <th scope="col">{% translate 'Трек' %}</th>
+                        <th scope="col">{% translate 'Товар' %}</th>
+                        <th scope="col">{% translate 'Цена' %}</th>
+                        <th scope="col">{% translate 'Ссылка' %}</th>
+                        <th scope="col">{% translate 'Адрес' %}</th>
+                        <th scope="col">{% translate 'Код получения' %}</th>
+                        <th scope="col">{% translate 'Адрес отправления' %}</th>
+                        <th scope="col">{% translate 'Телеграм' %}</th>
+                        <th scope="col">{% translate 'Трек после отправления' %}</th>
+                        <th scope="col">{% translate 'Примечание' %}</th>
+                        <!-- <th scope="col">Status</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for purchase in purchase_per_accounts %}
+                        <tr 
+                            class="search-item"
+                            data-is-deliveried={{purchase.is_deliveried}}
+                            data-is-ready-pay={{purchase.is_ready_pay}}
+                            data-is-paid={{purchase.is_paid}}
+                            data-status={{purchase.status}}
+                            style="background-color: #{{ purchase.get_purchase_status_color }}"
+                        >   
+                            <td style="text-align: center;">
+                                <a type="button"  data-bs-toggle="modal" data-bs-target="#photoModal" onclick="getPurchaseData('{{purchase.id}}')">
+                                    <img src="/static/accounts/img/plus-circle-1425-svgrepo-com.svg" height="20" width="20">
+                                </a>
+                            </td>
+                            <td>{{ purchase.created }}</td>
+                            <td>{{ purchase.account.username }}</td>
+                            <td>{{ purchase.account.email }}</td>
+                            <td><a href="">{{ purchase.tracking_number }}</a></td>
+                            <td>{{ purchase.name | minimalize }}</td>
+                            <td>{{ purchase.price }}</td>
+                            <td>{{ purchase.link | minimalize }}</td>
+                            <td>{{ purchase.address }}</td>
+                            <td>{{ purchase.invoice_id }}</td>
+                            <td>{{ purchase.account.street }}</td>
+                            <td>{{ purchase.account.phone }}</td>
+                            <td>{{ purchase.account.last_track_number }}</td>
+                            <td>{{ purchase.remarks }}</td>
+                            <td style="display: none;">{{purchase.status}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if purchase_per_accounts.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?purchase_page=1" aria-label="First">
+                                1
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?purchase_page={{ purchase_per_accounts.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&lsaquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    
+                    <li class="page-item" aria-current="page">
+                        <span class="page-link white-page-number">{{ purchase_per_accounts.number }}</span>
+                    </li>
+                    
+                    {% if purchase_per_accounts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?purchase_page={{ purchase_per_accounts.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&rsaquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?purchase_page={{ purchase_per_accounts.paginator.num_pages }}" aria-label="Last">
+                                {{ purchase_per_accounts.paginator.num_pages }}
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
-        
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">{% translate 'Id' %}</th>
+                        <th scope="col">{% translate 'Имя' %}</th>
+                        <th scope="col">{% translate 'Фамилия' %}</th>
+                        <th scope="col">{% translate 'Почта' %}</th>
+                        <th scope="col">{% translate 'Баланс' %}</th>
+                        <th scope="col">{% translate 'Дата создания' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in accounts %}
+  
+                            <td>{{ account.id }}</td>
+                            <td>{{ account.first_name }}</td>
+                            <td>{{ account.last_name }}</td>
+                            <td>{{ account.email }}</td>
+                            <td>{{ account.balance }}</td>
+                            <td>{{ account.date_joined }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if accounts.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?account_page=1" aria-label="First">
+                                1
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?account_page={{ accounts.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&lsaquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    
+                    <li class="page-item" aria-current="page">
+                        <span class="page-link white-page-number">{{ accounts.number }}</span>
+                    </li>
+                    
+                    {% if accounts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?account_page={{ accounts.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&rsaquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?account_page={{ accounts.paginator.num_pages }}" aria-label="Last">
+                                {{ accounts.paginator.num_pages }}
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
     </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">{% translate 'Фото' %}</th>
-                <th scope="col">{% translate 'Дата создания' %}</th>
-                <th scope="col">{% translate 'Имя пользователя' %}</th>
-                <th scope="col">{% translate 'Почта' %}</th>
-                <th scope="col">{% translate 'Трек' %}</th>
-                <th scope="col">{% translate 'Товар' %}</th>
-                <th scope="col">{% translate 'Цена' %}</th>
-                <th scope="col">{% translate 'Ссылка' %}</th>
-                <th scope="col">{% translate 'Адрес' %}</th>
-                <th scope="col">{% translate 'Код получения' %}</th>
-                <th scope="col">{% translate 'Адрес отправления' %}</th>
-                <th scope="col">{% translate 'Телеграм' %}</th>
-                <th scope="col">{% translate 'Трек после отправления' %}</th>
-                <th scope="col">{% translate 'Примечание' %}</th>
-                <!-- <th scope="col">Status</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            {% for purchase in purchase_per_accounts %}
-                <tr 
-                    class="search-item"
-                    data-is-deliveried={{purchase.is_deliveried}}
-                    data-is-ready-pay={{purchase.is_ready_pay}}
-                    data-is-paid={{purchase.is_paid}}
-                    data-status={{purchase.status}}
-                    style="background-color: #{{ purchase.get_purchase_status_color }}"
-                >   
-                    <td style="text-align: center;">
-                        <a type="button"  data-bs-toggle="modal" data-bs-target="#photoModal" onclick="getPurchaseData('{{purchase.id}}')">
-                            <img src="/static/accounts/img/plus-circle-1425-svgrepo-com.svg" height="20" width="20">
-                        </a>
-                    </td>
-                    <td>{{ purchase.created }}</td>
-                    <td>{{ purchase.account.username }}</td>
-                    <td>{{ purchase.account.email }}</td>
-                    <td><a href="">{{ purchase.tracking_number }}</a></td>
-                    <td>{{ purchase.name | minimalize }}</td>
-                    <td>{{ purchase.price }}</td>
-                    <td>{{ purchase.link | minimalize }}</td>
-                    <td>{{ purchase.address }}</td>
-                    <td>{{ purchase.invoice_id }}</td>
-                    <td>{{ purchase.account.street }}</td>
-                    <td>{{ purchase.account.telegram }}</td>
-                    <td>{{ purchase.account.last_track_number }}</td>
-                    <td>{{ purchase.remarks }}</td>
-                    <td style="display: none;">{{purchase.status}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if purchase_per_accounts.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page=1" aria-label="First">
-                        1
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ purchase_per_accounts.previous_page_number }}" aria-label="Previous">
-                        <span aria-hidden="true">&lsaquo;</span>
-                    </a>
-                </li>
-            {% endif %}
-            
-            <li class="page-item" aria-current="page">
-                <span class="page-link white-page-number">{{ purchase_per_accounts.number }}</span>
-            </li>
-            
-            {% if purchase_per_accounts.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ purchase_per_accounts.next_page_number }}" aria-label="Next">
-                        <span aria-hidden="true">&rsaquo;</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ purchase_per_accounts.paginator.num_pages }}" aria-label="Last">
-                        {{ purchase_per_accounts.paginator.num_pages }}
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-    
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- <script>
+
+const homeTab = document.querySelector("#home-tab");
+const profileTab = document.querySelector("#profile-tab");
+const homeTabContent = document.querySelector("#home");
+const profileTabContent = document.querySelector("#profile");
+
+
+const activeTab = localStorage.getItem("activeTab");
+
+
+if (activeTab === "profile") {
+    profileTab.classList.add("active");
+    homeTabContent.classList.remove("show", "active");
+    profileTabContent.classList.add("show", "active");
+} else {
+    homeTab.classList.add("active");
+    homeTabContent.classList.add("show", "active");
+    profileTabContent.classList.remove("show", "active");
+}
+
+
+homeTab.addEventListener("click", () => {
+    localStorage.setItem("activeTab", "home");
+});
+
+profileTab.addEventListener("click", () => {
+    localStorage.setItem("activeTab", "profile");
+});
+    
+</script> -->
 <script>
     function getPurchaseData(purchaseId) {
     var requestData = {
