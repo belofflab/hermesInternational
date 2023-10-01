@@ -7,6 +7,7 @@ urlpatterns = [
     path("logout/", views.LogoutView.as_view(), name="logout"),
     path("profile/", views.ProfileView.as_view(), name="profile"),
     path("profile/admin/", views.ProfileAdminView.as_view(), name="profile_admin"),
+    path("profile/admin/users/", views.ProfileAdminUsersView.as_view(), name="profile_admin_users"),
     path(
         "profile/password/reset/<uidb64>/<token>/",
         views.PasswordResetConfirmView.as_view(),

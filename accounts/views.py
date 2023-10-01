@@ -83,17 +83,32 @@ class ProfileAdminView(LoginRequiredMixin, View):
                 purchase.account = account
             purchase_per_accounts.extend(purchase_list)
 
-        paginator_purchase = Paginator(purchase_per_accounts, 12)          
-        paginator_accounts = Paginator(accounts, 1)         
+        paginator_purchase = Paginator(purchase_per_accounts, 1)          
 
         purchase_per_accounts_page = paginator_purchase.get_page(request.GET.get('purchase_page'))
-        accounts_page = paginator_accounts.get_page(request.GET.get('account_page'))
 
         context = {
                 "purchase_per_accounts": purchase_per_accounts_page,
-                "accounts": accounts_page
+                "page": "profile_admin"
             }
-        return render(request, "accounts/admin_profile.html", context)
+        return render(request, "accounts/admin_profile_purchases.html", context)
+    
+class ProfileAdminUsersView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        if not request.user.is_admin:
+            return redirect(reverse("main:index"))
+        
+        accounts = models.Account.objects.all()
+        paginator_accounts = Paginator(accounts, 1)   
+        accounts_page = paginator_accounts.get_page(request.GET.get('account_page'))
+
+        context = {
+                "accounts": accounts_page,
+                "page": "profile_admin_users"
+            }
+        return render(request, "accounts/admin_profile_users.html", context)
 
 
 class ProfileWarehouseView(LoginRequiredMixin, View):

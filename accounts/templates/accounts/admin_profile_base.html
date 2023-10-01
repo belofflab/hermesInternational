@@ -1,0 +1,34 @@
+{% extends 'accounts/base.html' %}
+{% load i18n %}
+{% load format_text %}
+{% block content %}
+{% load static %}
+{% include 'accounts/forms/photo_form.html' %}
+
+<style>
+    .filter-toggle {
+        cursor: pointer;
+        color: black;
+    }
+    .active{
+        color: #0084ff !important;
+    }
+    .page-link .active {
+        color: white !important; 
+    }
+</style>
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link {% if page == 'profile_admin' %}active{% endif%}" type="button" aria-controls="home" aria-selected="true"><a href="{% url 'accounts:profile_admin' %}">{% translate 'Покупки' %}</a></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link {% if page == 'profile_admin_users' %}active{% endif%}" type="button"><a href="{% url 'accounts:profile_admin_users' %}">{% translate 'Пользователи' %}</a></button>
+        </li>
+    </ul>
+    <div class="tab-content mt-4" id="myTabContent">
+        {% block tab %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
