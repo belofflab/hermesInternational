@@ -33,6 +33,19 @@ class PurchaseDeliveryOption(models.Model):
 class Purchase(models.Model):
     """Модель покупки"""
 
+    purchase_statuses = {
+        0: {"status": "Не требуются действия", "color": "ffa500"},
+        1: {"status": "Требуется отправить посылку", "color": "ffa500"},
+        2: {"status": "Посылка доставлена", "color": "154360"},
+        3: {"status": "Ждём оплату посылки", "color": "186d3b"},
+        4: {"status": "Посылка отправлена покупателю", "color": "8e44ad"},
+        5: {"status": "Требуется действие покупателя", "color": "a93226"},
+        6: {"status": "Требуется открыть адрес", "color": "f4d03f"},
+        7: {"status": "Требуется найти посылку на складе", "color": "45b39d"},
+        8: {"status": "Требуется тестирование посылки", "color": "eb984e"},
+        9: {"status": "Требуется техническая работа специалиста", "color": "99a3a4"},
+    }
+
     name = models.CharField(verbose_name="Наименование товара ", max_length=255)
     link = models.CharField(verbose_name="Ссылка на товар", max_length=2048)
     quantity = models.IntegerField(verbose_name="Количество товара")
@@ -80,7 +93,26 @@ class Purchase(models.Model):
         choices=PURCHASE_STATUS_CHOICES,
         default="ACCEPTANCE",
     )
+
+    purchase_status = models.PositiveSmallIntegerField(
+        verbose_name="Статус покупки",
+        default=0
+    )
+    purchase_status_last_update = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
     created = models.DateTimeField(auto_now_add=True)
+
+    remarks = models.CharField(
+        verbose_name="Примечания",
+        null=True,
+        blank=True
+    )
+
+    def get_purchase_status(self):
+        return self.purchase_statuses.get(self.purchase_status, {}).get("status")
+
+    def get_purchase_status_color(self):
+        return self.purchase_statuses.get(self.purchase_status, {}).get("color")
 
     def search_related_accounts(self, query):
         return Account.objects.filter(purchases=self, email__icontains=query)
@@ -204,6 +236,14 @@ class Account(AbstractBaseUser):
     profile_image = models.ImageField(
         upload_to=UserImagePath("profile_images"), blank=True, null=True
     )
+    telegram = models.CharField(verbose_name="Телеграм", max_length=255, null=True, blank=True)
+    last_track_number = models.CharField(
+            verbose_name="Последний трек номер",
+            max_length=255,
+            null=True, 
+            blank=True
+        )
+
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase, blank=True)
     country = models.CharField(verbose_name="Страна", max_length=255, null=True)
     addresses = models.ManyToManyField(
@@ -216,7 +256,6 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-
     objects = AccountManager()
 
     USERNAME_FIELD = "email"
