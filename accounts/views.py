@@ -101,13 +101,14 @@ class ProfileAdminUsersView(LoginRequiredMixin, View):
             return redirect(reverse("main:index"))
         
         accounts = models.Account.objects.all()
-        paginator_accounts = Paginator(accounts, 1)   
+        paginator_accounts = Paginator(accounts, 20)   
         accounts_page = paginator_accounts.get_page(request.GET.get('account_page'))
+
 
         context = {
                 "accounts": accounts_page,
                 "page": "profile_admin_users",
-                "users_statuses": models.users_statuses
+                "users_statuses": models.users_statuses,
             }
         return render(request, "accounts/admin_profile_users.html", context)
 

@@ -66,7 +66,7 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+  <aside class="sidenav bg-gray-100 navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
     id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
@@ -613,7 +613,7 @@
       });
     });
   </script>
-  <!-- <script>
+  <script>
     function filterTable(searchInput) {
       var isDeliveried = $('#isDeliveriedFilter').is(':checked');
       var isReadyPay = $('#isReadyPayFilter').is(':checked');
@@ -647,11 +647,22 @@
     }
   
     function isRowContainsSearchInput(rowItem, searchInput) {
-      var td = rowItem.find('td').eq(0);
-      if (td) {
-        var txtValue = td.text();
-        return txtValue.toUpperCase().indexOf(searchInput.toUpperCase()) > -1;
+      if ("{{page}}" == "profile_admin"){
+        var targetCells = [1, 2, 3, 5];
       }
+      else {
+        var targetCells = [0, 1, 2, 3];
+      }
+
+      for (var i = 0; i < targetCells.length; i++) {
+        var td = rowItem.find('td').eq(targetCells[i]);
+        var txtValue = td.text();
+
+        if (txtValue.toUpperCase().includes(searchInput.toUpperCase())) {
+          return true;
+        }
+      }
+
       return false;
     }
   
@@ -670,7 +681,7 @@
     filterTable();
   
   </script>
-   -->
+  
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="{% static 'accounts/js/soft-ui-dashboard.js' %}"></script>

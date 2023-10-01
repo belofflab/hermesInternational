@@ -19,10 +19,9 @@ purchase_statuses = {
         3: {"status": "Ждём оплату посылки", "color": "#186d3b", "tcolor": "#fff"},
         4: {"status": "Посылка отправлена покупателю", "color": "#8e44ad", "tcolor": "#fff"},
         5: {"status": "Требуется действие покупателя", "color": "#a93226", "tcolor": "#fff"},
-        6: {"status": "Требуется открыть адрес", "color": "#f4d03f", "tcolor": "#fff"},
-        7: {"status": "Требуется найти посылку на складе", "color": "#45b39d", "tcolor": "#fff"},
-        8: {"status": "Требуется тестирование посылки", "color": "#eb984e", "tcolor": "#fff"},
-        9: {"status": "Требуется техническая работа специалиста", "color": "#99a3a4", "tcolor": "#fff"},
+        6: {"status": "Требуется найти посылку на складе", "color": "#45b39d", "tcolor": "#fff"},
+        7: {"status": "Требуется тестирование посылки", "color": "#eb984e", "tcolor": "#fff"},
+        8: {"status": "Требуется техническая работа специалиста", "color": "#99a3a4", "tcolor": "#fff"},
     }
 users_statuses = {
         0: {"status": "Не требуются действия", "color": "#fff", "tcolor": "#000"},
@@ -272,6 +271,15 @@ class Account(AbstractBaseUser):
     objects = AccountManager()
 
     USERNAME_FIELD = "email"
+
+    def get_user_status(self):
+        return users_statuses.get(self.user_status, {}).get("status")
+
+    def get_user_status_color(self):
+        return users_statuses.get(self.user_status, {}).get("color")
+    
+    def get_user_status_tcolor(self):
+        return users_statuses.get(self.user_status, {}).get("tcolor")
 
     class Meta:
         verbose_name = "Пользователь"
