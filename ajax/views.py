@@ -722,9 +722,9 @@ class PurchasesFilterView(LoginRequiredMixin, View):
         if search_input:
             filter_condition |= Q(tracking_number__icontains=search_input)
             filter_condition |= Q(account__email__icontains=search_input)
-            filter_condition |= Q(address__first_name__icontains=search_input)
-            filter_condition |= Q(address__last_name__icontains=search_input)
-            filter_condition |= Q(name__icontains=search_input)
+            # filter_condition |= Q(address__first_name__icontains=search_input)
+            # filter_condition |= Q(address__last_name__icontains=search_input)
+            # filter_condition |= Q(name__icontains=search_input)
 
         for account in accounts:
             purchase_list = account.purchases.prefetch_related("address").filter(filter_condition)
