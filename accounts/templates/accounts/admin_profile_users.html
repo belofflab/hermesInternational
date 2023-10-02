@@ -25,7 +25,6 @@
                 <th scope="col">{% translate 'Фамилия' %}</th>
                 <th scope="col">{% translate 'Почта' %}</th>
                 <th scope="col">{% translate 'Баланс' %}</th>
-                <th scope="col">{% translate 'Дата создания' %}</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +37,6 @@
                     <td style="color: {{ account.get_user_status_tcolor }}">{{ account.last_name }}</td>
                     <td style="color: {{ account.get_user_status_tcolor }}">{{ account.email }}</td>
                     <td style="color: {{ account.get_user_status_tcolor }}">{{ account.balance }}</td>
-                    <td style="color: {{ account.get_user_status_tcolor }}">{{ account.date_joined }}</td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -109,6 +107,9 @@
                 </li>
                 
             {% endif %}
+            <div id="user_pagination" class="pagination-container">
+                <!-- Здесь будут отображаться кнопки страниц -->
+            </div>            
         </ul>
     </nav>
 </div>
@@ -153,10 +154,6 @@
 
                     var dateCell = document.createElement('td');
                     dateCell.textContent = user.balance;
-                    row.appendChild(dateCell);
-
-                    var dateCell = document.createElement('td');
-                    dateCell.textContent = user.date_joined;
                     row.appendChild(dateCell);
   
                     tableBody.appendChild(row);

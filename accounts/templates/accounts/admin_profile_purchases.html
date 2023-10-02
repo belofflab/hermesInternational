@@ -59,7 +59,6 @@
                 <th scope="col">{% translate 'Трек' %}</th>
                 <th scope="col">{% translate 'ФИО' %}</th>
                 <th scope="col">{% translate 'Email' %}</th>
-                <th scope="col">{% translate 'Дата создания' %}</th>
                 <th scope="col">{% translate 'Товар' %}</th>
                 <th scope="col">{% translate 'Цена' %}</th>
                 <th scope="col">{% translate 'Ссылка' %}</th>
@@ -90,7 +89,6 @@
                     <td><a href="" style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.tracking_number }}</a></td>
                     <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.address.first_name }} {{ purchase.address.last_name }}</td>
                     <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.account.email }}</td>
-                    <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.created }}</td>
                     <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.name | minimalize }}</td>
                     <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.price }}</td>
                     <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.link | minimalize }}</td>
@@ -245,10 +243,6 @@
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
-                    dateCell.textContent = purchase.created;
-                    row.appendChild(dateCell);
-  
-                    var dateCell = document.createElement('td');
                     dateCell.textContent = purchase.name;
                     row.appendChild(dateCell);
   
@@ -307,11 +301,11 @@
                 
               ajaxTableBody.style.display = 'none'
               mainTableBody.style.display = '';
-              purchasePagination.style.display = '';
+              purchase_pagination.style.display = '';
             }
-            else{
+            else {
               mainTableBody.style.display = 'none';
-              purchasePagination.style.display = 'none';
+              purchase_pagination.style.display = 'none'
               ajaxTableBody.style.display = ''
   
               updateTable();
