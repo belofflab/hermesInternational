@@ -67,6 +67,11 @@ urlpatterns = [
         name="purchase_filter",
     ),
     path(
+        "accounts/profile/users_filter/get",
+        views.UsersFilterView.as_view(),
+        name="users_filter",
+    ),
+    path(
         "accounts/profile/purchases/remove",
         views.PurchaseRemoveView.as_view(),
         name="purchase_remove",
