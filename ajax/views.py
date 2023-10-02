@@ -720,7 +720,11 @@ class PurchasesFilterView(LoginRequiredMixin, View):
             filter_condition &= Q(status=status)
 
         if search_input:
-            filter_condition &= Q(name__icontains=search_input)
+            filter_condition |= Q(tracking_number__icontains=search_input)
+            filter_condition |= Q(account__email__icontains=search_input)
+            filter_condition |= Q(address__first_name__icontains=search_input)
+            filter_condition |= Q(address__last_name__icontains=search_input)
+            filter_condition |= Q(name__icontains=search_input)
 
         for account in accounts:
             purchase_list = account.purchases.prefetch_related("address").filter(filter_condition)
@@ -739,7 +743,7 @@ class PurchasesFilterView(LoginRequiredMixin, View):
                 "name": purchase.name,
                 "price": purchase.price,
                 "link": purchase.link,
-                "address": purchase.address,
+                "address": str(purchase.address),
                 "telegram": purchase.account.telegram,
                 "last_track_number": purchase.account.last_track_number,
                 "remarks": purchase.remarks,
@@ -750,3 +754,33 @@ class PurchasesFilterView(LoginRequiredMixin, View):
         return JsonResponse({'filteredPurchases': purchase_per_accounts})
 
 
+class UsersFilterView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        if not request.user.is_admin:
+            return JsonResponse({'error': 'Permission denied'})
+
+        search_input = request.GET.get('searchUserInput')
+
+        filter_condition = Q()
+
+        if search_input:
+            filter_condition |= Q(first_name__icontains=search_input)
+            filter_condition |= Q(last_name__icontains=search_input)
+            filter_condition |= Q(email__icontains=search_input)
+
+        accounts = [
+                {   
+                    "id": account.id,
+                    "first_name": account.first_name,
+                    "last_name": account.last_name,
+                    "email": account.email,
+                    "balance": account.balance,
+                    "date_joined": account.date_joined,
+                    "color": account.get_user_status_color(),
+                    "tcolor": account.get_user_status_tcolor()
+                } for account in Account.objects.all().filter(filter_condition)
+            ]
+
+        return JsonResponse({'accounts': accounts})
