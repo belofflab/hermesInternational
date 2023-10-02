@@ -57,7 +57,7 @@
         <tbody></tbody>
     </table>
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+        <ul id="user_pagination" class="pagination justify-content-center">
             {% if accounts.has_previous %}
                 <li class="page-item">
                     <a class="page-link" href="?account_page=1" aria-label="First">
@@ -174,13 +174,17 @@
             var mainTableBody = document.getElementById('main-table');
             var ajaxTableBody = document.getElementById('ajax-table');
             var searchUserInput = $('#searchUserInput').val();
+            var userPagination = document.getElementById("user_pagination");
   
             if (searchUserInput == ''){
               ajaxTableBody.style.display = 'none'
               mainTableBody.style.display = '';
+              userPagination.style.display = '';
             }
             else{
+            
               mainTableBody.style.display = 'none';
+              userPagination.style.display = 'none';
               ajaxTableBody.style.display = ''
   
               updateTable();

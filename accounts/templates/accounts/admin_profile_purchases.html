@@ -126,7 +126,7 @@
         <tbody></tbody>
     </table>
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+        <ul id="purchase_pagination" class="pagination justify-content-center">
             {% if purchase_per_accounts.has_previous %}
                 <li class="page-item">
                     <a class="page-link" href="?purchase_page=1" aria-label="First">
@@ -300,13 +300,18 @@
             var isPaidFilter = $('#isPaidFilter').is(':checked');
             var statusFilter = $('#statusFilter').val();
             var searchPurchaseInput = $('#searchPurchaseInput').val();
+
+            var purchasePagination = document.getElementById("purchase_pagination");
   
             if (!isDeliveriedFilter && !isReadyPayFilter && !isPaidFilter && statusFilter == '' && searchPurchaseInput == ''){
+                
               ajaxTableBody.style.display = 'none'
               mainTableBody.style.display = '';
+              purchasePagination.style.display = '';
             }
             else{
               mainTableBody.style.display = 'none';
+              purchasePagination.style.display = 'none';
               ajaxTableBody.style.display = ''
   
               updateTable();
