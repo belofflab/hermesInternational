@@ -614,74 +614,142 @@
     });
   </script>
   <script>
-    function filterTable(searchInput) {
-      var isDeliveried = $('#isDeliveriedFilter').is(':checked');
-      var isReadyPay = $('#isReadyPayFilter').is(':checked');
-      var isPaid = $('#isPaidFilter').is(':checked');
-  
-      var status = $('#statusFilter').val();
-  
-      var tr = $('tbody').find('tr');
-  
-      for (var i = 0; i < tr.length; i++) {
-        var currentItem = $(tr[i]);
-  
-        var isDeliveriedValue = (currentItem.attr('data-is-deliveried') == "False") ? false : true;
-        var isReadyPayValue = (currentItem.attr('data-is-ready-pay') == "False") ? false : true;
-        var isPaidValue = (currentItem.attr('data-is-paid') == "False") ? false : true;
-        var statusValue = currentItem.attr('data-status');
-  
-        if ((!isDeliveried || isDeliveriedValue === true) &&
-          (!isReadyPay || isReadyPayValue === true) &&
-          (!isPaid || isPaidValue === true) &&
-          (status === '' || status === statusValue)) {
-          if (!searchInput || isRowContainsSearchInput(currentItem, searchInput)) {
-            currentItem.show();
-          } else {
-            currentItem.hide();
+
+  $(document).ready(function() {
+      function updateTable() {
+          var filters = {
+              isDeliveriedFilter: $('#isDeliveriedFilter').is(':checked'),
+              isReadyPayFilter: $('#isReadyPayFilter').is(':checked'),
+              isPaidFilter: $('#isPaidFilter').is(':checked'),
+              statusFilter: $('#statusFilter').val(),
+              searchPurchaseInput: $('#searchPurchaseInput').val()
+          };
+          console.log($('#searchPurchaseInput').val())
+          $.ajax({
+              type: 'GET',
+              url: '/ajax/accounts/profile/purchase_filter/get',
+              data: filters,
+              success: function(data) {
+              
+              console.log(data.filteredPurchases)
+              var tableBody = document.querySelector('#ajax-table tbody');
+              tableBody.innerHTML = '';
+
+              for (var i = 0; i < data.filteredPurchases.length; i++) {
+                  var purchase = data.filteredPurchases[i];
+
+                  var row = document.createElement('tr');
+                  row.style.backgroundColor = purchase.color;
+                  row.style.color = purchase.tcolor;
+
+                  var cell1 = document.createElement('td');
+                  cell1.style.textAlign = 'center';
+
+                  console.log(purchase.color)
+                  
+                  var imgLink = document.createElement('a');
+                  imgLink.setAttribute('type', 'button');
+                  imgLink.setAttribute('data-bs-toggle', 'modal');
+                  imgLink.setAttribute('data-bs-target', '#photoModal');
+                  imgLink.setAttribute('onclick', "getPurchaseData('" + purchase.id + "')");
+
+                  var img = document.createElement('img');
+                  img.setAttribute('src', '/static/accounts/img/plus-circle-1425-svgrepo-com.svg');
+                  img.setAttribute('height', '20');
+                  img.setAttribute('width', '20');
+                  imgLink.appendChild(img);
+                  cell1.appendChild(imgLink);
+
+                  row.appendChild(cell1)
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.tracking_number;
+                  row.appendChild(dateCell);
+                  
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.first_name + purchase.last_name;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.email;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.created;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.name;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.price;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.link;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.address;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.telegram;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.created;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.last_track_number;
+                  row.appendChild(dateCell);
+
+                  var dateCell = document.createElement('td');
+                  dateCell.textContent = purchase.remarks;
+                  row.appendChild(dateCell);
+
+                  tableBody.appendChild(row);
+              }
+
+              },
+              error: function() {
+                  console.error('Ошибка при получении данных');
+              }
+          });
+      }
+
+      // Вызывайте функцию обновления при изменении фильтров или поиска
+      $('#isDeliveriedFilter, #isReadyPayFilter, #isPaidFilter, #searchPurchaseInput, #statusFilter').on('change keyup', function() {
+          var mainTableBody = document.getElementById('main-table');
+          var ajaxTableBody = document.getElementById('ajax-table');
+
+
+          var isDeliveriedFilter = $('#isDeliveriedFilter').is(':checked');
+          var isReadyPayFilter = $('#isReadyPayFilter').is(':checked');
+          var isPaidFilter = $('#isPaidFilter').is(':checked');
+          var statusFilter = $('#statusFilter').val();
+          var searchPurchaseInput = $('#searchPurchaseInput').val();
+
+          if (!isDeliveriedFilter && !isReadyPayFilter && !isPaidFilter && statusFilter == '' && searchPurchaseInput == ''){
+            ajaxTableBody.style.display = 'none'
+            mainTableBody.style.display = '';
           }
-        } else {
-          currentItem.hide();
-        }
-      }
-    }
-  
-    function isRowContainsSearchInput(rowItem, searchInput) {
-      if ("{{page}}" == "profile_admin"){
-        var targetCells = [1, 2, 3, 5];
-      }
-      else {
-        var targetCells = [0, 1, 2, 3];
-      }
+          else{
+            mainTableBody.style.display = 'none';
+            ajaxTableBody.style.display = ''
 
-      for (var i = 0; i < targetCells.length; i++) {
-        var td = rowItem.find('td').eq(targetCells[i]);
-        var txtValue = td.text();
+            updateTable();
+          }
+      });
+      
 
-        if (txtValue.toUpperCase().includes(searchInput.toUpperCase())) {
-          return true;
-        }
-      }
+      // Инициализация таблицы при загрузке страницы
+      updateTable();
+  });
 
-      return false;
-    }
-  
-    $('#isDeliveriedFilter').add('#isReadyPayFilter').add('#isPaidFilter').change(function() {
-      filterTable($('#searchPurchaseInput').val());
-    });
-  
-    $('#statusFilter').change(function() {
-      filterTable($('#searchPurchaseInput').val());
-    });
-  
-    $('#searchPurchaseInput').keyup(function() {
-      filterTable($(this).val());
-    });
-  
-    filterTable();
-  
   </script>
-  
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="{% static 'accounts/js/soft-ui-dashboard.js' %}"></script>

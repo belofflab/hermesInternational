@@ -16,7 +16,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext as _
 from django.views import View
-
+from django.db.models import Q
 from accounts.models import (
     Account,
     AccountData,
@@ -680,3 +680,73 @@ class PurchasePhotoAdd(View):
                     )
 
         return GetPurchasePhoto.post(self, request)
+    
+
+class PurchasesFilterView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        if not request.user.is_admin:
+            return JsonResponse({'error': 'Permission denied'})
+
+        boolean_data = {
+            'true': True,
+            "false": False
+        }
+
+        accounts = Account.objects.all()
+        purchase_per_accounts = []
+
+        request_data = request.GET
+
+        is_deliveried = True if boolean_data[request_data.get('isDeliveriedFilter')] else None
+        is_ready_pay = True if boolean_data[request_data.get('isReadyPayFilter')] else None
+        is_paid = True if boolean_data[request_data.get('isPaidFilter')] else None
+        status = request_data.get('statusFilter')
+        search_input = request_data.get('searchPurchaseInput')
+
+        filter_condition = Q()
+
+        if is_deliveried is not None:
+            filter_condition &= Q(is_deliveried=is_deliveried)
+
+        if is_ready_pay is not None:
+            filter_condition &= Q(is_ready_pay=is_ready_pay)
+
+        if is_paid is not None:
+            filter_condition &= Q(is_paid=is_paid)
+
+        if status:
+            filter_condition &= Q(status=status)
+
+        if search_input:
+            filter_condition &= Q(name__icontains=search_input)
+
+        for account in accounts:
+            purchase_list = account.purchases.prefetch_related("address").filter(filter_condition)
+            for purchase in purchase_list:
+                purchase.account = account
+            purchase_per_accounts.extend(purchase_list)
+
+        purchase_per_accounts = [
+            {
+                "id": purchase.id,
+                "tracking_number": purchase.tracking_number,
+                "first_name": purchase.address.first_name if purchase.address else '',
+                "last_name": purchase.address.last_name if purchase.address else '',
+                "email": purchase.account.email,
+                "created": purchase.created,
+                "name": purchase.name,
+                "price": purchase.price,
+                "link": purchase.link,
+                "address": purchase.address,
+                "telegram": purchase.account.telegram,
+                "last_track_number": purchase.account.last_track_number,
+                "remarks": purchase.remarks,
+                "color": purchase.get_purchase_status_color(),
+                "tcolor": purchase.get_purchase_status_tcolor()
+            } for purchase in purchase_per_accounts]
+
+        return JsonResponse({'filteredPurchases': purchase_per_accounts})
+
+

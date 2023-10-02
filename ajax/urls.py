@@ -50,6 +50,7 @@ urlpatterns = [
         views.GetPurchasePhoto.as_view(),
         name="purchase_photo_get",
     ),
+    
     path(
         "accounts/profile/purchase_photo/delete",
         views.PurchasePhotoDelete.as_view(),
@@ -59,6 +60,11 @@ urlpatterns = [
         "accounts/profile/purchase_photo/add",
         views.PurchasePhotoAdd.as_view(),
         name="purchase_photo_add",
+    ),
+    path(
+        "accounts/profile/purchase_filter/get",
+        views.PurchasesFilterView.as_view(),
+        name="purchase_filter",
     ),
     path(
         "accounts/profile/purchases/remove",
