@@ -3,6 +3,7 @@ import re
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 from accounts.models import Purchase
 
@@ -31,6 +32,9 @@ def post_save_warehouse(created, instance, **kwargs):
 
 @receiver(post_save, sender=AccountWarehouse)
 def post_save_account_warehouse(created, instance, **kwargs):
+    if instance.is_opened and not instance.opened_date:
+        instance.opened_date = timezone.now()
+        instance.save()
     if created:
         for shop in shops:
             WarehouseShop.objects.create(warehouse=instance, **shop)

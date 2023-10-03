@@ -15,7 +15,7 @@ $(document).ready(function () {
         var state = $('#warehouse_form_state').val();
         var postal_code = $('#warehouse_form_postal_code').val();
 
-        // $('#warehouse_but').attr('disabled', 'disabled');
+        $('#warehouse_but').attr('disabled', '');
 
         $.ajax({
             url: "/ajax/accounts/profile/warehouses/create",
@@ -36,7 +36,7 @@ $(document).ready(function () {
                     $("#user_warehouse").hide();
                     $("#error_info").show();
                 }
-                // $(this).clear()
+                $('#warehouse_but').removeAttr('disabled');
             },
             error: function (xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText);
@@ -252,7 +252,7 @@ $("#or_signup").on('click', (e) => {
     $('#signupModal').modal('show');
 })
 
-$("form[name='change_password']").submit(function(event) {
+$("form[name='change_password']").submit(function (event) {
     event.preventDefault();
 
     var email = $("form[name='change_password'] > input[name='email']").val();
@@ -271,23 +271,23 @@ $("form[name='change_password']").submit(function(event) {
         url: '/ajax/account/password/update',
         data: data,
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
             console.log(response)
             if (response.status) {
                 // $('#passwordChangeModal').modal('hide'); 
                 // $("form[name='change_password']")[0].reset();  
-                window.location = '/accounts/profile/' 
+                window.location = '/accounts/profile/'
             } else {
                 $('#change_password_errorbox').text(response.message);
             }
         },
-        error: function(xhr, errmsg, err) {
+        error: function (xhr, errmsg, err) {
             console.log(errmsg);
         }
     });
 });
 
-$("form[name='full_change_password']").submit(function(event) {
+$("form[name='full_change_password']").submit(function (event) {
     event.preventDefault();
 
     var email = $("#full_change_password_email").val();
@@ -304,7 +304,7 @@ $("form[name='full_change_password']").submit(function(event) {
         url: '/ajax/account/full_password/update',
         data: data,
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
             $("#full_change_password_but").removeAttr('disabled');
             if (response.status) {
                 $('#full_change_password_successbox').text(response.message);
@@ -312,7 +312,7 @@ $("form[name='full_change_password']").submit(function(event) {
                 $('#full_change_password_errorbox').text(response.message);
             }
         },
-        error: function(xhr, errmsg, err) {
+        error: function (xhr, errmsg, err) {
             console.log(errmsg);
         }
     });
@@ -547,23 +547,41 @@ function payPurchase(purchaseId) {
     })
 }
 
-
+function detectLanguage() {
+    var url = window.location.href;
+    var locale = "ru";
+    if (url.includes("/ru/")) {
+        locale = "ru"
+    } else {
+        locale = "en"
+    }
+    return locale;
+}
 
 function deleteUserWarehouse(warehouseId) {
-    $.ajax({
-        data: {
-            warehouse: parseInt(warehouseId),
-            csrfmiddlewaretoken: csrf_token
-        },
-        method: 'POST',
-        url: '/ajax/accounts/profile/warehouses/delete',
-    }).then((response) => {
-        if (response.status) {
-            window.location.reload()
-        } else {
-            console.log(response)
-        }
-    })
+    var locale = detectLanguage()
+    var messages = {
+        "en": "Are you sure you want to delete the warehouse?",
+        "ru": "Вы уверены, что хотите удалить склад?",
+    }
+    var message = messages[locale]
+    var confirmation = confirm(message);
+    if (confirmation) {
+        $.ajax({
+            data: {
+                warehouse: parseInt(warehouseId),
+                csrfmiddlewaretoken: csrf_token
+            },
+            method: 'POST',
+            url: '/ajax/accounts/profile/warehouses/delete',
+        }).then((response) => {
+            if (response.status) {
+                window.location.reload()
+            } else {
+                console.log(response)
+            }
+        })
+    }
 }
 
 
@@ -633,7 +651,7 @@ function removePurchase(idx) {
     if (url.includes("/ru/")) {
         locale = "ru"
     } else {
-        locale ="en"
+        locale = "en"
     }
     var messages = {
         "en": "Are you sure you want to delete this purchase?",
@@ -646,7 +664,7 @@ function removePurchase(idx) {
             idx: parseInt(idx),
             csrfmiddlewaretoken: csrf_token
         };
-    
+
         $.ajax({
             data: requestData,
             method: 'POST',
@@ -658,7 +676,7 @@ function removePurchase(idx) {
         }).catch((response) => {
             console.log(response)
         });
-    }    
+    }
 }
 
 $("#profile-image").on("click", function () {
@@ -691,5 +709,5 @@ $('#profile-image-input').change(function (e) {
 
 
 function skipAddressForm() {
-    window.location.reload()    
+    window.location.reload()
 }

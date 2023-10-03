@@ -24,6 +24,8 @@ from accounts.models import (
     Purchase,
     PurchasePhoto,
     Visits,
+    PurchaseStatus,
+    UserStatus
 )
 from main.models import AccountWarehouse, Warehouse, WarehouseShop
 from payments.models import Invoice, Service
@@ -559,27 +561,21 @@ class AccountFullPasswordUpdateView(View):
 
 class AccountWarehouseCreateView(LoginRequiredMixin, View):
     def post(self, request):
-        request_data = request.POST
         user = request.user
         summ_of_warehouse = 50
         if user.balance < summ_of_warehouse:
             return JsonResponse({"status": False, "message": ""})
 
         user.update_balance(-summ_of_warehouse)
-        address = request_data.get("street")
-        city = request_data.get("city")
-        state = request_data.get("state")
-        zip = request_data.get("postal_code")
-        phone = request_data.get("phone")
+        user.update_status(UserStatus.NEED_OPENING_ADDRESS.value)
 
-        # AccountWarehouse.objects.create(
-        #     account=Account.objects.get(email=request.user),
-        #     address=address,
-        #     city=city,
-        #     state=state,
-        #     zip=zip,
-        #     phone=phone,
-        # )
+        notify_admin_by_telegram(
+f"""
+Подана заявка на открытие склада пользователем {request.user}
+"""
+
+        )
+
 
         return JsonResponse({"status": True, "message": ""})
 

@@ -181,13 +181,15 @@
         
         <div id="locker-slider1" class="owl-carousel">
           {% for account_warehouse in account_warehouses %}
-          <div style="display: flex; justify-content: center; padding: 0px !important;" class="item"
+            {% if account_warehouse.is_opened and account_warehouse.is_user_access %}
+            <div style="display: flex; justify-content: center; padding: 0px !important;" class="item"
             data-dot="<button role='button'  style='background-color: #0084ff!important'class='owl-dot text-white'><span>{{forloop.counter}}</span></button>">
             <div class="card" >
               <div class="card-body">
                 <div class="row">
                   <div class="col-9">
                     <h5 class="card-title">{% translate 'Собственный адрес' %} - {{account_warehouse.city}}</h5>
+                    <p class="text-primary">{{account_warehouse.pretty_end_time}}</p>
                   </div>
                   <div class="col-3">
                     <svg onclick="deleteUserWarehouse('{{account_warehouse.id}}')" style="cursor: pointer;"
@@ -224,6 +226,7 @@
               </div>
             </div>
           </div>
+            {% endif %}
           {% endfor %}
         </div>
       </div>

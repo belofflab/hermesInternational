@@ -5,6 +5,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.deconstruct import deconstructible
 from django.utils.translation import gettext_lazy as _
+from enum import Enum
 
 PURCHASE_STATUS_CHOICES = (
     ("BUYOUT", "buyout"),
@@ -23,11 +24,28 @@ purchase_statuses = {
         7: {"status": "Требуется тестирование посылки", "color": "#eb984e", "tcolor": "#fff"},
         8: {"status": "Требуется техническая работа специалиста", "color": "#99a3a4", "tcolor": "#fff"},
     }
+
 users_statuses = {
         0: {"status": "Не требуются действия", "color": "#f8f9fa", "tcolor": "#000"},
-        1: {"status": "Требуется открыть адрес", "color": "#0000cd", "tcolor": "#fff"},
-        2: {"status": "Требуется открыть адрес (Оплачена)", "color": "green", "tcolor": "#fff"},
+        # 1: {"status": "Требуется открыть адрес", "color": "#0000cd", "tcolor": "#fff"},
+        1: {"status": "Требуется открыть адрес (Оплачена)", "color": "green", "tcolor": "#fff"},
     }
+
+class UserStatus(Enum):
+    NOTHING = 0
+    NEED_OPENING_ADDRESS = 1
+
+class PurchaseStatus(Enum):
+    NOTHING = 0
+    NEED_SEND = 1
+    DELIVERIED = 2
+    WAITING_PAYMENT = 3
+    SENT = 4
+    BUYER_ACTION_REQUIRED = 5
+    NEED_FIND_IN_WAREHOUSE = 6
+    TESTING_REQUIRED = 7
+    SPECIALIST_REQUIRED = 8
+
 
 
 class PurchaseDeliveryOption(models.Model):
@@ -300,6 +318,10 @@ class Account(AbstractBaseUser):
         To subtract, pass a negative value for the `amount`.
         """
         self.balance += amount
+        self.save()
+
+    def update_status(self, status_id: str):
+        self.user_status = status_id
         self.save()
 
 

@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils import timezone
+from django.utils.translation import gettext as _
 
 User = get_user_model()
 
@@ -60,9 +62,35 @@ class AccountWarehouse(models.Model):
     phone = models.CharField(verbose_name="Номер телефона", max_length=255)
     account = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    is_opened = models.BooleanField(verbose_name="Открыт", default=False)
+    opened_date = models.DateTimeField(verbose_name="Дата открытия склада", null=True, blank=True)
+
+    def is_user_access(self):
+        if self.opened_date is None:
+            return False 
+        now = timezone.now()
+        time_difference =  now - self.opened_date
+        if time_difference.days >= 30:
+            return False 
+        return True
+    
+    def pretty_end_time(self):
+        if self.opened_date:
+            now = timezone.now()
+            time_difference =  now - self.opened_date
+            days = 30 - time_difference.days
+
+            return _("Срок действия заканчивается через {0} {1}").format(
+                days,
+                _("день" if days == 1 else "дня" if 1 < days < 5 else "дней")
+            )
+        else:
+            return _("Дата открытия не установлена")
+
     class Meta:
         verbose_name = "Склад"
         verbose_name_plural = "Склады пользователей"
+
 
     def __str__(self) -> str:
         return f"{self.account} -> {self.state} -> {self.city} -> {self.address}"
