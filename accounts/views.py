@@ -100,7 +100,7 @@ class ProfileAdminUsersView(LoginRequiredMixin, View):
         if not request.user.is_admin:
             return redirect(reverse("main:index"))
         
-        accounts = models.Account.objects.order_by("-user_status_last_update").all()
+        accounts = models.Account.objects.order_by("user_status_last_update").all()
         paginator_accounts = Paginator(accounts, 20)   
         accounts_page = paginator_accounts.get_page(request.GET.get('account_page'))
 
