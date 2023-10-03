@@ -41,6 +41,11 @@ urlpatterns = [
         name="warehouse_list",
     ),
     path(
+        "accounts/profile/warehouses/update",
+        views.AccountWarehouseUpdateView.as_view(),
+        name="warehouse_update",
+    ),
+    path(
         "accounts/profile/purchases/get",
         views.PurchaseGetView.as_view(),
         name="purchase_get",

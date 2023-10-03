@@ -111,6 +111,21 @@ class ProfileAdminUsersView(LoginRequiredMixin, View):
                 "users_statuses": models.users_statuses,
             }
         return render(request, "accounts/admin_profile_users.html", context)
+    
+class ProfileAdminWarehousesView(LoginRequiredMixin, View):
+    login_url = "/"
+
+    def get(self, request):
+        if not request.user.is_admin:
+            return redirect(reverse("main:index"))
+        
+        warehouses = AccountWarehouse.objects.all()
+
+        context = {
+                "warehouses": warehouses,
+                "page": "profile_admin_warehouses",
+            }
+        return render(request, "accounts/admin_profile_warehouses.html", context)
 
 
 class ProfileWarehouseView(LoginRequiredMixin, View):

@@ -623,6 +623,13 @@ class AccountWarehouseListView(LoginRequiredMixin, View):
         warehouse_options = get_warehouse_options(request)
         return JsonResponse({"status": True, "warehouse_options": warehouse_options})
 
+class AccountWarehouseUpdateView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        warehouse = AccountWarehouse.objects.get(id=request_data.get("warehouse"))
+        warehouse.is_opened = not warehouse.is_opened
+        warehouse.save()
+        return JsonResponse({"status": True, "warehouse_is_opened": warehouse.is_opened})
 
 class AccountAvatarChange(View):
     def post(self, request):

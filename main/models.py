@@ -93,4 +93,4 @@ class AccountWarehouse(models.Model):
 
 
     def __str__(self) -> str:
-        return f"{self.account} -> {self.state} -> {self.city} -> {self.address}"
+        return f"{self.state}, {self.city}, {self.address}"

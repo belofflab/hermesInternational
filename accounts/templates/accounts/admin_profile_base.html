@@ -25,6 +25,9 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link {% if page == 'profile_admin_users' %}active{% endif%}" type="button"><a href="{% url 'accounts:profile_admin_users' %}">{% translate 'Пользователи' %}</a></button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {% if page == 'profile_admin_warehouses' %}active{% endif %}" type="button"><a href="{% url 'accounts:profile_admin_warehouses' %}">{% translate 'Склады пользователей' %}</a></button>
+          </li>
     </ul>
     <div class="tab-content mt-4" id="myTabContent">
         {% block tab %}

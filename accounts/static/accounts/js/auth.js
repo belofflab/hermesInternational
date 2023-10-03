@@ -711,3 +711,55 @@ $('#profile-image-input').change(function (e) {
 function skipAddressForm() {
     window.location.reload()
 }
+
+$("input.warehouseSwitch").change(function (e) {
+    e.preventDefault();
+    var locale = detectLanguage()
+    var open_messages = {
+        "en": "Are you sure you want to open a warehouse?",
+        "ru": "Вы уверены что хотите открыть склад?",
+    }
+    var close_messages = {
+        "en": "Are you sure you want to close a warehouse?",
+        "ru": "Вы уверены что хотите закрыть склад?",
+    }
+    var closed_messages = {
+        "en": "Closed",
+        "ru": "Закрыт",
+    }
+    var opened_messages = {
+        "en": "Opened",
+        "ru": "Открыт",
+    }
+    var isChecked = $(this).prop("checked");
+    var message = open_messages[locale];
+    if (!isChecked) {
+        message = close_messages[locale];
+    }    else {
+        message = open_messages[locale];
+    }
+    var confirmation = confirm(message);
+    var warehouseId = $(this).data('warehouse')
+    var label = $(this).next();
+    if (confirmation) {
+        $.ajax({
+            data: {
+                warehouse: parseInt(warehouseId),
+                csrfmiddlewaretoken: csrf_token
+            },
+            method: 'POST',
+            url: '/ajax/accounts/profile/warehouses/update',
+        }).then((response) => {
+            if (response.status) {
+                $(this).prop("checked", response.warehouse_is_opened);
+                if (response.warehouse_is_opened) {
+                    label.text(opened_messages[locale]);
+                } else {
+                    label.text(closed_messages[locale]);
+                }
+            } else {
+                console.log(response)
+            }
+        })
+    }
+})
