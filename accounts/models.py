@@ -13,8 +13,8 @@ PURCHASE_STATUS_CHOICES = (
 )
 
 purchase_statuses = {
-        0: {"status": "Не требуются действия", "color": "#fff", "tcolor": "#000"},
-        1: {"status": "Требуется отправить посылку", "color": "#ffa500", "tcolor": "#fff"},
+        0: {"status": "Не требуются действия", "color": "#f8f9fa", "tcolor": "#000"},
+        1: {"status": "Требуется отправить посылку", "color": "#0000cd", "tcolor": "#fff"},
         2: {"status": "Посылка доставлена", "color": "#154360", "tcolor": "#fff"},
         3: {"status": "Ждём оплату посылки", "color": "#186d3b", "tcolor": "#fff"},
         4: {"status": "Посылка отправлена покупателю", "color": "#8e44ad", "tcolor": "#fff"},
@@ -24,8 +24,8 @@ purchase_statuses = {
         8: {"status": "Требуется техническая работа специалиста", "color": "#99a3a4", "tcolor": "#fff"},
     }
 users_statuses = {
-        0: {"status": "Не требуются действия", "color": "#fff", "tcolor": "#000"},
-        1: {"status": "Требуется открыть адрес", "color": "#f4d03f", "tcolor": "#fff"},
+        0: {"status": "Не требуются действия", "color": "#f8f9fa", "tcolor": "#000"},
+        1: {"status": "Требуется открыть адрес", "color": "#0000cd", "tcolor": "#fff"},
         2: {"status": "Требуется открыть адрес (Оплачена)", "color": "green", "tcolor": "#fff"},
     }
 

@@ -6,112 +6,121 @@
 
 
 {% block tab %}
+<style>
+    .table {
+        border-collapse: collapse;
+    }
+</style>
 <div class="row">
     {% for key, value in users_statuses.items %}
-        <div class="col-4 mb-1" style="background-color: {{value.color}}; border-radius: 30px; color: {{value.tcolor}}">
+        <div class="col-4 mb-1" style="background-color: {{value.color}}; border-radius: 30px; color: {{value.tcolor}}; border: 0.5px solid black">
             {{value.status}}
         </div>
     {% endfor %}
+</div>
+<br>
+<div class="row">
     <div class="col-3">
         <input class="form-control" type="text" id="searchUserInput" placeholder="Search...">
     </div>
 </div>
 <div>
-    <table id="main-table" class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">{% translate 'Id' %}</th>
-                <th scope="col">{% translate 'Имя' %}</th>
-                <th scope="col">{% translate 'Фамилия' %}</th>
-                <th scope="col">{% translate 'Почта' %}</th>
-                <th scope="col">{% translate 'Баланс' %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for account in accounts %}
-                <tr
-                style="background-color: {{ account.get_user_status_color }}"
-                >
-                    <td style="color: {{ account.get_user_status_tcolor }}">{{ account.id }}</td>
-                    <td style="color: {{ account.get_user_status_tcolor }}">{{ account.first_name }}</td>
-                    <td style="color: {{ account.get_user_status_tcolor }}">{{ account.last_name }}</td>
-                    <td style="color: {{ account.get_user_status_tcolor }}">{{ account.email }}</td>
-                    <td style="color: {{ account.get_user_status_tcolor }}">{{ account.balance }}</td>
+    <div class="table-responsive">
+        <table id="main-table" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">{% translate 'Id' %}</th>
+                    <th scope="col">{% translate 'Имя' %}</th>
+                    <th scope="col">{% translate 'Фамилия' %}</th>
+                    <th scope="col">{% translate 'Почта' %}</th>
+                    <th scope="col">{% translate 'Баланс' %}</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <table id="ajax-table" class="table table-bordered" style="display: none;">
-        <thead>
-            <tr>
-                <th scope="col">{% translate 'Id' %}</th>
-                <th scope="col">{% translate 'Имя' %}</th>
-                <th scope="col">{% translate 'Фамилия' %}</th>
-                <th scope="col">{% translate 'Почта' %}</th>
-                <th scope="col">{% translate 'Баланс' %}</th>
-                <th scope="col">{% translate 'Дата создания' %}</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <nav aria-label="Page navigation">
-        <ul id="user_pagination" class="pagination justify-content-center">
-            {% if accounts.has_previous %}
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                    <tr
+                    style="background-color: {{ account.get_user_status_color }}"
+                    >
+                        <td style="color: {{ account.get_user_status_tcolor }}">{{ account.id }}</td>
+                        <td style="color: {{ account.get_user_status_tcolor }}">{{ account.first_name }}</td>
+                        <td style="color: {{ account.get_user_status_tcolor }}">{{ account.last_name }}</td>
+                        <td style="color: {{ account.get_user_status_tcolor }}">{{ account.email }}</td>
+                        <td style="color: {{ account.get_user_status_tcolor }}">{{ account.balance }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table id="ajax-table" class="table" style="display: none;">
+            <thead>
+                <tr>
+                    <th scope="col">{% translate 'Id' %}</th>
+                    <th scope="col">{% translate 'Имя' %}</th>
+                    <th scope="col">{% translate 'Фамилия' %}</th>
+                    <th scope="col">{% translate 'Почта' %}</th>
+                    <th scope="col">{% translate 'Баланс' %}</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+        <nav aria-label="Page navigation">
+            <ul id="user_pagination" class="pagination justify-content-center">
+                {% if accounts.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?account_page=1" aria-label="First">
+                            1
+                        </a>
+                    </li>
+                    {% if accounts.number == accounts.paginator.num_pages %}
+                        <li class="page-item">
+                            <a class="page-link">
+                                ...
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if not accounts.previous_page_number == 1%}
+                    <li class="page-item">
+                        <a class="page-link" href="?account_page={{ accounts.previous_page_number }}" aria-label="Previous">
+                            {{ accounts.previous_page_number }}
+                        </a>
+                    </li>
+                    {% endif %}
+
+                {% endif %}
+                
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link white-page-number" style="color: aliceblue;">{{ accounts.number }}</span>
+                </li>
+                
+                {% if accounts.has_next %}
+
+
+                {% if not accounts.next_page_number == accounts.paginator.num_pages%}
                 <li class="page-item">
-                    <a class="page-link" href="?account_page=1" aria-label="First">
-                        1
+                    <a class="page-link" href="?account_page={{ accounts.next_page_number }}" aria-label="Next">
+                        {{ accounts.next_page_number }}
                     </a>
                 </li>
-                {% if accounts.number == accounts.paginator.num_pages %}
+                {% endif %}
+                    {% if accounts.number == 1 %}
                     <li class="page-item">
                         <a class="page-link">
                             ...
                         </a>
                     </li>
                 {% endif %}
-                {% if not accounts.previous_page_number == 1%}
-                <li class="page-item">
-                    <a class="page-link" href="?account_page={{ accounts.previous_page_number }}" aria-label="Previous">
-                        {{ accounts.previous_page_number }}
-                    </a>
-                </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?account_page={{ accounts.paginator.num_pages }}" aria-label="Last">
+                            {{ accounts.paginator.num_pages }}
+                        </a>
+                    </li>
+                    
                 {% endif %}
-
-            {% endif %}
-            
-            <li class="page-item active" aria-current="page">
-                <span class="page-link white-page-number" style="color: aliceblue;">{{ accounts.number }}</span>
-            </li>
-            
-            {% if accounts.has_next %}
-
-
-            {% if not accounts.next_page_number == accounts.paginator.num_pages%}
-            <li class="page-item">
-                <a class="page-link" href="?account_page={{ accounts.next_page_number }}" aria-label="Next">
-                    {{ accounts.next_page_number }}
-                </a>
-            </li>
-            {% endif %}
-                {% if accounts.number == 1 %}
-                <li class="page-item">
-                    <a class="page-link">
-                        ...
-                    </a>
-                </li>
-            {% endif %}
-                <li class="page-item">
-                    <a class="page-link" href="?account_page={{ accounts.paginator.num_pages }}" aria-label="Last">
-                        {{ accounts.paginator.num_pages }}
-                    </a>
-                </li>
-                
-            {% endif %}
-            <div id="user_pagination" class="pagination-container">
-                <!-- Здесь будут отображаться кнопки страниц -->
-            </div>            
-        </ul>
-    </nav>
+                <div id="user_pagination" class="pagination-container">
+                    <!-- Здесь будут отображаться кнопки страниц -->
+                </div>            
+            </ul>
+        </nav>
 </div>
 <script src="{% static 'accounts/js/jquery.js' %}"></script>
 <script>
