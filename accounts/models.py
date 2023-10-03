@@ -26,8 +26,8 @@ purchase_statuses = {
     }
 
 users_statuses = {
-        0: {"status": "Не требуются действия", "color": "#f8f9fa", "tcolor": "#000"},
-        2: {"status": "Требуется открыть адрес (Оплачена)", "color": "green", "tcolor": "#fff"},
+        0: {"status": _("Не требуются действия"), "color": "#f8f9fa", "tcolor": "#000"},
+        1: {"status": _("Требуется открыть адрес (Оплачена)"), "color": "green", "tcolor": "#fff"},
     }
 
 class UserStatus(Enum):
