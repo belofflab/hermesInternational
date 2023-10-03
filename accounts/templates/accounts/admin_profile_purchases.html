@@ -30,27 +30,27 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="isDeliveriedFilter">
                         <label class="form-check-label" for="isDeliveriedFilter">
-                            Доставлена
+                            {% translate "Доставлена" %}
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="isReadyPayFilter">
                         <label class="form-check-label" for="isReadyPayFilter">
-                            Готова к оплате
+                            {% translate "Готова к оплате" %}
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="isPaidFilter">
                         <label class="form-check-label" for="isPaidFilter">
-                            Оплачена
+                            {% translate "Оплачена" %}
                         </label>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="statusFilter" name="status">
-                            <option value="">Выберите статус</option>
-                            <option value="BUYOUT">buyout</option>
-                            <option value="FORWARDING">forwarding</option>
-                            <option value="ACCEPTANCE">acceptance</option>
+                            <option value="">{% translate "Выберите статус" %}</option>
+                            <option value="BUYOUT">{% translate "Выкуп" %}</option>
+                            <option value="FORWARDING">{% translate "Пересыл" %}</option>
+                            <option value="ACCEPTANCE">{% translate "Приемка" %}</option>
                         </select>
                     </div>
                 </div>
