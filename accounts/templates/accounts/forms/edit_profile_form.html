@@ -41,9 +41,15 @@
                     <input class="form-control" type="text" value="{{account_information.sur_name}}" placeholder="{{account_information.sur_name}}" id="edit_profile_form_surname" required>
                   </div>
                   <div class="form-group">
-                    <div class="mb-3">
-                        <label for="example-url-input" class="form-control-label">{% translate 'Страна' %}</label>
-                        <input class="form-control" name="country" value="{{account_information.country}}" id="country_selector_2" type="text">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                          <label for="example-url-input" class="form-control-label">{% translate 'Страна' %}</label>
+                          <input class="form-control" name="country" value="{{account_information.country}}" id="country_selector_2" type="text">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="example-url-input" class="form-control-label">{% translate 'Telegram' %}</label>
+                          <input class="form-control" type="text" value="{{account_information.telegram}}" placeholder="{{account_information.telegram}}" id="edit_profile_form_telegram" required>
+                        </div>
                     </div>
                   </div>
                   <br>

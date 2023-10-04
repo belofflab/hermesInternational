@@ -6,6 +6,8 @@
 
 
 {% block tab %}
+{% include 'accounts/forms/purchase_remark.html' %}
+{% include 'accounts/forms/last_track_number.html' %}
 <style>
     .table {
         border-collapse: collapse;
@@ -105,8 +107,8 @@
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.link | minimalize }}</td>
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.address }}</td>
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.account.telegram }}</td>
-                        <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.account.last_track_number }}</td>
-                        <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.remarks }}</td>
+                        <td onclick="changeTrackAfterSent('{{purchase.id}}', '{{purchase.track_after_sent}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.track_after_sent }}</td>
+                        <td onclick="changeRemark('{{purchase.id}}', '{{purchase.remarks}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.remarks }}</td>
                         <td style="display: none;">{{purchase.status}}</td>
                     </tr>
                 {% endfor %}

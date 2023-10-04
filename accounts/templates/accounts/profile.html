@@ -117,6 +117,8 @@
               {{request.user.first_name}} {{request.user.last_name}}</li>
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
               {{request.user}}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telegram:</strong> &nbsp;
+                @{{request.user.telegram}}</li>
             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">{% translate 'Страна' %}:</strong> &nbsp; {{request.user.country}}
             </li>
             <li class="list-group-item border-0 ps-0 text-sm mt-4">

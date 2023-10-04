@@ -81,6 +81,7 @@ $("form[name='signup']").submit((e) => {
     var last_name = $('#signup_last_name').val();
     var email = $('#signup_email').val();
     var password = $('#signup_password').val();
+    var telegram = $('#signup_telegram').val();
     var country = $('#country_selector').val();
     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
     if (!mediumRegex.test(password)) {
@@ -102,6 +103,7 @@ $("form[name='signup']").submit((e) => {
                     last_name: last_name,
                     email: email,
                     password: password,
+                    telegram: telegram,
                     country: country,
                     csrfmiddlewaretoken: csrf_token
                 },
@@ -437,6 +439,7 @@ $("form[name='edit_profile']").submit((e) => {
     var first_name = $('#edit_profile_form_firstname').val();
     var last_name = $('#edit_profile_form_lastname').val();
     var sur_name = $('#edit_profile_form_surname').val();
+    var telegram = $('#edit_profile_form_telegram').val();
     var country = $('#country_selector_2').val();
 
     console.log(first_name, last_name, sur_name, country)
@@ -448,6 +451,7 @@ $("form[name='edit_profile']").submit((e) => {
             first_name: first_name,
             last_name: last_name,
             sur_name: sur_name,
+            telegram: telegram,
             country: country,
             csrfmiddlewaretoken: csrf_token
         },
@@ -762,4 +766,71 @@ $("input.warehouseSwitch").change(function (e) {
             }
         })
     }
+})
+
+
+function changeRemark(purchase, remark) {
+    $("#purchaseRemarkInput").text(remark)
+    $("#purchaseRemark").data("purchase", purchase)
+    $("#purchaseRemarkModal").modal("show");
+}
+
+
+$("#purchaseRemark").submit(function(e) {
+    e.preventDefault();
+
+    var purchase = $(this).data("purchase");
+    var purchaseRemark = $("#purchaseRemarkInput").val();
+
+    var requestData = {
+        purchase: parseInt(purchase),
+        remark: purchaseRemark,
+        csrfmiddlewaretoken: csrf_token
+    };
+
+    $.ajax({
+        data: requestData,
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchases/remark/update',
+    }).then((response) => {
+        if (response.status) {
+            window.location.reload()
+        }
+    }).catch((response) => {
+        console.log(response)
+    });
+})
+
+
+
+function changeTrackAfterSent(purchase, track) {
+    $("#purchaseTrackAfterSentInput").val(track)
+    $("#purchaseTrackAfterSent").data("purchase", purchase)
+    $("#purchaseTrackAfterSentModal").modal("show");
+}
+
+
+$("#purchaseTrackAfterSent").submit(function(e) {
+    e.preventDefault();
+
+    var purchase = $(this).data("purchase");
+    var last_track_number = $("#purchaseTrackAfterSentInput").val();
+
+    var requestData = {
+        purchase: parseInt(purchase),
+        track_after_sent: last_track_number,
+        csrfmiddlewaretoken: csrf_token
+    };
+
+    $.ajax({
+        data: requestData,
+        method: 'POST',
+        url: '/ajax/accounts/profile/purchases/last_track_number/update',
+    }).then((response) => {
+        if (response.status) {
+            window.location.reload()
+        }
+    }).catch((response) => {
+        console.log(response)
+    });
 })

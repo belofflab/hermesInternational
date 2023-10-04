@@ -51,6 +51,16 @@ urlpatterns = [
         name="purchase_get",
     ),
     path(
+        "accounts/profile/purchases/remark/update",
+        views.PurchaseRemarkUpdateView.as_view(),
+        name="purchase_remark_update",
+    ),
+    path(
+        "accounts/profile/purchases/last_track_number/update",
+        views.PurchaseLastTrackNumberUpdateView.as_view(),
+        name="purchase_remark_update",
+    ),
+    path(
         "accounts/profile/purchase_photo/get",
         views.GetPurchasePhoto.as_view(),
         name="purchase_photo_get",

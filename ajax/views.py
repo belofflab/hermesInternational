@@ -83,6 +83,7 @@ class RegistrationView(View):
         new_user.email = request_data.get("email")
         new_user.first_name = request_data.get("first_name")
         new_user.last_name = request_data.get("last_name")
+        new_user.telegram = request_data.get("telegram")
         new_user.country = request_data.get("country")
         new_user.save()
         new_user.set_password(request_data.get("password"))
@@ -258,7 +259,24 @@ class PurchaseGetView(LoginRequiredMixin, View):
             response_data["address"] = model_to_dict(address)
 
         return JsonResponse(response_data)
+    
+class PurchaseRemarkUpdateView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        purchase = Purchase.objects.get(id=request_data.get("purchase"))
+        purchase.remarks = request_data.get("remark")
+        purchase.save()
 
+        return JsonResponse({"status": True})
+
+class PurchaseLastTrackNumberUpdateView(LoginRequiredMixin, View):
+    def post(self, request):
+        request_data = request.POST
+        purchase = Purchase.objects.get(id=request_data.get("purchase"))
+        purchase.track_after_sent = request_data.get("track_after_sent")
+        purchase.save()
+
+        return JsonResponse({"status": True})
 
 class PurchaseRemoveView(LoginRequiredMixin, View):
     def post(self, request):
@@ -468,6 +486,7 @@ class AccountDataUpdateView(LoginRequiredMixin, View):
 
         account.first_name = request_data.get("first_name")
         account.last_name = request_data.get("last_name")
+        account.telegram = request_data.get("telegram")
         account.sur_name = request_data.get("sur_name")
         account.country = request_data.get("country")
 
@@ -748,7 +767,7 @@ class PurchasesFilterView(LoginRequiredMixin, View):
                 "link": purchase.link,
                 "address": str(purchase.address),
                 "telegram": purchase.account.telegram,
-                "last_track_number": purchase.account.last_track_number,
+                "last_track_number": purchase.track_after_sent,
                 "remarks": purchase.remarks,
                 "color": purchase.get_purchase_status_color(),
                 "tcolor": purchase.get_purchase_status_tcolor()

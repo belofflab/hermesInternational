@@ -125,6 +125,13 @@ class Purchase(models.Model):
 
     remarks = models.CharField(
         verbose_name="Примечания",
+        max_length=255,
+        null=True,
+        blank=True
+    )
+    track_after_sent = models.CharField(
+        verbose_name="трек после отправления",
+        max_length=255,
         null=True,
         blank=True
     )
@@ -261,13 +268,6 @@ class Account(AbstractBaseUser):
         upload_to=UserImagePath("profile_images"), blank=True, null=True
     )
     telegram = models.CharField(verbose_name="Телеграм", max_length=255, null=True, blank=True)
-    last_track_number = models.CharField(
-            verbose_name="Последний трек номер",
-            max_length=255,
-            null=True, 
-            blank=True
-        )
-
     purchases = models.ManyToManyField(verbose_name="Покупки", to=Purchase, blank=True)
     country = models.CharField(verbose_name="Страна", max_length=255, null=True)
     addresses = models.ManyToManyField(
