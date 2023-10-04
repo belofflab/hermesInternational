@@ -82,7 +82,7 @@ class AccountWarehouse(models.Model):
 
             return _("Срок действия заканчивается через {0} {1}").format(
                 days,
-                _("день") if days == 1 else _("дня") if 1 < days < 5 else "дней"
+                _("день") if days == 1 else _("дня") if 1 < days < 5 else _("дней")
             )
         else:
             return _("Дата открытия не установлена")
