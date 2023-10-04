@@ -9,7 +9,7 @@ from .models import Invoice
 from .services.crypto import Crypto
 from django.http.response import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from accounts.models import Purchase
+from accounts.models import Purchase, PurchaseStatus
 from django.utils.decorators import method_decorator
 
 crypto = Crypto(token=settings.CRYPTO_BOT_TOKEN)
@@ -31,6 +31,7 @@ class InvoiceView(View):
                     purchase = Purchase.objects.filter(invoice_id=payload["invoice_id"]).first()
                     if purchase is not None:
                         purchase.is_paid = True
+                        purchase.purchase_status = PurchaseStatus.NEED_SEND.value
                         purchase.save()
                 except Purchase.DoesNotExist:
                     pass 

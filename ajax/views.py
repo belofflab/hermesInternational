@@ -347,6 +347,7 @@ class PurchaseUpdateStatusView(LoginRequiredMixin, View):
         idx = request_data.get("purchase")
         purchase = Purchase.objects.get(id=int(idx))
         purchase.is_deliveried = True
+        purchase.purchase_status = PurchaseStatus.DELIVERIED.value
         purchase.save()
         notify_admin_by_telegram(
             f"""

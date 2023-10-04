@@ -117,7 +117,9 @@
                     <div class="col-6">
                       <button class="btn btn-outline-success" onclick="toForwarding('{{purchase.id}}')" type="button">{% translate 'Пересыл' %}</button>
                     </div>
-                    <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button">{% translate 'Отметить посылку доставленной' %}</button>
+                    {% if not purchase.is_deliveried %}
+                      <button class="btn btn-outline-success" onclick="updateIsDeliveried('{{ purchase.id }}')" type="button" >{% translate 'Отметить посылку доставленной' %}</button>
+                    {% endif %}
                   </div>
                 </div>
             </div>
