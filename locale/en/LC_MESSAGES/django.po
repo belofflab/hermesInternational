@@ -154,7 +154,7 @@ msgstr "Link"
 #: .\accounts\templates\accounts\warehouses.html:138
 #: .\accounts\templates\accounts\warehouses.html:206
 msgid "Адрес"
-msgstr "Adress"
+msgstr "Address"
 
 #: .\accounts\templates\accounts\admin_profile_purchases.html:75
 msgid "Код получения"
@@ -2250,7 +2250,7 @@ msgstr "Awaiting payment....For now:"
 #~ msgstr "Yes. All risks are borne by our platform."
 
 #~ msgid "адреса"
-#~ msgstr "Adress"
+#~ msgstr "addresses"
 
 #~ msgid "Buying for you"
 #~ msgstr "Purchase"
