@@ -107,8 +107,8 @@
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.link | minimalize }}</td>
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.address }}</td>
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.account.telegram }}</td>
-                        <td onclick="changeTrackAfterSent('{{purchase.id}}', '{{purchase.track_after_sent}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.track_after_sent }}</td>
-                        <td onclick="changeRemark('{{purchase.id}}', '{{purchase.remarks}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.remarks }}</td>
+                        <td class="purchaseTrackAfterSent" data-purchase="{{purchase.id}}" onclick="changeTrackAfterSent('{{purchase.id}}', '{{purchase.track_after_sent}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.track_after_sent }}</td>
+                        <td class="purchaseRemark" data-purchase="{{purchase.id}}" onclick="changeRemark('{{purchase.id}}', '{{purchase.remarks}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.remarks }}</td>
                         <td style="display: none;">{{purchase.status}}</td>
                     </tr>
                 {% endfor %}
@@ -258,7 +258,7 @@
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
-                    dateCell.textContent = purchase.name;
+                    dateCell.textContent = purchase.name.slice(0,15) + '...';
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
@@ -266,7 +266,7 @@
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
-                    dateCell.textContent = purchase.link;
+                    dateCell.textContent = purchase.link.slice(1,15) + '...';
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
@@ -277,16 +277,20 @@
                     dateCell.textContent = purchase.telegram;
                     row.appendChild(dateCell);
   
-                    var dateCell = document.createElement('td');
-                    dateCell.textContent = purchase.created;
-                    row.appendChild(dateCell);
+                    // var dateCell = document.createElement('td');
+                    // dateCell.textContent = purchase.created;
+                    // row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
-                    dateCell.textContent = purchase.last_track_number;
+                    dateCell.textContent = purchase.track_after_sent;
+                    dateCell.style.cursor = 'pointer';
+                    dateCell.onclick = function () {changeTrackAfterSent(purchase.id, purchase.track_after_sent) }
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
                     dateCell.textContent = purchase.remarks;
+                    dateCell.style.cursor = 'pointer';
+                    dateCell.onclick = function () {changeRemark(purchase.id, purchase.remarks) }
                     row.appendChild(dateCell);
   
                     tableBody.appendChild(row);

@@ -781,6 +781,7 @@ $("#purchaseRemark").submit(function(e) {
 
     var purchase = $(this).data("purchase");
     var purchaseRemark = $("#purchaseRemarkInput").val();
+    var purchaseRemarks = document.querySelectorAll("td.purchaseRemark")
 
     var requestData = {
         purchase: parseInt(purchase),
@@ -794,7 +795,13 @@ $("#purchaseRemark").submit(function(e) {
         url: '/ajax/accounts/profile/purchases/remark/update',
     }).then((response) => {
         if (response.status) {
-            window.location.reload()
+            $("#purchaseRemarkModal").modal("hide");
+            for (var i = 0; purchaseRemarks.length; i++) {
+                var spurchase = purchaseRemarks[i]
+                if (spurchase.dataset.purchase == purchase) {
+                    spurchase.innerHTML = purchaseRemark
+                }
+            }
         }
     }).catch((response) => {
         console.log(response)
@@ -814,6 +821,7 @@ $("#purchaseTrackAfterSent").submit(function(e) {
     e.preventDefault();
 
     var purchase = $(this).data("purchase");
+    var purchaseTrackAfterSents = document.querySelectorAll("td.purchaseTrackAfterSent")
     var last_track_number = $("#purchaseTrackAfterSentInput").val();
 
     var requestData = {
@@ -828,7 +836,13 @@ $("#purchaseTrackAfterSent").submit(function(e) {
         url: '/ajax/accounts/profile/purchases/last_track_number/update',
     }).then((response) => {
         if (response.status) {
-            window.location.reload()
+            $("#purchaseTrackAfterSentModal").modal("hide");
+            for (var i = 0; purchaseTrackAfterSents.length; i++) {
+                var spurchase = purchaseTrackAfterSents[i]
+                if (spurchase.dataset.purchase == purchase) {
+                    spurchase.innerHTML = last_track_number
+                }
+            }
         }
     }).catch((response) => {
         console.log(response)
