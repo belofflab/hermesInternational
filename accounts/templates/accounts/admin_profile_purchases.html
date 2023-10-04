@@ -285,12 +285,14 @@
                     dateCell.textContent = purchase.track_after_sent;
                     dateCell.style.cursor = 'pointer';
                     dateCell.onclick = function () {changeTrackAfterSent(purchase.id, purchase.track_after_sent) }
+                    dateCell.dataset.purchase = purchase.id
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
                     dateCell.textContent = purchase.remarks;
                     dateCell.style.cursor = 'pointer';
                     dateCell.onclick = function () {changeRemark(purchase.id, purchase.remarks) }
+                    dateCell.dataset.purchase = purchase.id
                     row.appendChild(dateCell);
   
                     tableBody.appendChild(row);
