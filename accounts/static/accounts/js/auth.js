@@ -769,8 +769,9 @@ $("input.warehouseSwitch").change(function (e) {
 })
 
 
-function changeRemark(purchase, remark) {
-    $("#purchaseRemarkInput").text(remark)
+function changeRemark(self, purchase) {
+    var remark = $(self).data("remark");
+    $("#purchaseRemarkInput").val(remark)
     $("#purchaseRemark").data("purchase", purchase)
     $("#purchaseRemarkModal").modal("show");
 }
@@ -810,7 +811,8 @@ $("#purchaseRemark").submit(function(e) {
 
 
 
-function changeTrackAfterSent(purchase, track) {
+function changeTrackAfterSent(self, purchase) {
+    var track = $(self).data("track");
     $("#purchaseTrackAfterSentInput").val(track)
     $("#purchaseTrackAfterSent").data("purchase", purchase)
     $("#purchaseTrackAfterSentModal").modal("show");

@@ -107,8 +107,8 @@
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.link | minimalize }}</td>
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.address }}</td>
                         <td style="color: {{ purchase.get_purchase_status_tcolor }}">{{ purchase.account.telegram }}</td>
-                        <td class="purchaseTrackAfterSent" data-purchase="{{purchase.id}}" onclick="changeTrackAfterSent('{{purchase.id}}', '{{purchase.track_after_sent}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.track_after_sent }}</td>
-                        <td class="purchaseRemark" data-purchase="{{purchase.id}}" onclick="changeRemark('{{purchase.id}}', '{{purchase.remarks}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.remarks }}</td>
+                        <td class="purchaseTrackAfterSent" data-purchase="{{purchase.id}}" data-track="{{purchase.track_after_sent}}" onclick="changeTrackAfterSent(this, '{{purchase.id}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.track_after_sent }}</td>
+                        <td class="purchaseRemark" data-purchase="{{purchase.id}}" data-remark="{{purchase.remarks}}" onclick="changeRemark(this, '{{purchase.id}}')" style="color: {{ purchase.get_purchase_status_tcolor }}; cursor: pointer;">{{ purchase.remarks }}</td>
                         <td style="display: none;">{{purchase.status}}</td>
                     </tr>
                 {% endfor %}
@@ -250,7 +250,7 @@
                     row.appendChild(dateCell);
                     
                     var dateCell = document.createElement('td');
-                    dateCell.textContent = purchase.first_name + purchase.last_name;
+                    dateCell.textContent = purchase.first_name + ' ' + purchase.last_name;
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
@@ -277,22 +277,30 @@
                     dateCell.textContent = purchase.telegram;
                     row.appendChild(dateCell);
   
-                    // var dateCell = document.createElement('td');
-                    // dateCell.textContent = purchase.created;
-                    // row.appendChild(dateCell);
-  
                     var dateCell = document.createElement('td');
                     dateCell.textContent = purchase.track_after_sent;
                     dateCell.style.cursor = 'pointer';
-                    dateCell.onclick = function () {changeTrackAfterSent(purchase.id, purchase.track_after_sent) }
+                    dateCell.onclick = function (cell, id) {
+                        return function () {
+                            changeTrackAfterSent(cell, id);
+                        };
+                     }(dateCell, purchase.id);
                     dateCell.dataset.purchase = purchase.id
+                    dateCell.dataset.track = purchase.track_after_sent
+                    dateCell.classList.add("purchaseTrackAfterSent")
                     row.appendChild(dateCell);
   
                     var dateCell = document.createElement('td');
                     dateCell.textContent = purchase.remarks;
                     dateCell.style.cursor = 'pointer';
-                    dateCell.onclick = function () {changeRemark(purchase.id, purchase.remarks) }
+                    dateCell.onclick = function (cell, id) {
+                        return function () {
+                            changeRemark(cell, id);
+                        };
+                    }(dateCell, purchase.id);
                     dateCell.dataset.purchase = purchase.id
+                    dateCell.dataset.remark = purchase.remarks
+                    dateCell.classList.add("purchaseRemark")
                     row.appendChild(dateCell);
   
                     tableBody.appendChild(row);

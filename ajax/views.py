@@ -767,7 +767,7 @@ class PurchasesFilterView(LoginRequiredMixin, View):
                 "link": purchase.link,
                 "address": str(purchase.address),
                 "telegram": purchase.account.telegram,
-                "last_track_number": purchase.track_after_sent,
+                "track_after_sent": purchase.track_after_sent,
                 "remarks": purchase.remarks,
                 "color": purchase.get_purchase_status_color(),
                 "tcolor": purchase.get_purchase_status_tcolor()
