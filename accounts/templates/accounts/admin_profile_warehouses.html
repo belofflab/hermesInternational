@@ -28,7 +28,7 @@
                         <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input warehouseSwitch" type="checkbox" data-warehouse="{{warehouse.id}}"  {% if warehouse.is_opened %} checked{% endif %}>
-                                <label class="form-check-label">{% if warehouse.is_opened %} Открыт {% else %} Закрыт {% endif %}</label>
+                                <label class="form-check-label">{% if warehouse.is_opened %} {% translate 'Открыт' %} {% else %} {% translate 'Закрыт' %} {% endif %}</label>
                               </div>
                         </td>
                     </tr>
