@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#user_warehouse").submit(function (event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); 
 
         var phone = $('#warehouse_form_phone').val();
         var city = $('#warehouse_form_city').val();
@@ -11,7 +11,7 @@ $(document).ready(function () {
         $('#warehouse_but').attr('disabled', 'disabled');
 
         $.ajax({
-            url: "/ajax/accounts/profile/warehouses/create", // Replace 'your-ajax-url' with your actual AJAX URL
+            url: "/ajax/accounts/profile/warehouses/create",
             type: "POST",
             data: {
                 phone:phone,

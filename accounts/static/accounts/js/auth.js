@@ -1,4 +1,4 @@
-const recaptchaSiteKey = '6LfOQH4nAAAAABxGt4chFCdBD8dJrQBHADpXr4yO';
+const recaptchaSiteKey = '6LdIh4UnAAAAAI3ta-SSP_smWqV2fJeHJ0wkQ9py';
 
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
